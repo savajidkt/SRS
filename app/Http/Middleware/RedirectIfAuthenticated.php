@@ -24,7 +24,7 @@ class RedirectIfAuthenticated
         $guards = empty($guards) ? [null] : $guards;
 
         $webRoute = Route::getCurrentRoute()->getAction('authGrouping') === 'users.auth';
-        dd($webRoute);
+        
         foreach ($guards as $guard) {
            
             if (Auth::guard($guard)->check()) {

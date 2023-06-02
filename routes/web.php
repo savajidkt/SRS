@@ -1,19 +1,15 @@
 <?php
 
-use App\Http\Controllers\Admin\Auth\AdminAuthController;
-use App\Http\Controllers\Admin\Company\CompanyController;
 use App\Http\Controllers\Admin\Dashboard\DashboardController;
-use App\Http\Controllers\Admin\Project\ProjectController;
-use App\Http\Controllers\Admin\Survey\SurveyController;
 use App\Http\Controllers\Admin\User\UsersController;
 use App\Http\Controllers\Admin\Admin\AdminsController;
-use App\Http\Controllers\Admin\Survey\SurveyQuestionController;
 use App\Http\Controllers\Admin\Profile\ProfileController;
 use App\Http\Controllers\Admin\Client\ClientController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -37,12 +33,6 @@ Route::post('reset-password', [ForgotPasswordController::class, 'submitResetPass
 Route::post('first-password-change', [UserController::class, 'changePassword'])->name('first.password.change');
 
 
-#Admin Routes
-Route::get('admin', [AdminAuthController::class, 'getLogin'])->name('adminLogin')->middleware('guest:admin');
-Route::get('admin', [AdminAuthController::class, 'getLogin'])->name('adminLogin')->middleware('guest:admin');
-Route::get('admin/login', [AdminAuthController::class, 'getLogin'])->name('adminLogin')->middleware('guest:admin');
-Route::post('admin/login', [AdminAuthController::class, 'postLogin'])->name('adminLoginPost');
-Route::get('admin/logout', [AdminAuthController::class, 'logout'])->name('adminLogout');
 
 // Route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'], function () {
 
@@ -69,12 +59,10 @@ Route::get('admin/logout', [AdminAuthController::class, 'logout'])->name('adminL
 // });
 
 Auth::routes();
-// Route::post('/login', [
-//     'uses'          => 'App\Http\Controllers\Auth\LoginController@login',
-//     'middleware'    => 'checkstatus',
-// ]);
+
 # Front Routes
-Route::group(['authGrouping' => 'users.auth'], function () {
+Route::group(['authGrouping' => 'users.auth','middleware' => 'auth:web'], function () {
+    
     Route::get('/',[DashboardController::class, 'index']);
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::resource('/profile', ProfileController::class);
@@ -97,7 +85,6 @@ Route::group(['authGrouping' => 'users.auth'], function () {
     Route::get('/user/survey-export/{id}', [App\Http\Controllers\UserController::class, 'reportExcelExport'])->name('survey-export');
     Route::get('/demo-survey', [App\Http\Controllers\SurveyController::class, 'demoSurvey'])->name('demo-survey');*/
 });
-
 
 // Auth::routes();
 

@@ -11,7 +11,7 @@
                     </li> -->
 
                     
-                    <li><a class="has-arrow no-icon" href="{{route('profile.edit',auth()->user()->id)}}" aria-expanded="false"><i
+                    <li><a class="has-arrow no-icon" href="{{ route('profile.edit',Auth::user()->id)}}" aria-expanded="false"><i
                         class="icon icon-app-store"></i><span class="nav-text">Profile</span></a>
                     
                     <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i

@@ -17,7 +17,7 @@
                     <!-- <div class="col-sm-6 p-md-0"> -->
                         <div>
                         <div class="welcome-text">
-                            <h4>Welcome Sue!</h4>
+                            <h4>Welcome {{Auth::user()->first_name.' '.Auth::user()->last_name}}!</h4>
                         </div>
                     </div>
                 </div>
@@ -34,7 +34,7 @@
                             <i class="mdi mdi-account"></i>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
-                             <a href="{{route('profile.edit',auth()->user()->id)}}" class="dropdown-item">
+                             <a href="{{ route('profile.edit',Auth::user()->id)}}" class="dropdown-item">
                                 <i class="icon-user"></i>
                                 <span class="ml-2">Profile </span>
                             </a>

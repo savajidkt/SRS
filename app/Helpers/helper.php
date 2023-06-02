@@ -1,4 +1,7 @@
 <?php
+
+use Illuminate\Support\Facades\Auth;
+
 if (! function_exists('home_route')) {
     /**
      * Return the route to the "home" page depending on authentication/authorization status.
@@ -44,4 +47,16 @@ if (! function_exists('report_multiple_by_100')) {
         return $isNotRound ? $value*100 : round($value*100);
     }
 }
+if (! function_exists('is_login_check')) {
+    /**
+     * Access (lol) the Access:: facade as a simple function.
+     */
+    function is_login_check()
+    {
+        if (!Auth::check()) {
+           return redirect()->route('login');
+        }
+    }
+}
+
 

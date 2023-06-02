@@ -37,21 +37,7 @@ class DashboardController extends Controller
     public function index(Request $request)
     {
         
-        $data =[];
-        $completed = $this->questionRepository->getTotalCompletedSurveys($data);
-        $pending = $this->questionRepository->getTotalPendingSurveys($data);
-        $percentage = (int) (100 * $completed) / ($completed + $pending);
-        $survey_results = [
-            'completed'     =>   $completed,
-            'pending'       =>   $pending,
-            'percentage'    =>   number_format((float)$percentage, 2, '.', '')
-        ];
-        //dd($survey_results);
-        $recent_activity= $this->questionRepository->getSubmitedSurveys($data);
-        $companies  = $this->companyRepository->getCompany();
-        $projects   = $this->projectRepository->getProject();
-        //dd($recent_activity);
-        return view('admin.dashboard.index',['companies' => $companies, 'projects' => $projects,'survey_results' => $survey_results,'recent_activity'=>$recent_activity]);
+        return view('dashboard.index',[]);
     }
 
     public function getDashboardData(Request $request): JsonResponse

@@ -19,9 +19,9 @@ class ProfileController extends Controller
         $this->profileRepository = $profileRepository;
     }
    
-    public function edit(Admin $profile)
+    public function edit(User $user)
     {
-        return view('admin.Profile.edit',['model'=> $profile]);
+        return view('Profile.edit',['model'=> $user]);
     }
 
     /**
