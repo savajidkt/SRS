@@ -28,8 +28,8 @@
                         <img src="{{asset('images/srs_logo.jpg')}}" alt="">
                         <p>Welcome back! Please login to your account.</p>
                     </div>
-                        <form class="em-pass" action="{{ route('adminLoginPost') }}" method="POST">
-                                    @csrf
+                        <form class="em-pass" action="{{ route('login') }}" method="POST">
+                        @csrf
 
                             <label for="email">Email Address</label>                            
                             <input class="form-control" id="email" type="text" name="email" placeholder="" value="{{ old('email') }}" aria-describedby="login-email" autofocus="" tabindex="1" required />
@@ -50,7 +50,7 @@
                             @enderror
                           
                           
-                          <div class="form-checkbox">
+                        <div class="form-checkbox">
                             <div class="form-checkbox-content">
                                     <input type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
                                     <label for="remember">
@@ -59,13 +59,16 @@
                                   
 
                             </div>
-                              <p>Forgot Password</p>
-                          </div>
-                          <div class="login-btn">
+                              {{-- <p>Forgot Password</p> --}}
+                        </div>
+                        <div class="login-btn">
                             <input type="submit" class="log-btn" value="Login"/>
-                            <a href="" class="sign-btn">Sign up</a>
-                           </div>
-        </form>
+                            {{-- <a href="" class="sign-btn">Sign up</a> --}}
+                            @if (Route::has('password.request'))
+                                <a href="{{ route('password.request') }}" class="sign-btn">Forgot Password</a>
+                            @endif
+                        </div>
+                    </form>
                    </div> 
                    
                 </div>

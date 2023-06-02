@@ -11,13 +11,13 @@
                     </li> -->
 
                     
-                    <li><a class="has-arrow no-icon" href="{{route('profile')}}" aria-expanded="false"><i
+                    <li><a class="has-arrow no-icon" href="{{route('profile.edit',auth()->user()->id)}}" aria-expanded="false"><i
                         class="icon icon-app-store"></i><span class="nav-text">Profile</span></a>
                     
                     <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
                                 class="icon icon-chart-bar-33"></i><span class="nav-text">Client Management</span></a>
                         <ul aria-expanded="false">
-                            <li><a href="./chart-flot.html">Add Clients</a></li>
+                            <li><a href="{{route('client.create')}}">Add Clients</a></li>
                             <li><a href="./chart-morris.html">View Clients</a></li>
                             
                         </ul>

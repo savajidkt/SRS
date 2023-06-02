@@ -1,98 +1,115 @@
-@extends('layouts.app')
-@section('page_title', 'Assessment Login')
-@section('content')
-<main class="login-bg">
-    <div class="container">
-        <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4 sm-py-2">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-lg-9 col-md-12 d-flex flex-column align-items-center justify-content-center">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="inner-pad">
-                                            <form class="row g-3 needs-validation p-3" method="POST" action="{{ route('login') }}">
-                                                @csrf
-                                                <h1 class="card-title pt-0 pb-0 mb-0">Assessment Login</h1>
-                                                @if ($errors->any())
-                                                    @foreach ($errors->all() as $error)
-                                                        <div class="alert alert-danger" role="alert">
-                                                                {{ $error }}
-                                                        </div>
-                                                    @endforeach
-                                                @endif
-                                                @if(session('statusError'))
-                                                    <div class="alert alert-danger" role="alert">
-                                                    {{ session('statusError') }}
-                                                        </div>
-                                                @endif
-                                                <div class="col-12">
-                                                    <div class="input-group has-validation">
-                                                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required  placeholder="Email">
-                                                    </div>
-                                                    @error('email')
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span>
-                                                    @enderror
-                                                </div>
+<!DOCTYPE html>
+<html lang="en" class="h-100">
 
-                                                <div class="col-12">
-                                                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required placeholder="Password">
-                                                    @error('password')
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span>
-                                                    @enderror
-                                                </div>
-                                                <div class="col-sm-12 c-t-s">
-                                                    <div class="row">
-                                                        <div class="col-sm-6">
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-                                                                <label class="form-check-label" for="remember">
-                                                                    Remember me
-                                                                </label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-sm-6">
-                                                            @if (Route::has('password.request'))
-                                                            <p class="small text-lg-end text-sm-center"><a class="btn-link" href="{{ route('password.request') }}">
-                                                                    {{ __('Forgot Password?') }}
-                                                                </a></p>
-                                                            @endif
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-12">
-                                                    <button class="btn btn-primary w-100" type="submit">Login</button>
-                                                </div>
-                                                <div class="col-12">
-                                                    <a href="https://bandelliandassociates.com/contact-us/" target="_blank">
-                                                           No account? Contact us here.
-                                                    </a> 
-                                                </div>
-                                                
-                                                <div class="col-12">
-                                                    <div class="d-flex justify-content-center pt-3">
-                                                        <a href="https://bandelliandassociates.com/contact-us/" target="_blank" class="logo d-flex align-items-center w-auto">
-                                                            <img src="{{asset('front/assets/img/logo.png')}}" alt="">
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 login-form-img"></div>
-                                </div>
-                            </div>
-                        </div>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>SRS-The Development Ltd</title>
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="{{asset('images/dashboard-fav-icon-2.png')}}">
+    <link href="{{asset('css/style.css')}}" rel="stylesheet">
+
+</head>
+
+<body class="h-100">
+
+    <section class="registration-login-page">
+
+        <div class="login-page">
+            <div class="login-page-content">
+                <div class="login-page-left">
+                    <img class="img-left" src="{{asset('images/Group 243.png')}}" alt="">
+                </div>
+                <div class="login-page-right">
+                   <div class="login-page-form">
+
+                    <div class="login-page-img">
+                        <img src="{{asset('images/srs_logo.jpg')}}" alt="">
+                        <p>Welcome back! Please login to your account.</p>
                     </div>
+                        <form class="em-pass" action="{{ route('login') }}" method="POST">
+                        @csrf
+                            {{-- @if ($errors->any())
+                                @foreach ($errors->all() as $error)
+                                    <div class="alert alert-danger" role="alert">
+                                            {{ $error }}
+                                    </div>
+                                @endforeach
+                            @endif
+                            @if(session('statusError'))
+                                <div class="alert alert-danger" role="alert">
+                                {{ session('statusError') }}
+                                    </div>
+                            @endif --}}
+                            <label for="email">Email Address</label>                            
+                            {{-- <input class="form-control" id="email" type="text" name="email" placeholder="" value="{{ old('email') }}" aria-describedby="login-email" autofocus="" tabindex="1" required />
+                                @error('email')
+                                <span class="invalid-feedback" style="display: block;" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror --}}
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required  placeholder="Email">
+                                @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+
+                            <label for="password">Password</label>
+                           {{--  <input class="form-control form-control-merge" id="password" type="password" name="password" placeholder="" aria-describedby="login-password" tabindex="2" />
+                                         
+                            @error('password')
+                            <span class="invalid-feedback" style="display: block;" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+ --}}
+                            <input id="password" type="password" class="form-control form-control-merge @error('password') is-invalid @enderror" name="password" required placeholder="Password">
+                            @error('password')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+                          
+                          
+                        <div class="form-checkbox">
+                            <div class="form-checkbox-content">
+                                    {{-- <input type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}> --}}
+                                    <input  type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+                                    <label for="remember">
+                                    Remember me
+                                  </label>
+                                  
+
+                            </div>
+                              {{-- <p>Forgot Password</p> --}}
+                        </div>
+                        <div class="login-btn">
+                            <input type="submit" class="log-btn" value="Login"/>
+                            {{-- <a href="" class="sign-btn">Sign up</a> --}}
+                            @if (Route::has('password.request'))
+                                <a href="{{ route('password.request') }}" class="sign-btn">Forgot Password</a>
+                            @endif
+                        </div>
+                    </form>
+                   </div> 
+                   
                 </div>
             </div>
-        </section>
-    </div>
-</main>
+        </div>
 
-@endsection
+    </section>
+
+    <!--**********************************
+        Scripts
+    ***********************************-->   
+    <!-- Required vendors -->
+    <script src="{{asset('vendor/global/global.min.js')}}"></script>
+    <script src="{{asset('js/quixnav-init.js')}}"></script>
+    <script src="{{asset('js/custom.min.js')}}"></script>
+
+</body>
+
+</html>
+

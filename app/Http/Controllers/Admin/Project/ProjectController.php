@@ -17,19 +17,19 @@ class ProjectController extends Controller
         $this->projectRepository = $projectRepository;
     }
 
-    /**
-     * Store a newly created resource in storage.
+     /**
+     * Method update
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return JsonResponse
+     * @param \App\Http\Requests\Question\EditRequest $request
+     * @param \App\Models\Question $question
+     *
+     * @return \Illuminate\Routing\Redirector|\Illuminate\Http\RedirectResponse
      */
-    public function store(CreateRequest $request):JsonResponse
+    public function update(EditRequest $request, Admin $admin)
     {
-        $project = $this->projectRepository->create($request->all());
-        return response()->json([
-            'status' => true,
-            'data'=>$project->toArray(),
-            'message'=> 'Project add successfully.'
-        ]);
+        dd('test');
+        $this->projectRepository->update($request->all(), $admin);
+
+        return redirect()->route('profile')->with('success', "Profile updated successfully!");
     }
 }

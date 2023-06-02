@@ -8,6 +8,8 @@ use App\Http\Controllers\Admin\Survey\SurveyController;
 use App\Http\Controllers\Admin\User\UsersController;
 use App\Http\Controllers\Admin\Admin\AdminsController;
 use App\Http\Controllers\Admin\Survey\SurveyQuestionController;
+use App\Http\Controllers\Admin\Profile\ProfileController;
+use App\Http\Controllers\Admin\Client\ClientController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\UserController;
@@ -42,27 +44,29 @@ Route::get('admin/login', [AdminAuthController::class, 'getLogin'])->name('admin
 Route::post('admin/login', [AdminAuthController::class, 'postLogin'])->name('adminLoginPost');
 Route::get('admin/logout', [AdminAuthController::class, 'logout'])->name('adminLogout');
 
-Route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'], function () {
+// Route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'], function () {
 
-    Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
-    Route::get('profile', [ProfileController::class, 'profile'])->name('profile');
-    Route::post('get-dashboard', [DashboardController::class, 'getDashboardData'])->name('get-dashboard');
-    Route::resource('/users', UsersController::class);
-    Route::resource('/admins', AdminsController::class)->middleware('checkRole');
-    Route::get('/generate-pdf/{id}', [UsersController::class, 'generatePDF'])->name('generate-pdf');
-    Route::get('/chart-image/{id}', [UsersController::class, 'generateChartImage'])->name('chart-image');
-    Route::post('/user/change-status', [UsersController::class, 'changeStatus'])->name('change-user-status');
-    Route::post('/admin/change-status', [AdminsController::class, 'changeStatus'])->name('change-admin-status');
-    Route::post('/user/reset-survey-time', [UsersController::class, 'resetSurveyTime'])->name('reset-survey-time');
-    Route::resource('/question', SurveyQuestionController::class);
-    Route::resource('/survey', SurveyController::class);
-    Route::resource('/company', CompanyController::class);
-    Route::resource('/project', ProjectController::class);
+//     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
+//     //Route::get('profile', [ProfileController::class, 'profile'])->name('profile');
+//     Route::resource('/profile', ProfileController::class);
+//     Route::resource('/client', ClientController::class);
+//     Route::post('get-dashboard', [DashboardController::class, 'getDashboardData'])->name('get-dashboard');
+//     Route::resource('/users', UsersController::class);
+//     Route::resource('/admins', AdminsController::class)->middleware('checkRole');
+//     Route::get('/generate-pdf/{id}', [UsersController::class, 'generatePDF'])->name('generate-pdf');
+//     Route::get('/chart-image/{id}', [UsersController::class, 'generateChartImage'])->name('chart-image');
+//     Route::post('/user/change-status', [UsersController::class, 'changeStatus'])->name('change-user-status');
+//     Route::post('/admin/change-status', [AdminsController::class, 'changeStatus'])->name('change-admin-status');
+//     Route::post('/user/reset-survey-time', [UsersController::class, 'resetSurveyTime'])->name('reset-survey-time');
+//     Route::resource('/question', SurveyQuestionController::class);
+//     Route::resource('/survey', SurveyController::class);
+//     Route::resource('/company', CompanyController::class);
+//     Route::resource('/project', ProjectController::class);
 
-    Route::get('/export/{user}',[UsersController::class, 'reportExcelExport'])->name('export');
-    Route::post('/save-chart-image', [UsersController::class, 'saveChartImage'])->name('save-chart-image');
+//     Route::get('/export/{user}',[UsersController::class, 'reportExcelExport'])->name('export');
+//     Route::post('/save-chart-image', [UsersController::class, 'saveChartImage'])->name('save-chart-image');
 
-});
+// });
 
 Auth::routes();
 // Route::post('/login', [
@@ -71,7 +75,12 @@ Auth::routes();
 // ]);
 # Front Routes
 Route::group(['authGrouping' => 'users.auth'], function () {
-    Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('checkSurveyStatus');
+    Route::get('/',[DashboardController::class, 'index']);
+    Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::resource('/profile', ProfileController::class);
+    // Route::resource('/profile', ProfileController::class);
+    Route::resource('/client', ClientController::class);
+    /*Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('checkSurveyStatus');
     Route::get('/change-password', [ResetPasswordController::class, 'firstTimePasswordChange'])->name('change-password');
     //Route::resource('/survey', SurveyController::class);
     Route::get('/thank-you', [App\Http\Controllers\SurveyController::class, 'thankYou'])->name('thank-you')->middleware('checkSurveyStatus');
@@ -86,7 +95,7 @@ Route::group(['authGrouping' => 'users.auth'], function () {
 
     //Route::get('/export/{id}',[UsersController::class, 'reportExcelExport'])->name('survey-export');
     Route::get('/user/survey-export/{id}', [App\Http\Controllers\UserController::class, 'reportExcelExport'])->name('survey-export');
-    Route::get('/demo-survey', [App\Http\Controllers\SurveyController::class, 'demoSurvey'])->name('demo-survey');
+    Route::get('/demo-survey', [App\Http\Controllers\SurveyController::class, 'demoSurvey'])->name('demo-survey');*/
 });
 
 

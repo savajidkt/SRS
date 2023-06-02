@@ -36,7 +36,7 @@ class DashboardController extends Controller
 
     public function index(Request $request)
     {
-        //dd($request->all());
+        
         $data =[];
         $completed = $this->questionRepository->getTotalCompletedSurveys($data);
         $pending = $this->questionRepository->getTotalPendingSurveys($data);
