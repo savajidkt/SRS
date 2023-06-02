@@ -22,7 +22,7 @@
                 </div>
                 <div class="card-body">
                     <div class="basic-form">
-                        <form action="{{route('profile.update',Auth::user()->id)}}" method="POST">
+                        <form action="{{route('profile.update',$model)}}" method="POST">
                             @csrf
                             @method('PUT')
                             <div class="form-row">
@@ -46,7 +46,7 @@
                                 </div>
                                 <div class="form-group col-md-6 form-gap-2">
                                     <label>Phone Number</label>
-                                    <input class="form-control" id="phone_number" type="text" name="phone_number" placeholder="07850185351" value="{{ old('phone_number') }}" aria-describedby="login-phone_number" autofocus="" tabindex="1" required />
+                                    <input class="form-control" id="phone_number" type="text" name="phone_number" placeholder="07850185351" value="{{auth()->user()->phone_number}}" aria-describedby="login-phone_number" autofocus="" tabindex="1" required />
                                         @error('phone_number')
                                         <span class="invalid-feedback" style="display: block;" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -55,7 +55,7 @@
                                 </div>
                                 <div class="form-group col-md-6 form-gap-2">
                                     <label>Mobile Number</label>
-                                    <input class="form-control" id="mobile_number" type="text" name="mobile_number" placeholder="07850185351" value="{{ old('mobile_number') }}" aria-describedby="login-mobile_number" autofocus="" tabindex="1" required />
+                                    <input class="form-control" id="mobile_number" type="text" name="mobile_number" placeholder="07850185351" value="{{auth()->user()->mobile_number}}" aria-describedby="login-mobile_number" autofocus="" tabindex="1" required />
                                         @error('mobile_number')
                                         <span class="invalid-feedback" style="display: block;" role="alert">
                                             <strong>{{ $message }}</strong>

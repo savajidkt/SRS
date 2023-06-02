@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Http\Requests\Profile\EditRequest;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -35,20 +36,12 @@ class User extends Authenticatable
     protected $fillable = [
         'first_name',
         'last_name',
-        'company_id',
-        'project_id',
-        'address',
+        'phone_number',
+        'mobile_number',
         'user_type',
         'user_status',
-        'is_first_time_login',
         'email',
         'password',
-        'gender',
-        'age',
-        'ethnicity',
-        'job_level',
-        'years',
-        'other_text'
     ];
 
     /**
@@ -180,4 +173,5 @@ class User extends Authenticatable
         return $this->hasOne(Company::class, 'id', 'company_id');
     }
 
+    
 }

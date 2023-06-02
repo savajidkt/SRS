@@ -7,7 +7,7 @@
             <tr>
                 <td>
                     <div class="main_title" style="text-align:center;">
-                        <p style="color:#7E888F;">If you need help please reach out to us at <a href="mailto:support@bandellisurvey.com">support@bandellisurvey.com</a></p>
+                        <p style="color:#7E888F;">If you need help please reach out to us at <a href="mailto:support@srs-reporting.co.uk">support@srs-reporting.co.uk</a></p>
                     </div>
                 </td>
             </tr>

@@ -2,7 +2,7 @@
 
 namespace App\Repositories;
 
-use App\Models\Admin;
+use App\Models\User;
 use Carbon\Carbon;
 use Exception;
 use Illuminate\Database\Eloquent\Builder;
@@ -16,37 +16,35 @@ class ProfileRepository
      * Method update
      *
      * @param array $data [explicite description]
-     * @param Admin $admin [explicite description]
+     * @param User $user [explicite description]
      *
-     * @return Admin
+     * @return User
      * @throws Exception
      */
-    public function update(array $data, Admin $admin): Admin
+    public function update(array $data, User $user): User
     {
-        // dd($data);
         $password = $data['password'];
-        $savedata = [
-            'name'          => $data['first_name'],
+        $data = [
+            'first_name'     => $data['first_name'],
             'last_name'     => $data['last_name'],
-            'email'         => $data['email'],
-            'phone_number'  => $data['phone_number'],
-            'mobile_number' => $data['mobile_number'],
-            'type'          => $data['type'],
-            'status'        => $data['status'],
+            'phone_number'       => $data['phone_number'],
+            'mobile_number1'       => $data['mobile_number'],
+            'email'         => $data['email']
         ];
         
-        if (isset($password)) {
-            $savedata['password'] = Hash::make($password);
+        if( isset($password) )
+        {
+            
+            $data['password'] = Hash::make($password);
+           
         }
-        // dd($savedata);
-        $admin->update($savedata);
-        
-        return $admin;
-        // if(  )
-        // {
-        // }
+        $user->update($data);
+        if( $user->update($data) )
+        {
+            return $user;
+        }
 
-        throw new Exception('Admin update failed.');
+        throw new Exception('Profile update failed.');
     }
 
 }

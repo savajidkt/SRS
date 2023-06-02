@@ -1,66 +1,77 @@
-@extends('layouts.app')
-@section('page_title', 'Forgot Password')
-@section('content')
-<main class="login-bg">
-    <div class="container">
-        <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-md-9 d-flex flex-column align-items-center justify-content-center">
-                        <div class="card">
-                            <div class="card-body">
+<!DOCTYPE html>
+<html lang="en" class="h-100">
 
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="p-5">
-                                            @if (session('status'))
-                                            <div class="alert alert-success" role="alert">
-                                                {{ session('status') }}
-                                            </div>
-                                            @endif
-                                            <form class="row g-3 needs-validation p-3" method="POST" action="{{ route('forgot-password') }}">
-                                                @csrf
-                                                <h1 class="card-title pt-0 pb-0 mb-0">{{ __('Reset Password') }}</h1>
-                                                <div class="col-12">
-                                                    <div class="input-group has-validation">
-                                                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required  placeholder="{{ __('Email Address') }}">
-                                                    </div>
-                                                    @error('email')
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span>
-                                                    @enderror
-                                                </div>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Reset Password | SRS-The Development Ltd</title>
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="{{asset('images/dashboard-fav-icon-2.png')}}">
+    <link href="{{asset('css/style.css')}}" rel="stylesheet">
 
-                                               
-                                                <div class="col-12">
-                                                    <button class="btn btn-primary w-100" type="submit">{{ __('Send Password Reset Link') }}</button>
-                                                </div>
-                                                <div class="col-12">
-                                                <a href="{{route('login')}}" class="logo d-flex align-items-center w-auto">
-                                                    <button class="btn btn-primary w-100" type="button">{{ __('Login') }}</button>
-                                                </a>
+</head>
 
-                                                </div>
-                                                <div class="col-12">
-                                                    <div class="d-flex justify-content-center pt-3">
-                                                        <a href="{{ route('login') }}" class="logo d-flex align-items-center w-auto">
-                                                            <img src="{{asset('front/assets/img/logo.png')}}" alt="">
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 login-form-img"></div>
-                                </div>
-                            </div>
-                        </div>
+<body class="h-100">
+
+    <section class="registration-login-page">
+
+        <div class="login-page">
+            <div class="login-page-content">
+                <div class="login-page-left">
+                  <img class="img-left" src="{{asset('images/Group 243.png')}}" alt="">
+                </div>
+                <div class="login-page-right">
+                   <div class="login-page-form">
+
+                    <div class="login-page-img">
+                        <img src="./images/srs_logo.jpg" alt="">
+                        <h4>FORGOT YOUR PASSWORD ?</h4>
+                        <p class="text-para">Enter your email address and we'll send you instructions on how to reset your password.</p>
                     </div>
+                    @if (session('status'))
+                    <div class="alert alert-success" role="alert">
+                        {{ session('status') }}
+                    </div>
+                    @endif
+                        <form class="em-pass" method="POST"  action="{{ route('forgot-password') }}">
+                           @csrf
+                           
+                            <label for="fname">Email Address</label>
+                            <input id="email" type="email" class=" @error('email') is-invalid @enderror" name="email" value="{{ $email ?? old('email') }}" required autocomplete="email" autofocus placeholder="Email Address" require>
+
+                            @error('email')
+                                <span class="invalid-feedback" style="display: block;" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                          
+                          <div class="form-checkbox">
+                           
+                          </div>
+                          <div class="login-btn">
+                            <input type="submit" class="log-btn" value="Send Link" />
+                            <a href="{{ route('login') }}"  class="sign-btn">Login</a>
+                           </div>
+                        </form>
+                   </div> 
+                   
                 </div>
             </div>
-        </section>
-    </div>
-</main>
+        </div>
 
-@endsection
+    </section>
+
+   <!--**********************************
+        Scripts
+    ***********************************-->   
+    <!-- Required vendors -->
+    <script src="{{asset('vendor/global/global.min.js')}}"></script>
+    <script src="{{asset('js/quixnav-init.js')}}"></script>
+    <script src="{{asset('js/custom.min.js')}}"></script>
+
+</body>
+
+</html>
+
+

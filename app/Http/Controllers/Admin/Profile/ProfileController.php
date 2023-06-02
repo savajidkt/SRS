@@ -19,9 +19,9 @@ class ProfileController extends Controller
         $this->profileRepository = $profileRepository;
     }
    
-    public function edit(User $user)
+    public function edit(User $profile)
     {
-        return view('Profile.edit',['model'=> $user]);
+        return view('Profile.edit',['model'=> $profile]);
     }
 
     /**
@@ -32,9 +32,9 @@ class ProfileController extends Controller
      *
      * @return \Illuminate\Routing\Redirector|\Illuminate\Http\RedirectResponse
      */
-    public function update(EditRequest $request, Admin $admin)
+    public function update(EditRequest $request, User $profile)
     {
-        $this->profileRepository->update($request->all(), $admin);
+        $this->profileRepository->update($request->all(), $profile);
 
         return redirect()->route('profile.edit',auth()->user()->id)->with('success', "Profile updated successfully!");
     }

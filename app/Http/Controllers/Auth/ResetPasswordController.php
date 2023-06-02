@@ -36,7 +36,7 @@ class ResetPasswordController extends Controller
         if($user->is_first_time_login===0){
             return view('auth.passwords.first-time-password-change');
         }else{
-            return redirect()->route('home');
+            return redirect()->route('login');
         } 
     }
 }

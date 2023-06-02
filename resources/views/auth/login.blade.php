@@ -28,6 +28,11 @@
                         <img src="{{asset('images/srs_logo.jpg')}}" alt="">
                         <p>Welcome back! Please login to your account.</p>
                     </div>
+                        @if (session('message'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('message') }}
+                        </div>
+                        @endif
                         <form class="em-pass" action="{{ route('login') }}" method="POST">
                         @csrf
                             {{-- @if ($errors->any())
