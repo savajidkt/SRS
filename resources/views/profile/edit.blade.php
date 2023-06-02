@@ -64,7 +64,7 @@
                                 </div>
                                 <div class="form-group col-md-6 form-gap-2">
                                     <label>Email Address</label>
-                                    <input class="form-control" id="email" type="text" name="email" placeholder="sue.swindell@srs-development.co.uk" value="{{auth()->user()->email}}" aria-describedby="login-email" autofocus="" tabindex="1" required />
+                                    <input class="form-control" id="email" type="email" name="email" placeholder="sue.swindell@srs-development.co.uk" value="{{auth()->user()->email}}" aria-describedby="login-email" autofocus="" tabindex="1" required />
                                         @error('email')
                                         <span class="invalid-feedback" style="display: block;" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -75,7 +75,7 @@
                                 </div>
                                 <div class="form-group col-md-6 form-gap-2">
                                     <label>Confirm Email Address</label>
-                                    <input class="form-control" id="confirm_email" type="text" name="confirm_email" placeholder="sue.swindell@srs-development.co.uk" value="{{ old('confirm_email') }}" aria-describedby="login-confirm_email" autofocus="" tabindex="1"  />
+                                    <input class="form-control" id="confirm_email" type="email" name="confirm_email" placeholder="sue.swindell@srs-development.co.uk" value="{{auth()->user()->email}}" aria-describedby="login-confirm_email" autofocus="" tabindex="1"  />
                                         @error('confirm_email')
                                         <span class="invalid-feedback" style="display: block;" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -84,7 +84,7 @@
                                 </div>
                                 <div class="form-group col-md-6 form-gap-2">
                                     <label>Password</label>
-                                    <input class="form-control" id="password" type="text" name="password" placeholder="" value="{{ old('password') }}" aria-describedby="login-password" autofocus="" tabindex="1"  />
+                                    <input class="form-control" id="password" type="password" name="password" placeholder="" value="" aria-describedby="login-password" autofocus="" tabindex="1"  />
                                         @error('password')
                                         <span class="invalid-feedback" style="display: block;" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -93,7 +93,7 @@
                                 </div>
                                 <div class="form-group col-md-6 form-gap-2">
                                     <label>Confirm Password</label>
-                                    <input class="form-control" id="confirm_password" type="text" name="confirm_password" placeholder="" value="{{ old('confirm_password') }}" aria-describedby="login-confirm_password" autofocus="" tabindex="1"  />
+                                    <input class="form-control" id="confirm_password" type="password" name="confirm_password" placeholder="" value="" aria-describedby="login-confirm_password" autofocus="" tabindex="1"  />
                                         @error('confirm_password')
                                         <span class="invalid-feedback" style="display: block;" role="alert">
                                             <strong>{{ $message }}</strong>

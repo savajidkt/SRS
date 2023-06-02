@@ -28,7 +28,7 @@ class ProfileRepository
             'first_name'     => $data['first_name'],
             'last_name'     => $data['last_name'],
             'phone_number'       => $data['phone_number'],
-            'mobile_number1'       => $data['mobile_number'],
+            'mobile_number'       => $data['mobile_number'],
             'email'         => $data['email']
         ];
         

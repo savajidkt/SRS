@@ -18,7 +18,14 @@ class ProfileController extends Controller
     {
         $this->profileRepository = $profileRepository;
     }
-   
+       
+    /**
+     * Method edit
+     *
+     * @param User $profile [explicite description]
+     *
+     * @return void
+     */
     public function edit(User $profile)
     {
         return view('Profile.edit',['model'=> $profile]);
