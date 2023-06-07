@@ -38,7 +38,7 @@
                             @include('client.form')
                             <div id="newRow"></div>
                             <button type="submit" class="btn btn-primary">Save Changes</button>
-                            <button type="button" class="btn btn-primary">Cancel</button>
+                            <a href="{{ route('client.create')}}" class="btn btn-primary">Cancel</a>
                             
                             <button class="btn btn-primary" type="button" data-repeater-create>                               
                                 <span>Add New Contact</span>

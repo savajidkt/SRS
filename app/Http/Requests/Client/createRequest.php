@@ -32,13 +32,6 @@ class CreateRequest extends FormRequest
             'country'        => ['required'],
             'post_code'        => ['required'],
             'notes'        => ['required'],
-            'first_name'        => ['required'],
-            'last_name'        => ['required'],
-            'phone_number'        => ['required'],
-            'mobile_number'        => ['required'],
-            'email'        => ['required'],
-            'job_title'        => ['required'],
-            // 'status'         => ['required'],
         ];
 
         return $rules;
@@ -59,13 +52,6 @@ class CreateRequest extends FormRequest
             'country.required' => 'Country is required.',
             'post_code.required' => 'PostCode is required.',
             'notes.required' => 'Notes is required.',
-            'first_name.required' => 'FirstName is required.',
-            'last_name.required' => 'LastName is required.',
-            'phone_number.required' => 'PhoneNumber is required.',
-            'mobile_number.required' => 'MobileNumber is required.',
-            'email.required' => 'Email is required.',
-            'job_title.required' => 'Type is required.'
-            // 'status.required' => 'Status is required.'
         ];
     }
 }

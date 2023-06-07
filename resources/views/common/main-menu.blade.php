@@ -18,7 +18,7 @@
                                 class="icon icon-chart-bar-33"></i><span class="nav-text">Client Management</span></a>
                         <ul aria-expanded="false">
                             <li><a href="{{route('client.create')}}">Add Clients</a></li>
-                            <li><a href="./chart-morris.html">View Clients</a></li>
+                            <li><a href="{{ route('client.index') }}">View Clients</a></li>
                             
                         </ul>
                     </li>

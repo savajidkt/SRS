@@ -23,10 +23,11 @@ class ClientController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    // public function index(Request $request)
-    // {
-    //     return view('admin.client.index');
-    // }
+    public function index(Request $request)
+    {
+        // dd('test');
+        return view('client.index');
+    }
 
     /**
      * Show the form for creating a new resource.

@@ -27,7 +27,7 @@ class QuestionRepository
      */
     public function create(array $data): Question
     {
-        dd($data);
+        // dd($data);
         $questionData = [
             'question'    => $data['question'],
             'status'     => $data['status'],

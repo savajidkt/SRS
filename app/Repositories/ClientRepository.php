@@ -17,7 +17,7 @@ class ClientRepository
      */
     public function create(array $data): Client
     {
-        dd($data);
+        // dd($data);
         $clientData = [
             'company_name'    => $data['company_name'],
             'address_one'     => $data['address_one'],
@@ -27,31 +27,22 @@ class ClientRepository
             'post_code'       => $data['address_tow'],
             'notes'       => $data['address_tow'],
         ];
-        // $contact = Client::create($clientData);
+        $client = Client::create($clientData);
 
-        // foreach($books as $book)
-        // {
-        //     if(!empty($book))
-        //     {
-        //         $data[] =[
-        //             'name' => $book,
-        //             'user_id' => Auth::id(),
-        //            ];                 
-
-        //     }
-        // }
-        // Book::insert($data);
-
-        foreach ($data['first_name'] as $key => $option) 
-        {
-            dd($option);            
-            $optionArr = [
-                'option'    => $option
+        foreach ($data['invoice'] as $key => $invoice) 
+        {         
+            $invoiceArr = [
+                'first_name'    => $invoice['first_name'],
+                'last_name'    => $invoice['last_name'],
+                'phone_number'    => $invoice['phone_number'],
+                'mobile_number'    => $invoice['mobile_number'],
+                'email'    => $invoice['email'],
+                'job_title'    => $invoice['job_title'],
             ];
 
-            $contact->options()->save(new ClientContact($optionArr));
+            $client->contacts()->save(new ClientContact($invoiceArr));
         }
-        return $contact;
+        return $client;
     }
 
     /**

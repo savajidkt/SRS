@@ -4,7 +4,7 @@
         <div class="row">
             <div class="col-lg-12 mb-4 form-style">
                 <div class="form-group train-deet">
-                    <label class="text-label">Company Name*</label>
+                    <label class="text-label">Company Name<span class="filedrequired">*</span></label>
                     {{-- <input type="text" name="firstName" class="form-control" placeholder="" > --}}
                     <input class="form-control" id="company_name" type="text" name="company_name"
                         placeholder="Company Name" value="{{ old('company_name') }}" aria-describedby="login-company_name"

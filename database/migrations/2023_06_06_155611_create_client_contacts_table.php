@@ -15,7 +15,7 @@ class CreateClientContactsTable extends Migration
     {
         Schema::create('client_contacts', function (Blueprint $table) {
             $table->id();
-            $table->string('client_id')->nullable();
+            $table->unsignedBigInteger('client_id')->nullable();
             $table->string('first_name')->nullable();
             $table->string('last_name')->nullable();
             $table->string('phone_number')->nullable();
@@ -23,6 +23,7 @@ class CreateClientContactsTable extends Migration
             $table->string('email')->nullable();
             $table->string('job_title')->nullable();
             $table->tinyInteger('status')->default(1)->comment('0=Inactive, 1=Active');
+            $table->foreign('client_id')->references('id')->on('clients')->onDelete('cascade');
             $table->timestamps();
             $table->softDeletes();
         });
