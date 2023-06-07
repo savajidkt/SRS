@@ -119,6 +119,7 @@
     <!-- Required vendors -->
     @include('admin.common.scripts')
     
+    @yield('extra-script')
 
 </body>
 

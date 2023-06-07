@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\Admin\Client;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Client\CreateRequest;
 use Illuminate\Http\Request;
-use App\Models\User;
+use App\Models\Client;
 use App\Repositories\ClientRepository;
 use Yajra\DataTables\Facades\DataTables;
 
@@ -45,7 +46,8 @@ class ClientController extends Controller
      */
     public function store(CreateRequest $request)
     {
+        // dd($request);
         $this->clientRepository->create($request->all());
-        return redirect()->route('client.index')->with('success', "Question created successfully!");
+        return redirect()->route('client.index')->with('success', "Client created successfully!");
     }
 }

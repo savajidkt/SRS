@@ -70,79 +70,83 @@
             </div>
         </div>
     </section>
-    <h4>Contact Details</h4>
-    <section>
-        <div class="row">
-            <div class="col-lg-12 mb-4 form-style">
-                <div class="form-group train-deet">
-                    <label class="text-label">First Name*</label>
-                    <input class="form-control" id="first_name" type="text" name="first_name" placeholder="First Name" value="{{ old('first_name') }}" aria-describedby="login-first_name" autofocus="" tabindex="1" required />
-                    @error('first_name')
-                        <span class="invalid-feedback" style="display: block;" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
-                </div>
-            
-            
-                <div class="form-group train-deet">
-                    <label class="text-label">Last Name*</label>
-                    <input class="form-control" id="last_name" type="text" name="last_name" placeholder="Last Name" value="{{ old('last_name') }}" aria-describedby="login-last_name" autofocus="" tabindex="1" required />
-                    @error('last_name')
-                        <span class="invalid-feedback" style="display: block;" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
-                </div>
-           
-           
-            
-                <div class="form-group train-deet">
-                    <label class="text-label">Phone Number*</label>
-                    <div class="input-group">
-                        <input class="form-control" id="last_name" type="text" name="last_name" placeholder="Phone Number" value="{{ old('last_name') }}" aria-describedby="login-last_name" autofocus="" tabindex="1" required />
-                        @error('last_name')
-                            <span class="invalid-feedback" style="display: block;" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
+    <div id="contact_div">
+        <h4>Contact Details</h4>
+        <div id="contact_form">
+            <section>
+                <div class="row">
+                    <div class="col-lg-12 mb-4 form-style">
+                        <div class="form-group train-deet">
+                            <label class="text-label">First Name*</label>
+                            <input class="form-control" id="first_name" type="text" name="first_name[]" placeholder="First Name" value="{{ old('first_name') }}" aria-describedby="login-first_name" autofocus="" tabindex="1" required />
+                            @error('first_name')
+                                <span class="invalid-feedback" style="display: block;" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                    
+                    
+                        <div class="form-group train-deet">
+                            <label class="text-label">Last Name*</label>
+                            <input class="form-control" id="last_name" type="text" name="last_name[]" placeholder="Last Name" value="{{ old('last_name') }}" aria-describedby="login-last_name" autofocus="" tabindex="1" required />
+                            @error('last_name')
+                                <span class="invalid-feedback" style="display: block;" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                   
+                   
+                    
+                        <div class="form-group train-deet">
+                            <label class="text-label">Phone Number*</label>
+                            <div class="input-group">
+                                <input class="form-control" id="phone_number" type="text" name="phone_number[]" placeholder="Phone Number" value="{{ old('phone_number') }}" aria-describedby="login-phone_number" autofocus="" tabindex="1" required />
+                                @error('phone_number')
+                                    <span class="invalid-feedback" style="display: block;" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+                    
+                    
+                        <div class="form-group train-deet">
+                            <label class="text-label">Mobile Number*</label>
+                            <div class="input-group">
+                                <input class="form-control" id="mobile_number" type="text" name="mobile_number[]" placeholder="Mobile Number" value="{{ old('mobile_number') }}" aria-describedby="login-mobile_number" autofocus="" tabindex="1" required />
+                                @error('mobile_number')
+                                    <span class="invalid-feedback" style="display: block;" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="form-group train-deet">
+                            <label class="text-label">Email Address*</label>
+                            <div class="input-group">
+                                <input class="form-control" id="email" type="text" name="email[]" placeholder="email Address" value="{{ old('email') }}" aria-describedby="login-email" autofocus="" tabindex="1" required />
+                                @error('email')
+                                    <span class="invalid-feedback" style="display: block;" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="form-group train-deet">
+                            <label class="text-label">Job Title*</label>
+                            <input class="form-control" id="job_title" type="text" name="job_title[]" placeholder="Job Title" value="{{ old('job_title') }}" aria-describedby="login-job_title" autofocus="" tabindex="1" required />
+                            @error('job_title')
+                                <span class="invalid-feedback" style="display: block;" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
                     </div>
                 </div>
-            
-            
-                <div class="form-group train-deet">
-                    <label class="text-label">Mobile Number*</label>
-                    <div class="input-group">
-                        <input class="form-control" id="last_name" type="text" name="last_name" placeholder="Mobile Number" value="{{ old('last_name') }}" aria-describedby="login-last_name" autofocus="" tabindex="1" required />
-                        @error('last_name')
-                            <span class="invalid-feedback" style="display: block;" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
-                </div>
-                <div class="form-group train-deet">
-                    <label class="text-label">Email Address*</label>
-                    <div class="input-group">
-                        <input class="form-control" id="email" type="text" name="email" placeholder="Email Address" value="{{ old('email') }}" aria-describedby="login-email" autofocus="" tabindex="1" required />
-                        @error('email')
-                            <span class="invalid-feedback" style="display: block;" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
-                </div>
-                <div class="form-group train-deet">
-                    <label class="text-label">Job Title*</label>
-                    <input class="form-control" id="job_title" type="text" name="job_title" placeholder="Job Title" value="{{ old('job_title') }}" aria-describedby="login-job_title" autofocus="" tabindex="1" required />
-                    @error('job_title')
-                        <span class="invalid-feedback" style="display: block;" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
-                </div>
-            </div>
+            </section>
         </div>
-    </section>
+    </div>
 
 </div>

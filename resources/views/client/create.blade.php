@@ -29,12 +29,13 @@
                     <h4 class="card-title">Please Enter Client Details</h4>
                 </div>
                 <div class="card-body">
-                    <form action="{{route('client.store')}}" method="POST" id="step-form-horizontal" class="step-form-horizontal">
+                    <form action="{{ route('client.store') }}" method="post" enctype="multipart/form-data" id="step-form-horizontal" class="step-form-horizontal">
                         @csrf
                         @include('client.form')
+                        <div id="newRow"></div>
                             <button type="submit" class="btn btn-primary">Save Changes</button>
-                            <button type="submit" class="btn btn-primary">Cancel</button>
-                            <button type="submit" class="btn btn-primary">Add New Contact</button>
+                            <button type="button" class="btn btn-primary">Cancel</button>
+                            <button type="button" id="addRow" class="btn btn-primary">Add New Contact</button>
                     </form>
                 </div>
             </div>
@@ -48,4 +49,19 @@
 <!--**********************************
     Content body end
 ***********************************-->
+@endsection
+@section('extra-script')
+    <script type="text/javascript">
+        $("#addRow").click(function () {
+            var htmlData = $('#contact_form').html();
+            var contactTitle = "<h4> <span>Contact Details </span> <span><button type='button' class='btn btn-danger removeRow'> Remove </button></span></h4>";
+            // var contactTitle = "<h4>Contact Details </h4>";
+            // $('#contact_div').append(contactTitle+htmlData);
+            $('#contact_div').append("<div class='parent-div'>"+contactTitle+htmlData+"</div>");
+        });
+        $(document).on('click', '.removeRow', function () {
+            // console.log('test');
+            $(this).closest('div').remove();
+        });
+    </script>
 @endsection

@@ -2,7 +2,9 @@
 namespace App\Repositories;
 use App\Exceptions\GeneralException;
 use App\Models\Company;
+use App\Models\ClientContact;
 use Illuminate\Database\Eloquent\Collection;
+use App\Models\Client;
 
 class ClientRepository
 {
@@ -11,28 +13,45 @@ class ClientRepository
      *
      * @param array $data [explicite description]
      *
-     * @return User
+     * @return Client
      */
-    public function create(array $data): User
+    public function create(array $data): Client
     {
-        $data = [
+        dd($data);
+        $clientData = [
             'company_name'    => $data['company_name'],
             'address_one'     => $data['address_one'],
-            'address_tow'    => $data['address_tow'],
-            'town'     => $data['town'],
-            'country'     => $data['country'],
-            'post_code'         => $data['post_code'],
-            'notes'         => $data['notes'],
-            'first_name'         => $data['first_name'],
-            'last_name'         => $data['last_name'],
-            'phone_number'         => $data['phone_number'],
-            'mobile_number'         => $data['mobile_number'],
-            'email'         => $data['email'],
-            'job_title'         => $data['job_title'],
+            'address_tow'       => $data['address_tow'],
+            'town'       => $data['address_tow'],
+            'country'       => $data['address_tow'],
+            'post_code'       => $data['address_tow'],
+            'notes'       => $data['address_tow'],
         ];
+        // $contact = Client::create($clientData);
 
-        $user =  User::create($data);
-        return $user;
+        // foreach($books as $book)
+        // {
+        //     if(!empty($book))
+        //     {
+        //         $data[] =[
+        //             'name' => $book,
+        //             'user_id' => Auth::id(),
+        //            ];                 
+
+        //     }
+        // }
+        // Book::insert($data);
+
+        foreach ($data['first_name'] as $key => $option) 
+        {
+            dd($option);            
+            $optionArr = [
+                'option'    => $option
+            ];
+
+            $contact->options()->save(new ClientContact($optionArr));
+        }
+        return $contact;
     }
 
     /**

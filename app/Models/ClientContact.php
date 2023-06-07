@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Client extends Model
+class ClientContact extends Model
 {
     use HasFactory;
 
@@ -23,12 +23,12 @@ class Client extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'company_name',
-        'address_one',
-        'address_tow',
-        'town',
-        'country',
-        'post_code',
-        'notes',
+        'client_id',
+        'first_name',
+        'last_name',
+        'phone_number',
+        'mobile_number',
+        'email',
+        'job_title',
     ];
 }

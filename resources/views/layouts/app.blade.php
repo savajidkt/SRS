@@ -119,7 +119,7 @@
     <!-- Required vendors -->
     @include('common.scripts')
     
-
+    @yield('extra-script')
 </body>
 
 </html>
