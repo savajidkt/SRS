@@ -25,7 +25,38 @@ class ClientController extends Controller
      */
     public function index(Request $request)
     {
-        // dd('test');
+        if ($request->ajax()) {
+
+            $data = Client::select('*');
+            return DataTables::of($data)
+                ->addIndexColumn()
+                ->addColumn('company_name', function (Client $client) {
+                    return $client->company_name;
+                })
+                ->addColumn('post_code', function (Client $client) {
+                    return $client->post_code;
+                })
+                ->editColumn('status', function (Client $client) {
+                    return $client->status;
+                })
+                // ->editColumn('type', function (Question $question) {
+                //     return $question->type_name;
+                // })
+                // ->filterColumn('first_name', function ($query, $keyword) {
+                //     $query->orWhere('first_name', 'like', '%'.$keyword.'%');
+                // })
+                // ->filterColumn('last_name', function ($query, $keyword) {
+                //     $query->orWhere('last_name', 'like', '%'.$keyword.'%');
+                // })
+                // ->filterColumn('user_status', function ($query, $keyword) {
+                //     $status = strtolower($keyword) =='active'? 1 : 0;
+                //     return $query->orWhere('user_status', $status);
+                // })
+                ->addColumn('action', function ($row) {
+                    return $row->action;
+                })->rawColumns(['action'])->make(true);
+        }
+
         return view('client.index');
     }
 

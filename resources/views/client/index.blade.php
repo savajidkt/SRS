@@ -1,5 +1,8 @@
 @extends('layouts.app')
 @section('page_title','SRS')
+
+
+
 @section('content')
 <!--**********************************
     Content body start
@@ -33,176 +36,9 @@
           <th scope="col">Action</th>
         </tr>
       </thead>
-      <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td>Moonraker Development Services Limited</td>
-          <td>B14 7QD</td>
-          <td>Yvette Elcock</td>
-          <td class="group-i-icons">
-              <a href="./chart-flot.html">
-              <i class="fa-regular fa-pen-to-square edit-ico" title="Edit"></i>
-          </a>
-              <a href="./form-element.html">
-              <i class="fa-solid fa-eye" title="View"></i>
-          </a>
-          <a href="#" onclick="myFunction()" class="remove" title="Remove">
-              <i class="fa-sharp fa-solid fa-xmark" id="demo"></i>
-          </a>
-          </td>
-        </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>Renewable Energy Systems Limited</td>
-          <td>WD4 8LR</td>
-          <td>Megan Grace</td>
-          <td class="group-i-icons">
-              <a href="./chart-flot.html"><i class="fa-regular fa-pen-to-square edit-ico" title="Edit"></i>
-              </a>
-              <a href="./form-element.html">
-              <i class="fa-solid fa-eye" title="View"></i>
-          </a>
-          <a href="#" onclick="myFunction()" class="remove" title="Remove">
-              <i class="fa-sharp fa-solid fa-xmark" title="Remove"></i>
-          </a>
-          </td>
-        </tr>
-        <tr>
-          <th scope="row">3</th>
-          <td>Thorntons PLC</td>
-          <td>DE55 4XJ</td>
-          <td>Emily Campbell</td>
-          <td class="group-i-icons">
-              <a href="./chart-flot.html">
-              <i class="fa-regular fa-pen-to-square edit-ico" title="Edit"></i>
-                  </a>
-              <i class="fa-solid fa-eye" title="View"></i>
-              <a href="#" onclick="myFunction()" class="remove" title="Remove">
-              <i class="fa-sharp fa-solid fa-xmark" title="Remove"></i>
-              </a>
-          </td>
-        </tr>
-        <tr>
-          <th scope="row">4</th>
-          <td>Arup</td>
-          <td>W1T 4BQ</td>
-          <td>Philippa Hadfield</td>
-          <td class="group-i-icons">
-              <a href="./chart-flot.html">
-              <i class="fa-regular fa-pen-to-square edit-ico" title="Edit"></i>
-              </a>
-              <i class="fa-solid fa-eye" title="View"></i>
-              <a href="#" onclick="myFunction()" class="remove" title="Remove">
-              <i class="fa-sharp fa-solid fa-xmark" title="Remove"></i>
-              </a>
-          </td>
-        </tr>
-        <tr>
-          <th scope="row">5</th>
-          <td colspan="2">SRS the Development Team Ltd</td>
-          <td>Sue Mattingley</td>
-          <td class="group-i-icons">
-              <a href="./chart-flot.html">
-              <i class="fa-regular fa-pen-to-square edit-ico" title="Edit"></i>
-              </a>
-              <i class="fa-solid fa-eye" title="View"></i>
-              <a href="#" onclick="myFunction()" class="remove" title="Remove">
-              <i class="fa-sharp fa-solid fa-xmark" title="Remove"></i>
-              </a>
-          </td>
-        </tr>
-        <tr>
-          <th scope="row">6</th>
-          <td>Debenhams</td>
-          <td>NW1 3DS</td>
-          <td>Angela Onissi</td>
-          <td class="group-i-icons">
-              <a href="./chart-flot.html">
-              <i class="fa-regular fa-pen-to-square edit-ico" title="Edit"></i>
-              </a>
-              <i class="fa-solid fa-eye" title="View"></i>
-              <a href="#" onclick="myFunction()" class="remove" title="Remove">
-              <i class="fa-sharp fa-solid fa-xmark" title="Remove"></i>
-              </a>
-          </td>
-        </tr>
-        <tr>
-          <th scope="row">7</th>
-          <td colspan="2">Oliver Marketing</td>
-          <td>Sue Mattingley</td>
-          <td class="group-i-icons">
-              <a href="./chart-flot.html">
-              <i class="fa-regular fa-pen-to-square edit-ico" title="Edit"></i>
-              </a>
-              <i class="fa-solid fa-eye" title="View"></i> 
-              <a href="#" onclick="myFunction()" class="remove" title="Remove">
-              <i class="fa-sharp fa-solid fa-xmark" title="Remove"></i>
-              </a>
-          </td>
-        </tr>
-        <tr>
-          <th scope="row">8</th>
-          <td colspan="2">C and C Group plc</td>
-          <td>Emily Bayne</td>
-          <td class="group-i-icons">
-              <a href="./chart-flot.html">
-              <i class="fa-regular fa-pen-to-square edit-ico" title="Edit"></i>
-              </a> 
-              <i class="fa-solid fa-eye" title="View"></i>
-              <a href="#" onclick="myFunction()" class="remove" title="Remove">
-              <i class="fa-sharp fa-solid fa-xmark" title="Remove"></i>
-              </a>
-          </td>
-        </tr>
-        <tr>
-          <th scope="row">9</th>
-          <td colspan="2">Fred Perry</td>
-          <td>Cathy Bonner</td>
-          <td class="group-i-icons">
-              <a href="./chart-flot.html">
-              <i class="fa-regular fa-pen-to-square edit-ico" title="Edit"></i>
-              </a>
-              <i class="fa-solid fa-eye" title="View"></i>
-              <a href="#" onclick="myFunction()" class="remove" title="Remove">
-              <i class="fa-sharp fa-solid fa-xmark" title="Remove"></i>
-              </a>
-          </td>
-        </tr>
-        <tr>
-          <th scope="row">10</th>
-          <td>Trapeze</td>
-          <td colspan="2">BA14 6PH</td>
-          <td class="group-i-icons">
-              <a href="./chart-flot.html">
-              <i class="fa-regular fa-pen-to-square edit-ico" title="Edit"></i>
-              </a>
-              <i class="fa-solid fa-eye" title="View"></i>
-              <a href="#" onclick="myFunction()" class="remove" title="Remove">
-              <i class="fa-sharp fa-solid fa-xmark" title="Remove"></i>
-              </a>
-          </td>
-        </tr>
-        <tr>
-          <th scope="row">11</th>
-          <td>CDA TEST 2</td>
-          <td>SG4 0AP</td>
-          <td>Stuart Alldis</td>
-          <td class="group-i-icons">
-              <a href="./chart-flot.html">
-              <i class="fa-regular fa-pen-to-square edit-ico" title="Edit"></i>
-              </a>
-              <a href="./client_view_courses.html">
-              <i class="fa-solid fa-eye" title="View"></i>
-          </a>
-              <a href="#" onclick="myFunction()" class="remove" title="Remove">
-              <i class="fa-sharp fa-solid fa-xmark" title="Remove"></i>
-              </a>
-          </td>
-        </tr>
-      </tbody>
     </table>
 
-    <nav aria-label="Page navigation example">
+    <!-- <nav aria-label="Page navigation example">
       <ul class="pagination justify-content-end">
           <li class="page-item">
               <a class="page-link" href="#">First</a>
@@ -220,7 +56,7 @@
           <a class="page-link" href="#">Last</a>
         </li>
       </ul>
-    </nav>
+    </nav> -->
   </div>
 
   <!-- row -->
@@ -234,6 +70,7 @@
 ***********************************-->
 @endsection
 @section('extra-script')
+
 <script>
     function myFunction() {
       let text = "Are you sure you want to delete this Client";
@@ -245,6 +82,83 @@
       }
       document.getElementById("demo").innerHTML = text;
     }
+</script>
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="{{asset('vendor/js/tables/datatable/jquery.dataTables.min.js')}}"></script>
+<script src="{{asset('vendor/js/tables/datatable/datatables.bootstrap4.min.js')}}"></script>
+<script src="{{asset('vendor/js/tables/datatable/dataTables.responsive.min.js')}}"></script>
+<script src="{{asset('vendor/js/tables/datatable/responsive.bootstrap4.js')}}"></script>
+<script src="{{asset('vendor/js/tables/datatable/datatables.buttons.min.js')}}"></script>
+<script src="{{asset('vendor/js/tables/datatable/buttons.bootstrap4.min.js')}}"></script>
+<script type="text/javascript">
+    $(function() {
+        var table = $('.table').DataTable({
+            processing: true,
+            serverSide: true,
+            searching: false,
+            ajax: "{{ route('client.index') }}",
+            columns: [{
+                    data: 'DT_RowIndex',
+                    name: 'id',
+                    orderable: false,
+                    searchable: false
+                },
+                {
+                    data: 'company_name',
+                    name: 'company_name',
+                    orderable: false,
+                    searchable: false
+                },
+                {
+                    data: 'post_code',
+                    name: 'post_code',
+                    orderable: false,
+                    searchable: false
+                },
+                {
+                    data: 'company_name',
+                    name: 'company_name',
+                    orderable: false,
+                    searchable: false
+                },
+                {
+                    data: 'status',
+                    name: 'status',
+                    orderable: false,
+                    searchable: false
+                },
+                {
+                    data: 'action',
+                    name: 'action',
+                    orderable: false,
+                    searchable: false
+                },
+            ],
+            "createdRow": function(row, data, dataIndex) {
+                Survey.Utils.dtAnchorToForm(row);
+            }
+        }).on('click', '.delete_action', function(e) {
+            e.preventDefault();
+            var $this = $(this);
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Yes, delete it!',
+                customClass: {
+                    confirmButton: 'btn btn-primary',
+                    cancelButton: 'btn btn-outline-danger ml-1'
+                },
+                buttonsStyling: false
+            }).then(function(result) {
+                if (result.value) {
+                    $this.find("form").trigger('submit');
+                }
+            });
+        });
+
+    });
 </script>
 <script src="{{asset('vendor/raphael/raphael.min.js')}}"></script>
 <script src="{{asset('vendor/morris/morris.min.js')}}"></script>

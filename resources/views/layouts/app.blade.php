@@ -5,12 +5,14 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-   <title>@yield('page_title') | SRS Reporting</title>
+    <title>@yield('page_title') | SRS Reporting</title>
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('images/dashboard-fav-icon-2.png')}}">
     <link href="{{ asset('css/style.css')}}" rel="stylesheet">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     
+    <!-- FontAwesome -->
+    <script src="https://kit.fontawesome.com/c836b9bad1.js" crossorigin="anonymous"></script>
  
 </head>
 
