@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin\Client;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Client\CreateRequest;
+use App\Http\Requests\Client\EditRequest;
 use Illuminate\Http\Request;
 use App\Models\Client;
 use App\Repositories\ClientRepository;
@@ -36,22 +37,6 @@ class ClientController extends Controller
                 ->addColumn('post_code', function (Client $client) {
                     return $client->post_code;
                 })
-                ->editColumn('status', function (Client $client) {
-                    return $client->status;
-                })
-                // ->editColumn('type', function (Question $question) {
-                //     return $question->type_name;
-                // })
-                // ->filterColumn('first_name', function ($query, $keyword) {
-                //     $query->orWhere('first_name', 'like', '%'.$keyword.'%');
-                // })
-                // ->filterColumn('last_name', function ($query, $keyword) {
-                //     $query->orWhere('last_name', 'like', '%'.$keyword.'%');
-                // })
-                // ->filterColumn('user_status', function ($query, $keyword) {
-                //     $status = strtolower($keyword) =='active'? 1 : 0;
-                //     return $query->orWhere('user_status', $status);
-                // })
                 ->addColumn('action', function ($row) {
                     return $row->action;
                 })->rawColumns(['action'])->make(true);
@@ -67,7 +52,8 @@ class ClientController extends Controller
      */
     public function create()
     {
-        return view('client.create');
+        $rawData = new Client;
+        return view('client.create',['model' => $rawData]);
     }
 
     /**
@@ -81,5 +67,61 @@ class ClientController extends Controller
         // dd($request);
         $this->clientRepository->create($request->all());
         return redirect()->route('client.index')->with('success', "Client created successfully!");
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    // public function show(Question $question)
+    // {
+    //     //
+    //     $question->loadMissing('options');
+    //     return view('admin.survey-question.view', ['model' => $question]);
+    // }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param \App\Models\Question $usquestioner [explicite description]
+     *
+     * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory
+     */
+    public function edit(Client $client)
+    {
+        // dd($client);
+        $client->loadMissing('contacts');
+        return view('client.edit', ['model' => $client]);
+    }
+
+    /**
+     * Method update
+     *
+     * @param \App\Http\Requests\Client\EditRequest $request
+     * @param \App\Models\Client $client
+     *
+     * @return \Illuminate\Routing\Redirector|\Illuminate\Http\RedirectResponse
+     */
+    public function update(EditRequest $request, Client $client)
+    {
+       
+        $this->clientRepository->update($request->all(), $client);
+
+        return redirect()->route('client.index')->with('success', "Client updated successfully!");
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Client $client)
+    {
+        $this->clientRepository->delete($client);
+
+        return redirect()->route('client.index')->with('success', "Client deleted successfully!");
     }
 }

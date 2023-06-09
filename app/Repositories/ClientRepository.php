@@ -22,10 +22,10 @@ class ClientRepository
             'company_name'    => $data['company_name'],
             'address_one'     => $data['address_one'],
             'address_tow'       => $data['address_tow'],
-            'town'       => $data['address_tow'],
-            'country'       => $data['address_tow'],
-            'post_code'       => $data['address_tow'],
-            'notes'       => $data['address_tow'],
+            'town'       => $data['town'],
+            'country'       => $data['country'],
+            'post_code'       => $data['post_code'],
+            'notes'       => $data['notes'],
         ];
         $client = Client::create($clientData);
 
@@ -49,41 +49,60 @@ class ClientRepository
      * Method update
      *
      * @param array $data [explicite description]
-     * @param Company $company [explicite description]
+     * @param Question $question [explicite description]
      *
-     * @return Company
-     * @throws GeneralException
+     * @return Question
+     * @throws Exception
      */
-    public function update(array $data, Company $company): Company
+    public function update(array $data, Client $client): Client
     {
-        $data = [
-            'name'    => $data['name'],
+ 
+        $clientData = [
+            'company_name'    => $data['company_name'],
+            'address_one'     => $data['address_one'],
+            'address_tow'       => $data['address_tow'],
+            'town'       => $data['town'],
+            'country'       => $data['country'],
+            'post_code'       => $data['post_code'],
+            'notes'       => $data['notes'],
         ];
 
-        if( $company->update($data) )
-        {
-            return $company;
+        if ($client->update($clientData)) {
+            $client->contacts()->delete();
+            foreach ($data['invoice'] as $key => $invoice) {
+                $invoiceArr = [
+                    'first_name'    => $invoice['first_name'],
+                    'last_name'    => $invoice['last_name'],
+                    'phone_number'    => $invoice['phone_number'],
+                    'mobile_number'    => $invoice['mobile_number'],
+                    'email'    => $invoice['email'],
+                    'job_title'    => $invoice['job_title'],
+                ];
+
+                $client->contacts()->save(new ClientContact($invoiceArr));
+            }
+
+            return $client;
         }
 
-        throw new GeneralException('Company update failed.');
+        throw new Exception('Client update failed.');
     }
 
     /**
      * Method delete
      *
-     * @param Company $company [explicite description]
+     * @param Client $client [explicite description]
      *
      * @return bool
-     * @throws GeneralException
+     * @throws Exception
      */
-    public function delete(Company $company): bool
+    public function delete(Client $client): bool
     {
-        if( $company->delete() )
-        {
+        if ($client->delete()) {
             return true;
         }
 
-        throw new GeneralException('Company delete failed.');
+        throw new Exception('ClientClient delete failed.');
     }
 
 

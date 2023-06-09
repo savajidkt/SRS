@@ -32,7 +32,7 @@
           <th scope="col">ID</th>
           <th scope="col">Company Name</th>
           <th scope="col">Post Code</th>
-          <th scope="col">Contact</th>
+          <!-- <th scope="col">Contact</th> -->
           <th scope="col">Action</th>
         </tr>
       </thead>
@@ -71,7 +71,7 @@
 @endsection
 @section('extra-script')
 
-<script>
+<!-- <script>
     function myFunction() {
       let text = "Are you sure you want to delete this Client";
       if (confirm(text) == true) {
@@ -82,8 +82,8 @@
       }
       document.getElementById("demo").innerHTML = text;
     }
-</script>
-<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+</script> -->
+<!-- <script src="https://code.jquery.com/jquery-3.5.1.js"></script> -->
 <script src="{{asset('vendor/js/tables/datatable/jquery.dataTables.min.js')}}"></script>
 <script src="{{asset('vendor/js/tables/datatable/datatables.bootstrap4.min.js')}}"></script>
 <script src="{{asset('vendor/js/tables/datatable/dataTables.responsive.min.js')}}"></script>
@@ -95,38 +95,26 @@
         var table = $('.table').DataTable({
             processing: true,
             serverSide: true,
-            searching: false,
+            searching: true,
             ajax: "{{ route('client.index') }}",
             columns: [{
                     data: 'DT_RowIndex',
                     name: 'id',
                     orderable: false,
-                    searchable: false
+                    searchable: true
                 },
                 {
                     data: 'company_name',
                     name: 'company_name',
                     orderable: false,
-                    searchable: false
+                    searchable: true
                 },
                 {
                     data: 'post_code',
                     name: 'post_code',
                     orderable: false,
-                    searchable: false
-                },
-                {
-                    data: 'company_name',
-                    name: 'company_name',
-                    orderable: false,
-                    searchable: false
-                },
-                {
-                    data: 'status',
-                    name: 'status',
-                    orderable: false,
-                    searchable: false
-                },
+                    searchable: true
+                },                
                 {
                     data: 'action',
                     name: 'action',
@@ -135,9 +123,10 @@
                 },
             ],
             "createdRow": function(row, data, dataIndex) {
-                Survey.Utils.dtAnchorToForm(row);
+                $( row ).find('td:eq(3)').addClass('group-i-icons');
+                SRS.Utils.dtAnchorToForm(row);
             }
-        }).on('click', '.delete_action', function(e) {
+        }).on('click', '.delete_action', function(e) {          
             e.preventDefault();
             var $this = $(this);
             Swal.fire({
