@@ -75,12 +75,11 @@ class ClientController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    // public function show(Question $question)
-    // {
-    //     //
-    //     $question->loadMissing('options');
-    //     return view('admin.survey-question.view', ['model' => $question]);
-    // }
+    public function show(Client $client)
+    {
+        $client->loadMissing('contacts');
+        return view('client.view', ['model' => $client]);
+    }
 
     /**
      * Show the form for editing the specified resource.
@@ -91,7 +90,6 @@ class ClientController extends Controller
      */
     public function edit(Client $client)
     {
-        // dd($client);
         $client->loadMissing('contacts');
         return view('client.edit', ['model' => $client]);
     }

@@ -40,7 +40,7 @@ class Client extends Model
     public function getActionAttribute(): string
     {
         $editAction = '<a href="'. route('client.edit', $this->id).'"><i class="fa-regular fa-pen-to-square edit-ico" title="Edit"></i></a> ';
-        $viewAction = '<a href="'. route('client.edit', $this->id).'"><i class="fa-solid fa-eye" title="View"></i></a> ';
+        $viewAction = '<a href="'. route('client.show', $this->id).'"><i class="fa-solid fa-eye" title="View"></i></a> ';
         //$deleteAction = '<a href="'. route('client.edit', $this->id).'" onclick="myFunction()" class="remove" title="Remove"><i class="fa-sharp fa-solid fa-xmark" title="Remove"></i></a>';
         $deleteAction = '<a href="'.route('client.destroy', $this).'" class="delete_action" data-method="delete"><i class="fa-sharp fa-solid fa-xmark" title="Remove"></i></a>';
         return $editAction.''.$viewAction.''.$deleteAction;

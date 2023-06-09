@@ -17,7 +17,6 @@ class ClientRepository
      */
     public function create(array $data): Client
     {
-        // dd($data);
         $clientData = [
             'company_name'    => $data['company_name'],
             'address_one'     => $data['address_one'],
@@ -49,9 +48,9 @@ class ClientRepository
      * Method update
      *
      * @param array $data [explicite description]
-     * @param Question $question [explicite description]
+     * @param Client $client [explicite description]
      *
-     * @return Question
+     * @return Client
      * @throws Exception
      */
     public function update(array $data, Client $client): Client
@@ -103,30 +102,6 @@ class ClientRepository
         }
 
         throw new Exception('ClientClient delete failed.');
-    }
-
-
-    /**
-     * Method changeStatus
-     *
-     * @param array $input [explicite description]
-     *
-     * @return bool
-     */
-    public function changeStatus(array $input, Company $company): bool
-    {
-        $company->status = !$input['status'];
-        return $company->save();
-    }
-
-    /**
-     * Method getCompany
-     *
-     * @return Collection
-     */
-    public function getCompany(): Collection
-    {
-        return Company::all();
     }
 
 

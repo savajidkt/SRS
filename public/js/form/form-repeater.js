@@ -12,7 +12,7 @@ $(function() {
     'use strict';
 
     // form repeater jquery
-    $('.invoice-repeater, .repeater-default').repeater({
+    $('.invoice-repeater, .repeater-default, .course-repeater').repeater({
         show: function() {
             $(this).slideDown();
             // Feather Icons
