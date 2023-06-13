@@ -29,11 +29,12 @@
   <table class="table">
       <thead>
         <tr>
-          <th scope="col">ID</th>
-          <th scope="col">Company Name</th>
-          <th scope="col">Post Code</th>
-          <!-- <th scope="col">Contact</th> -->
-          <th scope="col">Action</th>
+            <th scope="col">ID</th>
+            <th scope="col">Course Name</th>
+            <th scope="col">Course Date</th>
+            <th scope="col">Course Duration</th>
+            <th scope="col">Client</th>
+            <th scope="col">Actions</th>
         </tr>
       </thead>
     </table>
@@ -82,7 +83,7 @@
             processing: true,
             serverSide: true,
             searching: true,
-            ajax: "{{ route('client.index') }}",
+            ajax: "{{ route('course.index') }}",
             columns: [{
                     data: 'DT_RowIndex',
                     name: 'id',
@@ -90,17 +91,29 @@
                     searchable: true
                 },
                 {
-                    data: 'company_name',
-                    name: 'company_name',
+                    data: 'course_category_id',
+                    name: 'course_category_id',
                     orderable: false,
                     searchable: true
                 },
                 {
-                    data: 'post_code',
-                    name: 'post_code',
+                    data: 'start_date',
+                    name: 'start_date',
                     orderable: false,
                     searchable: true
-                },                
+                },       
+                {
+                    data: 'duration',
+                    name: 'duration',
+                    orderable: false,
+                    searchable: true
+                },   
+                {
+                    data: 'client_id',
+                    name: 'client_id',
+                    orderable: false,
+                    searchable: true
+                },      
                 {
                     data: 'action',
                     name: 'action',
@@ -109,7 +122,7 @@
                 },
             ],
             "createdRow": function(row, data, dataIndex) {
-                $( row ).find('td:eq(3)').addClass('group-i-icons');
+                $( row ).find('td:eq(5)').addClass('group-i-icons');
                 SRS.Utils.dtAnchorToForm(row);
             }
         }).on('click', '.delete_action', function(e) {          

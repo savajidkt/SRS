@@ -28,13 +28,11 @@
                         <div class="card-body">
                         <form class="invoice-repeater step-form-horizontal" id="client" action="{{ route('course.store') }}" method="post"
                             enctype="multipart/form-data" id="step-form-horizontal" >
-
-                            
                                 @csrf
                                 @include('course.form')
                                 <div id="newRow"></div>
                                 <button type="submit" class="btn btn-primary">Next</button>
-                                <button type="submit" class="btn btn-primary">Cancel</button>
+                                <button type="button" class="btn btn-primary">Cancel</button>
                                 <button class="btn btn-primary" type="button" data-repeater-create>
                                 Add Another Trainer
                                                 </button>

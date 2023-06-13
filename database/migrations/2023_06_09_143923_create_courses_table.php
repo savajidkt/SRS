@@ -15,7 +15,17 @@ class CreateCoursesTable extends Migration
     {
         Schema::create('courses', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('course_category_id')->nullable();
+            $table->string('start_date')->nullable();
+            $table->string('end_date')->nullable();
+            $table->string('duration')->nullable();
+            $table->unsignedBigInteger('client_id')->nullable();
+            $table->string('path')->nullable();
+            $table->tinyInteger('status')->default(1)->comment('0=Inactive, 1=Active');
+            $table->foreign('course_category_id')->references('id')->on('course_categories')->onDelete('cascade');
+            $table->foreign('client_id')->references('id')->on('clients')->onDelete('cascade');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

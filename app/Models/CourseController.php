@@ -27,33 +27,26 @@ class CourseController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
-    {
-        if ($request->ajax()) {
+    // public function index(Request $request)
+    // {
+    //     if ($request->ajax()) {
 
-           
-            $data = Course::select('*');
-            return DataTables::of($data)
-                ->addIndexColumn()
-                ->addColumn('course_category_id', function (Course $course) {
-                    return $course->coursecategoryname->course_name;
-                })
-                ->addColumn('start_date', function (Course $course) {
-                    return $course->start_date;
-                })
-                ->addColumn('duration', function (Course $course) {
-                    return $course->duration;
-                })
-                ->addColumn('client_id', function (Course $course) {
-                    return $course->clientname->company_name;
-                })
-                ->addColumn('action', function ($row) {
-                    return $row->action;
-                })->rawColumns(['action'])->make(true);
-        }
+    //         $data = Client::select('*');
+    //         return DataTables::of($data)
+    //             ->addIndexColumn()
+    //             ->addColumn('company_name', function (Client $client) {
+    //                 return $client->company_name;
+    //             })
+    //             ->addColumn('post_code', function (Client $client) {
+    //                 return $client->post_code;
+    //             })
+    //             ->addColumn('action', function ($row) {
+    //                 return $row->action;
+    //             })->rawColumns(['action'])->make(true);
+    //     }
 
-        return view('course.index');
-    }
+    //     return view('client.index');
+    // }
 
     /**
      * Show the form for creating a new resource.
@@ -76,9 +69,9 @@ class CourseController extends Controller
      */
     public function store(CreateRequest $request)
     {
-        // dd($request);
+        // dd($request->all());
         $this->courseRepository->create($request->all());
-        return redirect()->route('course.index')->with('success', "Course created successfully!");
+        return redirect()->route('client.index')->with('success', "Course created successfully!");
     }
 
     /**
