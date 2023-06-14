@@ -42,7 +42,15 @@ class CourseController extends Controller
                     return $course->start_date;
                 })
                 ->addColumn('duration', function (Course $course) {
-                    return $course->duration;
+                    if($course->duration == 1)
+                    {
+                        return "0.5 Days";
+                    }
+                    else
+                    {
+                        return "1 Days";
+                    }
+                    
                 })
                 ->addColumn('client_id', function (Course $course) {
                     return $course->clientname->company_name;
@@ -96,31 +104,31 @@ class CourseController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param \App\Models\Question $usquestioner [explicite description]
+     * @param \App\Models\Course $course [explicite description]
      *
      * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory
      */
-    // public function edit(Client $client)
-    // {
-    //     $client->loadMissing('contacts');
-    //     return view('client.edit', ['model' => $client]);
-    // }
+    public function edit(Course $course)
+    {
+        $course->loadMissing('trainerDetail');
+        $courseCategory = CourseCategory::all();
+        $clientList = Client::all();
+        return view('course.edit', ['model' => $course,'courseCategory' => $courseCategory,'clientList' => $clientList]);
+    }
 
     /**
      * Method update
      *
      * @param \App\Http\Requests\Client\EditRequest $request
-     * @param \App\Models\Client $client
+     * @param \App\Models\Course $course
      *
      * @return \Illuminate\Routing\Redirector|\Illuminate\Http\RedirectResponse
      */
-    // public function update(EditRequest $request, Client $client)
-    // {
-       
-    //     $this->clientRepository->update($request->all(), $client);
-
-    //     return redirect()->route('client.index')->with('success', "Client updated successfully!");
-    // }
+    public function update(EditRequest $request, Course $course)
+    {
+        $this->courseRepository->update($request->all(), $course);
+        return redirect()->route('course.index')->with('success', "Course updated successfully!");
+    }
 
     /**
      * Remove the specified resource from storage.

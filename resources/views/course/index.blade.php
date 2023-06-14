@@ -1,8 +1,5 @@
 @extends('layouts.app')
 @section('page_title','SRS')
-
-
-
 @section('content')
 <!--**********************************
     Content body start

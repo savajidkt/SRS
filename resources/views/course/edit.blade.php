@@ -32,14 +32,14 @@
                         <h4 class="card-title">Please Enter Client Details</h4>
                     </div>
                     <div class="card-body">
-                        <form class="invoice-repeater" id="client" action="{{route('client.update', $model)}}" method="post"
+                        <form class="invoice-repeater" id="course" action="{{route('course.update', $model)}}" method="post"
                             enctype="multipart/form-data" id="step-form-horizontal" class="step-form-horizontal">
                             @csrf
                             @method('PUT')
-                            @include('client.form')
+                            @include('course.form')
                             <div id="newRow"></div>
-                            <button type="submit" class="btn btn-primary">Save Changes</button>
-                            <a href="{{ route('client.create')}}" class="btn btn-primary">Cancel</a>
+                            <button type="submit" class="btn btn-primary">Next</button>
+                            <a href="{{ route('course.index')}}" class="btn btn-primary">Cancel</a>
                             
                             <button class="btn btn-primary" type="button" data-repeater-create>                               
                                 <span>Add New Contact</span>
@@ -60,7 +60,7 @@
 @endsection
 @section('extra-script')
     <script src="{{ asset('js/jquery.validate.min.js') }}"></script>
-    <script src="{{ asset('js/form/client.js') }}"></script>
+    <script src="{{ asset('js/form/course.js') }}"></script>
     <script src="{{ asset('js/form/jquery.repeater.min.js') }}"></script>
     <script src="{{ asset('js/form/form-repeater.js') }}"></script>
 @endsection

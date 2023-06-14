@@ -46,42 +46,38 @@ class CourseRepository
      * @param array $data [explicite description]
      * @param Client $client [explicite description]
      *
-     * @return Client
+     * @return Course
      * @throws Exception
      */
-    // public function update(array $data, Client $client): Client
-    // {
+    public function update(array $data, Course $course): Course
+    {
  
-    //     $clientData = [
-    //         'company_name'    => $data['company_name'],
-    //         'address_one'     => $data['address_one'],
-    //         'address_tow'       => $data['address_tow'],
-    //         'town'       => $data['town'],
-    //         'country'       => $data['country'],
-    //         'post_code'       => $data['post_code'],
-    //         'notes'       => $data['notes'],
-    //     ];
+        $courseData = [
+            'course_category_id'    => $data['course_category_id'],
+            'start_date'     => $data['start_date'],
+            'end_date'       => $data['end_date'],
+            'duration'       => $data['duration'],
+            'client_id'       => $data['client_id'],
+            'path'       => $data['path'],
+        ];
 
-    //     if ($client->update($clientData)) {
-    //         $client->contacts()->delete();
-    //         foreach ($data['invoice'] as $key => $invoice) {
-    //             $invoiceArr = [
-    //                 'first_name'    => $invoice['first_name'],
-    //                 'last_name'    => $invoice['last_name'],
-    //                 'phone_number'    => $invoice['phone_number'],
-    //                 'mobile_number'    => $invoice['mobile_number'],
-    //                 'email'    => $invoice['email'],
-    //                 'job_title'    => $invoice['job_title'],
-    //             ];
+        if ($course->update($courseData)) {
+            $course->trainerDetail()->delete();
+            foreach ($data['invoice'] as $key => $invoice) {
+                $invoiceArr = [
+                    'first_name'    => $invoice['first_name'],
+                    'last_name'    => $invoice['last_name'],
+                    'email'    => $invoice['email'],
+                ];
 
-    //             $client->contacts()->save(new ClientContact($invoiceArr));
-    //         }
+                $course->trainerDetail()->save(new TrainerDetail($invoiceArr));
+            }
 
-    //         return $client;
-    //     }
+            return $course;
+        }
 
-    //     throw new Exception('Client update failed.');
-    // }
+        throw new Exception('Course update failed.');
+    }
 
     /**
      * Method delete

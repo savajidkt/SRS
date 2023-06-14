@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Question;
+namespace App\Http\Requests\Questions;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -26,8 +26,6 @@ class EditRequest extends FormRequest
     {
         $rules = [
             'question'        => ['required'],
-            'status'         => ['required'],
-            'type'           => ['required'],
         ];
 
         return $rules;
@@ -42,8 +40,6 @@ class EditRequest extends FormRequest
     {
         return [
             'question.required' => 'Question is required.',
-            'status.required' => 'Status is required.',
-            'type.required' => 'Type is required.'
         ];
     }
 }

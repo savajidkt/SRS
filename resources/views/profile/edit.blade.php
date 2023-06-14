@@ -22,6 +22,20 @@
                 </div>
                 <div class="card-body">
                     <div class="basic-form">
+                    
+                            <div class="col-12">
+                                <div class="d-flex items-center justify-between bg-error-1 pl-30 pr-20 py-30 rounded-8">
+                                    <div class="text-error-2 lh-1 fw-500">testing</div>
+                                </div>
+                            </div>
+                        
+                            <div class="col-12">
+                                <div class="d-flex items-center justify-between bg-success-1 pl-30 pr-20 py-30 rounded-8">
+                                    <div class="text-success-2 lh-1 fw-500">Testing </div>
+                                </div>
+                            </div>
+                        
+
                         <form action="{{route('profile.update',$model)}}" method="POST">
                             @csrf
                             @method('PUT')

@@ -36,13 +36,13 @@
                     <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
                                 class="icon icon-plug"></i><span class="nav-text">Influencing Questions</span></a>
                         <ul aria-expanded="false">
-                            <li><a href="./uc-select2.html">Attendee Questions</a></li>
-                            <li><a href="./uc-nestable.html">360 Questions</a></li>
+                            <li><a href="{{ route('attendee.index')}}">Attendee Questions</a></li>
+                            <li><a href="{{ route('questions.index')}}">360 Questions</a></li>
                             
                         </ul>
                     </li>
                     
-                    <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
+                    <li><a class="has-arrow" href="javascript:()" aria-expanded="false"><i
                                 class="icon icon-form"></i><span class="nav-text">Leadership Questions</span></a>
                         <ul aria-expanded="false">
                             <li><a href="./form-element.html">Attendee Questions</a></li>

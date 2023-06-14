@@ -1,43 +1,41 @@
-var FrmClientPreference = function() {
+var FrmCoursePreference = function() {
 
-    var FrmClientValidation = function() {
-        var FrmClientPreferenceForm = $('#client');
-        var error4 = $('.error-message', FrmClientPreferenceForm);
-        var success4 = $('.error-message', FrmClientPreferenceForm);
+    var FrmCourseValidation = function() {
+        var FrmCoursePreferenceForm = $('#course');
+        var error4 = $('.error-message', FrmCoursePreferenceForm);
+        var success4 = $('.error-message', FrmCoursePreferenceForm);
 
-        FrmClientPreferenceForm.validate({
+        FrmCoursePreferenceForm.validate({
             errorElement: 'span',
             errorClass: 'help-block help-block-error',
             focusInvalid: false,
             ignore: "",
             rules: {
-                company_name: {
+                course_category_id: {
                     required: true
                 },
-                address_one: {
+                start_date: {
                     required: true
                 },
-                address_tow: {
+                end_date: {
                     required: true
                 },
-                town: {
+                duration: {
                     required: true
                 },
-                country: {
+                client_id: {
                     required: true
                 },
-                post_code: {
+                path: {
                     required: true
                 },
-                notes: {
-                    required: true
+                email: {
+                    minlength: 5,
                 },
-                // phone_number: {
-                //     required: true,
-                //     matches: "^(\\d|\\s)+$",
-                //     minlength: 10,
-                //     maxlength: 20
-                // }
+                email_confirm: {
+                    minlength: 5,
+                    equalTo: "#email"
+                }
 
 
             },
@@ -58,11 +56,11 @@ var FrmClientPreference = function() {
     return {
         //main function to initiate the module
         init: function() {
-            FrmClientValidation();
+            FrmCourseValidation();
         }
     };
 }();
 
 $(document).ready(function() {
-    FrmClientPreference.init();
+    FrmCoursePreference.init();
 });

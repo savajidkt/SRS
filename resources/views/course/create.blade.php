@@ -26,13 +26,14 @@
                             <h4 class="card-title">Please Enter Course Details</h4>
                         </div>
                         <div class="card-body">
-                        <form class="invoice-repeater step-form-horizontal" id="client" action="{{ route('course.store') }}" method="post"
+                        <form class="invoice-repeater step-form-horizontal" id="course" action="{{ route('course.store') }}" method="post"
                             enctype="multipart/form-data" id="step-form-horizontal" >
                                 @csrf
                                 @include('course.form')
                                 <div id="newRow"></div>
                                 <button type="submit" class="btn btn-primary">Next</button>
-                                <button type="button" class="btn btn-primary">Cancel</button>
+                                <!-- <button type="button" class="btn btn-primary">Cancel</button> -->
+                                <a href="{{ route('course.index')}}" class="btn btn-primary">Cancel</a>
                                 <button class="btn btn-primary" type="button" data-repeater-create>
                                 Add Another Trainer
                                                 </button>
@@ -50,7 +51,7 @@
 @endsection
 @section('extra-script')
     <script src="{{ asset('js/jquery.validate.min.js') }}"></script>
-    <script src="{{ asset('js/form/client.js') }}"></script>
+    <script src="{{ asset('js/form/course.js') }}"></script>
     <script src="{{ asset('js/form/jquery.repeater.min.js') }}"></script>
     <script src="{{ asset('js/form/form-repeater.js') }}"></script>
 @endsection

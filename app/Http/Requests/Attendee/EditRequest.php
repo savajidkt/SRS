@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Requests\Project;
+namespace App\Http\Requests\Attendee;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CreateRequest extends FormRequest
+
+class EditRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,9 +24,11 @@ class CreateRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            'project_name' => ['required']
+        $rules = [
+            'question'        => ['required'],
         ];
+
+        return $rules;
     }
 
     /**
@@ -36,7 +39,7 @@ class CreateRequest extends FormRequest
     public function messages()
     {
         return [
-            'project_name.required' => 'Project name field is required.'
+            'question.required' => 'Question is required.',
         ];
     }
 }

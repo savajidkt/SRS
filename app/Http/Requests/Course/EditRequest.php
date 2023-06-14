@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Client;
+namespace App\Http\Requests\Course;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -25,13 +25,12 @@ class EditRequest extends FormRequest
     public function rules()
     {
         $rules = [
-            'company_name'        => ['required'],
-            'address_one'        => ['required'],
-            'address_tow'        => ['required'],
-            'town'        => ['required'],
-            'country'        => ['required'],
-            'post_code'        => ['required'],
-            'notes'        => ['required'],
+            'course_category_id'        => ['required'],
+            'start_date'        => ['required'],
+            'end_date'        => ['required'],
+            'duration'        => ['required'],
+            'client_id' => ['required'],
+            'path'        => ['required'],
         ];
 
         return $rules;
@@ -45,13 +44,12 @@ class EditRequest extends FormRequest
     public function messages()
     {
         return [
-            'company_name.required' => 'CompanyName is required.',
-            'address_one.required' => 'AddressOne is required.',
-            'address_tow.required' => 'AddressTow is required.',
-            'town.required' => 'Town is required.',
-            'country.required' => 'Country is required.',
-            'post_code.required' => 'PostCode is required.',
-            'notes.required' => 'Notes is required.',
+            'course_category_id.required' => 'CourseCategoryId is required.',
+            'start_date.required' => 'StartDate is required.',
+            'end_date.required' => 'EndDate is required.',
+            'duration.required' => 'Duration is required.',
+            'client_id.required' => 'ClientId is required.',
+            'path.required' => 'Path is required.',
         ];
     }
 }
