@@ -9,6 +9,7 @@
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('images/dashboard-fav-icon-2.png')}}">
     <link href="{{ asset('css/style.css')}}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ asset('izitoast/css/iziToast.min.css') }}">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     
     <!-- FontAwesome -->

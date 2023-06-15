@@ -123,7 +123,7 @@
                 confirmButtonText: 'Yes, delete it!',
                 customClass: {
                     confirmButton: 'btn btn-primary',
-                    cancelButton: 'btn btn-outline-danger ml-1'
+                    cancelButton: 'btn btn-outline-danger ml-3'
                 },
                 buttonsStyling: false
             }).then(function(result) {

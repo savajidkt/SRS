@@ -21,7 +21,24 @@
             </ol>
         </div>
     </div>
-    <div class="col-xl-12 col-xxl-12">
+    <!-- <div class="col-xl-12 col-xxl-12"> -->
+    <div class="card">
+        <div class="card-header attendee-home-lgt attendee-bg-clr">
+            <strong>INFLUENCING COURSE - ATTENDEE QUESTIONS </strong>
+            <div class="form-group text-font-clr">
+            <label class="text-label text-font-clr">Filter By:</label>
+            <select class="" aria-label=".form-select-sm example">
+                <option selected disabled>Select Category</option>
+                <option value="1">Emotive</option>
+                <option value="2">Assertive</option>
+                <option value="2">Persuasive</option>
+                <option value="2">Listening</option>
+                <option value="2">Trusting</option>
+                <option value="2">Inspiring</option>
+                <option value="2">Knowing Self</option>
+            </select>
+            </div>
+        </div>
         <table class="table">
             <thead>
                 <tr>
@@ -126,9 +143,9 @@
 <script type="text/javascript">
     $(function() {
         var table = $('.table').DataTable({
-            processing: true,
-            serverSide: true,
-            searching: true,
+            processing: false,
+            serverSide: false,
+            searching: false,
             ajax: "{{ route('attendee.index') }}",
             columns: [{
                     data: 'DT_RowIndex',

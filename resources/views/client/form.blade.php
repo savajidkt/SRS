@@ -72,9 +72,10 @@
                 </div>
                 <div class="form-group train-deet">
                     <label class="text-label">Notes</label>
-                    <input class="form-control" id="notes" type="text" name="notes" placeholder="Notes"
+                    <!-- <input class="form-control" id="notes" type="text" name="notes" placeholder="Notes"
                         value="{{(isset($model->notes))?$model->notes:''}}" aria-describedby="login-notes" autofocus="" tabindex="1"
-                         />
+                         /> -->
+                        <textarea class="form-control" id="notes" type="text" name="notes" rows="3" cols="50" placeholder="Describe yourself here..." >{{(isset($model->notes))?$model->notes:''}} </textarea>
                     @error('notes')
                         <span class="invalid-feedback" style="display: block;" role="alert">
                             <strong>{{ $message }}</strong>
@@ -148,35 +149,33 @@
 
                 <div class="col-lg-12 mb-4 form-style">
                     <div class="form-group train-deet">
-                        <label class="itemcost">First Name<span class="filedrequired"> *</span></label>
-                        <input type="text" class="form-control" name="first_name"
-                            value="" />
+                        <label class="text-label">First Name<span class="filedrequired"> *</span></label>
+                        <input type="text" class="form-control" name="first_name" value="" />
                     </div>
                     <div class="form-group train-deet">
-                        <label class="itemcost">Last Name<span class="filedrequired"> *</span></label>
-                        <input type="text" class="form-control" name="last_name"
-                            value="" />
+                        <label class="text-label">Last Name<span class="filedrequired"> *</span></label>
+                        <input type="text" class="form-control" name="last_name" value="" />
                     </div>
 
                     <div class="form-group train-deet">
-                        <label class="itemcost">Phone Number<span class="filedrequired"> *</span></label>
+                        <label class="text-label">Phone Number<span class="filedrequired"> *</span></label>
                         <input type="text" class="form-control" name="phone_number"
                             value="" />
                     </div>
 
 
                     <div class="form-group train-deet">
-                        <label class="itemcost">Mobile Number<span class="filedrequired"> *</span></label>
+                        <label class="text-label">Mobile Number<span class="filedrequired"> *</span></label>
                         <input type="text" class="form-control" name="mobile_number"
                             value="" />
                     </div>
                     <div class="form-group train-deet">
-                        <label class="itemcost">Email Address<span class="filedrequired"> *</span></label>
+                        <label class="text-label">Email Address<span class="filedrequired"> *</span></label>
                         <input type="text" class="form-control" name="email" value="" />
                     </div>
 
                     <div class="form-group train-deet">
-                        <label class="itemcost">Job Title <span class="filedrequired"> *</span></label>
+                        <label class="text-label">Job Title <span class="filedrequired"> *</span></label>
                         <input type="text" class="form-control" name="job_title" value="" />                       
                     </div>
                 </div>

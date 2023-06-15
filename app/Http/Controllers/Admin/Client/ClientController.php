@@ -37,6 +37,10 @@ class ClientController extends Controller
                 ->addColumn('post_code', function (Client $client) {
                     return $client->post_code;
                 })
+                ->filterColumn('company_name', function($query, $keyword) {
+                    $sql = "CONCAT(clients.company_name,'-',clients.post_code)  like ?";
+                    $query->whereRaw($sql, ["%{$keyword}%"]);
+                })
                 ->addColumn('action', function ($row) {
                     return $row->action;
                 })->rawColumns(['action'])->make(true);
