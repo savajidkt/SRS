@@ -27,15 +27,15 @@
             <strong>INFLUENCING COURSE - ATTENDEE QUESTIONS </strong>
             <div class="form-group text-font-clr">
             <label class="text-label text-font-clr">Filter By:</label>
-            <select class="" aria-label=".form-select-sm example">
+            <select class="" name="category_id" id="category_id" aria-label=".form-select-sm example" onchange="attendSearch()">
                 <option selected disabled>Select Category</option>
                 <option value="1">Emotive</option>
                 <option value="2">Assertive</option>
-                <option value="2">Persuasive</option>
-                <option value="2">Listening</option>
+                <option value="3">Persuasive</option>
+                <option value="4">Listening</option>
                 <option value="2">Trusting</option>
-                <option value="2">Inspiring</option>
-                <option value="2">Knowing Self</option>
+                <option value="3">Inspiring</option>
+                <option value="1">Knowing Self</option>
             </select>
             </div>
         </div>
@@ -134,19 +134,19 @@
 
 <script src="{{asset('vendor/select2/js/select2.full.min.js')}}"></script>
 <script src="{{asset('js/plugins-init/select2-init.js')}}"></script>
-<script src="{{asset('vendor/js/tables/datatable/jquery.dataTables.min.js')}}"></script>
-<script src="{{asset('vendor/js/tables/datatable/datatables.bootstrap4.min.js')}}"></script>
-<script src="{{asset('vendor/js/tables/datatable/dataTables.responsive.min.js')}}"></script>
-<script src="{{asset('vendor/js/tables/datatable/responsive.bootstrap4.js')}}"></script>
-<script src="{{asset('vendor/js/tables/datatable/datatables.buttons.min.js')}}"></script>
-<script src="{{asset('vendor/js/tables/datatable/buttons.bootstrap4.min.js')}}"></script>
 <script type="text/javascript">
+    // ajax: "{{ route('attendee.index') }}",
     $(function() {
         var table = $('.table').DataTable({
-            processing: false,
-            serverSide: false,
+            processing: true,
+            serverSide: true,
             searching: false,
-            ajax: "{{ route('attendee.index') }}",
+            ajax: {
+                url: "{{ route('attendee.index') }}",
+                data: function (d) {
+                    d.category_id = $('#category_id').val();
+                }
+            },
             columns: [{
                     data: 'DT_RowIndex',
                     name: 'id',
@@ -192,5 +192,10 @@
         });
 
     });
+
+    function attendSearch()
+    {
+        $('.table').DataTable().ajax.reload();
+    }
 </script>
 @endsection

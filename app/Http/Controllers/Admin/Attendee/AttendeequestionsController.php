@@ -36,7 +36,13 @@ class AttendeequestionsController extends Controller
                 })
                 ->addColumn('action', function ($row) {
                     return $row->action;
-                })->rawColumns(['action'])->make(true);
+                })
+                ->filter(function ($query) use($request) {
+                    if ($request->category_id != '') {
+                        $query->where('category_id',$request->category_id);
+                    }
+                }, true)
+                ->rawColumns(['action'])->make(true);
         }
 
         return view('attendeequestions.index');

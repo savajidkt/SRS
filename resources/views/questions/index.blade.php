@@ -21,7 +21,24 @@
             </ol>
         </div>
     </div>
-    <div class="col-xl-12 col-xxl-12">
+    <!-- <div class="col-xl-12 col-xxl-12"> -->
+    <div class="card">
+        <div class="card-header attendee-home-lgt attendee-bg-clr">
+            <strong>INFLUENCING COURSE - 360 Questions </strong>
+            <div class="form-group text-font-clr">
+            <label class="text-label text-font-clr">Filter By:</label>
+            <select class="" name="category_id" id="category_id" aria-label=".form-select-sm example" onchange="questionSearch()">
+                <option selected disabled>Select Category</option>
+                <option value="1">Emotive</option>
+                <option value="2">Assertive</option>
+                <option value="3">Persuasive</option>
+                <option value="4">Listening</option>
+                <option value="2">Trusting</option>
+                <option value="3">Inspiring</option>
+                <option value="1">Knowing Self</option>
+            </select>
+            </div>
+        </div>
         <table class="table">
             <thead>
                 <tr>
@@ -30,58 +47,6 @@
                     <th scope="col">Actions</th>
                 </tr>
             </thead>
-            <!-- <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>I am able to tell others how I am feeling about a situation</td>
-                    <td><a href="./influencing-attendee.html"><i class="fa-regular fa-pen-to-square"></i></a></td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>I regularly give feedback to others on what I like or don't like</td>
-                    <td><i class="fa-regular fa-pen-to-square"></i></td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>I respond to an argument by restating the facts and logic of my case</td>
-                    <td><i class="fa-regular fa-pen-to-square"></i></td>
-                </tr>
-                <tr>
-                    <th scope="row">4</th>
-                    <td>I use questions to help others explore their ideas</td>
-                    <td><i class="fa-regular fa-pen-to-square"></i></td>
-                </tr>
-                <tr>
-                    <th scope="row">5</th>
-                    <td>I find it easy to talk to people about my experiences</td>
-                    <td><i class="fa-regular fa-pen-to-square"></i></td>
-                </tr>
-                <tr>
-                    <th scope="row">6</th>
-                    <td>I like to help others think 'big picture'</td>
-                    <td><i class="fa-regular fa-pen-to-square"></i></td>
-                </tr>
-                <tr>
-                    <th scope="row">7</th>
-                    <td>I can anticipate how I am likely to react in most situations</td>
-                    <td><i class="fa-regular fa-pen-to-square"></i></td>
-                </tr>
-                <tr>
-                    <th scope="row">8</th>
-                    <td>I find it easy to describe my feelings</td>
-                    <td><i class="fa-regular fa-pen-to-square"></i></td>
-                </tr>
-                <tr>
-                    <th scope="row">9</th>
-                    <td>I am comfortable telling people clearly and concisely what I want or need</td>
-                    <td><i class="fa-regular fa-pen-to-square"></i></td>
-                </tr>
-                <tr>
-                    <th scope="row">10</th>
-                    <td>I frequently have more facts than I need to back up my case</td>
-                    <td><i class="fa-regular fa-pen-to-square"></i></td>
-                </tr>
-            </tbody> -->
         </table>
         <!-- <nav aria-label="Page navigation example">
             <ul class="pagination justify-content-end">
@@ -117,19 +82,20 @@
 
 <script src="{{asset('vendor/select2/js/select2.full.min.js')}}"></script>
 <script src="{{asset('js/plugins-init/select2-init.js')}}"></script>
-<script src="{{asset('vendor/js/tables/datatable/jquery.dataTables.min.js')}}"></script>
-<script src="{{asset('vendor/js/tables/datatable/datatables.bootstrap4.min.js')}}"></script>
-<script src="{{asset('vendor/js/tables/datatable/dataTables.responsive.min.js')}}"></script>
-<script src="{{asset('vendor/js/tables/datatable/responsive.bootstrap4.js')}}"></script>
-<script src="{{asset('vendor/js/tables/datatable/datatables.buttons.min.js')}}"></script>
-<script src="{{asset('vendor/js/tables/datatable/buttons.bootstrap4.min.js')}}"></script>
 <script type="text/javascript">
     $(function() {
         var table = $('.table').DataTable({
             processing: true,
             serverSide: true,
-            searching: true,
-            ajax: "{{ route('questions.index') }}",
+            searching: false,
+            // dom: '<"top"i>rt<"bottom"flp><"clear">',
+            // ajax: "{{ route('questions.index') }}",
+            ajax: {
+                url: "{{ route('questions.index') }}",
+                data: function (d) {
+                    d.category_id = $('#category_id').val();
+                }
+            },
             columns: [{
                     data: 'DT_RowIndex',
                     name: 'id',
@@ -173,6 +139,11 @@
                 }
             });
         });
+
+        function questionSearch()
+        {
+            $('.table').DataTable().ajax.reload();
+        }
 
     });
 </script>

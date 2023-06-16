@@ -32,12 +32,17 @@ class QuestionsController extends Controller
             return DataTables::of($data)
                 ->addIndexColumn()
                 ->addColumn('question', function (Questions $question) {
-                    // dd(question);
                     return $question->question;
                 })
                 ->addColumn('action', function ($row) {
                     return $row->action;
-                })->rawColumns(['action'])->make(true);
+                })
+                ->filter(function ($query) use($request) {
+                    if ($request->category_id != '') {
+                        $query->where('category_id',$request->category_id);
+                    }
+                }, true)
+                ->rawColumns(['action'])->make(true);
         }
 
         return view('questions.index');

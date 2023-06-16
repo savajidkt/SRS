@@ -121,7 +121,7 @@
     ***********************************-->
     <!-- Required vendors -->
     @include('common.scripts')
-    
+    @include('flash')
     @yield('extra-script')
 </body>
 

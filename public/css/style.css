@@ -28168,3 +28168,9 @@ label.text-label {
 .add-contact-font {
     font-size: 18px;
 }
+
+.dataTables_wrapper .dataTables_paginate {
+    float: right;
+    text-align: right;
+    padding-top: 0.25em;
+}
