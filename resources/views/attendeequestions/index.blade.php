@@ -33,9 +33,9 @@
                 <option value="2">Assertive</option>
                 <option value="3">Persuasive</option>
                 <option value="4">Listening</option>
-                <option value="2">Trusting</option>
-                <option value="3">Inspiring</option>
-                <option value="1">Knowing Self</option>
+                <option value="5">Trusting</option>
+                <option value="6">Inspiring</option>
+                <option value="7">Knowing Self</option>
             </select>
             </div>
         </div>

@@ -28169,7 +28169,7 @@ label.text-label {
     font-size: 18px;
 }
 
-.dataTables_wrapper .dataTables_paginate {
+.dataTables_filter {
     float: right;
     text-align: right;
     padding-top: 0.25em;

@@ -2,7 +2,6 @@
 @section('page_title','SRS')
 
 
-
 @section('content')
 <!--**********************************
     Content body start
@@ -76,6 +75,10 @@
             processing: true,
             serverSide: true,
             searching: true,
+            // initComplete: function () {
+            // $('.dataTables_filter input[type="search"]').css({ 'width': '250px', 'display': 'inline-block' });
+            // },
+            // "dom": '<"pull-left"l><"pull-right"f>tip',
             ajax: "{{ route('client.index') }}",
             columns: [{
                     data: 'DT_RowIndex',
@@ -126,6 +129,7 @@
                 }
             });
         });
+
 
     });
 </script>
