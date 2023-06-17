@@ -25,7 +25,8 @@
             <textarea class="form-control" name="question" id="exampleFormControlTextarea1" rows="3" placeholder="I am able to tell others how I am feeling about a situation" required>{{(isset($model->question))?$model->question:''}}</textarea>
         </div>
         <button type="submit" class="btn btn-primary">Update</button>
-        <button type="button" class="btn btn-primary">Cancel</button>
+        {{-- <button type="button" class="btn btn-primary">Cancel</button> --}}
+        <a href="{{ route('dashboard') }}" class="btn btn-primary">Cancel</a>
     </form>
     <!-- row -->
 </div>

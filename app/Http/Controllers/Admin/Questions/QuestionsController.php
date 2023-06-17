@@ -38,7 +38,7 @@ class QuestionsController extends Controller
                     return $row->action;
                 })
                 ->filter(function ($query) use($request) {
-                    if ($request->category_id != '') {
+                    if (!empty($request->category_id)) {
                         $query->where('category_id',$request->category_id);
                     }
                 }, true)

@@ -28,7 +28,7 @@
             <div class="form-group text-font-clr">
             <label class="text-label text-font-clr">Filter By:</label>
             <select class="" name="category_id" id="category_id" aria-label=".form-select-sm example" onchange="questionSearch()">
-                <option selected disabled>Select Category</option>
+                <option value="" selected>Select Category</option>
                 <option value="1">Emotive</option>
                 <option value="2">Assertive</option>
                 <option value="3">Persuasive</option>

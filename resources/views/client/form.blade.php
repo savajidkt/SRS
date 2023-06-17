@@ -16,7 +16,7 @@
                     @enderror
                 </div>
                 <div class="form-group train-deet">
-                    <label class="text-label">Address Line 1</label>
+                    <label class="text-label">Address Line 1<span class="filedrequired">*</span></label>
                     <input class="form-control" id="address_one" type="text" name="address_one"
                         placeholder="Address.." value="{{(isset($model->address_one))?$model->address_one:''}}" aria-describedby="login-address_one"
                         autofocus="" tabindex="1"  />
@@ -27,7 +27,7 @@
                     @enderror
                 </div>
                 <div class="form-group train-deet">
-                    <label class="text-label">Address Line 2</label>
+                    <label class="text-label">Address Line 2<span class="filedrequired">*</span></label>
                     <input class="form-control" id="address_tow" type="text" name="address_tow"
                         placeholder="Address.." value="{{(isset($model->address_tow))?$model->company_name:''}}" aria-describedby="login-address_tow"
                         autofocus="" tabindex="1"  />
@@ -38,7 +38,7 @@
                     @enderror
                 </div>
                 <div class="form-group train-deet">
-                    <label class="text-label">Town</label>
+                    <label class="text-label">Town<span class="filedrequired">*</span></label>
                     <input class="form-control" id="town" type="text" name="town" placeholder="Town"
                         value="{{(isset($model->town))?$model->town:''}}" aria-describedby="login-town" autofocus="" tabindex="1"
                          />
@@ -49,7 +49,7 @@
                     @enderror
                 </div>
                 <div class="form-group train-deet">
-                    <label class="text-label">Country</label>
+                    <label class="text-label">Country<span class="filedrequired">*</span></label>
                     <input class="form-control" id="country" type="text" name="country" placeholder="Country"
                         value="{{(isset($model->country))?$model->country:''}}" aria-describedby="login-country" autofocus="" tabindex="1"
                          />
@@ -60,7 +60,7 @@
                     @enderror
                 </div>
                 <div class="form-group train-deet">
-                    <label class="text-label">Post Code</label>
+                    <label class="text-label">Post Code<span class="filedrequired">*</span></label>
                     <input class="form-control" id="post_code" type="text" name="post_code" placeholder="Post Code"
                         value="{{(isset($model->post_code))?$model->post_code:''}}" aria-describedby="login-post_code" autofocus="" tabindex="1"
                          />
@@ -71,7 +71,7 @@
                     @enderror
                 </div>
                 <div class="form-group train-deet">
-                    <label class="text-label">Notes</label>
+                    <label class="text-label">Notes<span class="filedrequired">*</span></label>
                     <!-- <input class="form-control" id="notes" type="text" name="notes" placeholder="Notes"
                         value="{{(isset($model->notes))?$model->notes:''}}" aria-describedby="login-notes" autofocus="" tabindex="1"
                          /> -->

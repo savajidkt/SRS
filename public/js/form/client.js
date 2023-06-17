@@ -32,12 +32,18 @@ var FrmClientPreference = function() {
                 notes: {
                     required: true
                 },
-                // phone_number: {
-                //     required: true,
-                //     matches: "^(\\d|\\s)+$",
-                //     minlength: 10,
-                //     maxlength: 20
-                // }
+                mobile_number: {
+                    required: true,
+                    digits: true,
+                    minlength: 10,
+                    maxlength: 10
+                },
+                phone_number: {
+                    required: true,
+                    digits: true,
+                    minlength: 10,
+                    maxlength: 10
+                }
 
 
             },

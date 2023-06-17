@@ -27,7 +27,7 @@
                             @method('PUT')
                             <div class="form-row">
                                 <div class="form-group col-md-6 form-gap-2">
-                                    <label>First Name</label>
+                                    <label>First Name <span class="text-danger">*</span></label>
                                     <input class="form-control" id="first_name" type="text" name="first_name" placeholder="Sue" value="{{auth()->user()->first_name}}" aria-describedby="login-first_name" autofocus="" tabindex="1" required />
                                         @error('first_name')
                                         <span class="invalid-feedback" style="display: block;" role="alert">
@@ -36,7 +36,7 @@
                                         @enderror
                                 </div>
                                 <div class="form-group col-md-6 form-gap-2">
-                                    <label>Last Name</label>
+                                    <label>Last Name <span class="text-danger">*</span></label>
                                     <input class="form-control" id="last_name" type="text" name="last_name" placeholder="Swindell" value="{{auth()->user()->last_name}}" aria-describedby="login-last_name" autofocus="" tabindex="1" required />
                                         @error('last_name')
                                         <span class="invalid-feedback" style="display: block;" role="alert">
@@ -45,7 +45,7 @@
                                         @enderror
                                 </div>
                                 <div class="form-group col-md-6 form-gap-2">
-                                    <label>Phone Number</label>
+                                    <label>Phone Number <span class="text-danger">*</span></label>
                                     <input class="form-control" id="phone_number" type="text" name="phone_number" placeholder="07850185351" value="{{auth()->user()->phone_number}}" aria-describedby="login-phone_number" autofocus="" tabindex="1" required />
                                         @error('phone_number')
                                         <span class="invalid-feedback" style="display: block;" role="alert">
@@ -54,7 +54,7 @@
                                         @enderror
                                 </div>
                                 <div class="form-group col-md-6 form-gap-2">
-                                    <label>Mobile Number</label>
+                                    <label>Mobile Number <span class="text-danger">*</span></label>
                                     <input class="form-control" id="mobile_number" type="text" name="mobile_number" placeholder="07850185351" value="{{auth()->user()->mobile_number}}" aria-describedby="login-mobile_number" autofocus="" tabindex="1" required />
                                         @error('mobile_number')
                                         <span class="invalid-feedback" style="display: block;" role="alert">
@@ -63,7 +63,7 @@
                                         @enderror
                                 </div>
                                 <div class="form-group col-md-6 form-gap-2">
-                                    <label>Email Address</label>
+                                    <label>Email Address <span class="text-danger">*</span></label>
                                     <input class="form-control" id="email" type="email" name="email" placeholder="sue.swindell@srs-development.co.uk" value="{{auth()->user()->email}}" aria-describedby="login-email" autofocus="" tabindex="1" required />
                                         @error('email')
                                         <span class="invalid-feedback" style="display: block;" role="alert">
@@ -74,7 +74,7 @@
                                     <input type="hidden" name="status" value="{{auth()->user()->status}}">
                                 </div>
                                 <div class="form-group col-md-6 form-gap-2">
-                                    <label>Confirm Email Address</label>
+                                    <label>Confirm Email Address <span class="text-danger">*</span></label>
                                     <input class="form-control" id="confirm_email" type="email" name="confirm_email" placeholder="sue.swindell@srs-development.co.uk" value="{{auth()->user()->email}}" aria-describedby="login-confirm_email" autofocus="" tabindex="1"  />
                                         @error('confirm_email')
                                         <span class="invalid-feedback" style="display: block;" role="alert">
@@ -83,7 +83,7 @@
                                         @enderror
                                 </div>
                                 <div class="form-group col-md-6 form-gap-2">
-                                    <label>Password</label>
+                                    <label>Password <span class="text-danger">*</span></label>
                                     <input class="form-control" id="password" type="password" name="password" placeholder="" value="" aria-describedby="login-password" autofocus="" tabindex="1"  />
                                         @error('password')
                                         <span class="invalid-feedback" style="display: block;" role="alert">
@@ -92,7 +92,7 @@
                                         @enderror
                                 </div>
                                 <div class="form-group col-md-6 form-gap-2">
-                                    <label>Confirm Password</label>
+                                    <label>Confirm Password<span class="text-danger">*</span></label>
                                     <input class="form-control" id="confirm_password" type="password" name="confirm_password" placeholder="" value="" aria-describedby="login-confirm_password" autofocus="" tabindex="1"  />
                                         @error('confirm_password')
                                         <span class="invalid-feedback" style="display: block;" role="alert">
@@ -103,7 +103,8 @@
                             </div>
                     
                             <button type="submit" class="btn btn-primary">Save Changes</button>
-                            <button type="submit" class="btn btn-primary">Cancel</button>
+                            {{-- <button type="submit" class="btn btn-primary">Cancel</button> --}}
+                            <a  href="{{ route('dashboard') }}" class="btn btn-primary">Cancel</a>
                         </form>
                     </div>
                 </div>
