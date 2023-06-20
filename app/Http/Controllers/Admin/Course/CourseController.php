@@ -95,11 +95,11 @@ class CourseController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    // public function show(Client $client)
-    // {
-    //     $client->loadMissing('contacts');
-    //     return view('client.view', ['model' => $client]);
-    // }
+    public function show(Course $course)
+    {
+        // $client->loadMissing('contacts');
+        return view('course.view');
+    }
 
     /**
      * Show the form for editing the specified resource.

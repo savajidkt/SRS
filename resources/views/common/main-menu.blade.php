@@ -26,8 +26,8 @@
                     <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
                                 class="icon icon-world-2"></i><span class="nav-text">Course Management</span></a>
                         <ul aria-expanded="false">
-                            <li><a href="{{ route('course.create')}}">Add Clients</a></li>
-                            <li><a href="{{ route('course.index') }}">View Clients</a></li>
+                            <li><a href="{{ route('course.create')}}">Add Course</a></li>
+                            <li><a href="{{ route('course.index') }}">View Course</a></li>
                             
 
                         </ul>

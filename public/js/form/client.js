@@ -1,6 +1,6 @@
-var FrmClientPreference = function () {
+var FrmClientPreference = function() {
 
-    var FrmClientValidation = function () {
+    var FrmClientValidation = function() {
         var FrmClientPreferenceForm = $('#client');
         var error4 = $('.error-message', FrmClientPreferenceForm);
         var success4 = $('.error-message', FrmClientPreferenceForm);
@@ -15,7 +15,7 @@ var FrmClientPreference = function () {
                     required: true
                 },
             },
-	    highlight: function(element) {
+            highlight: function(element) {
 
                 // add a class "has_error" to the element 
                 $(element).addClass('has_error');
@@ -25,7 +25,7 @@ var FrmClientPreference = function () {
                 // remove the class "has_error" from the element 
                 $(element).removeClass('has_error');
             },
-            errorPlacement: function (error, element) {
+            errorPlacement: function(error, element) {
                 if (element.attr("name") == "company_name") {
                     error.insertAfter("#company_name");
                 } else if (element.attr("name") == "password") {
@@ -34,7 +34,7 @@ var FrmClientPreference = function () {
                     error.insertAfter(element);
                 }
             },
-            submitHandler: function (form) {
+            submitHandler: function(form) {
                 form.submit();
             }
         });
@@ -42,11 +42,11 @@ var FrmClientPreference = function () {
 
     return {
         //main function to initiate the module
-        init: function () {
+        init: function() {
             FrmClientValidation();
         }
     };
 }();
-$(document).ready(function () {
+$(document).ready(function() {
     FrmClientPreference.init();
 });

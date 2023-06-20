@@ -14,7 +14,7 @@
                     <div>
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="javascript:void(0)">Course Management</a></li>
-                        <li class="breadcrumb-item active"><a href="javascript:void(0)">Add Clients</a></li>
+                        <li class="breadcrumb-item active"><a href="javascript:void(0)">Add Course</a></li>
                     </ol>
                 </div>
             </div>
@@ -52,6 +52,6 @@
 @section('extra-script')
     <script src="{{ asset('js/jquery.validate.min.js') }}"></script>
     <script src="{{ asset('js/form/course.js') }}"></script>
-    <script src="{{ asset('js/form/jquery.repeater.min.js') }}"></script>
-    <script src="{{ asset('js/form/form-repeater.js') }}"></script>
+    <script src="{{ asset('js/form/course/jquery.repeater.min.js') }}"></script>
+    <script src="{{ asset('js/form/course/form-repeater.js') }}"></script>
 @endsection
