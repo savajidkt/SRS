@@ -28,7 +28,7 @@ class ProfileController extends Controller
      */
     public function edit(User $profile)
     {
-        return view('Profile.edit',['model'=> $profile]);
+        return view('profile.edit',['model'=> $profile]);
     }
 
     /**

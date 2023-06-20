@@ -2,6 +2,7 @@
 @section('page_title','SRS')
 
 
+
 @section('content')
 <!--**********************************
     Content body start
@@ -24,10 +25,10 @@
       </div>
   </div>
 
-  <div class="col-xl-12 col-xxl-12">
-  <table class="table">
+  <div>
+  <table class="table table-bordered table-striped">
       <thead>
-        <tr>
+        <tr class="table-client-row">
           <th scope="col">ID</th>
           <th scope="col">Company Name</th>
           <th scope="col">Post Code</th>
@@ -75,10 +76,9 @@
             processing: true,
             serverSide: true,
             searching: true,
-            // initComplete: function () {
-            // $('.dataTables_filter input[type="search"]').css({ 'width': '250px', 'display': 'inline-block' });
-            // },
-            // "dom": '<"pull-left"l><"pull-right"f>tip',
+            "oLanguage": {
+                "sLengthMenu": "Show  _MENU_ Entries",
+                },
             ajax: "{{ route('client.index') }}",
             columns: [{
                     data: 'DT_RowIndex',
@@ -129,7 +129,6 @@
                 }
             });
         });
-
 
     });
 </script>

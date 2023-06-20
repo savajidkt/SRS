@@ -1,6 +1,9 @@
 @extends('layouts.app')
 @section('page_title','SRS')
 @section('content')
+<style>
+    #userTable_filter label{ display: inline-flex; }
+</style>
 <!--**********************************
     Content body start
 ***********************************-->
@@ -22,13 +25,9 @@
         </div>
     </div>
     <!-- <div class="col-xl-12 col-xxl-12"> -->
-    <div class="card">
-        <div class="card-header attendee-home-lgt attendee-bg-clr">
-            <strong>INFLUENCING COURSE - 360 Questions </strong>
-            <div class="form-group text-font-clr">
-            <label class="text-label text-font-clr">Filter By:</label>
-            <select class="" name="category_id" id="category_id" aria-label=".form-select-sm example" onchange="questionSearch()">
-                <option value="" selected>Select Category</option>
+    <div class="">
+        <select id="customFilter" name="category_id" class="form-control custom-cls">
+            <option value="">Select Category</option>
                 <option value="1">Emotive</option>
                 <option value="2">Assertive</option>
                 <option value="3">Persuasive</option>
@@ -37,9 +36,7 @@
                 <option value="6">Inspiring</option>
                 <option value="7">Knowing Self</option>
             </select>
-            </div>
-        </div>
-        <table class="table">
+        <table class="table table-striped" id="userTable" style="width: 100%;">
             <thead>
                 <tr>
                     <th scope="col">ID</th>
@@ -48,25 +45,6 @@
                 </tr>
             </thead>
         </table>
-        <!-- <nav aria-label="Page navigation example">
-            <ul class="pagination justify-content-end">
-                <li class="page-item">
-                    <a class="page-link" href="#">First</a>
-                </li>
-                <li class="page-item">
-                    <a class="page-link" href="#">Previous</a>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item">
-                    <a class="page-link" href="#">Next</a>
-                </li>
-                <li class="page-item">
-                    <a class="page-link" href="#">Last</a>
-                </li>
-            </ul>
-        </nav> -->
     </div>
     <!-- row -->
 </div>
@@ -85,16 +63,17 @@
 <script type="text/javascript">
     $(function() {
         var table = $('.table').DataTable({
-
             processing: true,
             serverSide: true,
-            searching: false,
-            
+            searching: true,
+            "oLanguage": {
+                "sLengthMenu": "Show  _MENU_ Entries",
+                },
             // dom: '<"top"i>rt<"bottom"flp><"clear">',
             ajax: {
                 url: "{{ route('questions.index') }}",
                 data: function (d) {
-                    d.category_id = $('#category_id').val();
+                    d.customFilter = $('#customFilter').val();
                 }
             },
             columns: [{
@@ -118,6 +97,7 @@
             ],
             "createdRow": function(row, data, dataIndex) {
                 $( row ).find('td:eq(3)').addClass('group-i-icons');
+                $( row ).find('td:eq(1)').addClass('attendee-txt-align');
                 SRS.Utils.dtAnchorToForm(row);
             }
         }).on('click', '.delete_action', function(e) {          
@@ -141,12 +121,36 @@
             });
         });
 
-    });
+        $("#userTable_filter label").html('');
+        $("#userTable_filter label").html('Filter By:');
+        $("#userTable_filter.dataTables_filter label").append($("#customFilter"));
 
+        var index = 0;
+        $("#userTable th").each(function(i) {
+            if ($($(this)).html() == "Gender") {
+                index = i;
+                return false;
+            }
+        });
+        $.fn.dataTable.ext.search.push(
+            function(settings, data, dataIndex) {
+                var selectedItem = $('#customFilter').val()
+                var gender = data[index];
+                if (selectedItem === "" || gender.includes(selectedItem)) {
+                    return true;
+                }
+                return false;
+            }
+        );
+        //When you change event for the Gender Filter dropdown to redraw the datatable
+        $("#customFilter").change(function(e) {
+            table.draw();
+        });
+        table.draw();
+    });
     function questionSearch()
     {
         $('.table').DataTable().ajax.reload();
     }
-
 </script>
 @endsection

@@ -1,6 +1,6 @@
-var FrmClientPreference = function() {
+var FrmClientPreference = function () {
 
-    var FrmClientValidation = function() {
+    var FrmClientValidation = function () {
         var FrmClientPreferenceForm = $('#client');
         var error4 = $('.error-message', FrmClientPreferenceForm);
         var success4 = $('.error-message', FrmClientPreferenceForm);
@@ -14,61 +14,39 @@ var FrmClientPreference = function() {
                 company_name: {
                     required: true
                 },
-                address_one: {
-                    required: true
-                },
-                address_tow: {
-                    required: true
-                },
-                town: {
-                    required: true
-                },
-                country: {
-                    required: true
-                },
-                post_code: {
-                    required: true
-                },
-                notes: {
-                    required: true
-                },
-                mobile_number: {
-                    required: true,
-                    digits: true,
-                    minlength: 10,
-                    maxlength: 10
-                },
-                phone_number: {
-                    required: true,
-                    digits: true,
-                    minlength: 10,
-                    maxlength: 10
+            },
+	    highlight: function(element) {
+
+                // add a class "has_error" to the element 
+                $(element).addClass('has_error');
+            },
+            unhighlight: function(element) {
+
+                // remove the class "has_error" from the element 
+                $(element).removeClass('has_error');
+            },
+            errorPlacement: function (error, element) {
+                if (element.attr("name") == "company_name") {
+                    error.insertAfter("#company_name");
+                } else if (element.attr("name") == "password") {
+                    error.insertAfter(".password-error");
+                } else {
+                    error.insertAfter(element);
                 }
-
-
             },
-            errorPlacement: function(error, element) {
-                // if (element.attr("name") == "price_type") {
-                //     error.insertAfter(".price_typeCLS");
-                // } 
-                error.insertAfter(element);
-
-            },
-            submitHandler: function(form) {
+            submitHandler: function (form) {
                 form.submit();
             }
         });
     }
 
-
     return {
         //main function to initiate the module
-        init: function() {
+        init: function () {
             FrmClientValidation();
         }
     };
 }();
-
-$(document).ready(function() {
+$(document).ready(function () {
     FrmClientPreference.init();
 });

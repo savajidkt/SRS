@@ -5,7 +5,6 @@
 <script src="{{ asset('js/sweet-alerts.js') }}"></script>
 <script src="{{asset('js/srs.common.js')}}"></script>
 <script src="{{ asset('izitoast/js/iziToast.min.js') }}"></script>
-<!-- <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script> -->
 
 <script src="{{asset('vendor/js/tables/datatable/jquery.dataTables.min.js')}}"></script>
 <script src="{{asset('vendor/js/tables/datatable/datatables.bootstrap4.min.js')}}"></script>

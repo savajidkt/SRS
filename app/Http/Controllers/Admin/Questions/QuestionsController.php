@@ -38,8 +38,8 @@ class QuestionsController extends Controller
                     return $row->action;
                 })
                 ->filter(function ($query) use($request) {
-                    if (!empty($request->category_id)) {
-                        $query->where('category_id',$request->category_id);
+                    if (!empty($request->customFilter)) {
+                        $query->where('category_id',$request->customFilter);
                     }
                 }, true)
                 ->rawColumns(['action'])->make(true);

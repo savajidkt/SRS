@@ -304,7 +304,7 @@ section {
 body {
     margin: 0;
     font-family: "Open Sans", sans-serif;
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     font-weight: 400;
     line-height: 1.5;
     color: #bdbdc7;
@@ -691,8 +691,8 @@ h6,
 }
 
 hr {
-    margin-top: 1rem;
-    margin-bottom: 1rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
     border: 0;
     border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
@@ -1883,7 +1883,7 @@ pre code {
 
 .table-bordered th,
 .table-bordered td {
-    border: 1px solid #eeeeee;
+    border-left: 1px solid #eeeeee;
 }
 
 .table-bordered thead th,
@@ -4990,7 +4990,7 @@ input[type="button"].btn-block {
 
 .card-body {
     flex: 1 1 auto;
-    padding: 1.25rem;
+    padding:0rem 1.25rem;
 }
 
 .card-title {
@@ -21660,7 +21660,7 @@ button:focus {
 }
 
 .card-body {
-    padding: 1.25rem;
+    padding: 0rem 1.25rem;
 }
 
 .card-title {
@@ -27250,7 +27250,7 @@ html[dir="rtl"] [direction="rtl"][data-sidebar-style="compact"]:not( [data-layou
 }
 
 .headi-doc {
-    white-space: nowrap;
+    white-space: normal !important;
     display: flex;
     align-items: center;
     justify-content: end;
@@ -27606,6 +27606,7 @@ input#remember {
     }
     .form-checkbox-content label {
         font-size: 20px;
+        margin-bottom:15px !important;
     }
     .log-btn {
         font-size: 20px;
@@ -27723,7 +27724,7 @@ input#remember {
     }
 }
 
-@media screen and (max-width: 992px) {
+@media screen and (max-width: 1160px) {
     .login-page-content {
         display: block;
     }
@@ -27975,7 +27976,7 @@ p {
 
 @media screen and (max-width: 600px) {
     .card {
-        height: 90%;
+        height: 100%;
     }
     .row-a {
         display: flex;
@@ -28119,6 +28120,7 @@ textarea {
     color: #fff;
     margin: 0px;
     padding: 0px;
+white-space: nowrap;
 }
 
 *************************************** div#DataTables_Table_0_filter {
@@ -28169,8 +28171,192 @@ label.text-label {
     font-size: 18px;
 }
 
+.dataTables_wrapper .dataTables_paginate {
+    float: right;
+    text-align: right;
+    padding-top: 0.25em;
+}
+
+td.group-i-icons {
+    color: #454545;
+    display: flex;
+    gap:15px;
+    justify-content:center;
+    font-size: 16px;
+}
+
+.invalid-feedback {
+ white-space: nowrap;
+}
+
+.table-bordered{
+width:100% !important;
+}
+
+
+.table-client-row{
+text-align:center;
+}
+
+table.dataTable tbody td {
+    text-align: center;
+}
+
+.table-striped tr:nth-child(even){
+background-color: #f2f2f2 !important;
+}
+
+.table:not(.table-bordered) thead th {
+    text-align: center;
+}
+
+.table-exp td, .table-exp th {
+  border: 1px solid #red !important;
+  padding: 8px;
+}
+
+.table-exp tr:nth-child(even){
+background-color: #f2f2f2 !important;
+}
+
 .dataTables_filter {
     float: right;
     text-align: right;
     padding-top: 0.25em;
+}
+
+.group-i-icons a {
+    color: #454545;
+    padding: 5px;
+}
+
+table#DataTables_Table_0 {
+    width: 100% !important;
+   
+}
+
+th, td{
+border:1px solid rgba(0, 0, 0, 0.2) !important;
+}
+
+.btn-outline-danger{
+width:80px !important;
+background-color:#000066;
+color:#fff;
+border:1px solid #000066;
+}
+
+.btn-outline-danger:hover{
+background-color:#000066;
+color:#fff;
+}
+
+@media only screen and (max-width: 1351px) and (min-width: 1199px)  {
+
+	.quixnav .metismenu .has-arrow:after {
+    margin-right: -11px;
+}
+
+}
+
+
+
+.attendee-txt-align{
+text-align:left !important;
+}
+
+h4.card-title{
+font-weight:700 !important;
+}
+
+div#userTable_filter label {
+    display: flex;
+    align-items: center;
+}
+
+div.dataTables_wrapper div.dataTables_length select {
+    font-size: 18px;
+}
+
+.basic-form {
+    margin-bottom: 20px;
+}
+
+.invoice-repeater {
+    margin-bottom: 20px;
+}
+
+.card-title-ab {
+    font-size: 18px !important;
+margin-top: 12px;
+}
+
+.profile-hr{
+margin-top:0rem;
+}
+
+ul.pagination {
+    margin-bottom: 20px !important;
+}
+
+@media only screen and (max-width: 767px) {
+.col-sm-12.col-md-6 {
+    display: flex;
+}
+
+.col-sm-12.col-md-7 {
+    display: flex;
+}
+
+div.dataTables_wrapper div.dataTables_length select {
+    font-size: 15px;
+}
+
+div.dataTables_wrapper div.dataTables_info{
+text-align:left;
+white-space: normal;
+}
+
+div#DataTables_Table_0_wrapper {
+    overflow-x: scroll;
+}
+
+td.group-i-icons.btn-td a{
+padding:20px 0px;
+}
+
+
+.breadcrumb {
+    padding-left: 20px !important;
+}
+
+div#userTable_filter label {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px !important;
+}
+
+}
+
+
+@media only screen and (max-width: 500px) {
+
+div.dataTables_wrapper div.dataTables_info{
+text-align:left;
+white-space: normal;
+}
+
+.card-body-ab {
+    color: #7e838b;
+    margin-top: 12px;
+}
+
+.card-title-ab {
+    margin-top: 12px;
+}
+
+div.dataTables_wrapper div.dataTables_length select {
+    font-size: 18px;
+}
+
 }

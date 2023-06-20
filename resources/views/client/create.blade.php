@@ -2,7 +2,7 @@
 @section('page_title', 'SRS')
 @section('content')
 <style>
-    .filedrequired, .help-block-error{ color: #FF1616}
+    .filedrequired, .help-block-error{ color: #FF1616; white-space:nowrap;}
 </style>
     <!--**********************************
             Content body start

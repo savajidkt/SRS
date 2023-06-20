@@ -8,16 +8,11 @@
     <title>@yield('page_title') | SRS Reporting</title>
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('images/dashboard-fav-icon-2.png')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('vendor/css/tables/datatable/dataTables.bootstrap4.min.css')}}">
     <link href="{{ asset('css/style.css')}}" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="{{ asset('izitoast/css/iziToast.min.css') }}">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     
     <!-- FontAwesome -->
     <script src="https://kit.fontawesome.com/c836b9bad1.js" crossorigin="anonymous"></script>
-    <style>
-         .has_error{ border: 1px solid red;}
-    </style>
  
 </head>
 
@@ -125,7 +120,7 @@
     ***********************************-->
     <!-- Required vendors -->
     @include('common.scripts')
-    @include('flash')
+    
     @yield('extra-script')
 </body>
 

@@ -1,10 +1,12 @@
 <div>
-    <h4>Course Details</h4>
+    <hr>
+    <h4><strong>Course Details</strong></h4>
+    <hr>
     <section>
         <div class="row">
             <div class="col-lg-12 mb-4 form-style">
                 <div class="form-group">
-                    <label class="text-label">Name of Course<span class="filedrequired">*</span></label>
+                    <label class="text-label">Name of Course<span class="filedrequired"> *</span></label>
                     <select class="form-select form-select-sm" aria-label=".form-select-sm example" id="course_category_id" name="course_category_id" >
                         <option selected>Select Course</option>
                         <!-- <option value="1">Influencing Course</option> -->
@@ -16,16 +18,16 @@
                         </select>
                 </div>
                 <div class="form-group dat-o-c">
-                    <label class="text-label headi-doc">Date of Course</label>
+                    <label class="text-label headi-doc">Date of Course<span class="filedrequired"> *</span></label>
                     <input type="date" name="start_date" class="form-control" value="{{(isset($model->start_date))?$model->start_date:''}}" placeholder="" required>
                 </div>
                 <div class="form-group dat-o-c">
-                    <label class="text-label headi-doc">Questionnaire End Date</label>
+                    <label class="text-label headi-doc">Questionnaire End Date<span class="filedrequired"> *</span></label>
                     <input type="date" name="end_date" class="form-control" value="{{(isset($model->end_date))?$model->end_date:''}}" placeholder="" required>
                 </div>
                 
                     <div class="form-group">
-                        <label class="text-label">Course Duration</label>
+                        <label class="text-label">Course Duration<span class="filedrequired"> *</span></label>
                         <select class="form-select form-select-sm" aria-label=".form-select-sm example" id="duration" name="duration">
                             <option selected>Select Duration</option>
                             <option value="1" {{ isset($model->duration) && $model->duration == 1 ? 'selected' : '' }}>0.5 Days</option>
@@ -33,7 +35,7 @@
                             </select>
                     </div>
                     <div class="form-group">
-                        <label class="text-label">Client</label>
+                        <label class="text-label">Client<span class="filedrequired"> *</span></label>
                         <select class="form-select form-select-sm" aria-label=".form-select-sm example" id="client_id" name="client_id">
                             <option selected>Please Select</option>
                             @if(count($clientList) > 0)
@@ -44,7 +46,7 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label class="text-label">Path</label>
+                        <label class="text-label">Path<span class="filedrequired"> *</span></label>
                         <select class="form-select form-select-sm" aria-label=".form-select-sm example" id="path" name="path" >
                             <option selected>Please Select</option>
                             <option value="1" {{ isset($model->path) && $model->path == 1 ? 'selected' : '' }}>Automated email</option>
@@ -54,7 +56,8 @@
                 </div>
         </div>
     </section>
-    <h4>Trainer Details</h4>
+    <hr>
+    <h4><strong>Trainer Details</strong></h4>
     <!-- <section> -->
     <hr>
     <div data-repeater-list="invoice">

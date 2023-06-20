@@ -22,10 +22,10 @@
       </div>
   </div>
 
-  <div class="col-xl-12 col-xxl-12">
-  <table class="table">
+  <div>
+  <table class="table table-bordered table-striped">
       <thead>
-        <tr>
+        <tr class="table-client-row">
             <th scope="col">ID</th>
             <th scope="col">Course Name</th>
             <th scope="col">Course Date</th>

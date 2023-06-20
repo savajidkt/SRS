@@ -25,7 +25,7 @@ class AttendeequestionsController extends Controller
      */
     public function index(Request $request)
     {
-        // dd($request->all());
+        // dd('test');
         if ($request->ajax()) {
 
             $data = AttendeeQuestions::select('*');
@@ -38,8 +38,8 @@ class AttendeequestionsController extends Controller
                     return $row->action;
                 })
                 ->filter(function ($query) use($request) {
-                    if (!empty($request->customFilter)) {
-                        $query->where('category_id',$request->customFilter);
+                    if (!empty($request->category_id)) {
+                        $query->where('category_id',$request->category_id);
                     }
                 }, true)
                 ->rawColumns(['action'])->make(true);

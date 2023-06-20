@@ -26,12 +26,12 @@ class CreateRequest extends FormRequest
     {
         $rules = [
             'company_name'        => ['required'],
-            'address_one'        => ['required'],
-            'address_tow'        => ['required'],
-            'town'        => ['required'],
-            'country'        => ['required'],
-            'post_code'        => ['required'],
-            'notes'        => ['required'],
+            // 'address_one'        => ['required'],
+            // 'address_tow'        => ['required'],
+            // 'town'        => ['required'],
+            // 'country'        => ['required'],
+            // 'post_code'        => ['required'],
+            // 'notes'        => ['required'],
         ];
 
         return $rules;
@@ -46,12 +46,12 @@ class CreateRequest extends FormRequest
     {
         return [
             'company_name.required' => 'CompanyName is required.',
-            'address_one.required' => 'AddressOne is required.',
-            'address_tow.required' => 'AddressTow is required.',
-            'town.required' => 'Town is required.',
-            'country.required' => 'Country is required.',
-            'post_code.required' => 'PostCode is required.',
-            'notes.required' => 'Notes is required.',
+            // 'address_one.required' => 'AddressOne is required.',
+            // 'address_tow.required' => 'AddressTow is required.',
+            // 'town.required' => 'Town is required.',
+            // 'country.required' => 'Country is required.',
+            // 'post_code.required' => 'PostCode is required.',
+            // 'notes.required' => 'Notes is required.',
         ];
     }
 }
