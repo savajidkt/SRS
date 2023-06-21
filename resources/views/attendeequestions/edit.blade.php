@@ -26,7 +26,7 @@
         </div>
         <button type="submit" class="btn btn-primary">Update</button>
         {{-- <button type="button" class="btn btn-primary">Cancel</button> --}}
-        <a href="{{ route('dashboard') }}" class="btn btn-primary">Cancel</a>
+        <a href="{{ route('attendee.index') }}" class="btn btn-primary">Cancel</a>
     </form>
     <!-- row -->
 </div>

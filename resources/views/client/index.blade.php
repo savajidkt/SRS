@@ -76,27 +76,38 @@
             processing: true,
             serverSide: true,
             searching: true,
+            fnServerParams: function(data) {
+                data['order'].forEach(function(items, index) {
+                    data['order'][index]['column'] = data['columns'][items.column]['data'];
+                });
+            },
             "oLanguage": {
                 "sLengthMenu": "Show  _MENU_ Entries",
                 },
             ajax: "{{ route('client.index') }}",
+            // ajax: {
+            //         url: "{{ route('client.index') }}",
+            //         data: function(d) {
+            //             d.delete = $('#.delete_action').val();
+            //         }
+            // },
             columns: [{
-                    data: 'DT_RowIndex',
-                    name: 'id',
-                    orderable: false,
-                    searchable: true
+                    data: 'id',
+                    name: 'id'
+                    // orderable: true,
+                    // searchable: true
                 },
                 {
                     data: 'company_name',
-                    name: 'company_name',
-                    orderable: false,
-                    searchable: true
+                    name: 'company_name'
+                    // orderable: true,
+                    // searchable: true
                 },
                 {
                     data: 'post_code',
-                    name: 'post_code',
-                    orderable: false,
-                    searchable: true
+                    name: 'post_code'
+                    // orderable: true,
+                    // searchable: true
                 },                
                 {
                     data: 'action',
@@ -126,6 +137,7 @@
             }).then(function(result) {
                 if (result.value) {
                     $this.find("form").trigger('submit');
+                    
                 }
             });
         });

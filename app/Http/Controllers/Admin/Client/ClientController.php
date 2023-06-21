@@ -26,9 +26,15 @@ class ClientController extends Controller
      */
     public function index(Request $request)
     {
+        // dd('tuzjxhhxk');
+        // dd($request->order[0]['column']);
+
         if ($request->ajax()) {
 
             $data = Client::select('*');
+            if($request->order ==null){
+                $data->orderBy('company_name', 'desc');
+            }
             return DataTables::of($data)
                 ->addIndexColumn()
                 ->addColumn('company_name', function (Client $client) {

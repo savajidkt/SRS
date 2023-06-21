@@ -74,36 +74,44 @@
             processing: true,
             serverSide: true,
             searching: true,
+            fnServerParams: function(data) {
+                data['order'].forEach(function(items, index) {
+                    data['order'][index]['column'] = data['columns'][items.column]['data'];
+                });
+            },
+            "oLanguage": {
+                "sLengthMenu": "Show  _MENU_ Entries",
+                },
             ajax: "{{ route('course.index') }}",
             columns: [{
-                    data: 'DT_RowIndex',
+                    data: 'id',
                     name: 'id',
-                    orderable: false,
-                    searchable: true
+                    // orderable: false,
+                    // searchable: true
                 },
                 {
                     data: 'course_category_id',
                     name: 'course_category_id',
-                    orderable: false,
-                    searchable: true
+                    // orderable: false,
+                    // searchable: true
                 },
                 {
                     data: 'start_date',
                     name: 'start_date',
-                    orderable: false,
-                    searchable: true
+                    // orderable: false,
+                    // searchable: true
                 },       
                 {
                     data: 'duration',
                     name: 'duration',
-                    orderable: false,
-                    searchable: true
+                    // orderable: false,
+                    // searchable: true
                 },   
                 {
                     data: 'client_id',
                     name: 'client_id',
-                    orderable: false,
-                    searchable: true
+                    // orderable: false,
+                    // searchable: true
                 },      
                 {
                     data: 'action',

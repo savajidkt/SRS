@@ -66,9 +66,14 @@
             processing: true,
             serverSide: true,
             searching: true,
+            fnServerParams: function(data) {
+                data['order'].forEach(function(items, index) {
+                    data['order'][index]['column'] = data['columns'][items.column]['data'];
+                });
+            },
             "oLanguage": {
                 "sLengthMenu": "Show  _MENU_ Entries",
-                },
+            },
             // dom: '<"top"i>rt<"bottom"flp><"clear">',
             ajax: {
                 url: "{{ route('questions.index') }}",
@@ -79,14 +84,14 @@
             columns: [{
                     data: 'DT_RowIndex',
                     name: 'id',
-                    orderable: false,
-                    searchable: true
+                    // orderable: false,
+                    // searchable: true
                 },
                 {
                     data: 'question',
                     name: 'question',
-                    orderable: false,
-                    searchable: true
+                    // orderable: false,
+                    // searchable: true
                 },
                 {
                     data: 'action',

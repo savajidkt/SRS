@@ -72,6 +72,11 @@
                 processing: true,
                 serverSide: true,
                 searching: true,
+                fnServerParams: function(data) {
+                    data['order'].forEach(function(items, index) {
+                        data['order'][index]['column'] = data['columns'][items.column]['data'];
+                    });
+                },
                 "oLanguage": {
                 "sLengthMenu": "Show  _MENU_ Entries",
                 },
@@ -82,16 +87,16 @@
                     }
                 },
                 columns: [{
-                        data: 'DT_RowIndex',
+                        data: 'id',
                         name: 'id',
-                        orderable: false,
-                        searchable: true
+                        // orderable: false,
+                        // searchable: true
                     },
                     {
                         data: 'question',
                         name: 'question',
-                        orderable: false,
-                        searchable: true
+                        // orderable: false,
+                        // searchable: true
                     },
                     {
                         data: 'action',
