@@ -26,7 +26,7 @@
                     <div class="input-error">
                         <input class="form-control" id="address_one" type="text" name="address_one"
                             placeholder="Address.." value="{{(isset($model->address_one))?$model->address_one:''}}" aria-describedby="login-address_one"
-                            autofocus="" tabindex="1"  />
+                            autofocus="" tabindex="2"  />
                         @error('address_one')
                             <span class="invalid-feedback" style="display: block;" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -39,7 +39,7 @@
                     <div class="input-error">
                         <input class="form-control" id="address_tow" type="text" name="address_tow"
                             placeholder="Address.." value="{{(isset($model->address_tow))?$model->company_name:''}}" aria-describedby="login-address_tow"
-                            autofocus="" tabindex="1"  />
+                            autofocus="" tabindex="3"  />
                         @error('address_tow')
                             <span class="invalid-feedback" style="display: block;" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -51,7 +51,7 @@
                     <label class="text-label">Town</label>
                     <div class="input-error">
                         <input class="form-control" id="town" type="text" name="town" placeholder="Town"
-                            value="{{(isset($model->town))?$model->town:''}}" aria-describedby="login-town" autofocus="" tabindex="1"
+                            value="{{(isset($model->town))?$model->town:''}}" aria-describedby="login-town" autofocus="" tabindex="4"
                              />
                         @error('town')
                             <span class="invalid-feedback" style="display: block;" role="alert">
@@ -64,7 +64,7 @@
                     <label class="text-label">Country</label>
                     <div class="input-error">
                         <input class="form-control" id="country" type="text" name="country" placeholder="Country"
-                            value="{{(isset($model->country))?$model->country:''}}" aria-describedby="login-country" autofocus="" tabindex="1"
+                            value="{{(isset($model->country))?$model->country:''}}" aria-describedby="login-country" autofocus="" tabindex="5"
                              />
                         @error('country')
                             <span class="invalid-feedback" style="display: block;" role="alert">
@@ -77,7 +77,7 @@
                     <label class="text-label">Post Code</label>
                     <div class="input-error">
                         <input class="form-control" id="post_code" type="text" name="post_code" placeholder="Post Code"
-                            value="{{(isset($model->post_code))?$model->post_code:''}}" aria-describedby="login-post_code" autofocus="" tabindex="1"
+                            value="{{(isset($model->post_code))?$model->post_code:''}}" aria-describedby="login-post_code" autofocus="" tabindex="6"
                              />
                         @error('post_code')
                             <span class="invalid-feedback" style="display: block;" role="alert">
@@ -92,13 +92,13 @@
                         value="{{(isset($model->notes))?$model->notes:''}}" aria-describedby="login-notes" autofocus="" tabindex="1"
                          /> -->
                         <div class="input-error">
-                            <textarea class="form-control" id="notes" type="text" name="notes" rows="3" cols="50" placeholder="Describe yourself here..." >{{(isset($model->notes))?$model->notes:''}} </textarea>
+                            <textarea class="form-control" id="notes" type="text" name="notes" rows="3" cols="50" tabindex="7" placeholder="Describe yourself here..." >{{(isset($model->notes))?$model->notes:''}} </textarea>
 
-                            @error('notes')
+                            <!-- @error('notes')
                                 <span class="invalid-feedback" style="display: block;" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
-                            @enderror
+                            @enderror -->
                         </div>
                 </div>
             </div>
@@ -119,14 +119,14 @@
                         <label class="itemcost">First Name</label>
                         <div class="input-error">
                             <input type="text" class="form-control" name="first_name"
-                            value="{{$contact->first_name}}" />
+                            value="{{$contact->first_name}}" tabindex="8" />
                         </div>
                     </div>
                     <div class="form-group train-deet">
                         <label class="itemcost">Last Name</label>
                         <div class="input-error">
                             <input type="text" class="form-control" name="last_name"
-                            value="{{$contact->last_name}}" />
+                            value="{{$contact->last_name}}" tabindex="9" />
                         </div>
                     </div>
 
@@ -134,7 +134,7 @@
                         <label class="itemcost">Phone Number</label>
                         <div class="input-error">
                             <input type="number" class="form-control" name="phone_number"
-                            value="{{$contact->phone_number}}" />
+                            value="{{$contact->phone_number}}" tabindex="10"/>
                         </div>
                     </div>
 
@@ -143,20 +143,20 @@
                         <label class="itemcost">Mobile Number</label>
                         <div class="input-error">
                             <input type="number" class="form-control" name="mobile_number"
-                            value="{{$contact->mobile_number}}" />
+                            value="{{$contact->mobile_number}}" tabindex="11"/>
                         </div>
                     </div>
                     <div class="form-group train-deet">
                         <label class="itemcost">Email Address</label>
                         <div class="input-error">
-                            <input type="email" class="form-control" name="email" value="{{$contact->email}}" />
+                            <input type="email" class="form-control" name="email" value="{{$contact->email}}" tabindex="12"/>
                         </div>
                     </div>
 
                     <div class="form-group train-deet">
                         <label class="itemcost">Job Title </label>
                         <div class="input-error">
-                            <input type="text" class="form-control" name="job_title" value="{{$contact->job_title}}" />
+                            <input type="text" class="form-control" name="job_title" value="{{$contact->job_title}}" tabindex="13"/>
                         </div>                       
                     </div>
                 </div>
@@ -182,13 +182,13 @@
                     <div class="form-group train-deet">
                         <label class="text-label">First Name</label>
                         <div class="input-error">
-                            <input type="text" class="form-control" name="first_name" value="" />
+                            <input type="text" class="form-control" name="first_name" value="" tabindex="8"/>
                         </div>
                     </div>
                     <div class="form-group train-deet">
                         <label class="text-label">Last Name</label>
                         <div class="input-error">
-                            <input type="text" class="form-control" name="last_name" value="" />
+                            <input type="text" class="form-control" name="last_name" value="" tabindex="9" />
                         </div>
                     </div>
 
@@ -196,7 +196,7 @@
                         <label class="text-label">Phone Number</label>
                         <div class="input-error">
                             <input type="number" class="form-control" name="phone_number"
-                            value="" />
+                            value="" tabindex="10" />
                         </div>
                     </div>
 
@@ -205,20 +205,20 @@
                         <label class="text-label">Mobile Number</label>
                         <div class="input-error">
                             <input type="number" class="form-control" name="mobile_number"
-                            value="" />
+                            value="" tabindex="11" />
                         </div>
                     </div>
                     <div class="form-group train-deet">
                         <label class="text-label">Email Address</label>
                         <div class="input-error">
-                            <input type="email" class="form-control" name="email" value="" />
+                            <input type="email" class="form-control" name="email" value="" tabindex="12" />
                         </div>
                     </div>
 
                     <div class="form-group train-deet">
                         <label class="text-label">Job Title </label>
                         <div class="input-error">
-                            <input type="text" class="form-control" name="job_title" value="" /> 
+                            <input type="text" class="form-control" name="job_title" value="" tabindex="13"/> 
                         </div>                      
                     </div>
                 </div>

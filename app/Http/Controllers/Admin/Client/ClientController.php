@@ -31,9 +31,10 @@ class ClientController extends Controller
 
         if ($request->ajax()) {
 
+            //dd($request->order[0]['column']);
             $data = Client::select('*');
             if($request->order ==null){
-                $data->orderBy('company_name', 'desc');
+                $data->orderBy($request->order[0]['column'], $request->order[0]['dir']);
             }
             return DataTables::of($data)
                 ->addIndexColumn()
@@ -76,7 +77,7 @@ class ClientController extends Controller
     {
         // dd($request);
         $this->clientRepository->create($request->all());
-        return redirect()->route('client.index')->with('success', "Client created successfully!");
+        return redirect()->route('client.create')->with('success', "Client created successfully!");
     }
 
     /**
@@ -117,7 +118,7 @@ class ClientController extends Controller
        
         $this->clientRepository->update($request->all(), $client);
 
-        return redirect()->route('client.index')->with('success', "Client updated successfully!");
+        return redirect()->route('client.create')->with('success', "Client updated successfully!");
     }
 
     /**
