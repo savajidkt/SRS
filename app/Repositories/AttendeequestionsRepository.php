@@ -18,18 +18,10 @@ class AttendeequestionsRepository
      */
     public function update(array $data, AttendeeQuestions $attendee): AttendeeQuestions
     {
-        // dd($data);
-        // $questionData = [
-        //     'question'    => $data['question'],
-        // ];
-
-        // if ($attendee->update($questionData)) {
-        //     $attendee->options()->delete();
-
-        //     return $attendee;
-        // }
+       
         $data = [
             'question'    => $data['question'],
+            'category_id'    => $data['category_id'],
         ];
 
         if( $attendee->update($data) )

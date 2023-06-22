@@ -72,6 +72,7 @@
                 processing: true,
                 serverSide: true,
                 searching: true,
+                lengthMenu: [50, 100, 150, 200],
                 fnServerParams: function(data) {
                     data['order'].forEach(function(items, index) {
                         data['order'][index]['column'] = data['columns'][items.column]['data'];

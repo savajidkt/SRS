@@ -20,6 +20,23 @@
     <form action="{{route('attendee.update',$model)}}" method="POST">
         @csrf
         @method('PUT')
+        
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="text-label">Name Category<span class="filedrequired"> *</span></label>
+                <div class="input-error">
+                    <select class="form-select form-select-sm" aria-label=".form-select-sm example" id="category_id" name="category_id" >
+                        <option value="1" {{ isset($model->category_id) && $model->category_id == 1 ? 'selected' : '' }}>Emotive</option>
+                        <option value="2" {{ isset($model->category_id) && $model->category_id == 2 ? 'selected' : '' }}>Assertive</option>
+                        <option value="3" {{ isset($model->category_id) && $model->category_id == 3 ? 'selected' : '' }}>Persuasive</option>
+                        <option value="4" {{ isset($model->category_id) && $model->category_id == 4 ? 'selected' : '' }}>Listening</option>
+                        <option value="5" {{ isset($model->category_id) && $model->category_id == 5 ? 'selected' : '' }}>Trusting</option>
+                        <option value="6" {{ isset($model->category_id) && $model->category_id == 6 ? 'selected' : '' }}>Inspiring</option>
+                        <option value="7" {{ isset($model->category_id) && $model->category_id == 7 ? 'selected' : '' }}>Knowing Self</option>
+                    </select>
+                </div>
+            </div>
+        </div>
         <div class="mb-3">
             <label for="exampleFormControlTextarea1" class="form-label attendee-question">Question</label>
             <textarea class="form-control" name="question" id="exampleFormControlTextarea1" rows="3" placeholder="I am able to tell others how I am feeling about a situation" required>{{(isset($model->question))?$model->question:''}}</textarea>

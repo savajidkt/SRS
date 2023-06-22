@@ -106,7 +106,7 @@ class AttendeequestionsController extends Controller
      */
     public function update(EditRequest $request, AttendeeQuestions $attendee)
     {
-    //    dd($request);
+    //    dd($request->all());
         $this->attendeequestionsRepository->update($request->all(), $attendee);
 
         return redirect()->route('attendee.index')->with('success', "Attendee updated successfully!");

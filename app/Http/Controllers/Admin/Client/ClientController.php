@@ -7,6 +7,7 @@ use App\Http\Requests\Client\CreateRequest;
 use App\Http\Requests\Client\EditRequest;
 use Illuminate\Http\Request;
 use App\Models\Client;
+use App\Models\Country;
 use App\Repositories\ClientRepository;
 use Yajra\DataTables\Facades\DataTables;
 
@@ -64,7 +65,8 @@ class ClientController extends Controller
     public function create()
     {
         $rawData = new Client;
-        return view('client.create',['model' => $rawData]);
+        $countries = Country::all();
+        return view('client.create',['model' => $rawData,'countries' => $countries,'action'=>'add']);
     }
 
     /**
@@ -102,7 +104,8 @@ class ClientController extends Controller
     public function edit(Client $client)
     {
         $client->loadMissing('contacts');
-        return view('client.edit', ['model' => $client]);
+        $countries = Country::all();
+        return view('client.edit', ['model' => $client,'countries' => $countries,'action'=>'edit']);
     }
 
     /**
@@ -118,7 +121,7 @@ class ClientController extends Controller
        
         $this->clientRepository->update($request->all(), $client);
 
-        return redirect()->route('client.create')->with('success', "Client updated successfully!");
+        return redirect()->back()->with('success', "Client updated successfully!");
     }
 
     /**
@@ -130,7 +133,6 @@ class ClientController extends Controller
     public function destroy(Client $client)
     {
         $this->clientRepository->delete($client);
-
-        return redirect()->route('client.index')->with('success', "Client deleted successfully!");
+        return response()->json(['status' => true,'message' => '']);
     }
 }

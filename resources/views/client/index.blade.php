@@ -76,7 +76,8 @@
             processing: true,
             serverSide: true,
             searching: true,
-            stateSave: true,
+            // stateSave: true,
+            // lengthMenu: [50, 100, 150, 200],
             fnServerParams: function(data) {
                 data['order'].forEach(function(items, index) {
                     data['order'][index]['column'] = data['columns'][items.column]['data'];
@@ -149,7 +150,7 @@
                         url    : url,
                         type   : "DELETE",
                         success: function(data) {
-                            table.DataTable().ajax.reload();
+                            table.ajax.reload(null,false);
                         }
                     })
                 }

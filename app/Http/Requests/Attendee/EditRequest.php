@@ -26,6 +26,7 @@ class EditRequest extends FormRequest
     {
         $rules = [
             'question'        => ['required'],
+            'category_id'        => ['required'],
         ];
 
         return $rules;
@@ -40,6 +41,7 @@ class EditRequest extends FormRequest
     {
         return [
             'question.required' => 'Question is required.',
+            'category_id.required' => 'CategoryId  is required.',
         ];
     }
 }

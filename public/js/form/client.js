@@ -14,6 +14,18 @@ var FrmClientPreference = function() {
                 company_name: {
                     required: true
                 },
+                address_one: {
+                    required: true
+                },
+                town: {
+                    required: true
+                },
+                country: {
+                    required: true
+                },
+                post_code: {
+                    required: true
+                },
             },
             highlight: function(element) {
 
