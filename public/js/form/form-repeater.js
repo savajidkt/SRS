@@ -11,6 +11,10 @@
 $(function() {
     'use strict';
 
+    if( myCount == 1 ){
+        $('.text-nowrap').hide();
+    } 
+    
     // form repeater jquery
     $('.invoice-repeater, .repeater-default, .course-repeater').repeater({
         show: function() {
@@ -19,8 +23,17 @@ $(function() {
             // if (feather) {
             //   feather.replace({ width: 14, height: 14 });
             // }
+            myCount = myCount + 1 ;
+            if( myCount > 1 ){
+                $('.text-nowrap').show();
+                            } 
         },
         hide: function(deleteElement) {
+            myCount = myCount - 1 ;
+            
+            if( myCount == 1 ){
+                $('.text-nowrap').hide();
+            } 
             //if (confirm('Are you sure you want to delete this element?')) {
             $(this).slideUp(deleteElement);
             //}

@@ -27637,10 +27637,55 @@ input#remember {
     .quixnav .metismenu ul a {
         font-size: 19.2px;
     }
+.em-pass input[type="email"] {
+font-size:18px !important;
+}
     input[type="date"] {
         color: #828690;
         font-size: 22.4px;
     }
+}
+
+@media screen and (max-width: 1920px){
+input[type="date"] {
+    color: #828690;
+    font-size: 19.2px !important;
+}
+
+input::placeholder{
+font-size:19.2px;
+}
+
+.form-group input {
+    font-size: 19.2px;
+}
+
+.form-group select {
+font-size: 19.2px !important;
+}
+
+.copyright a{
+font-size:19.2px !important;
+}
+
+table#DataTables_Table_0 {
+    overflow-x: scroll !important;
+}
+
+td.group-i-icons.btn-td {
+    font-size: 20px;
+}
+
+.fa-edit:before, .fa-pen-to-square:before {
+    font-size: 20px;
+    content: "\f044";
+}
+
+.fa-user:before {
+    content: "\f007";
+    font-size: 20px;
+}
+
 }
 
 @media screen and (max-width: 1440px) {
@@ -28005,6 +28050,13 @@ p {
         color: #ffffff;
         font-size: 22.4px;
     }
+input{
+font-size:1.1rem;
+}
+
+.form-group select {
+text-indent: 7px !important;
+}
 }
 
 @media only screen and (max-width: 1440px) and (min-width: 500px) {
@@ -28123,7 +28175,8 @@ textarea {
 white-space: nowrap;
 }
 
-*************************************** div#DataTables_Table_0_filter {
+*************************************** 
+div#DataTables_Table_0_filter {
     display: flex;
     justify-content: end;
 }
@@ -28150,6 +28203,10 @@ label.text-label {
     align-items: center;
     justify-content: start;
     margin: 0;
+}
+
+.input-error {
+    width: 100% !important;
 }
 
 @media screen and (max-width: 1440px) {
@@ -28243,18 +28300,20 @@ border:1px solid rgba(0, 0, 0, 0.2) !important;
 width:80px !important;
 background-color:#000066;
 color:#fff;
+font-size:1.2rem;
 border:1px solid #000066;
 }
 
 .btn-outline-danger:hover{
-background-color:#000066;
+background-color:#000066 !important;
+border:1px solid #000066 !important;
 color:#fff;
 }
 
 @media only screen and (max-width: 1351px) and (min-width: 1199px)  {
 
 	.quixnav .metismenu .has-arrow:after {
-    margin-right: -11px;
+    margin-right: -16px;
 }
 
 }
@@ -28288,11 +28347,11 @@ div.dataTables_wrapper div.dataTables_length select {
 
 .card-title-ab {
     font-size: 18px !important;
-margin-top: 12px;
+    margin-top: 12px;
 }
 
 .profile-hr{
-margin-top:0rem;
+margin-top:1rem;
 }
 
 ul.pagination {
@@ -28339,7 +28398,7 @@ div#userTable_filter label {
 }
 
 
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 525px) {
 
 div.dataTables_wrapper div.dataTables_info{
 text-align:left;
@@ -28356,7 +28415,153 @@ white-space: normal;
 }
 
 div.dataTables_wrapper div.dataTables_length select {
-    font-size: 18px;
+    font-size: 14px;
+}
+
+.input-error {
+    width: 100% !important;
+}
+
+.btn.btn-primary {
+    width: fit-content;
+    font-size: 12px !important;
+}
+
+.btn-outline-danger{
+	width: fit-content;
+    font-size: 12px !important;
+}
+
+input[type="date"] {
+    color: #828690;
+    font-size: 14px !important;
+}
+.form-group select {
+font-size: 14px !important;
+}
+
+.header-left {
+margin-left:10px;
+}
+
+.table thead th {
+    font-size: 16px;
+    white-space: nowrap !important;
 }
 
 }
+
+@media only screen and (max-width: 396px) {
+
+.btn.btn-primary {
+    width: fit-content;
+    font-size: 9px !important;
+}
+
+.btn-outline-danger{
+	width: fit-content;
+    font-size: 9px !important;
+}
+
+}
+
+@media screen and (max-width: 1440px){
+.btn-outline-danger{
+    font-size: 16px;
+}
+
+input[type="date"] {
+    color: #828690;
+    font-size: 14px !important;
+}
+.form-group select {
+font-size: 14px !important;
+padding: 6px 12px;
+}
+
+.send-report-btn-a {
+    font-size: 12px;
+}
+
+.card-header-a {
+    font-size: 16px;
+}
+
+.card-title-ab {
+    font-size: 14px !important;
+    margin-top: 12px;
+}
+
+.footer .copyright {
+    font-size: 14px;
+}
+ 
+.copyright a {
+    font-size: 14px !important;
+}
+
+input{
+font-size:14px !important;
+}
+
+}
+
+
+@media screen and (max-width: 767px){
+
+
+[data-sidebar-style="full"][data-layout="vertical"] .menu-toggle .quixnav .slimScrollDiv, [data-sidebar-style="full"][data-layout="vertical"] .menu-toggle .quixnav .quixnav-scroll {
+    position: fixed;
+}
+
+h4, .h4 {
+    font-size: 16px;
+}
+
+h4.card-title {
+font-size: 16px;
+}
+
+.page-titles .breadcrumb{
+font-size:14px;
+}
+}
+
+.card-body {
+    padding: 0rem 1.25rem;
+    margin-bottom: 20px;
+}
+
+
+table.dataTable thead .sorting:before, table.dataTable thead .sorting:after, table.dataTable thead .sorting_asc:before, table.dataTable thead .sorting_asc:after, table.dataTable thead .sorting_desc:before, table.dataTable thead .sorting_desc:after, table.dataTable thead .sorting_asc_disabled:before, table.dataTable thead .sorting_asc_disabled:after, table.dataTable thead .sorting_desc_disabled:before, table.dataTable thead .sorting_desc_disabled:after {
+    position: absolute;
+    bottom: 0.9em;
+    display: block;
+    opacity: 1;
+    color: #454545 !important;
+}
+
+
+@media screen and (max-width: 992px){
+.table thead th {
+    font-size: 16px;
+    white-space: nowrap;
+}
+
+}
+
+.add_course_step_2_col{
+display:grid;
+grid-template-columns: 50%;
+}
+
+@media screen and (max-width: 1290px) {
+
+.add_course_step_2_col{
+    display: grid;
+    grid-template-columns: 100%;
+    gap: 15px;
+}
+
+}
+

@@ -108,7 +108,7 @@ class QuestionsController extends Controller
     {
         $this->questionsRepository->update($request->all(), $question);
 
-        return redirect()->route('questions.index')->with('success', "Questions updated successfully!");
+        return redirect()->back()->with('success', "Questions updated successfully!");
     }
 
 }

@@ -1,14 +1,3 @@
-@php
-$mycountphp = 1;
-    if(count($model->contacts) > 0){
-        $mycountphp = count($model->contacts);
-    }   
-    
-@endphp
-
-<script>
-    var myCount = {{ $mycountphp }};   
-</script>
 <div>
     <hr>
     <h4 class="card-title">Company Details</h4>
@@ -22,7 +11,7 @@ $mycountphp = 1;
                     <div class="input-error">
                         <input class="form-control " id="company_name" type="text" name="company_name"
                             placeholder="Company Name" value="{{(isset($model->company_name))?$model->company_name:''}}" aria-describedby="login-company_name"
-                            autofocus=""  />
+                            autofocus="" tabindex="1"  />
                       
                         @error('company_name')
                             <span class="invalid-feedback" style="display: block;" role="alert">
@@ -33,11 +22,11 @@ $mycountphp = 1;
                     
                 </div>
                 <div class="form-group train-deet">
-                    <label class="text-label">Address Line 1<span class="filedrequired"> *</span></label>
+                    <label class="text-label">Address Line 1</label>
                     <div class="input-error">
                         <input class="form-control" id="address_one" type="text" name="address_one"
                             placeholder="Address" value="{{(isset($model->address_one))?$model->address_one:''}}" aria-describedby="login-address_one"
-                            autofocus=""  />
+                            autofocus="" tabindex="1"  />
                         @error('address_one')
                             <span class="invalid-feedback" style="display: block;" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -50,7 +39,7 @@ $mycountphp = 1;
                     <div class="input-error">
                         <input class="form-control" id="address_tow" type="text" name="address_tow"
                             placeholder="Address" value="{{(isset($model->address_tow))?$model->company_name:''}}" aria-describedby="login-address_tow"
-                            autofocus=""  />
+                            autofocus="" tabindex="1"  />
                         @error('address_tow')
                             <span class="invalid-feedback" style="display: block;" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -59,10 +48,11 @@ $mycountphp = 1;
                     </div>
                 </div>
                 <div class="form-group train-deet">
-                    <label class="text-label">Town<span class="filedrequired"> *</span></label>
+                    <label class="text-label">Town</label>
                     <div class="input-error">
                         <input class="form-control" id="town" type="text" name="town" placeholder="Town"
-                            value="{{(isset($model->town))?$model->town:''}}" aria-describedby="login-town" autofocus=""                              />
+                            value="{{(isset($model->town))?$model->town:''}}" aria-describedby="login-town" autofocus="" tabindex="1"
+                             />
                         @error('town')
                             <span class="invalid-feedback" style="display: block;" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -71,22 +61,11 @@ $mycountphp = 1;
                     </div>
                 </div>
                 <div class="form-group train-deet">
-                    <label class="text-label">Country<span class="filedrequired"> *</span></label>
+                    <label class="text-label">Country</label>
                     <div class="input-error">
-    
-                             <select class="form-select form-select-sm" aria-label=".form-select-sm example" id="country" name="country" >
-                                <option>Select Country</option>
-                                @if(count($countries) > 0)
-                                    @foreach ($countries as $key=> $country)
-                                    @if ($action =='add')
-                                    <option value="{{ $country->id }}" {{ ($country->id == '230') ? 'selected' : '' }} >{{ $country->name}}</option>
-                                    @else
-                                    <option value="{{ $country->id }}" {{ ($country->id == $model->country) ? 'selected' : '' }} >{{ $country->name}}</option>
-                                    @endif
-                                        
-                                    @endforeach
-                                @endif
-                            </select>
+                        <input class="form-control" id="country" type="text" name="country" placeholder="Country"
+                            value="{{(isset($model->country))?$model->country:''}}" aria-describedby="login-country" autofocus="" tabindex="1"
+                             />
                         @error('country')
                             <span class="invalid-feedback" style="display: block;" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -95,30 +74,31 @@ $mycountphp = 1;
                     </div>
                 </div>
                 <div class="form-group train-deet">
-                    <label class="text-label">Post Code<span class="filedrequired"> *</span></label>
+                    <label class="text-label">Post Code</label>
                     <div class="input-error">
                         <input class="form-control" id="post_code" type="text" name="post_code" placeholder="Post Code"
-                            value="{{(isset($model->post_code))?$model->post_code:''}}" aria-describedby="login-post_code" autofocus=""                              />
+                            value="{{(isset($model->post_code))?$model->post_code:''}}" aria-describedby="login-post_code" autofocus="" tabindex="1"
+                             />
                         @error('post_code')
                             <span class="invalid-feedback" style="display: block;" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
                         @enderror
-                        
                     </div>
                 </div>
                 <div class="form-group train-deet">
                     <label class="text-label">Notes</label>
                     <!-- <input class="form-control" id="notes" type="text" name="notes" placeholder="Notes"
-                        value="{{(isset($model->notes))?$model->notes:''}}" aria-describedby="login-notes" autofocus=""                          /> -->
+                        value="{{(isset($model->notes))?$model->notes:''}}" aria-describedby="login-notes" autofocus="" tabindex="1"
+                         /> -->
                         <div class="input-error">
                             <textarea class="form-control" id="notes" type="text" name="notes" rows="3" cols="50" placeholder="Describe yourself here..." >{{(isset($model->notes))?$model->notes:''}} </textarea>
 
-                            <!-- @error('notes')
+                            @error('notes')
                                 <span class="invalid-feedback" style="display: block;" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
-                            @enderror -->
+                            @enderror
                         </div>
                 </div>
             </div>
@@ -136,14 +116,14 @@ $mycountphp = 1;
 
                 <div class="col-lg-12 mb-4 form-style">
                     <div class="form-group train-deet">
-                        <label class="itemcost">First Name<span class="filedrequired"> *</span></label>
+                        <label class="itemcost">First Name</label>
                         <div class="input-error">
                             <input type="text" class="form-control" name="first_name"
                             value="{{$contact->first_name}}" />
                         </div>
                     </div>
                     <div class="form-group train-deet">
-                        <label class="itemcost">Last Name<span class="filedrequired"> *</span></label>
+                        <label class="itemcost">Last Name</label>
                         <div class="input-error">
                             <input type="text" class="form-control" name="last_name"
                             value="{{$contact->last_name}}" />
@@ -151,23 +131,23 @@ $mycountphp = 1;
                     </div>
 
                     <div class="form-group train-deet">
-                        <label class="itemcost">Phone Number<span class="filedrequired"> *</span></label>
+                        <label class="itemcost">Phone Number</label>
                         <div class="input-error">
-                            <input type="text" class="form-control" name="phone_number"
-                            value="{{$contact->phone_number}}" onkeyup="this.value = this.value.replace(/^\.|[^\d\.]/g, '')" />
+                            <input type="number" onwheel="return false;" class="form-control" name="phone_number"
+                            value="{{$contact->phone_number}}" />
                         </div>
                     </div>
 
 
                     <div class="form-group train-deet">
-                        <label class="itemcost">Mobile Number<span class="filedrequired"> *</span></label>
+                        <label class="itemcost">Mobile Number</label>
                         <div class="input-error">
-                            <input type="text" class="form-control" name="mobile_number"
-                            value="{{$contact->mobile_number}}" onkeyup="this.value = this.value.replace(/^\.|[^\d\.]/g, '')" />
+                            <input type="number" onwheel="return false;" class="form-control" name="mobile_number"
+                            value="{{$contact->mobile_number}}" />
                         </div>
                     </div>
                     <div class="form-group train-deet">
-                        <label class="itemcost">Email Address<span class="filedrequired"> *</span></label>
+                        <label class="itemcost">Email Address</label>
                         <div class="input-error">
                             <input type="email" class="form-control" name="email" value="{{$contact->email}}" />
                         </div>
@@ -200,38 +180,38 @@ $mycountphp = 1;
 
                 <div class="col-lg-12 mb-4 form-style">
                     <div class="form-group train-deet">
-                        <label class="text-label">First Name<span class="filedrequired"> *</span></label>
+                        <label class="text-label">First Name</label>
                         <div class="input-error">
-                            <input type="text" class="form-control" name="first_name" value="" >
+                            <input type="text" class="form-control" name="first_name" value="" />
                         </div>
                     </div>
                     <div class="form-group train-deet">
-                        <label class="text-label">Last Name<span class="filedrequired"> *</span></label>
+                        <label class="text-label">Last Name</label>
                         <div class="input-error">
                             <input type="text" class="form-control" name="last_name" value="" />
                         </div>
                     </div>
 
                     <div class="form-group train-deet">
-                        <label class="text-label">Phone Number<span class="filedrequired"> *</span></label>
+                        <label class="text-label">Phone Number</label>
                         <div class="input-error">
-                            <input type="text" class="form-control" name="phone_number"
-                            value="" onkeyup="this.value = this.value.replace(/^\.|[^\d\.]/g, '')" />
+                            <input type="number" onwheel="return false;" class="form-control" name="phone_number"
+                            value="" />
                         </div>
                     </div>
 
 
                     <div class="form-group train-deet">
-                        <label class="text-label">Mobile Number<span class="filedrequired"> *</span></label>
+                        <label class="text-label">Mobile Number</label>
                         <div class="input-error">
-                            <input type="text" class="form-control" name="mobile_number"
-                            value="" onkeyup="this.value = this.value.replace(/^\.|[^\d\.]/g, '')"  />
+                            <input type="number" onwheel="return false;" class="form-control" name="mobile_number"
+                            value="" />
                         </div>
                     </div>
                     <div class="form-group train-deet">
-                        <label class="text-label">Email Address<span class="filedrequired"> *</span></label>
+                        <label class="text-label">Email Address</label>
                         <div class="input-error">
-                            <input type="email" class="form-control" name="email" value=""  />
+                            <input type="email" class="form-control" name="email" value="" />
                         </div>
                     </div>
 

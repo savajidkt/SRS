@@ -5,9 +5,7 @@
         title: '{{ $message }}',
         position: "topRight",
    });
-    setTimeout(function() {
-        location.reload(true);
-    }, 2500);
+   
    
 </script>
 
@@ -20,9 +18,7 @@
         title: '{{ $message }}',
         position: "topRight",
     });   
-    setTimeout(function() {
-        location.reload(true);
-    }, 2500);
+    
 </script>
 
 @endif
@@ -35,8 +31,6 @@
         position: "topRight",
     });
     @endforeach  
-    setTimeout(function() {
-        location.reload(true);
-    }, 2500);      
+      
 </script>
 @endif

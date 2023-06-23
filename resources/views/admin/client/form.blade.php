@@ -18,18 +18,18 @@
                 <div class="form-group train-deet">
                     <label class="text-label">Address Line 1</label>
                     <input class="form-control" id="address_one" type="text" name="address_one"
-                        placeholder="Address.." value="{{(isset($model->address_one))?$model->address_one:''}}" aria-describedby="login-address_one"
+                        placeholder="Address" value="{{(isset($model->address_one))?$model->address_one:''}}" aria-describedby="login-address_one"
                         autofocus="" tabindex="1"  />
                     @error('address_one')
                         <span class="invalid-feedback" style="display: block;" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
-                    @enderror
+                    @enderror 
                 </div>
                 <div class="form-group train-deet">
                     <label class="text-label">Address Line 2</label>
                     <input class="form-control" id="address_tow" type="text" name="address_tow"
-                        placeholder="Address.." value="{{(isset($model->address_tow))?$model->company_name:''}}" aria-describedby="login-address_tow"
+                        placeholder="Address" value="{{(isset($model->address_tow))?$model->company_name:''}}" aria-describedby="login-address_tow"
                         autofocus="" tabindex="1"  />
                     @error('address_tow')
                         <span class="invalid-feedback" style="display: block;" role="alert">
