@@ -82,19 +82,19 @@ class CourseRepository
     /**
      * Method delete
      *
-     * @param Client $client [explicite description]
+     * @param Course $course [explicite description]
      *
      * @return bool
      * @throws Exception
      */
-    // public function delete(Client $client): bool
-    // {
-    //     if ($client->delete()) {
-    //         return true;
-    //     }
+    public function delete(Course $course): bool
+    {
+        if ($course->delete()) {
+            return true;
+        }
 
-    //     throw new Exception('ClientClient delete failed.');
-    // }
+        throw new Exception('Course delete failed.');
+    }
 
 
 }

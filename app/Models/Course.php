@@ -50,7 +50,7 @@ class Course extends Model
     {
         $editAction = '<a href="'. route('course.edit', $this->id).'"><i class="fa-regular fa-pen-to-square edit-ico" title="Edit"></i></a> ';
         $viewAction = '<a href="'. route('course.show', $this->id).'"><i class="fa-solid fa-eye" title="View"></i></a> ';
-        $deleteAction = '<a href="'.route('course.destroy', $this).'" class="delete_action" data-method="delete"><i class="fa-sharp fa-solid fa-xmark" title="Remove"></i></i></a>';
+        $deleteAction = '<a href="'.route('course.destroy', $this).'" class="delete_action" data-id="'. $this->id.'" data-method="delete"><i class="fa-sharp fa-solid fa-xmark" title="Remove"></i></i></a>';
         $editAttendees = '<a href="'. route('course.show', $this->id).'"><i class="fa-regular fa-user edit-ico" title="Edit Attendees"></i></i></a> ';
         return $editAction.''.$viewAction.''.$deleteAction.''.$editAttendees;
     }

@@ -136,11 +136,10 @@ class CourseController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    // public function destroy(Client $client)
-    // {
-    //     $this->clientRepository->delete($client);
-
-    //     return redirect()->route('client.index')->with('success', "Client deleted successfully!");
-    // }
+    public function destroy(Course $course)
+    {
+        $this->courseRepository->delete($course);
+        return response()->json(['status' => true,'message' => '']);
+    }
 }
 

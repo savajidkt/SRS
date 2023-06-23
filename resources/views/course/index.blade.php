@@ -128,6 +128,14 @@
         }).on('click', '.delete_action', function(e) {          
             e.preventDefault();
             var $this = $(this);
+            console.log($this.attr('data-id'));
+            var url = '{{ route("course.destroy", ":id") }}';
+                url = url.replace(':id', $this.attr('data-id'));
+                $.ajaxSetup({
+                headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+                });
             Swal.fire({
                 title: 'Are you sure?',
                 text: "You won't be able to revert this!",
@@ -141,7 +149,13 @@
                 buttonsStyling: false
             }).then(function(result) {
                 if (result.value) {
-                    $this.find("form").trigger('submit');
+                    $.ajax({
+                        url    : url,
+                        type   : "DELETE",
+                        success: function(data) {
+                            table.ajax.reload(null,false);
+                        }
+                    })
                 }
             });
         });

@@ -74,7 +74,7 @@ $mycountphp = 1;
                     <label class="text-label">Country<span class="filedrequired"> *</span></label>
                     <div class="input-error">
     
-                             <select class="form-select form-select-sm" aria-label=".form-select-sm example" id="country" name="country" >
+                             <select class="form-select form-select-sm select2" aria-label=".form-select-sm example" id="country" name="country" >
                                 <option>Select Country</option>
                                 @if(count($countries) > 0)
                                     @foreach ($countries as $key=> $country)

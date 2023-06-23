@@ -62,13 +62,15 @@
 @section('extra-script')
 
 
-
+    
     <script src="{{ asset('js/jquery.validate.min.js') }}"></script>
     <script src="{{ asset('js/form/client.js') }}"></script>
     <script src="{{ asset('js/form/jquery.repeater.min.js') }}"></script>
     <script src="{{ asset('js/form/form-repeater.js') }}"></script>
-
-
+    <script>
+        $('.select2').select2();
+    </script>
+        
 
     {{-- <script type="text/javascript">
         $("#addRow").click(function () {

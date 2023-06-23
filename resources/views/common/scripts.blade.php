@@ -12,4 +12,7 @@
 <script src="{{asset('vendor/js/tables/datatable/responsive.bootstrap4.js')}}"></script>
 <script src="{{asset('vendor/js/tables/datatable/datatables.buttons.min.js')}}"></script>
 <script src="{{asset('vendor/js/tables/datatable/buttons.bootstrap4.min.js')}}"></script>
+
+<script src="{{asset('select/js/form-select2.js')}}"></script>
+<script src="{{asset('select/js/select2.full.min.js')}}"></script>
  

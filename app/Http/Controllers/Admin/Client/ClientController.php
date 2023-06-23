@@ -79,7 +79,7 @@ class ClientController extends Controller
     {
         // dd($request);
         $this->clientRepository->create($request->all());
-        return redirect()->route('client.create')->with('success', "Client created successfully!");
+        return redirect()->route('client.index')->with('success', "Client created successfully!");
     }
 
     /**
@@ -121,7 +121,7 @@ class ClientController extends Controller
        
         $this->clientRepository->update($request->all(), $client);
 
-        return redirect()->back()->with('success', "Client updated successfully!");
+        return redirect()->route('client.index')->with('success', "Client updated successfully!");
     }
 
     /**

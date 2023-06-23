@@ -1,3 +1,14 @@
+@php
+$mycountphp = 1;
+    if(count($model->trainerDetail) > 0){
+        $mycountphp = count($model->trainerDetail);
+    }   
+    
+@endphp
+
+<script>
+    var myCount = {{ $mycountphp }};   
+</script>
 <div>
     <hr>
     <h4><strong>Course Details</strong></h4>
@@ -9,7 +20,7 @@
                     <label class="text-label">Name of Course<span class="filedrequired"> *</span></label>
                     <div class="input-error">
                         <select class="form-select form-select-sm" aria-label=".form-select-sm example" id="course_category_id" name="course_category_id" >
-                            <option value="">Select Course</option>
+                            {{-- <option value="">Select Course</option> --}}
                             @if(count($courseCategory) > 0)
                                 @foreach ($courseCategory as $key=> $category)
                                     <option value="{{ $category->id }}" {{ ($model->course_category_id == $category->id) ? 'selected' : '' }}>{{ $category->course_name}}</option>
@@ -34,7 +45,7 @@
                     <div class="form-group">
                         <label class="text-label">Course Duration<span class="filedrequired"> *</span></label>
                         <div class="input-error">
-                            <select class="form-select form-select-sm" aria-label=".form-select-sm example" id="duration" name="duration">
+                            <select class="form-select form-select-sm select2" aria-label=".form-select-sm example" id="duration" name="duration">
                                 <option value="">Select Duration</option>
                                 <option value="1" {{ isset($model->duration) && $model->duration == 1 ? 'selected' : '' }}>0.5 Days</option>
                                 <option value="2" {{ isset($model->duration) && $model->duration == 2 ? 'selected' : '' }}>1 Days</option>
@@ -44,7 +55,7 @@
                     <div class="form-group">
                         <label class="text-label">Client<span class="filedrequired"> *</span></label>
                         <div class="input-error">
-                            <select class="form-select form-select-sm" aria-label=".form-select-sm example" id="client_id" name="client_id">
+                            <select class="form-select form-select-sm select2" aria-label=".form-select-sm example" id="client_id" name="client_id">
                                 <option value="">Please Select</option>
                                 @if(count($clientList) > 0)
                                     @foreach ($clientList as $key=> $client)
@@ -57,7 +68,7 @@
                     <div class="form-group">
                         <label class="text-label">Path<span class="filedrequired"> *</span></label>
                         <div class="input-error">
-                            <select class="form-select form-select-sm" aria-label=".form-select-sm example" id="path" name="path" >
+                            <select class="form-select form-select-sm select2" aria-label=".form-select-sm example" id="path" name="path" >
                                 <option value="">Please Select</option>
                                 <option value="1" {{ isset($model->path) && $model->path == 1 ? 'selected' : '' }}>Automated email</option>
                                 <option value="2" {{ isset($model->path) && $model->path == 2 ? 'selected' : '' }}>PDF download</option>
