@@ -7,6 +7,8 @@ use App\Http\Controllers\Admin\Profile\ProfileController;
 use App\Http\Controllers\Admin\Client\ClientController;
 use App\Http\Controllers\Admin\Attendee\AttendeequestionsController;
 use App\Http\Controllers\Admin\Questions\QuestionsController;
+use App\Http\Controllers\Admin\Companyorganizer\CompanyOrganizerController;
+use App\Http\Controllers\Admin\CourseAttendees\CourseAttendeesController;
 use App\Http\Controllers\Admin\Course\CourseController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\ResetPasswordController;
@@ -73,6 +75,8 @@ Route::group(['authGrouping' => 'users.auth','middleware' => 'auth:web'], functi
     Route::resource('/course', CourseController::class);
     Route::resource('/attendee', AttendeequestionsController::class);
     Route::resource('/questions', QuestionsController::class);
+    Route::resource('/companyorganizer', CompanyOrganizerController::class);
+    Route::resource('/courseattendees', CourseAttendeesController::class);
     /*Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('checkSurveyStatus');
     Route::get('/change-password', [ResetPasswordController::class, 'firstTimePasswordChange'])->name('change-password');
     //Route::resource('/survey', SurveyController::class);

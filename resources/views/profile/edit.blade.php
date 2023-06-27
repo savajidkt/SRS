@@ -47,7 +47,7 @@
                                 </div>
                                 <div class="form-group col-md-6 form-gap-2">
                                     <label>Phone Number <span class="text-danger">*</span></label>
-                                    <input class="form-control" id="phone_number" type="number" name="phone_number" placeholder="07850185351" value="{{auth()->user()->phone_number}}" aria-describedby="login-phone_number" autofocus="" tabindex="1" required />
+                                    <input class="form-control" id="phone_number" type="text" name="phone_number" placeholder="07850185351" value="{{auth()->user()->phone_number}}" onkeyup="this.value = this.value.replace(/^\.|[^\d\.]/g, '')" aria-describedby="login-phone_number" autofocus="" tabindex="1" required />
                                         @error('phone_number')
                                         <span class="invalid-feedback" style="display: block;" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -56,7 +56,7 @@
                                 </div>
                                 <div class="form-group col-md-6 form-gap-2">
                                     <label>Mobile Number <span class="text-danger">*</span></label>
-                                    <input class="form-control" id="mobile_number" type="number" name="mobile_number" placeholder="07850185351" value="{{auth()->user()->mobile_number}}" aria-describedby="login-mobile_number" autofocus="" tabindex="1" required />
+                                    <input class="form-control" id="mobile_number" type="text" name="mobile_number" placeholder="07850185351" value="{{auth()->user()->mobile_number}}" onkeyup="this.value = this.value.replace(/^\.|[^\d\.]/g, '')" aria-describedby="login-mobile_number" autofocus="" tabindex="1" required />
                                         @error('mobile_number')
                                         <span class="invalid-feedback" style="display: block;" role="alert">
                                             <strong>{{ $message }}</strong>

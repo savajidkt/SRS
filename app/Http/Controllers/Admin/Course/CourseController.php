@@ -86,7 +86,7 @@ class CourseController extends Controller
     {
         // dd($request);
         $this->courseRepository->create($request->all());
-        return redirect()->route('course.index')->with('success', "Course created successfully!");
+        return redirect()->route('companyorganizer.create')->with('success', "Course created successfully!");
     }
 
     /**

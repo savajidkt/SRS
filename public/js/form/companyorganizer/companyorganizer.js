@@ -1,19 +1,32 @@
-var FrmClientPreference = function() {
+var FrmCoursePreference = function() {
 
-    var FrmClientValidation = function() {
-        var FrmClientPreferenceForm = $('#client');
-        var error4 = $('.error-message', FrmClientPreferenceForm);
-        var success4 = $('.error-message', FrmClientPreferenceForm);
+    var FrmCourseValidation = function() {
+        var FrmCoursePreferenceForm = $('#course');
+        var error4 = $('.error-message', FrmCoursePreferenceForm);
+        var success4 = $('.error-message', FrmCoursePreferenceForm);
 
-        FrmClientPreferenceForm.validate({
+        FrmCoursePreferenceForm.validate({
             errorElement: 'span',
             errorClass: 'help-block help-block-error',
             focusInvalid: false,
             ignore: "",
             rules: {
-                company_name: {
+                first_name: {
                     required: true
                 },
+                last_name: {
+                    required: true
+                },
+                email: {
+                    required: true
+                }
+                // email: {
+                //     minlength: 5,
+                // },
+                // email_confirm: {
+                //     minlength: 5,
+                //     equalTo: "#email"
+                // }
             },
             highlight: function(element) {
 
@@ -26,8 +39,8 @@ var FrmClientPreference = function() {
                 $(element).removeClass('has_error');
             },
             errorPlacement: function(error, element) {
-                if (element.attr("name") == "company_name") {
-                    error.insertAfter("#company_name");
+                if (element.attr("name") == "course_category_id") {
+                    error.insertAfter("#course_category_id");
                 } else if (element.attr("name") == "password") {
                     error.insertAfter(".password-error");
                 } else {
@@ -40,13 +53,15 @@ var FrmClientPreference = function() {
         });
     }
 
+
     return {
         //main function to initiate the module
         init: function() {
-            FrmClientValidation();
+            FrmCourseValidation();
         }
     };
 }();
+
 $(document).ready(function() {
-    FrmClientPreference.init();
+    FrmCoursePreference.init();
 });
