@@ -32,13 +32,13 @@ $mycountphp = 1;
                 <div class="form-group dat-o-c">
                     <label class="text-label headi-doc">Date of Course<span class="filedrequired"> *</span></label>
                     <div class="input-error">
-                        <input type="date" name="start_date" class="form-control" value="{{(isset($model->start_date))?$model->start_date:''}}" placeholder="" required>
+                        <input type="date" name="start_date" class="form-control" value="{{(isset($model->start_date))?$model->start_date:''}}" onchange="Func_a(this)" placeholder="" required>
                     </div>
                 </div>
                 <div class="form-group dat-o-c">
                     <label class="text-label headi-doc">Questionnaire End Date<span class="filedrequired"> *</span></label>
                     <div class="input-error">
-                        <input type="date" name="end_date" class="form-control" value="{{(isset($model->end_date))?$model->end_date:''}}" placeholder="" required>
+                        <input type="date" name="end_date" id="end_date" class="form-control" value="{{(isset($model->end_date))?$model->end_date:''}}" placeholder="" required>
                     </div>
                 </div>
                 

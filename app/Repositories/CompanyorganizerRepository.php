@@ -9,15 +9,6 @@ use Illuminate\Support\Facades\Mail;
 class CompanyorganizerRepository
 {
 
-    // public function sendMail()
-    // {
-    //     $data = ['name'=>"jaydip"];
-    //     $user['to'] ='jj.parejiya@gmail.com';
-    //     Mail::send('mail.mail',$data,function($messages)use ($user){
-    //         $messages->to('jj.parejiya@gmail.com');
-    //         $messages->Subject('hellow world');
-    //     });
-    // }
     /**
      * Method create
      *

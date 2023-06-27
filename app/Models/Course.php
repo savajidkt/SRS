@@ -32,6 +32,7 @@ class Course extends Model
         'duration',
         'client_id',
         'path',
+        'key',
     ];
 
     public function trainerDetail():HasMany

@@ -1,3 +1,4 @@
+var IsSubmit = false;
 var FrmCoursePreference = function() {
 
     var FrmCourseValidation = function() {
@@ -11,13 +12,9 @@ var FrmCoursePreference = function() {
             focusInvalid: false,
             ignore: "",
             rules: {
-                // course_category_id: {
-                //     required: true
-
-                // },
                 course_category_id: {
                     required: function() {
-                        if ($("#course_category_id option[value='0']")) {
+                        if ($("#course_category_id option[value='0']") && !IsSubmit) {
                             return true;
                         } else {
                             return false;
@@ -25,27 +22,102 @@ var FrmCoursePreference = function() {
                     }
                 },
                 start_date: {
-                    required: true
+                    required: function() {
+                        if (!IsSubmit) {
+                            return true;
+                        } else {
+                            return false;
+                        }
+                    }
                 },
                 end_date: {
-                    required: true
+                    required: function() {
+                        if (!IsSubmit) {
+                            return true;
+                        } else {
+                            return false;
+                        }
+                    }
                 },
                 duration: {
-                    required: true
+                    required: function() {
+                        if (!IsSubmit) {
+                            return true;
+                        } else {
+                            return false;
+                        }
+                    }
                 },
                 client_id: {
-                    required: true
+                    required: function() {
+                        if (!IsSubmit) {
+                            return true;
+                        } else {
+                            return false;
+                        }
+                    }
                 },
                 path: {
-                    required: true
+                    required: function() {
+                        if (!IsSubmit) {
+                            return true;
+                        } else {
+                            return false;
+                        }
+                    }
                 },
                 email: {
+                    required: function() {
+                        if (!IsSubmit) {
+                            return true;
+                        } else {
+                            return false;
+                        }
+                    },
                     minlength: 5,
                 },
                 email_confirm: {
+                    required: function() {
+                        if (!IsSubmit) {
+                            return true;
+                        } else {
+                            return false;
+                        }
+                    },
                     minlength: 5,
                     equalTo: "#email"
-                }
+                },
+                org_first_name: {
+                    required: function() {
+                        if (IsSubmit) {
+                            return true;
+                        } else {
+                            return false;
+                        }
+                    }
+                },
+                org_last_name: {
+                    required: function() {
+                        if (IsSubmit) {
+                            return true;
+                        } else {
+                            return false;
+                        }
+                    }
+                },
+                org_email: {
+                    required: function() {
+                        if (IsSubmit) {
+                            return true;
+                        } else {
+                            return false;
+                        }
+                    },
+                    minlength: 5,
+                    email: true,
+                },
+
+
             },
             highlight: function(element) {
 
@@ -67,7 +139,16 @@ var FrmCoursePreference = function() {
                 }
             },
             submitHandler: function(form) {
-                form.submit();
+
+                if (!IsSubmit) {
+                    IsSubmit = true;
+                    $('.step_1').addClass('hide');
+                    $('.step_2').removeClass('hide');
+
+                } else {
+
+                    form.submit();
+                }
             }
         });
     }

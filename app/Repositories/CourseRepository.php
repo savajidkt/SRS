@@ -4,6 +4,7 @@ use App\Exceptions\GeneralException;
 use App\Models\TrainerDetail;
 use App\Models\Course;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Str;
 
 class CourseRepository
 {
@@ -16,7 +17,7 @@ class CourseRepository
      */
     public function create(array $data): Course
     {
-        // dd($data);
+        $key = Str::upper(Str::random(30));
         $courseData = [
             'course_category_id'    => $data['course_category_id'],
             'start_date'     => $data['start_date'],
@@ -24,6 +25,7 @@ class CourseRepository
             'duration'       => $data['duration'],
             'client_id'       => $data['client_id'],
             'path'       => $data['path'],
+            'key'       => $key,
         ];
         $course = Course::create($courseData);
 
@@ -51,7 +53,6 @@ class CourseRepository
      */
     public function update(array $data, Course $course): Course
     {
- 
         $courseData = [
             'course_category_id'    => $data['course_category_id'],
             'start_date'     => $data['start_date'],
