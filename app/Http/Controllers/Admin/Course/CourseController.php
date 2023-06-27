@@ -84,7 +84,7 @@ class CourseController extends Controller
      */
     public function store(CreateRequest $request)
     {
-        dd($request->all());
+        // dd($request->all());
         $this->courseRepository->create($request->all());
         return redirect()->route('companyorganizer.create')->with('success', "Course created successfully!");
     }

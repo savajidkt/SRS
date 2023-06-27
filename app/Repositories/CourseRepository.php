@@ -1,10 +1,13 @@
 <?php
 namespace App\Repositories;
-use App\Exceptions\GeneralException;
-use App\Models\TrainerDetail;
 use App\Models\Course;
-use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Str;
+use App\Models\TrainerDetail;
+use App\Models\CompanyOrganizer;
+use App\Mail\CompanyOrganizerMail;
+use App\Exceptions\GeneralException;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Database\Eloquent\Collection;
 
 class CourseRepository
 {
@@ -28,7 +31,6 @@ class CourseRepository
             'key'       => $key,
         ];
         $course = Course::create($courseData);
-
         foreach ($data['invoice'] as $key => $invoice) 
         {         
             $invoiceArr = [
@@ -39,6 +41,19 @@ class CourseRepository
 
             $course->trainerDetail()->save(new TrainerDetail($invoiceArr));
         }
+
+
+        $organizerData = [
+            'course_id'    => $course->id,
+            'first_name'    => $data['org_first_name'],
+            'last_name'    => $data['org_last_name'],
+            'email'    => $data['org_email']            
+        ];
+
+        CompanyOrganizer::create($organizerData);
+        Mail::to($data['org_email'])->send(new CompanyOrganizerMail($data));
+
+
         return $course;
     }
 
