@@ -8,18 +8,29 @@
     Author URL: http://www.themeforest.net/user/pixinvent
 ==========================================================================================*/
 
-$(function() {
+$(function () {
     'use strict';
-
+    if (myCount == 1) {
+        $('.text-nowrap').hide();
+    }
 
     // form repeater jquery
     $('.attendees-repeater').repeater({
-        show: function() {
+        show: function () {
             $(this).slideDown();
 
-        },
-        hide: function(deleteElement) {
+            myCount = myCount + 1;
+            if (myCount > 1) {
+                $('.text-nowrap').show();
+            }
 
+        },
+        hide: function (deleteElement) {
+            myCount = myCount - 1;
+
+            if (myCount == 1) {
+                $('.text-nowrap').hide();
+            }
             $(this).slideUp(deleteElement);
 
         }
