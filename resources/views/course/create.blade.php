@@ -6,11 +6,14 @@
         .help-block-error {
             color: #FF1616
         }
-        .hide{ display: none;}
+
+        .hide {
+            display: none;
+        }
     </style>
     <!--**********************************
-                Content body start
-            ***********************************-->
+                    Content body start
+                ***********************************-->
 
     <div class="container-fluid">
         <div class="row page-titles mx-0">
@@ -56,37 +59,40 @@
                                 <section>
                                     <div class="row">
                                         <div class="col-lg-12 mb-4 form-style add_course_step_2_col">
-                                            <div class="form-group train-deet add_course_form">
-                                                <label class="text-label">First Name*</label>
-                                                <input type="text" name="org_first_name" class="form-control" placeholder=""
-                                                    >
-                                            </div>
 
-
-                                            <div class="form-group train-deet add_course_form">
-                                                <label class="text-label">Surname*</label>
-                                                <input type="text" name="org_last_name" class="form-control" placeholder=""
-                                                    >
-                                            </div>
-
-
-
-                                            <div class="form-group train-deet add_course_form">
-                                                <label class="text-label">Email Address*</label>
-                                                <div class="input-group">
-                                                   
-                                                    <input type="email" name="org_email" class="form-control"
-                                                        id="inputGroupPrepend2" aria-describedby="inputGroupPrepend2"
-                                                        placeholder="" >
+                                            <div class="form-group train-deet">
+                                                <label class="itemcost">First Name<span class="filedrequired">
+                                                        *</span></label>
+                                                <div class="input-error">
+                                                    <input type="text" class="form-control" name="org_first_name"
+                                                        value="" />
                                                 </div>
                                             </div>
+
+                                            <div class="form-group train-deet">
+                                                <label class="itemcost">Surname<span class="filedrequired">
+                                                        *</span></label>
+                                                <div class="input-error">
+                                                    <input type="text" class="form-control" name="org_last_name"
+                                                        value="" />
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group train-deet">
+                                                <label class="itemcost">Email Address<span class="filedrequired">
+                                                        *</span></label>
+                                                <div class="input-error">
+                                                    <input type="text" class="form-control" name="org_email"
+                                                        value="" />
+                                                </div>
+                                            </div> 
 
                                         </div>
                                     </div>
                                 </section>
                             </div>
                             <button type="submit" class="btn btn-primary">Submit</button>
-                                    <a href="{{ route('course.index') }}" class="btn btn-primary">Cancel</a>
+                            <a href="{{ route('course.index') }}" class="btn btn-primary">Cancel</a>
                         </div>
                     </div>
 
@@ -97,8 +103,8 @@
     </div>
 
     <!--**********************************
-                Content body end
-            ***********************************-->
+                    Content body end
+                ***********************************-->
 @endsection
 @section('extra-script')
     <script src="{{ asset('js/jquery.validate.min.js') }}"></script>
@@ -113,7 +119,7 @@
 
             // alert();
             // Get the specific date
-            
+
             var specificDate = new Date($(e).val());
 
             // Subtract one day from the specific date
@@ -127,6 +133,5 @@
             $('#end_date').val(formattedDate);
             // console.log(formattedDate);
         }
-        
     </script>
 @endsection

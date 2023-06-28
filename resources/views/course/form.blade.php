@@ -50,6 +50,7 @@ $mycountphp = 1;
                                 <option value="1" {{ isset($model->duration) && $model->duration == 1 ? 'selected' : '' }}>0.5 Days</option>
                                 <option value="2" {{ isset($model->duration) && $model->duration == 2 ? 'selected' : '' }}>1 Days</option>
                             </select>
+                            <div class="duration-error"></div>
                         </div>
                     </div>
                     <div class="form-group">
@@ -63,6 +64,7 @@ $mycountphp = 1;
                                     @endforeach
                                 @endif
                             </select>
+                            <div class="client_id-error"></div>
                         </div>
                     </div>
                     <div class="form-group">
@@ -73,6 +75,7 @@ $mycountphp = 1;
                                 <option value="1" {{ isset($model->path) && $model->path == 1 ? 'selected' : '' }}>Automated email</option>
                                 <option value="2" {{ isset($model->path) && $model->path == 2 ? 'selected' : '' }}>PDF download</option>
                             </select>
+                            <div class="path-error"></div>
                         </div>
                     </div>
                 </div>

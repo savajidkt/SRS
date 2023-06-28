@@ -134,7 +134,13 @@ var FrmCoursePreference = function() {
                     error.insertAfter("#course_category_id");
                 } else if (element.attr("name") == "password") {
                     error.insertAfter(".password-error");
-                } else {
+                } else if (element.attr("name") == "duration") {
+                    error.insertAfter(".duration-error");
+                } else if (element.attr("name") == "client_id") {
+                    error.insertAfter(".client_id-error");
+                } else if (element.attr("name") == "path") {
+                    error.insertAfter(".path-error");
+                }else {
                     error.insertAfter(element);
                 }
             },
