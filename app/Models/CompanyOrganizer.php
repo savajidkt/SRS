@@ -22,5 +22,6 @@ class CompanyOrganizer extends Model
         'first_name',
         'last_name',
         'email',
+        'confirm_attendee',
     ];
 }

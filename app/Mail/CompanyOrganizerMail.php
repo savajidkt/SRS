@@ -17,6 +17,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 
 
 
+
 class CompanyOrganizerMail extends Mailable
 
 {
@@ -66,23 +67,24 @@ class CompanyOrganizerMail extends Mailable
         $trainer_list .= ucwords($value['first_name'] . " " . $value['last_name']) . " <br>";
       }
     }
-
+    
+   
     $paramArr = [];
     $paramArr['site_url'] = URL::to('/');
     $paramArr['company_organiser_name'] = $data['org_first_name'] . ' ' . $data['org_last_name'];
     $paramArr['course_date'] = dateFormat($data['start_date']);
     $paramArr['trainer_list'] = $trainer_list;
-    $paramArr['link'] = URL::to('/');
+    $paramArr['link'] = URL::to('/course-attendees/'. $data['key']);
     $paramArr['course_end_date'] = dateFormat($data['end_date']);
     $paramArr['year'] = date('Y');
-
+  dd($paramArr);
     $emailTemplate = getEmailTemplatesByID(1);
     if ($emailTemplate) {
 
       $emailBody = replaceHTMLBodyWithParam($emailTemplate['template'], $paramArr);
       $emailSubject = replaceHTMLBodyWithParam($emailTemplate['subject'], array('course_date' => dateFormat($data['start_date'])));
-      return $this->subject($emailSubject)->with('body', $emailBody);
-      //return $this->subject($emailSubject)->markdown('admin.Mail.companyOrganizerMail', ['emailBody' => $emailBody]);
+      // return $this->subject($emailSubject)->with('body', $emailBody);
+      return $this->subject($emailSubject)->markdown('admin.Mail.companyOrganizerMail', ['emailBody' => $emailBody]);
 
     }
     return false;

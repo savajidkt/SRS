@@ -6,6 +6,7 @@ use App\Models\TrainerDetail;
 use App\Models\CompanyOrganizer;
 use App\Mail\CompanyOrganizerMail;
 use App\Exceptions\GeneralException;
+use App\Libraries\Safeencryption;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Database\Eloquent\Collection;
 
@@ -20,8 +21,10 @@ class CourseRepository
      */
     public function create(array $data): Course
     {
-      
-        /*$key = Str::upper(Str::random(30));
+        $key = Str::upper(Str::random(5));
+        $SafeencryptionObj = new Safeencryption;
+        $newkey = $SafeencryptionObj->encode($key);
+        
         $courseData = [
             'course_category_id'    => $data['course_category_id'],
             'start_date'     => $data['start_date'],
@@ -29,7 +32,7 @@ class CourseRepository
             'duration'       => $data['duration'],
             'client_id'       => $data['client_id'],
             'path'       => $data['path'],
-            'key'       => $key,
+            'key'       => $newkey,
         ];
         $course = Course::create($courseData);
         foreach ($data['invoice'] as $key => $invoice) 
@@ -48,13 +51,14 @@ class CourseRepository
             'course_id'    => $course->id,
             'first_name'    => $data['org_first_name'],
             'last_name'    => $data['org_last_name'],
-            'email'    => $data['org_email']            
+            'email'    => $data['org_email'],
+            'confirm_attendee'    => 0            
         ];
-
-        CompanyOrganizer::create($organizerData);*/
+        $data['key'] = $newkey;
+        CompanyOrganizer::create($organizerData);
         Mail::to($data['org_email'])->send(new CompanyOrganizerMail($data));
 
-
+        exit;
         return $course;
     }
 
