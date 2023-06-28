@@ -20,7 +20,8 @@ class CourseRepository
      */
     public function create(array $data): Course
     {
-        $key = Str::upper(Str::random(30));
+      
+        /*$key = Str::upper(Str::random(30));
         $courseData = [
             'course_category_id'    => $data['course_category_id'],
             'start_date'     => $data['start_date'],
@@ -50,7 +51,7 @@ class CourseRepository
             'email'    => $data['org_email']            
         ];
 
-        CompanyOrganizer::create($organizerData);
+        CompanyOrganizer::create($organizerData);*/
         Mail::to($data['org_email'])->send(new CompanyOrganizerMail($data));
 
 
