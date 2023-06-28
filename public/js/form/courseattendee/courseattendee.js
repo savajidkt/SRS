@@ -1,6 +1,6 @@
-var FrmAttendeesPreference = function () {
+var FrmAttendeesPreference = function() {
 
-    var FrmAttendeesValidation = function () {
+    var FrmAttendeesValidation = function() {
         var FrmAttendeesPreferenceForm = $('#attendees');
         var error4 = $('.error-message', FrmAttendeesPreferenceForm);
         var success4 = $('.error-message', FrmAttendeesPreferenceForm);
@@ -11,40 +11,38 @@ var FrmAttendeesPreference = function () {
             focusInvalid: false,
             ignore: "",
             rules: {
-                company_name: {
+                first_name: {
                     required: true
                 },
             },
-            highlight: function (element) {
+            highlight: function(element) {
 
                 // add a class "has_error" to the element 
                 $(element).addClass('has_error');
             },
-            unhighlight: function (element) {
+            unhighlight: function(element) {
 
                 // remove the class "has_error" from the element 
                 $(element).removeClass('has_error');
             },
-            errorPlacement: function (error, element) {
+            errorPlacement: function(error, element) {
 
                 error.insertAfter(element);
 
             },
-            submitHandler: function (form) {
-                alert('dd');
-                return false;
-                //form.submit();
+            submitHandler: function(form) {
+                form.submit();
             }
         });
     }
 
     return {
         //main function to initiate the module
-        init: function () {
+        init: function() {
             FrmAttendeesValidation();
         }
     };
 }();
-$(document).ready(function () {
+$(document).ready(function() {
     FrmAttendeesPreference.init();
 });

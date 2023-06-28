@@ -83,9 +83,10 @@
                                 <h5>ATTENDEE DETAILS</h5>
                                 <hr>
                                 <div class="basic-form">
-                                    <form class="attendees-repeater" action="" method="post"
+                                    <form class="attendees-repeater" action="{{ route('store-attendees') }}" method="post"
                                         enctype="multipart/form-data" id="attendees">
                                         @csrf
+                                        <input type="hidden" value="{{ $id }}" name="key" >
 
                                         <div class="">
                                             <div data-repeater-list="attendees">
@@ -97,7 +98,7 @@
                                                                 <label>First Name <span class="filedrequired">
                                                                         *</span></label>
                                                                 <div class="input-error">
-                                                                    <input type="text" name="first_namess"
+                                                                    <input type="text" name="first_name"
                                                                         class="form-control" placeholder="Sue" required>
                                                                 </div>
                                                             </div>
@@ -130,11 +131,11 @@
                                                                         </option>
                                                                         <option value="1">Director</option>
                                                                         <option value="2">Department Head</option>
-                                                                        <option value="2">Manager</option>
-                                                                        <option value="2">Project Manager /
+                                                                        <option value="3">Manager</option>
+                                                                        <option value="4">Project Manager /
                                                                             Specialist
                                                                         </option>
-                                                                        <option value="2">Team Member</option>
+                                                                        <option value="5">Team Member</option>
                                                                     </select>
                                                                 </div>
                                                             </div>

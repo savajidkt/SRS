@@ -37,6 +37,7 @@ use Illuminate\Support\Facades\Route;
 Route::post('forgot-password', [ForgotPasswordController::class, 'forgotPassword'])->name('forgot-password');
 Route::post('reset-password', [ForgotPasswordController::class, 'submitResetPasswordForm'])->name('reset.password.post');
 Route::get('course-attendees/{id}', [CourseAttendeeController::class, 'index'])->name('add-course-attendees');
+Route::post('store-attendees', [CourseAttendeeController::class, 'store'])->name('store-attendees');
 //Route::post('first-password-change', [UserController::class, 'changePassword'])->name('first.password.change');
 
 

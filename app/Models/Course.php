@@ -55,4 +55,8 @@ class Course extends Model
         $editAttendees = '<a href="'. route('course.show', $this->id).'"><i class="fa-regular fa-user edit-ico" title="Edit Attendees"></i></i></a> ';
         return $editAction.''.$viewAction.''.$deleteAction.''.$editAttendees;
     }
+    public function attendees()
+    {
+        return $this->hasMany(CourseAttendees::class,'course_id','id');
+    }
 }
