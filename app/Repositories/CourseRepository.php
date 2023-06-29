@@ -58,7 +58,7 @@ class CourseRepository
         CompanyOrganizer::create($organizerData);
         Mail::to($data['org_email'])->send(new CompanyOrganizerMail($data));
 
-        exit;
+        // exit;
         return $course;
     }
 

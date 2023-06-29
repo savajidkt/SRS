@@ -4,6 +4,7 @@ namespace App\Http\Requests\Profile;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class EditRequest extends FormRequest
 {
@@ -25,6 +26,7 @@ class EditRequest extends FormRequest
     public function rules()
     {
         $data = $this->request->all();
+        $currentpass = $data['current_password'];
         $rules = [
             'first_name'        => ['required'],
             'last_name'         => ['required'],
@@ -32,6 +34,13 @@ class EditRequest extends FormRequest
             'mobile_number'     => ['required','regex:/^([0-9\s\-\+\(\)]*)$/','min:10'],
             'email'             => ['required','same:confirm_email','email', 'unique:users,email,'.Auth::user()->id],
             'confirm_email'     => ['nullable', 'email', 'unique:users,email,'.Auth::user()->id],
+            'current_password' => [
+                'nullable', function ($attribute, $currentpass, $fail) {
+                    if (!Hash::check($currentpass, Auth::user()->password)) {
+                        $fail('Old Password didn\'t match');
+                    }
+                },
+            ],
             'password'          => ['nullable', 'min:8', 'same:confirm_password'],
             'confirm_password'  => ['nullable', 'min:8'],
             // 'confirm_email'           => ['confirmed'],

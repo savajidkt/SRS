@@ -32,6 +32,10 @@ class ProfileRepository
             'email'         => $data['email']
         ];
         
+        if (Hash::check("param1", "param2")) {
+            //add logic here
+        }
+
         if( isset($password) )
         {
             
