@@ -21,7 +21,7 @@ class CourseAttendeeRepository
      */
     public function create(array $data): CourseAttendees
     {
-        
+        // dd($data);
         $course = Course::where('key',$data['key'])->first();
         //dd($course);
         if($course)
@@ -61,34 +61,34 @@ class CourseAttendeeRepository
      * @return Course
      * @throws Exception
      */
-    public function update(array $data, Course $course): Course
-    {
-        $courseData = [
-            'course_category_id'    => $data['course_category_id'],
-            'start_date'     => $data['start_date'],
-            'end_date'       => $data['end_date'],
-            'duration'       => $data['duration'],
-            'client_id'       => $data['client_id'],
-            'path'       => $data['path'],
-        ];
+    // public function update(array $data, Course $course): Course
+    // {
+    //     $courseData = [
+    //         'course_category_id'    => $data['course_category_id'],
+    //         'start_date'     => $data['start_date'],
+    //         'end_date'       => $data['end_date'],
+    //         'duration'       => $data['duration'],
+    //         'client_id'       => $data['client_id'],
+    //         'path'       => $data['path'],
+    //     ];
 
-        if ($course->update($courseData)) {
-            $course->trainerDetail()->delete();
-            foreach ($data['invoice'] as $key => $invoice) {
-                $invoiceArr = [
-                    'first_name'    => $invoice['first_name'],
-                    'last_name'    => $invoice['last_name'],
-                    'email'    => $invoice['email'],
-                ];
+    //     if ($course->update($courseData)) {
+    //         $course->trainerDetail()->delete();
+    //         foreach ($data['invoice'] as $key => $invoice) {
+    //             $invoiceArr = [
+    //                 'first_name'    => $invoice['first_name'],
+    //                 'last_name'    => $invoice['last_name'],
+    //                 'email'    => $invoice['email'],
+    //             ];
 
-                $course->trainerDetail()->save(new TrainerDetail($invoiceArr));
-            }
+    //             $course->trainerDetail()->save(new TrainerDetail($invoiceArr));
+    //         }
 
-            return $course;
-        }
+    //         return $course;
+    //     }
 
-        throw new Exception('Course update failed.');
-    }
+    //     throw new Exception('Course update failed.');
+    // }
 
     /**
      * Method delete
@@ -98,14 +98,14 @@ class CourseAttendeeRepository
      * @return bool
      * @throws Exception
      */
-    public function delete(Course $course): bool
-    {
-        if ($course->delete()) {
-            return true;
-        }
+    // public function delete(Course $course): bool
+    // {
+    //     if ($course->delete()) {
+    //         return true;
+    //     }
 
-        throw new Exception('Course delete failed.');
-    }
+    //     throw new Exception('Course delete failed.');
+    // }
 
 
 }

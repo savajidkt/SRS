@@ -77,7 +77,6 @@ class ClientController extends Controller
      */
     public function store(CreateRequest $request)
     {
-        // dd($request);
         $this->clientRepository->create($request->all());
         return redirect()->route('client.index')->with('success', "Client created successfully!");
     }
@@ -134,5 +133,13 @@ class ClientController extends Controller
     {
         $this->clientRepository->delete($client);
         return response()->json(['status' => true,'message' => '']);
+    }
+
+    public function checkName(Request $request)
+    {
+        dd('testing');
+        $client = $request->input('company_name');
+        $isUnique = !Client::where('company_name', $client)->exists();
+        return response()->json($isUnique);
     }
 }

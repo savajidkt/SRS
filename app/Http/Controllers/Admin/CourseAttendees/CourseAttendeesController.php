@@ -16,7 +16,7 @@ class CourseAttendeesController extends Controller
      */
     public function create()
     {
-        dd('atandingtest';)
+        // dd('atandingtest';)
         // $rawData = new CompanyOrganizer;
         return view('courseattendees.create');
     }

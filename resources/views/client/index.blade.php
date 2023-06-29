@@ -84,7 +84,7 @@
                 });
             },
             "oLanguage": {
-                "sLengthMenu": "Show  _MENU_ Entries",
+                "sLengthMenu": "<span class='label-row'>Show</span>  <span class='label-row'>_MENU_</span> <span class='label-row'>Entries</span>",
                 },
             ajax: "{{ route('client.index') }}",
             // ajax: {

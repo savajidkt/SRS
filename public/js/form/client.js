@@ -12,7 +12,16 @@ var FrmClientPreference = function() {
             ignore: "",
             rules: {
                 company_name: {
-                    required: true
+                    required: true,
+                    // remote: {
+                    //     url: "{{ route('check-name') }}",
+                    //     type: 'post',
+                    //     data: {
+                    //         company_name: function() {
+                    //             return $('#company_name').val();
+                    //         }
+                    //     }
+                    // }
                 },
                 address_one: {
                     required: true
@@ -27,6 +36,12 @@ var FrmClientPreference = function() {
                     required: true
                 },
             },
+            // messages: {
+            //     name: {
+            //         required: 'Please enter a name',
+            //         remote: 'Name already exists'
+            //     }
+            // },
             highlight: function(element) {
 
                 // add a class "has_error" to the element 

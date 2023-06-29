@@ -75,6 +75,7 @@ Route::group(['authGrouping' => 'users.auth','middleware' => 'auth:web'], functi
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::resource('/profile', ProfileController::class);
     Route::resource('/client', ClientController::class);
+    Route::post('/check-name', [ClientController::class, 'checkName'])->name('check-name');
     Route::resource('/course', CourseController::class);
     Route::resource('/attendee', AttendeequestionsController::class);
     Route::resource('/questions', QuestionsController::class);

@@ -62,8 +62,8 @@ class CourseAttendeesMail extends Mailable
   {
     $data = $this->data;
     $trainer_list = '';
-    if (is_array($data['invoice']) && count($data['invoice']) > 0) {
-      foreach ($data['invoice'] as $key => $value) {
+    if (is_array($data['attendees']) && count($data['attendees']) > 0) {
+      foreach ($data['attendees'] as $key => $value) {
         $trainer_list .= ucwords($value['first_name'] . " " . $value['last_name']) . " <br>";
       }
     }

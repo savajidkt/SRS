@@ -18,7 +18,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 
 
 
-class CourseAttendeesMail extends Mailable
+class CompanyOrganizerMail extends Mailable
 
 {
 
@@ -77,7 +77,7 @@ class CourseAttendeesMail extends Mailable
     $paramArr['link'] = URL::to('/course-attendees/'. $data['key']);
     $paramArr['course_end_date'] = dateFormat($data['end_date']);
     $paramArr['year'] = date('Y');
-  dd($paramArr);
+  // dd($paramArr);
     $emailTemplate = getEmailTemplatesByID(1);
     if ($emailTemplate) {
 
