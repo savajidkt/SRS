@@ -71,6 +71,9 @@ var FrmClientPreference = function() {
         //main function to initiate the module
         init: function() {
             FrmClientValidation();
+            jQuery.validator.addMethod("emailExt", function(value, element, param) {
+                return value.match(/^[a-zA-Z0-9_\.%\+\-]+@[a-zA-Z0-9\.\-]+\.[a-zA-Z]{2,}$/);
+            }, 'Please enter a valid email address.');
         }
     };
 }();
