@@ -85,6 +85,7 @@
                                 </div>
                                 <div class="form-group col-md-6 form-gap-2">
                                     <label>Current password<span class="text-danger">*</span></label>
+                                    <div class="input-error">
                                     <input class="form-control" id="current_password" type="password" name="current_password" placeholder="" value="" aria-describedby="login-password" autofocus="" tabindex="1"  />
                                         @error('current_password')
                                         <span class="invalid-feedback" style="display: block;" role="alert">
@@ -92,23 +93,29 @@
                                         </span>
                                         @enderror
                                 </div>
-                                <div class="form-group col-md-6 form-gap-2">
-                                    <label>Password <span class="text-danger">*</span></label>
-                                    <input class="form-control" id="password" type="password" name="password" placeholder="" value="" aria-describedby="login-password" autofocus="" tabindex="1"  />
-                                        @error('password')
-                                        <span class="invalid-feedback" style="display: block;" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                        @enderror
                                 </div>
                                 <div class="form-group col-md-6 form-gap-2">
-                                    <label>Confirm Password<span class="text-danger">*</span></label>
+                                    <label>New Password <span class="text-danger">*</span></label>
+                                    <div class="input-error">
+                                    <input class="form-control" id="password" type="password" name="password" placeholder="" value="" aria-describedby="login-password" autofocus="" tabindex="1"  />
+                                    @error('password')
+                                    <span class="invalid-feedback" style="display: block;" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>    
+                                   
+                                </div>
+                                <div class="form-group col-md-6 form-gap-2">
+                                    <label>New Confirm Password<span class="text-danger">*</span></label>
+                                    <div class="input-error">
                                     <input class="form-control" id="confirm_password" type="password" name="confirm_password" placeholder="" value="" aria-describedby="login-confirm_password" autofocus="" tabindex="1"  />
                                         @error('confirm_password')
                                         <span class="invalid-feedback" style="display: block;" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
                                         @enderror
+                                    </div>
                                 </div>
                             </div>
                     

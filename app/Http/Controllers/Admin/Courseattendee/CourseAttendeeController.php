@@ -34,7 +34,7 @@ class CourseAttendeeController extends Controller
         }
         
        }
-       return view('courseattendees.index');
+       return view('courseattendees.error');
     }
 
     /**

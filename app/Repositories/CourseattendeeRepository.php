@@ -21,9 +21,8 @@ class CourseAttendeeRepository
      */
     public function create(array $data): CourseAttendees
     {
-        // dd($data);
+       
         $course = Course::where('key',$data['key'])->first();
-        //dd($course);
         if($course)
         {
             $CompanyOrganizer = CompanyOrganizer::where('course_id',$course->id)->first();
@@ -41,6 +40,9 @@ class CourseAttendeeRepository
                         'organizer_id'    => $CompanyOrganizer->id,
                     ];
 
+                    $data['course'] = $course;
+                    $data['companyorganizer'] = $CompanyOrganizer;
+                    // dd($data);
                     Mail::to($attendees['email'])->send(new CourseAttendeesMail($data));
                     
                     $courseAttendees = CourseAttendees::create($attendeesArr);
