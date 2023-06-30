@@ -18,7 +18,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 
 
 
-class CourseAttendeesMail extends Mailable
+class CourseTrainerMail extends Mailable
 
 {
 

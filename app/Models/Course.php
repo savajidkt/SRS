@@ -59,4 +59,12 @@ class Course extends Model
     {
         return $this->hasMany(CourseAttendees::class,'course_id','id');
     }
+    public function companyorganizer()
+    {
+        return $this->hasOne(CompanyOrganizer::class,'course_id','id');
+    }
+    public function trainer()
+    {
+        return $this->hasMany(TrainerDetail::class,'course_id','id');
+    }
 }

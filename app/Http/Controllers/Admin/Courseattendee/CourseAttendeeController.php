@@ -27,10 +27,15 @@ class CourseAttendeeController extends Controller
        $course = Course::where('key',$id)->first();
        if($course)
        {
-        $CompanyOrganizer = CompanyOrganizer::where('course_id',$course->id)->first();
+        $CompanyOrganizer = CompanyOrganizer::where('course_id',$course->id)->where('confirm_attendee',0)->first();
+
         if($CompanyOrganizer)
         {
             return view('courseattendees.create',['id'=>$id]);
+        }
+        else
+        {
+            return view('courseattendees.error');
         }
         
        }
