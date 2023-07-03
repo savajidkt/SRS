@@ -81,7 +81,7 @@ class CourseTrainerMail extends Mailable
 
     // dd($paramArr);
   
-    $emailTemplate = getEmailTemplatesByID(2);
+    $emailTemplate = getEmailTemplatesByID(3);
     if ($emailTemplate) {
 
       $emailBody = replaceHTMLBodyWithParam($emailTemplate['template'], $paramArr);

@@ -33,6 +33,8 @@ class CourseController extends Controller
 
            
             $data = Course::select('*');
+            // $data->orderBy('start_date', 'ASC');
+            $data->orderBy($request->order[0]['column'], $request->order[0]['dir']);
             return DataTables::of($data)
                 ->addIndexColumn()
                 ->addColumn('course_category_id', function (Course $course) {
@@ -42,14 +44,15 @@ class CourseController extends Controller
                     return $course->start_date;
                 })
                 ->addColumn('duration', function (Course $course) {
-                    if($course->duration == 1)
-                    {
-                        return "0.5 Days";
-                    }
-                    else
-                    {
-                        return "1 Days";
-                    }
+                    return $course->duration;
+                    // if($course->duration == 1)
+                    // {
+                    //     return "0.5 Days";
+                    // }
+                    // else
+                    // {
+                    //     return "1 Days";
+                    // }
                     
                 })
                 ->addColumn('client_id', function (Course $course) {

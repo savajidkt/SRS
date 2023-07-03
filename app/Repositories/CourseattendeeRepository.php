@@ -89,8 +89,9 @@ class CourseAttendeeRepository
     {
         $returnTable='';
         if(is_array($attendeesArrList) && count($attendeesArrList) > 0){
-            foreach($attendeesArrList as $key=>$vlue){
-                $attendeesArrList
+            foreach($attendeesArrList as $key=> $vlue){
+                // dd($vlue);
+                // $attendeesArrList
             }
         }
         return $returnTable;
