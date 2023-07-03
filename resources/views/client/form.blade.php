@@ -7,7 +7,8 @@ $mycountphp = 1;
 @endphp
 
 <script>
-    var myCount = {{ $mycountphp }};   
+    var myCount = {{ $mycountphp }}; 
+    var route = "{{ route('check-name') }}";  
 </script>
 <div>
     <hr>

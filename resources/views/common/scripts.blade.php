@@ -15,4 +15,23 @@
 
 <script src="{{asset('select/js/form-select2.js')}}"></script>
 <script src="{{asset('select/js/select2.full.min.js')}}"></script>
+<script>
+	var sidebar = document.getElementById("main-wrapper")
+
+	function updateSize() {
+	 
+	  if (window.innerWidth < 992) {
+
+
+	sidebar.classList.add("menu-toggle")
+	}else{
+
+	  sidebar.classList.remove("menu-toggle")
+	  }
+
+	}
+
+	updateSize();
+	window.addEventListener("resize", updateSize);
+</script>
  

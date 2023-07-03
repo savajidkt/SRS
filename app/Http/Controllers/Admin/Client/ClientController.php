@@ -138,7 +138,6 @@ class ClientController extends Controller
 
     public function checkName(Request $request)
     {
-        dd('testing');
         $client = $request->input('company_name');
         $isUnique = !Client::where('company_name', $client)->exists();
         return response()->json($isUnique);

@@ -13,15 +13,19 @@ var FrmClientPreference = function() {
             rules: {
                 company_name: {
                     required: true,
-                    // remote: {
-                    //     url: "{{ route('check-name') }}",
-                    //     type: 'post',
-                    //     data: {
-                    //         company_name: function() {
-                    //             return $('#company_name').val();
-                    //         }
-                    //     }
-                    // }
+                    remote: {
+                        url: route,
+                        type: 'POST',
+                        dataType: 'json',
+                        headers: {
+                            'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        data: {
+                            company_name: function() {
+                                return $('#company_name').val();
+                            }
+                        }
+                    }
                 },
                 address_one: {
                     required: true
@@ -36,12 +40,12 @@ var FrmClientPreference = function() {
                     required: true
                 },
             },
-            // messages: {
-            //     name: {
-            //         required: 'Please enter a name',
-            //         remote: 'Name already exists'
-            //     }
-            // },
+            messages: {
+                company_name: {
+                    required: 'Please enter a name',
+                    remote: 'Name already exists'
+                }
+            },
             highlight: function(element) {
 
                 // add a class "has_error" to the element 
@@ -79,4 +83,5 @@ var FrmClientPreference = function() {
 }();
 $(document).ready(function() {
     FrmClientPreference.init();
+
 });
