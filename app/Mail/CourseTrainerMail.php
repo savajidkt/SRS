@@ -61,22 +61,26 @@ class CourseTrainerMail extends Mailable
 
   {
     $data = $this->data;
-    $trainerDetail = '';
-    if ($data['trainerDetail']) {
-      foreach ($data['trainerDetail'] as $key => $value) {
-        $trainerDetail .= ucwords($value->first_name . " " . $value->last_name);
-      }
-    }
+    // dd($data);
+    // $trainerDetail = '';
+    // if ($data['trainerDetail']) {
+    //   foreach ($data['trainerDetail'] as $key => $value) {
+    //     $trainerDetail .= ucwords($value->first_name . " " . $value->last_name);
+    //   }
+    // }
     
-   
     $paramArr = [];
     $paramArr['site_url'] = URL::to('/');
-    // $paramArr['attendees_name'] = $data['attendees']['first_name'] . ' ' . $data['attendees']['last_name'];
-    $paramArr['course_date'] = dateFormat($data['course']['start_date']);
-    $paramArr['trainer_list'] = $trainerDetail;
-    $paramArr['attendee_name'] = $data['attendee_name'];
+    $paramArr['trainer_name'] = $data['trainerArr']['trainer_name'];
+    $paramArr['course_date'] = dateFormat($data['trainerArr']['course_date']);
+    // $paramArr['trainer_list'] = $trainerDetail;
+    $paramArr['course_name'] = $data['trainerArr']['course_name'];
+    $paramArr['company_organiser_attendees_name'] = $data['trainerArr']['company_organiser_attendees_name'];
+    $paramArr['company_address'] = '';
+    $paramArr['company_organiser_attendees_email'] = $data['trainerArr']['company_organiser_attendees_email'];
+    $paramArr['course_end_date'] = dateFormat($data['trainerArr']['course_end_date']);
+    $paramArr['attendees_list'] = dateFormat($data['trainerArr']['attendees_list']);
     $paramArr['link'] = URL::to('/course-attendees/'.$data['key']);
-    $paramArr['questionnaire_end_date'] = dateFormat($data['course']['end_date']);
     $paramArr['year'] = date('Y');
 
     // dd($paramArr);
@@ -85,7 +89,7 @@ class CourseTrainerMail extends Mailable
     if ($emailTemplate) {
 
       $emailBody = replaceHTMLBodyWithParam($emailTemplate['template'], $paramArr);
-      $emailSubject = replaceHTMLBodyWithParam($emailTemplate['subject'], array('course_date' => dateFormat($data['course']['start_date'])));
+      $emailSubject = replaceHTMLBodyWithParam($emailTemplate['subject'], array('course_date' => dateFormat($data['trainerArr']['course_end_date'])));
       // return $this->subject($emailSubject)->with('body', $emailBody);
       return $this->subject($emailSubject)->markdown('admin.Mail.companyOrganizerMail', ['emailBody' => $emailBody]);
 

@@ -52,6 +52,7 @@ class CourseAttendeeController extends Controller
     {
         // dd($request->all());
         $this->courseAttendeeRepository->create($request->all());
-        return redirect()->back()->with('success', "Course Attendees successfully!");
+        return view('courseattendees.success');
+        // return redirect()->back()->with('success', "Course Attendees successfully!");
     }
 }
