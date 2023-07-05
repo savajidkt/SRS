@@ -10,27 +10,27 @@
 
 $(function() {
     'use strict';
-    if (myCount == 1) {
-        $('.text-nowrap').hide();
-    }
+    // if (myCount == 1) {
+    //     $('.text-nowrap').hide();
+    // }
 
     // form repeater jquery
-    $('.attendees-repeater').repeater({
+    $('.contacte-repeater').repeater({
         show: function() {
             $(this).slideDown();
 
-            myCount = myCount + 1;
-            if (myCount > 1) {
-                $('.text-nowrap').show();
-            }
+            // myCount = myCount + 1;
+            // if (myCount > 1) {
+            //     $('.text-nowrap').show();
+            // }
 
         },
         hide: function(deleteElement) {
-            myCount = myCount - 1;
+            // myCount = myCount - 1;
 
-            if (myCount == 1) {
-                $('.text-nowrap').hide();
-            }
+            // if (myCount == 1) {
+            //     $('.text-nowrap').hide();
+            // }
             $(this).slideUp(deleteElement);
 
         }

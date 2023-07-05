@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\Attendee\AttendeequestionsController;
 use App\Http\Controllers\Admin\Questions\QuestionsController;
 use App\Http\Controllers\Admin\Companyorganizer\CompanyOrganizerController;
 use App\Http\Controllers\Admin\CourseAttendees\CourseAttendeesController;
+use App\Http\Controllers\Admin\Contacte\FeedbackContacteController;
 use App\Http\Controllers\Admin\CourseAttendee\CourseAttendeeController;
 use App\Http\Controllers\Admin\Course\CourseController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
@@ -38,6 +39,8 @@ Route::post('forgot-password', [ForgotPasswordController::class, 'forgotPassword
 Route::post('reset-password', [ForgotPasswordController::class, 'submitResetPasswordForm'])->name('reset.password.post');
 Route::get('course-attendees/{id}', [CourseAttendeeController::class, 'index'])->name('add-course-attendees');
 Route::post('store-attendees', [CourseAttendeeController::class, 'store'])->name('store-attendees');
+
+Route::get('feedback-contacte/{id}', [FeedbackContacteController::class, 'index'])->name('feedback-contacte');
 
 //Route::post('first-password-change', [UserController::class, 'changePassword'])->name('first.password.change');
 

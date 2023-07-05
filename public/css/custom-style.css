@@ -1,0 +1,156 @@
+.quixnav_custom_sidebar {
+    width: 17.1875rem;
+    padding-bottom: 112px;
+    height: 100%;
+    position: absolute;
+    top: 5rem;
+    padding-top: 0;
+    z-index: 2;
+    background-color: #000066;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease;
+}
+ .menu-toggle .quixnav_custom_sidebar {
+    position: absolute;
+}
+ .menu-toggle .quixnav_custom_sidebar {
+    left: 0;
+}
+ .quixnav_custom_sidebar {
+    position: fixed;
+}
+
+ .quixnav_custom_sidebar {
+    left: -100%;
+}
+
+
+.quixnav_custom_sidebar .metismenu li {
+    display: flex;
+    flex-direction: column;
+}
+
+.quixnav-scroll .metismenu a {
+    position: relative;
+    display: block;
+    padding: 0.8125rem 1.25rem;
+    outline-width: 0;
+    color: #bdbdc7;
+    text-decoration: none;
+}
+
+/*end of sidebar css*/
+.metismenu #menu {
+    padding: 0.8125rem 1.25rem !important;
+}
+
+.quixnav-scroll .metismenu ul a {
+    padding-left: 54px;
+    font-weight: 300;
+}
+
+.quixnav-scroll .metismenu .has-arrow:after {
+    width: 0.35rem;
+    height: 0.35rem;
+    right: 1.5625rem;
+    top: 48%;
+    border-color: inherit;
+    -webkit-transform: rotate(-225deg) translateY(-50%);
+    transform: rotate(-225deg) translateY(-50%);
+}
+
+metismenu .has-arrow:after {
+    position: absolute;
+    content: "";
+    width: 0.5em;
+    height: 0.5em;
+    border-width: 1px 0 0 1px;
+    border-style: solid;
+    border-color: initial;
+    right: 1em;
+    -webkit-transform: rotate(-45deg) translateY(-50%);
+    transform: rotate(-45deg) translateY(-50%);
+    -webkit-transform-origin: top;
+    transform-origin: top;
+    top: 50%;
+    transition: all .3s ease-out;
+}
+
+.quixnav-scroll .metismenu > li:hover > a, .quixnav-scroll .metismenu > li:focus > a, .quixnav-scroll .metismenu > li.mm-active > a {
+    background-color: #000056;
+    color: #fff;
+}
+
+.content-body {
+    margin: 1rem !important;
+    z-index: 0;
+    transition: all 0.2s ease;
+}
+
+#main-wrapper .nav-header .nav-control{
+    display: block !important;
+}
+
+#main-wrapper .nav-header .nav-control .hamburger{
+        display: block !important;
+}
+
+
+.content-body .container-fluid {
+    padding-right: 20px;
+    padding-left: 20px;
+}
+
+.form-group.train-deet label.text-label{
+white-space:nowrap;
+}
+
+.quixnav-scroll .metismenu>li:hover>a, .quixnav-scroll .metismenu>li:focus>a, .quixnav-scroll .metismenu>li.mm-active>a {
+    background-color: rgba(255, 255, 255, 0.05);
+    color: #fff;
+}
+
+a.mm-active {
+    background-color: #000056;
+}
+
+@media only screen and (max-width: 768px){
+ .nav-header .nav-control .hamburger {
+    left: -0.25rem !important;
+}
+.logo-srs {
+    width: 50px !important;
+    height: auto !important;
+}
+}
+
+.menu-toggle .quixnav_custom_sidebar {
+    position: fixed;
+}
+
+.text-error{
+color:red;
+}
+
+body{
+overflow-y:auto;
+}
+
+.content-body {
+    overflow-y: auto !important;
+}
+
+.col-xl-12.col-xxl-12{
+padding-right: 0px !important;
+    padding-left: 0px !important;
+}
+
+@media screen and (max-width: 1160px){
+.btn-primary {
+    font-size: 18px !important;
+}
+}
+
+.card-body {
+    overflow: auto !important;
+}

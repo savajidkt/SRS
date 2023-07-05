@@ -83,7 +83,7 @@
                 }
             },
             columns: [{
-                    data: 'DT_RowIndex',
+                    data: 'id',
                     name: 'id',
                     // orderable: false,
                     // searchable: true

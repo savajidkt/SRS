@@ -52,25 +52,32 @@
         </div>
         <div class="content-body attendee-home ">
             <div class="container-fluid ">
-                <div class="accordion" id="accordionExample">
-                    <div class="card accordion-item">
-                        <div class="accordion-header" id="headingOne">
-                            <h2 class="mb-0 accordion-header">
-                                <button class="btn btn-link accordion-button" type="button" data-toggle="collapse"
-                                    data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                                    INSTRUCTION
-                                    <i class="bi bi-chevron-down"></i>
-                                </button>
-                            </h2>
-                        </div>
-                        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
-                            data-parent="#accordionExample">
-                            <div class="card-body accordion-add-contact-colr">
-                                Dear Maneesh Jha,
-                            </div>
-                        </div>
+                <div class="card">
+                    <button class="accordion accordion-extra attendee-home-lgt attendee-bg-clr add-contact-font">INSTRUCTION</button>
+                    <div class="panel accordion-panel-extra accordion-add-contact-colr">
+                      Dear Maneesh Jha,
+                        <br>
+                        Before you attend the upcoming workshop or coaching session please complete a questionnaire about yourself and invite up to 6 other people to provide you with feedback.  The results of this questionnaire will be used during the workshop by your trainer to enable you to compare your view of how you influence with the views of others. There are no right or wrong answers.
+                        <br>
+                        <strong>What do you need to do?</strong>
+                        <br>
+                        Firstly using the form on the right hand side please provide contact details for up to 6 other people that will provide you with 360 degree feedback. Once you have entered their contact details we will invite them to complete a feedback form for you. Please enter their details carefully leaving no spaces before or after the email addresses and remember to select the relationship in each case - otherwise the forms do not upload.
+                        <br>
+                        To add another feedback person please click the option “Add New Contact” at the bottom. Once you are happy to proceed and answer your own feedback form please click the option “Send to 360 Contacts”.
+                        <br>
+                        Once you have completed and sent these contacts your own questionnaire will then come up automatically for you to complete and submit. If this does not appear - please check back that the email addresses do not have spaces accidently and that the relationship is selected for each contact and try clicking send again.
+                        <br>
+                        Please remember that when you see the feedback these contacts will be named as it is important to look at the feedback in the context of the relationship - so you may want to et them know that you are sending them this feedback request and that it is named so they know to expect that.
+                        <br>
+                        Many thanks and we look forward to seeing you soon
+                        <br>
+                        Sue Swindell
+                        <br>
+                        SRS-The Development Team Ltd
+                        <br>
+                        +44 7850 185 351
                     </div>
-                    <!-- Repeat the structure for additional accordion items -->
+                 
                 </div>
                 <div class="row">
                     <div class="col-xl-6 col-xxl-12">
@@ -155,7 +162,7 @@
                                                 </div>
                                             </div>
                                             <button type="submit" class="btn btn-primary">Send Instructions</button>
-                                            <button type="submit" class="btn btn-primary">Cancel</button>
+                                            <button type="button" class="btn btn-primary">Cancel</button>
                                             <button type="button" class="btn btn-primary" data-repeater-create>Add
                                                 Another
                                                 Attendee</button>
@@ -186,6 +193,50 @@
             <script src="{{ asset('js/form/courseattendee/jquery.repeater.min.js') }}"></script>
             <script src="{{ asset('js/form/courseattendee/form-repeater.js') }}"></script>
             <script src="{{ asset('js/form/courseattendee/courseattendee.js') }}"></script>
+            <script>
+                const currentDateTime = new Date();
+          
+          const options = {
+          weekday: 'long',
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric',
+          hour: 'numeric',
+          minute: 'numeric',
+          second: 'numeric',
+          hour12: false
+          };
+          
+          const formattedDateTime = currentDateTime.toLocaleDateString('en-US', options);
+          document.getElementById("demo").innerHTML = formattedDateTime;
+          
+              </script>
+          
+              <script>
+                $('#form-select-sm-attendee-1').select2();
+                $('#form-select-sm-attendee-2').select2();
+              </script>
+          
+          <script>
+            var acc = document.getElementsByClassName("accordion");
+        var i;
+        
+        for (i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function() {
+          this.classList.toggle("active");
+          var panel = this.nextElementSibling;
+          if (panel.style.maxHeight) {
+            panel.style.maxHeight = null;
+             //add padding-changes, same as base-padding
+             panel.style.padding = "0px 18px";
+          } else {
+            panel.style.maxHeight = panel.scrollHeight + "px";
+            //add padding-changes you want to apply when active
+            panel.style.padding = "22px 18px";
+          } 
+        });
+        }
+          </script>
 
 </body>
 

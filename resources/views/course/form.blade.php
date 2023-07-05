@@ -32,7 +32,7 @@ $mycountphp = 1;
                 <div class="form-group dat-o-c">
                     <label class="text-label headi-doc">Date of Course<span class="filedrequired"> *</span></label>
                     <div class="input-error">
-                        <input type="date" name="start_date" class="form-control" value="{{(isset($model->start_date))?$model->start_date:''}}" onchange="Func_a(this)" placeholder="" required>
+                        <input type="date" name="start_date" id="start_date" class="form-control" value="{{(isset($model->start_date))?$model->start_date:''}}" onchange="Func_a(this)" placeholder="" required>
                     </div>
                 </div>
                 <div class="form-group dat-o-c">
@@ -49,6 +49,7 @@ $mycountphp = 1;
                                 <option value="">Select Duration</option>
                                 <option value="0.5 Days" {{ isset($model->duration) && $model->duration == '0.5 Days' ? 'selected' : '' }}>0.5 Days</option>
                                 <option value="1 Days" {{ isset($model->duration) && $model->duration == '1 Days' ? 'selected' : '' }}>1 Days</option>
+                                <option value="1.5 Days" {{ isset($model->duration) && $model->duration == '1.5 Days' ? 'selected' : '' }}>1.5 Days</option>
                                 <option value="2 Days" {{ isset($model->duration) && $model->duration == '2 Days' ? 'selected' : '' }}>2 Days</option>
                                 <option value="2.5 Days" {{ isset($model->duration) && $model->duration == '2.5 Days' ? 'selected' : '' }}>2.5 Days</option>
                                 <option value="3 Days" {{ isset($model->duration) && $model->duration == '3 Days' ? 'selected' : '' }}>3 Days</option>

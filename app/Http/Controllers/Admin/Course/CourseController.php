@@ -34,7 +34,7 @@ class CourseController extends Controller
            
             $data = Course::select('*');
             // $data->orderBy('start_date', 'ASC');
-            // $data->orderBy($request->order[0]['column'], $request->order[0]['dir']);
+            $data->orderBy($request->order[0]['column'], $request->order[0]['dir']);
             return DataTables::of($data)
                 ->addIndexColumn()
                 ->addColumn('course_category_id', function (Course $course) {
@@ -45,14 +45,6 @@ class CourseController extends Controller
                 })
                 ->addColumn('duration', function (Course $course) {
                     return $course->duration;
-                    // if($course->duration == 1)
-                    // {
-                    //     return "0.5 Days";
-                    // }
-                    // else
-                    // {
-                    //     return "1 Days";
-                    // }
                     
                 })
                 ->filterColumn('start_date', function($query, $keyword) {
@@ -62,10 +54,6 @@ class CourseController extends Controller
                 ->addColumn('client_id', function (Course $course) {
                     return $course->clientname->company_name;
                 })
-                // ->filterColumn('client_id', function($query, $keyword) {
-                //     $sql = "CONCAT(courses.client_id,)  like ?";
-                //     $query->whereRaw($sql, ["%{$keyword}%"]);
-                // })
                 ->filterColumn('client_id', function ($query, $keyword) {
                     $query->whereHas('clientname', function ($query) use ($keyword) {
                         $query->where('company_name', 'LIKE', '%' . $keyword . '%');
