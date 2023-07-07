@@ -139,7 +139,14 @@ class ClientController extends Controller
     public function checkName(Request $request)
     {
         $client = $request->input('company_name');
-        $isUnique = !Client::where('company_name', $client)->exists();
+        $clientId = $request->input('client_id');
+        if(isset($clientId) && strlen($clientId)>0){
+            $isUnique = Client::where('company_name', $client)->where('id', '!=' , $clientId)->exists();
+        }else{
+            $isUnique = Client::where('company_name', $client)->exists();
+        }
+       
+        
         return response()->json($isUnique);
     }
 }

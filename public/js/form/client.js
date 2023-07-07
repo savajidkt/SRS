@@ -1,3 +1,4 @@
+var clinetExits = true;
 var FrmClientPreference = function() {
 
     var FrmClientValidation = function() {
@@ -13,19 +14,6 @@ var FrmClientPreference = function() {
             rules: {
                 company_name: {
                     required: true,
-                    remote: {
-                        url: route,
-                        type: 'POST',
-                        dataType: 'json',
-                        headers: {
-                            'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
-                        },
-                        data: {
-                            company_name: function() {
-                                return $('#company_name').val();
-                            }
-                        }
-                    }
                 },
                 address_one: {
                     required: true
@@ -66,8 +54,42 @@ var FrmClientPreference = function() {
                 }
             },
             submitHandler: function(form) {
-                form.submit();
+                if (clinetExits) {
+                    form.submit();
+                } else {
+                    $('.error-msg').html('');
+                    $('.error-msg').html('Name already exists');
+                    return false;
+                }
+
             }
+        });
+    }
+
+    var FrmcheckNameValidation = function() {
+        $("#company_name").keyup(function() {
+            $('.error-msg').html('');
+            $.ajax({
+                type: 'POST',
+                url: moduleConfig.checkName,
+                headers: {
+                    'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+                },
+                data: {
+                    company_name: $('#company_name').val(),
+                    client_id: $('#company_name').attr('data-id'),
+                },
+                success: function(data) {
+                    if (data) {
+                        $('.error-msg').html('Name already exists');
+                        clinetExits = false;
+                    } else {
+                        $('.error-msg').html('');
+                        clinetExits = true;
+                    }
+                }
+            });
+
         });
     }
 
@@ -75,6 +97,7 @@ var FrmClientPreference = function() {
         //main function to initiate the module
         init: function() {
             FrmClientValidation();
+            FrmcheckNameValidation();
             jQuery.validator.addMethod("emailExt", function(value, element, param) {
                 return value.match(/^[a-zA-Z0-9_\.%\+\-]+@[a-zA-Z0-9\.\-]+\.[a-zA-Z]{2,}$/);
             }, 'Please enter a valid email address.');

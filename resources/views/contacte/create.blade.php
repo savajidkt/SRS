@@ -14,6 +14,7 @@
     />
     <!--CSS-->
     <link href="{{ asset('css/style.css')}}" rel="stylesheet" />
+    <link href="{{ asset('css/custom-style.css')}}" rel="stylesheet">
     
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" integrity="sha512-nMNlpuaDPrqlEls3IX/Q56H36qvBASwb3ipuo3MxeWbsQB1881ox0cRv7UPTgBlriqoynt35KjEwgGUeUXIPnw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -186,8 +187,9 @@
                         </div> --}}
                         <div class="card-body">
                             <div class="basic-form">
-                                <form class="contacte-repeater" action="" method="post"
+                                <form class="contacte-repeater" action="{{ route('store-contacte') }}" method="post"
                                         enctype="multipart/form-data" id="contacte">
+                                    @csrf
                                     <div class="">
                                         <div data-repeater-list="contacte">
                                             <div data-repeater-item>
@@ -218,11 +220,11 @@
                                                         <div class="form-group col-md-6 form-gap-2">
                                                         <label class="text-label">Relationship</label>
                                                         <select class="form-select form-select-sm" id="form-select-sm-attendee" aria-label=".form-select-sm example">
-                                                            <option selected disabled>Select Job Title</option>
+                                                            <option selected disabled>Select Relationship</option>
                                                             <option value="1">He/She is my line manager</option>
                                                             <option value="2">He/She reports to me</option>
-                                                            <option value="2">He/She is my colleague/peer</option>
-                                                            <option value="2">Any other relationship</option>
+                                                            <option value="3">He/She is my colleague/peer</option>
+                                                            <option value="4">Any other relationship</option>
                                                             </select>
                                                         </div>
                                                         <div class="col-md-2 col-12 mb-50">
@@ -296,7 +298,7 @@
 
     <script src="{{ asset('js/form/contacte/jquery.repeater.min.js') }}"></script>
     <script src="{{ asset('js/form/contacte/form-repeater.js') }}"></script>
-    {{-- <script src="{{ asset('js/form/contacte/contacte.js') }}"></script> --}}
+    <script src="{{ asset('js/form/contacte/contacte.js') }}"></script>
     <script>
       const currentDateTime = new Date();
 

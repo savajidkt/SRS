@@ -22,7 +22,7 @@ $mycountphp = 1;
                     {{-- <input type="text" name="firstName" class="form-control" placeholder="" > --}}
                     <div class="input-error">
                         <input class="form-control " id="company_name" type="text" name="company_name"
-                            placeholder="Company Name" value="{{(isset($model->company_name))?$model->company_name:''}}" aria-describedby="login-company_name"
+                            placeholder="Company Name" data-id="{{(isset($model->id))?$model->id:''}}" value="{{(isset($model->company_name))?$model->company_name:''}}" aria-describedby="login-company_name"
                             autofocus=""  />
                       
                         @error('company_name')
@@ -30,6 +30,9 @@ $mycountphp = 1;
                                 <strong>{{ $message }}</strong>
                             </span>
                         @enderror
+                        <div class="error-msg help-block-error">
+
+                        </div>
                     </div>
                     
                 </div>
@@ -258,3 +261,9 @@ $mycountphp = 1;
     @endif
     </div>
 </div>
+<script type="text/javascript">
+    var moduleConfig = {
+        checkName: "{!! route('check-name') !!}"
+    };
+    
+</script>

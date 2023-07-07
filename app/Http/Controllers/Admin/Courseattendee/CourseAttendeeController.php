@@ -31,7 +31,7 @@ class CourseAttendeeController extends Controller
 
         if($CompanyOrganizer)
         {
-            return view('courseattendees.create',['id'=>$id]);
+            return view('courseattendees.create',['id'=>$id],['model' => $course]);
         }
         else
         {
