@@ -59,6 +59,7 @@
                                 <section>
                                     <div class="row">
                                         <div class="col-lg-12 mb-4 form-style add_course_step_2_col">
+                                            
 
                                             <div class="form-group train-deet">
                                                 <label class="itemcost">First Name<span class="filedrequired">

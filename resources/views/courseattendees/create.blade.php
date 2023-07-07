@@ -210,46 +210,10 @@ $mycountphp = 1;
                                     <button type="button" class="btn btn-primary" data-repeater-create>Add Another Attendee</button>
                                 </form>
                             </div>
-                            
-
-                            
-                            <!-- <div class="attendee-add-contact-relationship">
-                                <div class="form-row">
-                                    <div class="form-group col-md-6 form-gap-2">
-                                        <label>First Name</label>
-                                        <input type="text" class="form-control" placeholder="Sue" required>
-                                    </div>
-                                    <div class="form-group col-md-6 form-gap-2">
-                                        <label>Last Name</label>
-                                        <input type="text" class="form-control" placeholder="Swindell" required>
-                                    </div>
-                                    
-                                    <div class="form-group col-md-6 form-gap-2">
-                                        <label>Email Address</label>
-                                        <input type="email" class="form-control" placeholder="sue.swindell@srs-development.co.uk" required>
-                                    </div>
-    
-                                    <div class="form-group col-md-6 form-gap-2">
-                                      <label class="text-label">Relationship</label>
-                                      <select class="form-select form-select-sm" id="form-select-sm-attendee-2" aria-label=".form-select-sm example">
-                                          <option selected disabled>Select Relationship</option>
-                                          <option value="1">Director</option>
-                                          <option value="2">Department Head</option>
-                                          <option value="2">Manager</option>
-                                          <option value="2">Project Manager / Specialist</option>
-                                          <option value="2">Team Member</option>
-                                        </select>
-                                  </div>
-                                </div>
-                            </div> -->
-
-
                         </div>
                     </div>
                 </div>
             </div>
-
-
           </div>
           </div>
       <!--**********************************
@@ -287,17 +251,20 @@ $mycountphp = 1;
         Scripts
     ***********************************-->
     <!-- Required vendors -->
-    <script src="{{ asset('vendor/global/global.min.js')}}"></script>
-
-    <script src="{{ asset('js/jquery.validate.min.js') }}"></script>
+    <script src="{{ asset('vendor/global/global.min.js')}}"></script> 
     <script src="{{ asset('js/quixnav-init.js')}}"></script>
     <script src="{{ asset('js/custom.min.js')}}"></script>
     
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js" integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js" integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> --}}
+    
+     <script src="{{ asset('js/jquery.validate.min.js') }}"></script>
+     <script src="{{ asset('js/form/courseattendee/courseattendee.js') }}"></script>
+     
+    
     <script src="{{ asset('js/form/courseattendee/jquery.repeater.min.js') }}"></script>
     <script src="{{ asset('js/form/courseattendee/form-repeater.js') }}"></script>
-    <script src="{{ asset('js/form/courseattendee/courseattendee.js') }}"></script>
+    
 
     <script>
       const currentDateTime = new Date();
