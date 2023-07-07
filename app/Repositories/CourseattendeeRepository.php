@@ -23,7 +23,6 @@ class CourseAttendeeRepository
      */
     public function create(array $data): CourseAttendees
     {
-       
         $course = Course::where('key',$data['key'])->first();
         if($course)
         {

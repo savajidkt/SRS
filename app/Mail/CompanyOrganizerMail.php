@@ -61,6 +61,7 @@ class CompanyOrganizerMail extends Mailable
 
   {
     $data = $this->data;
+    // dd($data);
     $trainer_list = '';
     if (is_array($data['invoice']) && count($data['invoice']) > 0) {
       foreach ($data['invoice'] as $key => $value) {

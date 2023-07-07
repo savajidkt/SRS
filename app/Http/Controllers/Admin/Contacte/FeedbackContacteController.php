@@ -9,7 +9,6 @@ class FeedbackContacteController extends Controller
 {
     public function index($id)
     {
-        dd($id);
        return view('contacte.create');
     }
 

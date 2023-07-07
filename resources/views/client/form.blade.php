@@ -8,7 +8,6 @@ $mycountphp = 1;
 
 <script>
     var myCount = {{ $mycountphp }}; 
-    var route = "{{ route('check-name') }}";  
 </script>
 <div>
     <hr>
@@ -77,20 +76,19 @@ $mycountphp = 1;
                 <div class="form-group train-deet">
                     <label class="text-label">Country<span class="filedrequired"> *</span></label>
                     <div class="input-error">
-    
-                             <select class="form-select form-select-sm select2" aria-label=".form-select-sm example" id="country" name="country" >
-                                <option>Select Country</option>
-                                @if(count($countries) > 0)
-                                    @foreach ($countries as $key=> $country)
-                                    @if ($action =='add')
-                                    <option value="{{ $country->id }}" {{ ($country->id == '230') ? 'selected' : '' }} >{{ $country->name}}</option>
-                                    @else
-                                    <option value="{{ $country->id }}" {{ ($country->id == $model->country) ? 'selected' : '' }} >{{ $country->name}}</option>
-                                    @endif
-                                        
-                                    @endforeach
+                        <select class="form-select form-select-sm select2" aria-label=".form-select-sm example" id="country" name="country" >
+                            <option value="">Select Country</option>
+                            @if(count($countries) > 0)
+                                @foreach ($countries as $key=> $country)
+                                @if ($action =='add')
+                                <option value="{{ $country->id }}" {{ ($country->id == '230') ? 'selected' : '' }} >{{ $country->name}}</option>
+                                @else
+                                <option value="{{ $country->id }}" {{ ($country->id == $model->country) ? 'selected' : '' }} >{{ $country->name}}</option>
                                 @endif
-                            </select>
+                                    
+                                @endforeach
+                            @endif
+                        </select>
                         @error('country')
                             <span class="invalid-feedback" style="display: block;" role="alert">
                                 <strong>{{ $message }}</strong>

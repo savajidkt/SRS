@@ -96,10 +96,10 @@ $mycountphp = 1;
                     <div class="form-group">
                         <label class="text-label">Path<span class="filedrequired"> *</span></label>
                         <div class="input-error">
-                            <select class="form-select form-select-sm select2" aria-label=".form-select-sm example" id="path" name="path" >
-                                <option value="">Please Select</option>
+                            <select class="form-select form-select-sm " aria-label=".form-select-sm example" id="path" name="path" >
+                                {{-- <option value="">Please Select</option> --}}
                                 <option value="1" {{ isset($model->path) && $model->path == 1 ? 'selected' : '' }}>Automated email</option>
-                                <option value="2" {{ isset($model->path) && $model->path == 2 ? 'selected' : '' }}>PDF download</option>
+                                {{-- <option value="2" {{ isset($model->path) && $model->path == 2 ? 'selected' : '' }}>PDF download</option> --}}
                             </select>
                             <div class="path-error"></div>
                         </div>
