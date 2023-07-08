@@ -43,6 +43,7 @@ Route::post('store-attendees', [CourseAttendeeController::class, 'store'])->name
 Route::get('feedback-contacte/{id}', [FeedbackContacteController::class, 'index'])->name('feedback-contacte');
 Route::post('store-contacte', [FeedbackContacteController::class, 'store'])->name('store-contacte');
 
+Route::get('attendees-questionnaire', [FeedbackContacteController::class, 'attendeesquestion'])->name('attendees-questionnaire');
 //Route::post('first-password-change', [UserController::class, 'changePassword'])->name('first.password.change');
 
 

@@ -190,6 +190,7 @@
                                 <form class="contacte-repeater" action="{{ route('store-contacte') }}" method="post"
                                         enctype="multipart/form-data" id="contacte">
                                     @csrf
+                                        <input type="hidden" value="{{ $id }}" name="key" >
                                     <div class="">
                                         <div data-repeater-list="contacte">
                                             <div data-repeater-item>
@@ -219,7 +220,7 @@
                                                         </div>
                                                         <div class="form-group col-md-6 form-gap-2">
                                                         <label class="text-label">Relationship</label>
-                                                        <select class="form-select form-select-sm" id="form-select-sm-attendee" aria-label=".form-select-sm example">
+                                                        <select class="form-select form-select-sm" name="relationship" id="form-select-sm-attendee" aria-label=".form-select-sm example">
                                                             <option selected disabled>Select Relationship</option>
                                                             <option value="1">He/She is my line manager</option>
                                                             <option value="2">He/She reports to me</option>
@@ -244,7 +245,7 @@
                                         </div>
                                     </div>
                                     <button type="submit" class="btn btn-primary">Send to 360 Contacts</button>
-                                    <button type="submit" class="btn btn-primary">Cancel</button>
+                                    <button type="button" class="btn btn-primary">Cancel</button>
                                     <button type="button" class="btn btn-primary" data-repeater-create>Add New Contact</button>
                                 </form>
                             </div>
