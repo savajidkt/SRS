@@ -1,23 +1,24 @@
 <?php
 
-use App\Http\Controllers\Admin\Dashboard\DashboardController;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Redirect;
 use App\Http\Controllers\Admin\User\UsersController;
 use App\Http\Controllers\Admin\Admin\AdminsController;
-use App\Http\Controllers\Admin\Profile\ProfileController;
+use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\Admin\Client\ClientController;
-use App\Http\Controllers\Admin\Attendee\AttendeequestionsController;
-use App\Http\Controllers\Admin\Questions\QuestionsController;
-use App\Http\Controllers\Admin\Companyorganizer\CompanyOrganizerController;
-use App\Http\Controllers\Admin\CourseAttendees\CourseAttendeesController;
-use App\Http\Controllers\Admin\Contacte\FeedbackContacteController;
-use App\Http\Controllers\Admin\CourseAttendee\CourseAttendeeController;
 use App\Http\Controllers\Admin\Course\CourseController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
-use App\Http\Controllers\Auth\ResetPasswordController;
-use App\Http\Controllers\UserController;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\Profile\ProfileController;
+use App\Http\Controllers\Admin\Dashboard\DashboardController;
+use App\Http\Controllers\Admin\Questions\QuestionsController;
+use App\Http\Controllers\Admin\Contacte\FeedbackContacteController;
+use App\Http\Controllers\Admin\Attendee\AttendeequestionsController;
+use App\Http\Controllers\Admin\CourseAttendee\CourseAttendeeController;
+use App\Http\Controllers\Admin\CourseAttendees\CourseAttendeesController;
+use App\Http\Controllers\Admin\TemplateManager\TemplateManagersController;
+use App\Http\Controllers\Admin\Companyorganizer\CompanyOrganizerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -87,6 +88,9 @@ Route::group(['authGrouping' => 'users.auth','middleware' => 'auth:web'], functi
     Route::resource('/questions', QuestionsController::class);
     Route::resource('/companyorganizer', CompanyOrganizerController::class);
     Route::resource('/courseattendees', CourseAttendeesController::class);
+
+    Route::resource('/templatemanager', TemplateManagersController::class);
+
     /*Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('checkSurveyStatus');
     Route::get('/change-password', [ResetPasswordController::class, 'firstTimePasswordChange'])->name('change-password');
     //Route::resource('/survey', SurveyController::class);
