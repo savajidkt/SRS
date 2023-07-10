@@ -94,6 +94,9 @@ Route::group(['authGrouping' => 'users.auth','middleware' => 'auth:web'], functi
     Route::resource('/courseattendees', CourseAttendeesController::class);
 
     Route::resource('/templatemanager', TemplateManagersController::class);
+    Route::get('/templatemanager-help/', [TemplateManagersController::class, 'help'])->name('templatemanager-help');
+    Route::get('/templatemanager-template/', [TemplateManagersController::class, 'common'])->name('templatemanager-common');
+    Route::get('/templatemanager-message/', [TemplateManagersController::class, 'customize'])->name('templatemanager-customize');
 
     /*Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('checkSurveyStatus');
     Route::get('/change-password', [ResetPasswordController::class, 'firstTimePasswordChange'])->name('change-password');

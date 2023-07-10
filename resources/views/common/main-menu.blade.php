@@ -55,9 +55,9 @@
                                 class="icon icon-layout-25"></i><span class="nav-text">Template Manager</span></a>
                         <ul aria-expanded="false">
                             <li><a href="{{ route('templatemanager.index')}}">Email Template</a></li>
-                            <li><a href="ui-badge.html">Help Template</a></li>
-                            <li><a href="table-datatable-basic.html">Common Template</a></li>
-                            <li><a href="ui-button.html">Customize Messages</a></li>
+                            <li><a href="{{ route('templatemanager-help')}}">Help Template</a></li>
+                            <li><a href="{{ route('templatemanager-common')}}">Common Template</a></li>
+                            <li><a href="{{ route('templatemanager-customize')}}">Customize Messages</a></li>
                         </ul>
                     </li>
 

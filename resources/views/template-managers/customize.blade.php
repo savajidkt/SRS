@@ -2,59 +2,55 @@
 @section('page_title', 'SRS')
 @section('content')
     <!--**********************************
-            Content body start
-        ***********************************-->
+        Content body start
+    ***********************************-->
 
 
     <div class="container-fluid">
         <div class="row page-titles mx-0">
             <!-- <div class="col-sm-6">
-                        <div class="welcome-text">
-                            <h4>Hi, welcome back!</h4>
-                            <span class="ml-1">Sue Swindell</span>
-                        </div>
-                    </div> -->
+                    <div class="welcome-text">
+                        <h4>Hi, welcome back!</h4>
+                        <span class="ml-1">Sue Swindell</span>
+                    </div>
+                </div> -->
             <!-- <div class="col-sm-6 justify-content-sm-end mt-2 mt-sm-0 d-flex"> -->
             <div>
                 <ol class="breadcrumb">
-
-
-
                     <?php
                     
-                if( $type == "email" ){
-                          ?> <li class="breadcrumb-item"><a href="{{ route('templatemanager.index') }}">Template
-                            Manager</a></li>
-                    <li class="breadcrumb-item active"><a href="{{ route('templatemanager.index') }}">Email Template
-                            Manager</a></li>
-                    <?php
-                       } else if( $type == "help" ){
-                           ?>
-                    <li class="breadcrumb-item"><a href="{{ route('templatemanager-help') }}">Help Template Manager</a></li>
-                    <li class="breadcrumb-item active"><a href="{{ route('templatemanager-help') }}">Email Help Template
-                            Manager</a></li>
-                    <?php
-               
-                       } else if( $type == "message" ){
-                           ?>
-                    ?> <li class="breadcrumb-item"><a href="{{ route('templatemanager-customize') }}">Customize Template
-                            Manager</a></li>
-                    <li class="breadcrumb-item active"><a href="{{ route('templatemanager-customize') }}">Email Customize
-                            Template Manager</a></li>
-                    <?php
-                       } else if( $type == "template" ){
-                           ?>
-                    <li class="breadcrumb-item"><a href="{{ route('templatemanager-common') }}">Common Template Manager</a>
-                    </li>
-                    <li class="breadcrumb-item active"><a href="{{ route('templatemanager-common') }}">Email Common Template
-                            Manager</a></li>
-
-                    <?php
-                       }
-               
-               ?>
+                    if( $type == "email" ){
+                              ?> <li class="breadcrumb-item"><a href="{{ route('templatemanager.index') }}">Template
+                                Manager</a></li>
+                        <li class="breadcrumb-item active"><a href="{{ route('templatemanager.index') }}">Email Template
+                                Manager</a></li>
+                        <?php
+                           } else if( $type == "help" ){
+                               ?>
+                        <li class="breadcrumb-item"><a href="{{ route('templatemanager-help') }}">Help Template Manager</a></li>
+                        <li class="breadcrumb-item active"><a href="{{ route('templatemanager-help') }}">Email Help Template
+                                Manager</a></li>
+                        <?php
+                   
+                           } else if( $type == "message" ){
+                               ?>
+                        ?> <li class="breadcrumb-item"><a href="{{ route('templatemanager-customize') }}">Customize Template
+                                Manager</a></li>
+                        <li class="breadcrumb-item active"><a href="{{ route('templatemanager-customize') }}">Email Customize
+                                Template Manager</a></li>
+                        <?php
+                           } else if( $type == "template" ){
+                               ?>
+                        <li class="breadcrumb-item"><a href="{{ route('templatemanager-common') }}">Common Template Manager</a>
+                        </li>
+                        <li class="breadcrumb-item active"><a href="{{ route('templatemanager-common') }}">Email Common Template
+                                Manager</a></li>
+    
+                        <?php
+                           }
+                   
+                   ?>
                 </ol>
-
             </div>
         </div>
 
@@ -67,7 +63,7 @@
                         <th scope="col">Course</th>
                         <th scope="col">Action</th>
                     </tr>
-                </thead>
+                </thead>               
             </table>
 
             {{-- <nav aria-label="Page navigation example">
@@ -94,8 +90,8 @@
     </div>
 
     <!--**********************************
-            Content body end
-        ***********************************-->
+        Content body end
+    ***********************************-->
 @endsection
 @section('extra-script')
     <script type="text/javascript">
@@ -113,7 +109,7 @@
                 "oLanguage": {
                     "sLengthMenu": "Show  _MENU_ Entries",
                 },
-                ajax: "{{ route('templatemanager.index') }}",
+                ajax: "{{ route('templatemanager-customize') }}",
                 columns: [{
                         data: 'id',
                         name: 'id',
@@ -131,7 +127,7 @@
                         name: 'name',
                         // orderable: false,
                         // searchable: true
-                    },
+                    },                   
                     {
                         data: 'action',
                         name: 'action',
@@ -140,7 +136,7 @@
                     },
                 ],
                 "createdRow": function(row, data, dataIndex) {
-                    // $(row).find('td:eq(5)').addClass('group-i-icons');
+                   // $(row).find('td:eq(5)').addClass('group-i-icons');
                     SRS.Utils.dtAnchorToForm(row);
                 }
             }).on('click', '.delete_action', function(e) {

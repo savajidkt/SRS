@@ -29,11 +29,15 @@ class EmailTemplate extends Model
         'subject',
         'template',
         'status'
-    ];   
+    ];
 
     public function getActionAttribute(): string
     {
-        $editAction = '<a href="'. route('templatemanager.edit', $this->id).'"><i class="fa-regular fa-pen-to-square edit-ico" title="Edit"></i></a> ';        
+     
+       
+            $editAction = '<a href="' . route('templatemanager.edit', $this->id) . '"><i class="fa-regular fa-pen-to-square edit-ico" title="Edit"></i></a> ';
+        
+
         return $editAction;
     }
 }

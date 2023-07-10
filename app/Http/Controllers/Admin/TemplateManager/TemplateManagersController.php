@@ -27,7 +27,7 @@ class TemplateManagersController extends Controller
     {
         if ($request->ajax()) {
 
-            $data = EmailTemplate::select('*');
+            $data = EmailTemplate::select('*')->where('type','email');
 
             return DataTables::of($data)
                 ->addIndexColumn()
@@ -44,7 +44,7 @@ class TemplateManagersController extends Controller
         }
 
 
-        return view('template-managers.index');
+        return view('template-managers.index', array('type'=>'email'));
     }
 
 
@@ -71,8 +71,97 @@ class TemplateManagersController extends Controller
      */
     public function update(EditRequest $request, EmailTemplate $templatemanager)
     {
-        $this->templateManagerRepository->update($request->all(), $templatemanager);
+        
+        $this->templateManagerRepository->update($request->all(), $templatemanager);        
+        return redirect()->route('templatemanager.edit', $templatemanager->id)->with('success', 'Email Template updated successfully!');
+    }  
+    
+    
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function help(Request $request)
+    {
+        if ($request->ajax()) {
 
-        return redirect()->route('templatemanager.index')->with('success', 'Email Template updated successfully!');
-    }    
+            $data = EmailTemplate::select('*')->where('type','help');
+
+            return DataTables::of($data)
+                ->addIndexColumn()
+                ->editColumn('course', function (EmailTemplate $emailTemplate) {
+                    return $emailTemplate->course;
+                })
+                ->editColumn('name', function (EmailTemplate $emailTemplate) {
+                    return $emailTemplate->name;
+                })               
+                ->addColumn('action', function (EmailTemplate $emailTemplate) {
+                    return $emailTemplate->action;
+                })
+                ->rawColumns(['action'])->make(true);
+        }
+
+
+        return view('template-managers.help', array('type'=>'help'));
+    }
+   
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function common(Request $request)
+    {
+        if ($request->ajax()) {
+
+            $data = EmailTemplate::select('*')->where('type','template');
+
+            return DataTables::of($data)
+                ->addIndexColumn()
+                ->editColumn('course', function (EmailTemplate $emailTemplate) {
+                    return $emailTemplate->course;
+                })
+                ->editColumn('name', function (EmailTemplate $emailTemplate) {
+                    return $emailTemplate->name;
+                })               
+                ->addColumn('action', function (EmailTemplate $emailTemplate) {
+                    return $emailTemplate->action;
+                })
+                ->rawColumns(['action'])->make(true);
+        }
+
+
+        return view('template-managers.common', array('type'=>'template'));
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function customize(Request $request)
+    {
+        if ($request->ajax()) {
+
+            $data = EmailTemplate::select('*')->where('type','message');
+
+            return DataTables::of($data)
+                ->addIndexColumn()
+                ->editColumn('course', function (EmailTemplate $emailTemplate) {
+                    return $emailTemplate->course;
+                })
+                ->editColumn('name', function (EmailTemplate $emailTemplate) {
+                    return $emailTemplate->name;
+                })               
+                ->addColumn('action', function (EmailTemplate $emailTemplate) {
+                    return $emailTemplate->action;
+                })
+                ->rawColumns(['action'])->make(true);
+        }
+
+
+        return view('template-managers.customize', array('type'=>'message'));
+    }
 }
