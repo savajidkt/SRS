@@ -131,7 +131,7 @@
 
           <div class="card">
             <div class="card-header attendee-bg-clr attendee-home-lgt">
-              ATTENDEE QUESTIONNAIRE
+              360 - DEEGRI FEeDBACK CONTACTS QUESTIONNAIRE
             </div>
             <div class="card-body">
               <p class="card-text attendee-home-font">
@@ -145,7 +145,7 @@
             </div>
 
             <div class="card-body scrollspy-example">
-                <form action="{{ route('store-attendeesquestion') }}" method="post" enctype="multipart/form-data">
+                <form action="{{ route('store-question') }}" method="post" enctype="multipart/form-data">
                 @csrf
                     <input type="hidden" value="{{ $id }}" name="key">
                     <table class="table table-striped table-bordered">
@@ -159,7 +159,7 @@
                         </thead>
         
                         <tbody>
-                            @foreach ($attendeeQuestion as $question )
+                            @foreach ($questions as $question )
                                 <tr>
                                     <th>
                                     {{ $question->id }}) {{ $question->question  }}

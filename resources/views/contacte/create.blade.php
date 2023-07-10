@@ -15,9 +15,17 @@
     <!--CSS-->
     <link href="{{ asset('css/style.css')}}" rel="stylesheet" />
     <link href="{{ asset('css/custom-style.css')}}" rel="stylesheet">
-    
+    <script>
+        var myCount = 1;
+    </script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" integrity="sha512-nMNlpuaDPrqlEls3IX/Q56H36qvBASwb3ipuo3MxeWbsQB1881ox0cRv7UPTgBlriqoynt35KjEwgGUeUXIPnw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        .filedrequired,
+        .help-block-error {
+            color: #FF1616
+        }
+    </style>
   </head>
 
   <body>
@@ -167,15 +175,7 @@
                 <div class="card-header attendee-home-lgt attendee-bg-clr add-contact-font">
                     <strong>360-DEGREE FEEDBACK CONTACTS</strong>
                 </div>
-                <div class="card-body">
-                    <p class="card-text attendee-home-font">You already added 1 contact. if you do not want to add more then you can skip this step.
-                    </p>
-                    <div class="btn-grp">
-                        <a href="attendee-questionnaire.html" class="btn btn-primary">Skip this step</a>
-                    <p class="attendee-home-font">or</p>
-                    <a href="attendee-add-contact.html" class="btn btn-primary">Add New Contact</a>
-                  </div>
-                </div>
+                
               </div>
 
               <div class="row">
@@ -203,30 +203,40 @@
                                                     <div class="form-row">
                                                         <div class="form-group col-md-6 form-gap-2">
                                                             <label>First Name</label>
-                                                            <input type="text" class="form-control" name="first_name" placeholder="Sue" required>
+                                                            <div class="input-error">
+                                                                <input type="text" class="form-control" name="first_name" placeholder="Sue" >
+                                                            </div>
                                                         </div>
                                                         <div class="form-group col-md-6 form-gap-2">
                                                             <label>Last Name</label>
-                                                            <input type="text" class="form-control" name="last_name" placeholder="Swindell" required>
+                                                            <div class="input-error">
+                                                                <input type="text" class="form-control" name="last_name" placeholder="Swindell" >
+                                                            </div>
                                                         </div>
                                                         
                                                         <div class="form-group col-md-6 form-gap-2">
                                                             <label>Email Address</label>
-                                                            <input type="email" class="form-control" name="email" placeholder="sue.swindell@srs-development.co.uk" required>
+                                                            <div class="input-error">
+                                                                <input type="email" class="form-control" name="email" placeholder="sue.swindell@srs-development.co.uk" id="email_0" email-id="email">
+                                                            </div>
                                                         </div>
                                                         <div class="form-group col-md-6 form-gap-2">
                                                             <label>Confirm Email Address</label>
-                                                            <input type="email" class="form-control" name="confirm_email" placeholder="sue.swindell@srs-development.co.uk" required>
+                                                            <div class="input-error">
+                                                                <input type="email" class="form-control" name="confirm_email" placeholder="sue.swindell@srs-development.co.uk" id="confirm_email_0" confirm-email-id="confirm_email">
+                                                            </div>
                                                         </div>
                                                         <div class="form-group col-md-6 form-gap-2">
                                                         <label class="text-label">Relationship</label>
-                                                        <select class="form-select form-select-sm" name="relationship" id="form-select-sm-attendee" aria-label=".form-select-sm example">
-                                                            <option selected disabled>Select Relationship</option>
-                                                            <option value="1">He/She is my line manager</option>
-                                                            <option value="2">He/She reports to me</option>
-                                                            <option value="3">He/She is my colleague/peer</option>
-                                                            <option value="4">Any other relationship</option>
+                                                        <div class="input-error">
+                                                            <select class="form-select form-select-sm" name="relationship" id="form-select-sm-attendee" aria-label=".form-select-sm example">
+                                                                <option selected disabled>Select Relationship</option>
+                                                                <option value="1">He/She is my line manager</option>
+                                                                <option value="2">He/She reports to me</option>
+                                                                <option value="3">He/She is my colleague/peer</option>
+                                                                <option value="4">Any other relationship</option>
                                                             </select>
+                                                        </div>
                                                         </div>
                                                         <div class="col-md-2 col-12 mb-50">
                                                             <div class="form-group">
@@ -291,15 +301,19 @@
         Scripts
     ***********************************-->
     <!-- Required vendors -->
+
+
+    
     <script src="{{ asset('vendor/global/global.min.js')}}"></script>
     <script src="{{ asset('js/quixnav-init.js')}}"></script>
     <script src="{{ asset('js/custom.min.js')}}"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js" integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script src="{{ asset('js/jquery.validate.min.js') }}"></script>
+    <script src="{{ asset('js/form/contacte/contacte.js') }}"></script>
 
     <script src="{{ asset('js/form/contacte/jquery.repeater.min.js') }}"></script>
     <script src="{{ asset('js/form/contacte/form-repeater.js') }}"></script>
-    <script src="{{ asset('js/form/contacte/contacte.js') }}"></script>
+    
     <script>
       const currentDateTime = new Date();
 
