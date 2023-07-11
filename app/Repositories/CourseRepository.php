@@ -38,6 +38,7 @@ class CourseRepository
         foreach ($data['invoice'] as $key => $invoice) 
         {         
             $invoiceArr = [
+                'course_id'    => $course->id,
                 'first_name'    => $invoice['first_name'],
                 'last_name'    => $invoice['last_name'],
                 'email'    => $invoice['email'],

@@ -1,12 +1,12 @@
 var globalIndex = "";
-var FrmFinalSubmitPreference = function () {
+var FrmQuestionFinalSubmitPreference = function () {
 
-    var FrmFinalSubmitValidation = function () {
-        var FrmFinalSubmitPreferenceForm = $('#final_submit');
-        var error4 = $('.error-message', FrmFinalSubmitPreferenceForm);
-        var success4 = $('.error-message', FrmFinalSubmitPreferenceForm);
+    var FrmQuestionFinalSubmitValidation = function () {
+        var FrmQuestionFinalSubmitPreferenceForm = $('#questionfinal_submit');
+        var error4 = $('.error-message', FrmQuestionFinalSubmitPreferenceForm);
+        var success4 = $('.error-message', FrmQuestionFinalSubmitPreferenceForm);
 
-        FrmFinalSubmitPreferenceForm.validate({
+        FrmQuestionFinalSubmitPreferenceForm.validate({
             errorElement: 'span',
             errorClass: 'help-block help-block-error',
             focusInvalid: false,
@@ -44,19 +44,19 @@ var FrmFinalSubmitPreference = function () {
     return {
         //main function to initiate the module
         init: function () {
-            FrmFinalSubmitValidation();
+            FrmQuestionFinalSubmitValidation();
         }
     };
 }();
 
 $(document).ready(function () {
-    FrmFinalSubmitPreference.init();
+    FrmQuestionFinalSubmitPreference.init();
 });
 
 
 function checkRadioValidation() {
     var isValidR = true;
-    jQuery('.parant').each(function (index) {
+    jQuery('.parant').each(function (index) {       
         var result = isChecked($(this).attr('data-id'));
         if (!result) {
             globalIndex = (index + 1);

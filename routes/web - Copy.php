@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\CourseAttendees\CourseAttendeesController;
 use App\Http\Controllers\Admin\Contacte\FeedbackContacteController;
 use App\Http\Controllers\Admin\CourseAttendee\CourseAttendeeController;
 use App\Http\Controllers\Admin\Course\CourseController;
+use App\Http\Controllers\Admin\TemplateManager\TemplateManagersController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\UserController;
@@ -45,6 +46,9 @@ Route::post('store-contacte', [FeedbackContacteController::class, 'store'])->nam
 
 Route::get('attendees-questionnaire/{id}', [FeedbackContacteController::class, 'attendeesquestion'])->name('attendees-questionnaire');
 Route::post('store-attendeesquestion', [FeedbackContacteController::class, 'StoreAttendeesquestion'])->name('store-attendeesquestion');
+
+Route::get('question/{id}', [FeedbackContacteController::class, 'question'])->name('question');
+Route::post('store-question', [FeedbackContacteController::class, 'storequestion'])->name('store-question');
 //Route::post('first-password-change', [UserController::class, 'changePassword'])->name('first.password.change');
 
 
@@ -61,7 +65,7 @@ Route::post('store-attendeesquestion', [FeedbackContacteController::class, 'Stor
 //     Route::get('/generate-pdf/{id}', [UsersController::class, 'generatePDF'])->name('generate-pdf');
 //     Route::get('/chart-image/{id}', [UsersController::class, 'generateChartImage'])->name('chart-image');
 //     Route::post('/user/change-status', [UsersController::class, 'changeStatus'])->name('change-user-status');
-//     Route::post('/admin/change-status', [AdminsController::class, 'changeStatus'])->name('change-admin-status');
+//     Route::post('/admin/change-status', [AdminsController::clas, s'changeStatus'])->name('change-admin-status');
 //     Route::post('/user/reset-survey-time', [UsersController::class, 'resetSurveyTime'])->name('reset-survey-time');
 //     Route::resource('/question', SurveyQuestionController::class);
 //     Route::resource('/survey', SurveyController::class);
@@ -88,6 +92,9 @@ Route::group(['authGrouping' => 'users.auth','middleware' => 'auth:web'], functi
     Route::resource('/questions', QuestionsController::class);
     Route::resource('/companyorganizer', CompanyOrganizerController::class);
     Route::resource('/courseattendees', CourseAttendeesController::class);
+
+    Route::resource('/templatemanager', TemplateManagersController::class);
+
     /*Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('checkSurveyStatus');
     Route::get('/change-password', [ResetPasswordController::class, 'firstTimePasswordChange'])->name('change-password');
     //Route::resource('/survey', SurveyController::class);

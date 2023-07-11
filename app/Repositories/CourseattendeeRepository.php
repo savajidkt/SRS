@@ -32,7 +32,7 @@ class CourseAttendeeRepository
                 $attendeesArrList = [];
                 foreach ($data['attendees'] as $key => $attendees) 
                 {         
-                    // dd($attendees);
+                    
                     $attendeesArr = [
                         'first_name'    => $attendees['first_name'],
                         'last_name'    => $attendees['last_name'],
@@ -41,7 +41,7 @@ class CourseAttendeeRepository
                         'course_id'    => $course->id,
                         'organizer_id'    => $CompanyOrganizer->id,
                     ];
-
+                    // dd($attendeesArr);
                     $attendeesArrList[]=$attendeesArr;
 
                     $data['course'] = $course;
@@ -69,6 +69,7 @@ class CourseAttendeeRepository
                         $trainerArr['company_address'] = $course->end_date;
                         $trainerArr['company_organiser_attendees_email'] = $course->companyorganizer->email;
                         $trainerArr['attendees_list'] = $this->getAttendeeList($attendeesArrList);
+                        // dd($trainerArr['attendees_list']);
                         $data['trainerArr'] = $trainerArr;
                         Mail::to($trainer->email)->send(new CourseTrainerMail($data));
                     }
@@ -78,26 +79,20 @@ class CourseAttendeeRepository
             }
             
         }
-        
         return $courseAttendees;
     }
 
     public function getAttendeeList($attendeesArrList)
     {
-        $returnTable='';
+      //  dd($attendeesArrList);
+        $returnTable="";
         if(is_array($attendeesArrList) && count($attendeesArrList) > 0){
             $returnTable .= "<table border=\"1\" cellspacing=\"0\" cellpadding=\"5\" style=\"border-collapse:collapse\">";
+            $returnTable .="<tr><th width=\"301\" valign=\"top\" style=\"background-color:#17365D;color:white;\"><p>Attendee Name</p></th><th width=\"247\" valign=\"top\" style=\"background-color:#17365D;color:white;\"><p>eMail Address</p></th></tr>";
             $returnTable .= "<tbody>";
             // dd($attendeesArrList);
             foreach($attendeesArrList as $key=> $vlue){
-                $returnTable .= "<tr>
-                <td width=\"301\" valign=\"top\" style=\"background-color:#8DB3E2\">
-                   <p>".$vlue['first_name'] .$vlue['last_name']."</p>
-                </td>
-                <td width=\"247\" valign=\"top\" style=\"background-color:#DBE5F1\">
-                   <p>".$vlue['email']."</p>
-                </td>
-             </tr>";
+                $returnTable .= "<tr> <td width=\"301\" valign=\"top\" style=\"background-color:#8DB3E2\"><p>".$vlue['first_name'] .$vlue['last_name']."</p></td><td width=\"247\" valign=\"top\" style=\"background-color:#DBE5F1\"><p>".$vlue['email']."</p></td></tr>";
             }
             $returnTable .= "</tbody>";
             $returnTable .= "</table>";

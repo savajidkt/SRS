@@ -171,24 +171,24 @@
 
                                 <tbody>
                                     @foreach ($attendeeQuestion as $question)
-                                        <tr class="parant">
+                                        <tr class="parant"  data-id="{{ $question->id }}">
                                             <th>
                                                 {{ $question->id }}) {{ $question->question }}
                                             </th>
                                             <td>
                                                 <label class="form-check-custom">
-                                                    <input type="radio" name="answer[{{ $question->id }}]" />
+                                                    <input type="radio" value="0" name="answer[{{ $question->id }}]" />
                                                     <span>0</span>
                                                 </label>
                                             </td>
                                             <td>
                                                 <label class="form-check-custom">
-                                                    <input type="radio" name="answer[{{ $question->id }}]" />
+                                                    <input type="radio" value="1" name="answer[{{ $question->id }}]" />
                                                     <span>1</span>
                                                 </label>
                                             </td>
                                             <td>
-                                                <input type="radio" name="answer[{{ $question->id }}]" />
+                                                <input type="radio" value="2" name="answer[{{ $question->id }}]" />
                                                 <span>2</span>
                                             </td>
                                         </tr>

@@ -64,9 +64,13 @@ class AttendeeReferensMail extends Mailable
     // dd($data);
     
     $contacte_list = '';
+    $firstName = '';
+    $lastName = '';
     if (is_array($data['contacte']) && count($data['contacte']) > 0) {
       foreach ($data['contacte'] as $key => $value) {
         $contacte_list .= ucwords($value['first_name'] . " " . $value['last_name']) . " <br>";
+        $firstName .= ucwords($value['first_name']);
+        $lastName .= ucwords($value['last_name']);
       }
     }
     
@@ -80,6 +84,8 @@ class AttendeeReferensMail extends Mailable
     $paramArr['link'] = URL::to('/question/'. $data['key']);
     $paramArr['questionnaire_end_date'] = dateFormat($data['course']['end_date']);
     $paramArr['year'] = date('Y');
+    $paramArr['first_name'] = $firstName;
+    $paramArr['last_name'] = $lastName;
   // dd($paramArr);
     $emailTemplate = getEmailTemplatesByID(4);
     if ($emailTemplate) {

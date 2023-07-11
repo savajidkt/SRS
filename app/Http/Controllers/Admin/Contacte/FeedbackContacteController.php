@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin\Contacte;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Repositories\FeedbackRepository;
-use App\Http\Requests\Contact\CreateRequest;
+use App\Http\Requests\Contacte\CreateRequest;
 use App\Models\AttendeeQuestions;
 use App\Models\AttendeeReferens;
 use App\Models\Course;
@@ -42,7 +42,6 @@ class FeedbackContacteController extends Controller
 
     public function StoreAttendeesquestion(Request $request)
     {
-        // dd($request);
         $course = Course::where('key', $request->key)->first();
         if($course) 
         {
@@ -51,7 +50,6 @@ class FeedbackContacteController extends Controller
             {
                 $AttendeeQuestionsList = [];
                 foreach ($request['answer'] as  $key=> $answer) {
-                    // dd($answer);
                     $AttendeeQuestionsArr = [
                         'contact_id'    => $attendeeReferens->id,
                         'attendees_id'    => $attendeeReferens->attendees_id,
@@ -66,7 +64,6 @@ class FeedbackContacteController extends Controller
                 }
             }
         }
-        // dd($attendeeQuestions);
         return view('courseattendees.success');
     }
     public function question($id)
@@ -77,31 +74,33 @@ class FeedbackContacteController extends Controller
 
     public function storequestion(Request $request)
     {
-        // dd($request);
-        // $course = Course::where('key', $request->key)->first();
-        // if($course) 
-        // {
-        //     $attendeeReferens = AttendeeReferens::where('course_id', $course->id)->first();
-        //     if($attendeeReferens) 
-        //     {
-        //         $AttendeeQuestionsList = [];
-        //         foreach ($request['answer'] as  $key=> $answer) {
-        //             $AttendeeQuestionsArr = [
-        //                 'contact_id'    => $attendeeReferens->id,
-        //                 'attendees_id'    => $attendeeReferens->attendees_id,
-        //                 'question_id'    => $key,
-        //                 'answer'    => $answer,
-        //                 'type'    => 1,
-        //             ];
-
-        //             $AttendeeQuestionsList[] = $AttendeeQuestionsArr;
-
-        //             dd($AttendeeQuestionsArr);
+        $course = Course::where('key', $request->key)->first();
+        if($course) 
+        {
+            $attendeeReferens = AttendeeReferens::where('course_id', $course->id)->first();
+            if($attendeeReferens) 
+            {
+                $AttendeeQuestionsList = [];
+                foreach ($request['answer'] as  $key => $answer) {
                     
-        //             $attendeeQuestions = QuestionnaireAnswers::create($AttendeeQuestionsArr);
-        //         }
-        //     }
-        // }
+                    $AttendeeQuestionsArr = [
+                        'contact_id'    => $attendeeReferens->id,
+                        'attendees_id'    => $attendeeReferens->attendees_id,
+                        'question_id'    => $key,
+                        'answer'    => $answer,
+                        'type'    => 1,
+                    ];
+
+                  
+                  // echo "<pre>";
+                   //print_r($AttendeeQuestionsArr);
+                   
+                    $attendeeQuestions = QuestionnaireAnswers::create($AttendeeQuestionsArr);
+                    
+                }
+            }
+        }
+        exit;
         return view('courseattendees.success');
     }
 }

@@ -24,7 +24,7 @@ class CreateRequest extends FormRequest
     public function rules()
     {
         return [
-            'company_name' => ['required']
+            'answer' => ['required']
         ];
     }
 
@@ -36,7 +36,7 @@ class CreateRequest extends FormRequest
     public function messages()
     {
         return [
-            'company_name.required' => 'Company name field is required.'
+            'answer.required' => 'Company name field is required.'
         ];
     }
 }

@@ -25,7 +25,7 @@
                    <div class="login-page-form">
 
                     <div class="login-page-img">
-                        <img src="./images/srs_logo.jpg" alt="">
+                        <img src="{{asset('images/srs_logo.jpg')}}" alt="">
                         <h4>FORGOT YOUR PASSWORD ?</h4>
                         <p class="text-para">Enter your email address and we'll send you instructions on how to reset your password.</p>
                     </div>

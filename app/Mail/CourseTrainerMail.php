@@ -79,7 +79,7 @@ class CourseTrainerMail extends Mailable
     $paramArr['company_address'] = '';
     $paramArr['company_organiser_attendees_email'] = $data['trainerArr']['company_organiser_attendees_email'];
     $paramArr['course_end_date'] = dateFormat($data['trainerArr']['course_end_date']);
-    $paramArr['attendees_list'] = dateFormat($data['trainerArr']['attendees_list']);
+    $paramArr['attendees_list'] = $data['trainerArr']['attendees_list'];
     $paramArr['link'] = URL::to('/course-attendees/'.$data['key']);
     $paramArr['year'] = date('Y');
 
@@ -89,6 +89,7 @@ class CourseTrainerMail extends Mailable
     if ($emailTemplate) {
 
       $emailBody = replaceHTMLBodyWithParam($emailTemplate['template'], $paramArr);
+      // dd($emailBody);
       $emailSubject = replaceHTMLBodyWithParam($emailTemplate['subject'], array('course_date' => dateFormat($data['trainerArr']['course_end_date'])));
       // return $this->subject($emailSubject)->with('body', $emailBody);
       return $this->subject($emailSubject)->markdown('admin.Mail.companyOrganizerMail', ['emailBody' => $emailBody]);

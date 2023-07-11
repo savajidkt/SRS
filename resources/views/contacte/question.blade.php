@@ -131,7 +131,7 @@
 
           <div class="card">
             <div class="card-header attendee-bg-clr attendee-home-lgt">
-              360 - DEEGRI FEeDBACK CONTACTS QUESTIONNAIRE
+              360 - DEEGRI FEEDBACK CONTACTS QUESTIONNAIRE
             </div>
             <div class="card-body">
               <p class="card-text attendee-home-font">
@@ -145,7 +145,7 @@
             </div>
 
             <div class="card-body scrollspy-example">
-                <form action="{{ route('store-question') }}" method="post" enctype="multipart/form-data">
+                <form id="questionfinal_submit" action="{{ route('store-question') }}" method="post" enctype="multipart/form-data">
                 @csrf
                     <input type="hidden" value="{{ $id }}" name="key">
                     <table class="table table-striped table-bordered">
@@ -160,9 +160,9 @@
         
                         <tbody>
                             @foreach ($questions as $question )
-                                <tr>
+                                <tr class="parant" data-id="{{ $question->id }}">
                                     <th>
-                                    {{ $question->id }}) {{ $question->question  }}
+                                    {{ $loop->iteration }} ) {{ $question->question  }}
                                     </th>
                                     <td>
                                     <label class="form-check-custom">
@@ -231,6 +231,11 @@
       <script src="{{ asset('vendor/global/global.min.js')}}"></script>
       <script src="{{ asset('js/quixnav-init.js"')}}"></script>
       <script src="{{ asset('js/custom.min.js')}}"></script>
+
+      <script src="{{ asset('js/jquery.validate.min.js') }}"></script>
+      {{-- <script src="{{ asset('js/form/final-submit.js') }}"></script> --}}
+      <script src="{{ asset('js/form/questionfinal-submit.js') }}"></script>
+
       <script>
         const currentDateTime = new Date();
 
