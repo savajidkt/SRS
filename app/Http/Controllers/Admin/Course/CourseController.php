@@ -101,8 +101,8 @@ class CourseController extends Controller
      */
     public function show(Course $course)
     {
-        // $client->loadMissing('contacts');
-        return view('course.view');
+        //dd($course);
+        return view('course.view',['modal'=>$course]);
     }
 
     /**

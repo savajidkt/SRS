@@ -49,6 +49,9 @@ Route::post('store-attendeesquestion', [FeedbackContacteController::class, 'Stor
 
 Route::get('question/{id}/{parameter?}', [FeedbackContacteController::class, 'question'])->name('question');
 Route::post('store-question', [FeedbackContacteController::class, 'storequestion'])->name('store-question');
+
+Route::get('chase-email-attendees/{id}', [CourseAttendeeController::class, 'chaseEmailAttendees'])->name('chase-email-attendees');
+Route::get('chase-email-feedback/{id}', [FeedbackContacteController::class, 'chaseEmailFeedback'])->name('chase-email-feedback');
 //Route::post('first-password-change', [UserController::class, 'changePassword'])->name('first.password.change');
 
 

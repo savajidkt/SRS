@@ -98,3 +98,24 @@ if (!function_exists('dateFormat')) {
         }
     }
 }
+
+
+
+
+if (!function_exists('getBackgroudColorByStatus')) {
+
+    function getBackgroudColorByStatus($attendees)
+    {
+        if (!$attendees->questionnaireself) {
+            return false;
+        }
+        if ($attendees->referraluser->count() > 0) {
+            foreach ($attendees->referraluser as $key => $referraluser) {
+                if (!$referraluser->referralusers) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+}

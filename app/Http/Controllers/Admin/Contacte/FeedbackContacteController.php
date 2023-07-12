@@ -16,6 +16,8 @@ use App\Models\Questions;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\CourseTrainerMail;
 use App\Mail\ThankyouMail;
+use App\Mail\ChaseReferensMail;
+use Illuminate\Support\Facades\URL;
 use App\Models\CompanyOrganizer;
 
 class FeedbackContacteController extends Controller
@@ -58,7 +60,7 @@ class FeedbackContacteController extends Controller
 
     public function attendeesquestion($id)
     {
-        // dd($id);
+       
         $sidebar = '';
         $course = Course::where('key',$id)->first();
        
@@ -208,7 +210,7 @@ class FeedbackContacteController extends Controller
 
     public function storequestion(Request $request)
     {
-        //dd($request);
+      
         $SafeencryptionObj = new Safeencryption;
         
         // dd($request);
@@ -304,5 +306,35 @@ class FeedbackContacteController extends Controller
         }
 
         return $returnTable;
+    }
+public function chaseEmailFeedback($id)
+    {
+
+
+        $attendeeReferens = AttendeeReferens::where('id', $id)->first();
+        
+        if ($attendeeReferens) {
+            $paramArr = [];
+            $paramArr['site_url'] = URL::to('/');
+            $paramArr['attendee_name'] = $attendeeReferens->attendeedata->first_name . ' ' . $attendeeReferens->attendeedata->last_name;
+
+            if ($attendeeReferens->attendeedata->courses->count() > 0) {
+                $paramArr['course_date'] = dateFormat($attendeeReferens->attendeedata->courses[0]->start_date);
+                $paramArr['questionnaire_end_date'] = dateFormat($attendeeReferens->attendeedata->courses[0]->end_date);
+                $paramArr['link'] = URL::to('/question/' . $attendeeReferens->attendeedata->courses[0]->key);
+            } else {
+                $paramArr['course_date'] = '';
+                $paramArr['questionnaire_end_date'] = '';
+                $paramArr['link'] =  URL::to('/');
+            }
+
+            $paramArr['year'] = date('Y');
+            $paramArr['first_name'] = $attendeeReferens->first_name;
+            $paramArr['last_name'] = $attendeeReferens->last_name;
+
+            Mail::to($attendeeReferens->email)->send(new ChaseReferensMail($paramArr));            
+            return redirect()->route('course.show', $attendeeReferens->course_id)->with('success', "360 Contacts Chase Email has been sent Successfully");
+        }
+        return redirect()->back()->with('error', '360 Contacts Chase Email has been sent Failed!');
     }
 }

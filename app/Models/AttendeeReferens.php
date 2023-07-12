@@ -32,4 +32,9 @@ class AttendeeReferens extends Model
     {
         return $this->hasOne(QuestionnaireAnswers::class,'contact_id','id')->orderBy('id','desc');
     }
+
+    public function attendeedata()
+    {
+        return $this->hasOne(CourseAttendees::class,'id','attendees_id');
+    }
 }

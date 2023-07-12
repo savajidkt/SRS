@@ -23,7 +23,7 @@ class FeedbackRepository
      */
     public function create(array $data): AttendeeReferens
     {
-        // dd($data);
+        
         $course = Course::where('key',$data['key'])->first();
         if($course)
         {
@@ -32,7 +32,7 @@ class FeedbackRepository
             {
 
                 $courseAttendees = CourseAttendees::where('course_id',$course->id)->first();
-                // dd($courseAttendees);
+               
                 if($courseAttendees)
                 {
                     
@@ -53,8 +53,7 @@ class FeedbackRepository
 
                         $data['course'] = $course;
                         $data['courseAttendeesList'] = $courseAttendees;
-                        Mail::to($contacte['email'])->send(new AttendeeReferensMail($data));
-                        // $course->companyorganizer->update(array('confirm_attendee' => 1));
+                        Mail::to($contacte['email'])->send(new AttendeeReferensMail($data));                        
                         $attendeeRefresh = AttendeeReferens::create($AttendeeRefreshArrListArr);
                     }
 
