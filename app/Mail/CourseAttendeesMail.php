@@ -75,7 +75,7 @@ class CourseAttendeesMail extends Mailable
     $paramArr['course_date'] = dateFormat($data['course']['start_date']);
     $paramArr['trainer_list'] = $trainerDetail;
     $paramArr['attendee_name'] = $data['attendee_name'];
-    $paramArr['link'] = URL::to('/feedback-contacte/'.$data['key']);
+    $paramArr['link'] = URL::to('/feedback-contacte/'.$data['key'].'/'. $data['attendee_id']);
     $paramArr['questionnaire_end_date'] = dateFormat($data['course']['end_date']);
     $paramArr['year'] = date('Y');
 

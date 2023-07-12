@@ -70,7 +70,7 @@ class ThankyouMail extends Mailable
     $paramArr['course_date'] = dateFormat($data['attendeeArr']['course_date']);
     $paramArr['attendees_name'] = $data['attendeeArr']['attendees_name'];
     $paramArr['ref_name'] = $data['attendeeArr']['ref_name'];
-    // $paramArr['link'] = URL::to('/feedback-contacte/'.$data['key']);
+    $paramArr['link'] = URL::to('/feedback-contacte/'.$data['key']);
     $paramArr['course_name'] = $data['attendeeArr']['course_name'];
     $paramArr['trainer_name'] = $data['attendeeArr']['trainer_name'];
     $paramArr['company_organiser_attendees_name'] = $data['attendeeArr']['company_organiser_attendees_name'];

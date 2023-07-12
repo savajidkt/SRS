@@ -28,10 +28,17 @@ class CourseAttendeeController extends Controller
        if($course)
        {
         $CompanyOrganizer = CompanyOrganizer::where('course_id',$course->id)->where('confirm_attendee',0)->first();
-
+        // dd($CompanyOrganizer);
         if($CompanyOrganizer)
         {
-            return view('courseattendees.create',['id'=>$id],['model' => $course]);
+            $emailTemplate = getEmailTemplatesByID(8);
+            if ($emailTemplate) {
+                $paramArr['contact_name'] = ucwords($CompanyOrganizer->first_name . " " . $CompanyOrganizer->last_name);
+                $sidebar = replaceHTMLBodyWithParam($emailTemplate['template'], $paramArr);
+                
+          
+              }
+            return view('courseattendees.create',['id'=>$id,'model' => $course,'sidebar' => $sidebar]);
         }
         else
         {
@@ -50,9 +57,28 @@ class CourseAttendeeController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->all());
+        $sidebar = '';
+        $course = Course::where('key',$request->key)->first();
+       
+        if($course) {
+            $CompanyOrganizer = CompanyOrganizer::where('course_id', $course->id)->first();
+           
+            if($CompanyOrganizer) 
+            {
+                $emailTemplate = getEmailTemplatesByID(9);
+                
+                if ($emailTemplate) {
+                    $paramArr['contact_name'] = ucwords($CompanyOrganizer->first_name . " " . $CompanyOrganizer->last_name);
+                    $sidebar = replaceHTMLBodyWithParam($emailTemplate['template'], $paramArr);
+                    
+            
+                }
+            }
+        }
+
+       
         $this->courseAttendeeRepository->create($request->all());
-        return view('courseattendees.success');
+        return view('courseattendees.success',['sidebar' => $sidebar]);
         // return redirect()->back()->with('success', "Course Attendees successfully!");
     }
 }

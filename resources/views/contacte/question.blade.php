@@ -14,6 +14,11 @@
     />
     <link href="{{ asset('css/style.css')}}" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.0/font/bootstrap-icons.css">
+    <style>
+      .accordion-add-contact-colr p{
+          color: #454545 !important;
+      }
+  </style>
   </head>
 
   <body>
@@ -62,26 +67,6 @@
                   </div>
                 </div>
               </div>
-
-              <!-- <ul class="navbar-nav header-right">
-                            
-                            <li class="nav-item dropdown header-profile">
-                                <a class="nav-link" href="#" role="button" data-toggle="dropdown">
-                                    <i class="mdi mdi-account"></i>
-                                </a>
-                                <div class="dropdown-menu dropdown-menu-right">
-                                    <a href="./app-profile.html" class="dropdown-item">
-                                        <i class="icon-user"></i>
-                                        <span class="ml-2">Profile </span>
-                                    </a>
-                                    
-                                    <a href="./page-login.html" class="dropdown-item">
-                                        <i class="icon-key"></i>
-                                        <span class="ml-2">Logout </span>
-                                    </a>
-                                </div>
-                            </li>
-                        </ul> -->
             </div>
           </nav>
         </div>
@@ -104,27 +89,7 @@
         <div class="card">
           <button class="accordion accordion-extra attendee-home-lgt attendee-bg-clr add-contact-font">INSTRUCTION</button>
           <div class="panel accordion-panel-extra accordion-add-contact-colr">
-            Dear Maneesh Jha,
-              <br>
-              Before you attend the upcoming workshop or coaching session please complete a questionnaire about yourself and invite up to 6 other people to provide you with feedback.  The results of this questionnaire will be used during the workshop by your trainer to enable you to compare your view of how you influence with the views of others. There are no right or wrong answers.
-              <br>
-              <strong>What do you need to do?</strong>
-              <br>
-              Firstly using the form on the right hand side please provide contact details for up to 6 other people that will provide you with 360 degree feedback. Once you have entered their contact details we will invite them to complete a feedback form for you. Please enter their details carefully leaving no spaces before or after the email addresses and remember to select the relationship in each case - otherwise the forms do not upload.
-              <br>
-              To add another feedback person please click the option “Add New Contact” at the bottom. Once you are happy to proceed and answer your own feedback form please click the option “Send to 360 Contacts”.
-              <br>
-              Once you have completed and sent these contacts your own questionnaire will then come up automatically for you to complete and submit. If this does not appear - please check back that the email addresses do not have spaces accidently and that the relationship is selected for each contact and try clicking send again.
-              <br>
-              Please remember that when you see the feedback these contacts will be named as it is important to look at the feedback in the context of the relationship - so you may want to et them know that you are sending them this feedback request and that it is named so they know to expect that.
-              <br>
-              Many thanks and we look forward to seeing you soon
-              <br>
-              Sue Swindell
-              <br>
-              SRS-The Development Team Ltd
-              <br>
-              +44 7850 185 351
+            {!! $sidebar !!}
           </div>
        
          </div>
@@ -148,6 +113,7 @@
                 <form id="questionfinal_submit" action="{{ route('store-question') }}" method="post" enctype="multipart/form-data">
                 @csrf
                     <input type="hidden" value="{{ $id }}" name="key">
+                    <input type="hidden" value="{{ $attendee_id }}" name="attendee_id">
                     <table class="table table-striped table-bordered">
                         <thead>
                         <tr>

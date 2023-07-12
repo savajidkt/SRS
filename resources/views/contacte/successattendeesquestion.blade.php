@@ -77,13 +77,13 @@
             <div class="container-fluid ">
       
             
-              <div class="card">
+              {{-- <div class="card">
                 <button class="accordion accordion-extra attendee-home-lgt attendee-bg-clr add-contact-font">INSTRUCTION</button>
                 <div class="panel accordion-panel-extra accordion-add-contact-colr">
                   {!! $sidebar !!}
                 </div>
              
-               </div>
+               </div> --}}
               
                             
             <div class="card error-bg">
@@ -94,7 +94,10 @@
 
                 <div class="alert alert-success alert-dismissible d-flex align-items-center fade show success-text-clr">
                     <i class="bi-check-circle-fill"></i>
-                    <strong class="mx-2">Thank You!</strong> Your attendees have been successfully added and joining instructions have been emailed to each of them.
+                    <strong class="mx-2">Thank You!</strong> for completing your online form for your upcoming course with SRS The Development Team. We look forward to working with you soon.
+                    If you have any queries or need any more details please contact your company organiser.
+                    
+                    
                     <!-- <button type="button" class="btn-close" data-bs-dismiss="alert"></button> -->
                 </div>
 

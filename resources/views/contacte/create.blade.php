@@ -25,6 +25,12 @@
         .help-block-error {
             color: #FF1616
         }
+        .accordion-add-contact-colr p{
+            color: #454545 !important;
+        }
+        .hide{
+display: none;
+        }
     </style>
   </head>
 
@@ -119,78 +125,43 @@
          <div class="card">
           <button class="accordion accordion-extra attendee-home-lgt attendee-bg-clr add-contact-font">INSTRUCTION</button>
           <div class="panel accordion-panel-extra accordion-add-contact-colr">
-            Dear Maneesh Jha,
-              <br>
-              Before you attend the upcoming workshop or coaching session please complete a questionnaire about yourself and invite up to 6 other people to provide you with feedback.  The results of this questionnaire will be used during the workshop by your trainer to enable you to compare your view of how you influence with the views of others. There are no right or wrong answers.
-              <br>
-              <strong>What do you need to do?</strong>
-              <br>
-              Firstly using the form on the right hand side please provide contact details for up to 6 other people that will provide you with 360 degree feedback. Once you have entered their contact details we will invite them to complete a feedback form for you. Please enter their details carefully leaving no spaces before or after the email addresses and remember to select the relationship in each case - otherwise the forms do not upload.
-              <br>
-              To add another feedback person please click the option “Add New Contact” at the bottom. Once you are happy to proceed and answer your own feedback form please click the option “Send to 360 Contacts”.
-              <br>
-              Once you have completed and sent these contacts your own questionnaire will then come up automatically for you to complete and submit. If this does not appear - please check back that the email addresses do not have spaces accidently and that the relationship is selected for each contact and try clicking send again.
-              <br>
-              Please remember that when you see the feedback these contacts will be named as it is important to look at the feedback in the context of the relationship - so you may want to et them know that you are sending them this feedback request and that it is named so they know to expect that.
-              <br>
-              Many thanks and we look forward to seeing you soon
-              <br>
-              Sue Swindell
-              <br>
-              SRS-The Development Team Ltd
-              <br>
-              +44 7850 185 351
+            {!! $sidebar !!}
           </div>
        
          </div>
           
-
-            <!-- <div class="card">
-                <div class="card-body attendee-home-font">
-                    Dear Maneesh Jha,
-                    <br>
-                    Before you attend the upcoming workshop or coaching session please complete a questionnaire about yourself and invite up to 6 other people to provide you with feedback.  The results of this questionnaire will be used during the workshop by your trainer to enable you to compare your view of how you influence with the views of others. There are no right or wrong answers.
-                    <br>
-                    <strong>What do you need to do?</strong>
-                    <br>
-                    Firstly using the form on the right hand side please provide contact details for up to 6 other people that will provide you with 360 degree feedback. Once you have entered their contact details we will invite them to complete a feedback form for you. Please enter their details carefully leaving no spaces before or after the email addresses and remember to select the relationship in each case - otherwise the forms do not upload.
-                    <br>
-                    To add another feedback person please click the option “Add New Contact” at the bottom. Once you are happy to proceed and answer your own feedback form please click the option “Send to 360 Contacts”.
-                    <br>
-                    Once you have completed and sent these contacts your own questionnaire will then come up automatically for you to complete and submit. If this does not appear - please check back that the email addresses do not have spaces accidently and that the relationship is selected for each contact and try clicking send again.
-                    <br>
-                    Please remember that when you see the feedback these contacts will be named as it is important to look at the feedback in the context of the relationship - so you may want to et them know that you are sending them this feedback request and that it is named so they know to expect that.
-                    <br>
-                    Many thanks and we look forward to seeing you soon
-                    <br>
-                    Sue Swindell
-                    <br>
-                    SRS-The Development Team Ltd
-                    <br>
-                    +44 7850 185 351
-                </div>
-              </div> -->
-
               <div class="card">
                 <div class="card-header attendee-home-lgt attendee-bg-clr add-contact-font">
                     <strong>360-DEGREE FEEDBACK CONTACTS</strong>
                 </div>
+                @if ($ext_id == "360-frm")
+                <div class="card-body myExistdiv">
+                    <!-- <h5 class="card-title">Special title treatment</h5> -->
+                    <p class="card-text attendee-home-font">You already added 1 contact. if you do not want to add more then you can skip this step.
+                  </p>
+                    <div class="btn-grp">
+                      <a href="attendee-questionnaire.html" class="btn btn-primary mySkepBTN">Skip this step</a>
+                    <p class="attendee-home-font">or</p>
+                    <a href="javascript:void(0);" class="btn btn-primary myAddedBTN">Add New Contact</a>
+                    </div>
+                </div>
                 
+                @endif
+                
+
               </div>
 
-              <div class="row">
+              <div class="row myclsdiv {{  (isset($ext_id) && $ext_id == "360-frm") ? 'hide' :'' }}">
                 <div class="col-xl-6 col-xxl-12">
 
                     <div class="card">
-                        {{-- <div class="card-header">
-                            <h4 class="card-title">CONTACT DETAILS</h4>
-                        </div> --}}
                         <div class="card-body">
                             <div class="basic-form">
                                 <form class="contacte-repeater" action="{{ route('store-contacte') }}" method="post"
                                         enctype="multipart/form-data" id="contacte">
                                     @csrf
-                                        <input type="hidden" value="{{ $id }}" name="key" >
+                                        <input type="hidden" value="{{ $id }}" name="key">
+                                        <input type="hidden" value="{{ $ext_id }}" name="attendee_id">
                                     <div class="">
                                         <div data-repeater-list="contacte">
                                             <div data-repeater-item>
@@ -334,6 +305,10 @@ document.getElementById("demo").innerHTML = formattedDateTime;
     </script>
 
     <script>
+        $(document).on('click','.myAddedBTN',function(){
+            $('.myExistdiv').addClass('hide');
+            $('.myclsdiv').removeClass('hide');
+        });
       $('#form-select-sm-attendee').select2();
     </script>
 

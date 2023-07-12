@@ -41,13 +41,13 @@ Route::post('reset-password', [ForgotPasswordController::class, 'submitResetPass
 Route::get('course-attendees/{id}', [CourseAttendeeController::class, 'index'])->name('add-course-attendees');
 Route::post('store-attendees', [CourseAttendeeController::class, 'store'])->name('store-attendees');
 
-Route::get('feedback-contacte/{id}', [FeedbackContacteController::class, 'index'])->name('feedback-contacte');
+Route::get('feedback-contacte/{id}/{parameter?}', [FeedbackContacteController::class, 'index'])->name('feedback-contacte');
 Route::post('store-contacte', [FeedbackContacteController::class, 'store'])->name('store-contacte');
 
 Route::get('attendees-questionnaire/{id}', [FeedbackContacteController::class, 'attendeesquestion'])->name('attendees-questionnaire');
 Route::post('store-attendeesquestion', [FeedbackContacteController::class, 'StoreAttendeesquestion'])->name('store-attendeesquestion');
 
-Route::get('question/{id}', [FeedbackContacteController::class, 'question'])->name('question');
+Route::get('question/{id}/{parameter?}', [FeedbackContacteController::class, 'question'])->name('question');
 Route::post('store-question', [FeedbackContacteController::class, 'storequestion'])->name('store-question');
 //Route::post('first-password-change', [UserController::class, 'changePassword'])->name('first.password.change');
 

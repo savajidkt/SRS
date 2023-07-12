@@ -23,6 +23,7 @@ class FeedbackRepository
      */
     public function create(array $data): AttendeeReferens
     {
+        // dd($data);
         $course = Course::where('key',$data['key'])->first();
         if($course)
         {
@@ -31,15 +32,17 @@ class FeedbackRepository
             {
 
                 $courseAttendees = CourseAttendees::where('course_id',$course->id)->first();
+                // dd($courseAttendees);
                 if($courseAttendees)
                 {
+                    
                     $AttendeeRefreshArrList = [];
                     foreach ($data['contacte'] as $key => $contacte) 
                     {         
                         $AttendeeRefreshArrListArr = [
                             'course_id'    => $course->id,
                             'organizer_id'    => $CompanyOrganizer->id,
-                            'attendees_id'    => $courseAttendees->id,
+                            'attendees_id'    => $data['attendee_id'],
                             'first_name'    => $contacte['first_name'],
                             'last_name'    => $contacte['last_name'],
                             'email'    => $contacte['email'],

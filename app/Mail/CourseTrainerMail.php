@@ -107,7 +107,7 @@ $myTable = "";
         $emailSubject = replaceHTMLBodyWithParam($emailTemplate['subject'], array('company_name' => $data['trainerArr']['company_organiser_attendees_name'], 'course_name' => $data['trainerArr']['course_name'], 'course_date' => dateFormat($data['trainerArr']['course_end_date'])));
       }else
       {
-        $emailSubject = replaceHTMLBodyWithParam($emailTemplate['subject'], array('course_date' => dateFormat($data['trainerArr']['course_end_date'])));
+        $emailSubject = replaceHTMLBodyWithParam($emailTemplate['subject'], array('company_name' => $data['trainerArr']['company_organiser_attendees_name'], 'course_name' => $data['trainerArr']['course_name'], 'course_date' => dateFormat($data['trainerArr']['course_end_date'])));
       }
       
       // return $this->subject($emailSubject)->with('body', $emailBody);
