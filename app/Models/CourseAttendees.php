@@ -26,4 +26,20 @@ class CourseAttendees extends Model
     {
         return $this->hasMany(Course::class,'id','course_id');
     }
+
+    public function referraluser()
+    {
+        return $this->hasMany(AttendeeReferens::class,'attendees_id','id');
+    }
+
+    public function questionnaireself()
+    {
+        return $this->hasOne(QuestionnaireAnswers::class,'attendees_id','id')->where('type',0);
+    }
+
+    public function questionnaireref()
+    {
+        return $this->hasMany(QuestionnaireAnswers::class,'attendees_id','id')->select('contact_id')->distinct()
+        ->where('type',1);
+    }
 }

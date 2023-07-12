@@ -23,7 +23,6 @@ class FeedbackRepository
      */
     public function create(array $data): AttendeeReferens
     {
-        // dd($data);
         $course = Course::where('key',$data['key'])->first();
         if($course)
         {
@@ -37,7 +36,6 @@ class FeedbackRepository
                     $AttendeeRefreshArrList = [];
                     foreach ($data['contacte'] as $key => $contacte) 
                     {         
-                        // dd($contacte);
                         $AttendeeRefreshArrListArr = [
                             'course_id'    => $course->id,
                             'organizer_id'    => $CompanyOrganizer->id,
@@ -50,17 +48,14 @@ class FeedbackRepository
 
                         $AttendeeRefreshArrList[] = $AttendeeRefreshArrListArr;
 
-                        // dd($AttendeeRefreshArrListArr);
                         $data['course'] = $course;
                         $data['courseAttendeesList'] = $courseAttendees;
-                        // $trainerDetail = TrainerDetail::where('course_id',$course->id)->get();
-                        // $data['attendee_name'] = ucwords($attendees['first_name'] . " " . $attendees['last_name']);
-                        // $data['trainerDetail'] = $trainerDetail;
-
                         Mail::to($contacte['email'])->send(new AttendeeReferensMail($data));
                         // $course->companyorganizer->update(array('confirm_attendee' => 1));
                         $attendeeRefresh = AttendeeReferens::create($AttendeeRefreshArrListArr);
                     }
+
+                    
                 }
                 
             }
@@ -69,6 +64,9 @@ class FeedbackRepository
         
         return $attendeeRefresh;
     }
+
+
+    
 
     /**
      * Method update

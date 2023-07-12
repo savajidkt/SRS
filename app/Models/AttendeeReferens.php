@@ -23,4 +23,13 @@ class AttendeeReferens extends Model
         'email',
         'relationship',
     ];
+
+    public function attendeeuser()
+    {
+        return $this->belongsToMany(CourseAttendees::class,'id','attendees_id');
+    }
+    public function referralusers()
+    {
+        return $this->hasOne(QuestionnaireAnswers::class,'contact_id','id')->orderBy('id','desc');
+    }
 }

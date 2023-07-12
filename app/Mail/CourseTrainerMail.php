@@ -60,14 +60,25 @@ class CourseTrainerMail extends Mailable
   public function build()
 
   {
+    $emailtemp_id = 3;
     $data = $this->data;
     // dd($data);
-    // $trainerDetail = '';
-    // if ($data['trainerDetail']) {
-    //   foreach ($data['trainerDetail'] as $key => $value) {
-    //     $trainerDetail .= ucwords($value->first_name . " " . $value->last_name);
-    //   }
-    // }
+$myTable = "";
+    if( isset($data['self_attende']) && $data['self_attende'] == 'Yes' ){
+      $attendees_lists = $data['trainerArr']['attendees_list'];
+      $questionnaire_360 = $data['trainerArr']['questionnaire_360'];
+      $myTable = $attendees_lists."".$questionnaire_360;
+      $emailtemp_id = 5;
+    }else if( isset($data['self_attende']) && $data['self_attende'] == '360' ){
+      $attendees_lists = $data['trainerArr']['attendees_list'];
+      $questionnaire_360 = $data['trainerArr']['questionnaire_360'];
+      $myTable = $attendees_lists."".$questionnaire_360;
+      $emailtemp_id = 6;
+    } else {
+      $myTable = $data['trainerArr']['attendees_list'];
+      $emailtemp_id = 3;
+    }
+
     
     $paramArr = [];
     $paramArr['site_url'] = URL::to('/');
@@ -79,18 +90,26 @@ class CourseTrainerMail extends Mailable
     $paramArr['company_address'] = '';
     $paramArr['company_organiser_attendees_email'] = $data['trainerArr']['company_organiser_attendees_email'];
     $paramArr['course_end_date'] = dateFormat($data['trainerArr']['course_end_date']);
-    $paramArr['attendees_list'] = $data['trainerArr']['attendees_list'];
-    $paramArr['link'] = URL::to('/course-attendees/'.$data['key']);
+    $paramArr['attendees_list'] = $myTable;
+    // $paramArr['link'] = URL::to('/course-attendees/'.$data['key']);
     $paramArr['year'] = date('Y');
 
     // dd($paramArr);
   
-    $emailTemplate = getEmailTemplatesByID(3);
+    $emailTemplate = getEmailTemplatesByID($emailtemp_id);
     if ($emailTemplate) {
 
       $emailBody = replaceHTMLBodyWithParam($emailTemplate['template'], $paramArr);
       // dd($emailBody);
-      $emailSubject = replaceHTMLBodyWithParam($emailTemplate['subject'], array('course_date' => dateFormat($data['trainerArr']['course_end_date'])));
+      if( isset($data['self_attende']) && $data['self_attende'] == 'Yes' ){
+        $emailSubject = replaceHTMLBodyWithParam($emailTemplate['subject'], array('company_name' => $data['trainerArr']['company_organiser_attendees_name'], 'course_name' => $data['trainerArr']['course_name'], 'course_date' => dateFormat($data['trainerArr']['course_end_date'])));
+      } else if( isset($data['self_attende']) && $data['self_attende'] == '360' ){
+        $emailSubject = replaceHTMLBodyWithParam($emailTemplate['subject'], array('company_name' => $data['trainerArr']['company_organiser_attendees_name'], 'course_name' => $data['trainerArr']['course_name'], 'course_date' => dateFormat($data['trainerArr']['course_end_date'])));
+      }else
+      {
+        $emailSubject = replaceHTMLBodyWithParam($emailTemplate['subject'], array('course_date' => dateFormat($data['trainerArr']['course_end_date'])));
+      }
+      
       // return $this->subject($emailSubject)->with('body', $emailBody);
       return $this->subject($emailSubject)->markdown('admin.Mail.companyOrganizerMail', ['emailBody' => $emailBody]);
 
