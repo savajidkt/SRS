@@ -22,7 +22,6 @@ class CreateQuestionnaireAnswersTable extends Migration
             $table->timestamps();
             $table->foreign('contact_id')->references('id')->on('attendee_referens')->onDelete('cascade');
             $table->foreign('attendees_id')->references('id')->on('course_attendees')->onDelete('cascade');
-            // $table->foreign('question_id')->references('id')->on('attendee_questions')->onDelete('cascade');
             $table->softDeletes();
         });
     }
