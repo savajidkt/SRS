@@ -64,27 +64,7 @@
                         <th scope="col">Action</th>
                     </tr>
                 </thead>               
-            </table>
-
-            {{-- <nav aria-label="Page navigation example">
-                <ul class="pagination justify-content-end">
-                    <li class="page-item">
-                        <a class="page-link" href="#">First</a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link" href="#">Previous</a>
-                    </li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item">
-                        <a class="page-link" href="#">Next</a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link" href="#">Last</a>
-                    </li>
-                </ul>
-            </nav> --}}
+            </table>         
         </div>
         <!-- row -->
     </div>
@@ -117,14 +97,14 @@
                         // searchable: true
                     },
                     {
-                        data: 'course',
-                        name: 'course',
+                        data: 'name',
+                        name: 'name',
                         // orderable: false,
                         // searchable: true
                     },
                     {
-                        data: 'name',
-                        name: 'name',
+                        data: 'course',
+                        name: 'course',
                         // orderable: false,
                         // searchable: true
                     },                   

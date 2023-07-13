@@ -110,21 +110,23 @@
                     "sLengthMenu": "Show  _MENU_ Entries",
                 },
                 ajax: "{{ route('templatemanager-help') }}",
-                columns: [{
+                columns: [
+                    
+                    {
                         data: 'id',
                         name: 'id',
                         // orderable: false,
                         // searchable: true
                     },
                     {
-                        data: 'course',
-                        name: 'course',
+                        data: 'name',
+                        name: 'name',
                         // orderable: false,
                         // searchable: true
                     },
                     {
-                        data: 'name',
-                        name: 'name',
+                        data: 'course',
+                        name: 'course',
                         // orderable: false,
                         // searchable: true
                     },                   

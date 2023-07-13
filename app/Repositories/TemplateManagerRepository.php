@@ -7,7 +7,7 @@ use Exception;
 
 class TemplateManagerRepository
 {
-    
+
 
     /**
      * Method update
@@ -21,8 +21,49 @@ class TemplateManagerRepository
     public function update(array $data, EmailTemplate $templatemanager): EmailTemplate
     {
         $dataUpdate = [
-            'name'    => $data['name'],
+            'template_name'    => $data['template_name'],
             'subject'    => $data['subject'],
+            'template'     => $data['template'],
+        ];
+
+        if ($templatemanager->update($dataUpdate)) {
+            return $templatemanager;
+        }
+
+        throw new Exception('Email Template update failed!');
+    }
+
+    public function updateHelp(array $data, EmailTemplate $templatemanager): EmailTemplate
+    {
+        $dataUpdate = [
+            'name'    => $data['name'],
+            'template'     => $data['template'],
+        ];
+
+        if ($templatemanager->update($dataUpdate)) {
+            return $templatemanager;
+        }
+
+        throw new Exception('Email Template update failed!');
+    }
+
+    public function updateTemplate(array $data, EmailTemplate $templatemanager): EmailTemplate
+    {
+        $dataUpdate = [
+            'name'    => $data['name'],
+            'template'     => $data['template'],
+        ];
+
+        if ($templatemanager->update($dataUpdate)) {
+            return $templatemanager;
+        }
+
+        throw new Exception('Email Template update failed!');
+    }
+    public function updateMessage(array $data, EmailTemplate $templatemanager): EmailTemplate
+    {
+        $dataUpdate = [
+            'name'    => $data['name'],
             'template'     => $data['template'],
         ];
 

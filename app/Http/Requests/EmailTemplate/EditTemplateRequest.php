@@ -4,7 +4,7 @@ namespace App\Http\Requests\EmailTemplate;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class EditRequest extends FormRequest
+class EditTemplateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,8 +24,7 @@ class EditRequest extends FormRequest
     public function rules()
     {
         return [
-            'template_name' => ['required'],
-            'subject' => ['required'],
+            'name' => ['required'],            
             'template' => ['required'],
         ];
     }
@@ -38,8 +37,7 @@ class EditRequest extends FormRequest
     public function messages()
     {
         return [
-            'template_name.required' => 'This field is required.',
-            'subject.required' => 'This field is required.',
+            'name.required' => 'This field is required.',            
             'template.required' => 'This field is required.'
         ];
     }

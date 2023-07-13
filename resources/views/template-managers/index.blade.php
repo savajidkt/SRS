@@ -121,14 +121,14 @@
                         // searchable: true
                     },
                     {
-                        data: 'course',
-                        name: 'course',
+                        data: 'template_name',
+                        name: 'template_name',
                         // orderable: false,
                         // searchable: true
                     },
                     {
-                        data: 'name',
-                        name: 'name',
+                        data: 'course',
+                        name: 'course',
                         // orderable: false,
                         // searchable: true
                     },

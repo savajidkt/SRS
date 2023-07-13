@@ -8,20 +8,10 @@
                                         <div class="form-group edit-email-form-group">
                                             <label class="text-label">Name</label>
                                             <div class="email-content-style">
-                                                <input type="text" name="template_name" class="form-control"
-                                                    value="{{ $model->template_name }}">
+                                                <input type="text" name="name" class="form-control"
+                                                    value="{{ $model->name }}">
                                             </div>
-                                        </div>
-                                        <div class="form-group edit-email-form-group subject-style">
-                                            <label class="text-label">Subject</label>
-                                            <div class="email-content-style">
-                                                <input type="text" name="subject" class="form-control"
-                                                    value="{{ $model->subject }}">
-                                                <label class="note-edit-email">NOTE : {*} denote label where data is
-                                                    bind at runtime so please dont change it, you can change it's
-                                                    position.</label>
-                                            </div>
-                                        </div>
+                                        </div>                                       
                                         <div class="form-group edit-email-form-group">
                                             <label class="text-label">Notes</label>
                                             <div class="email-content-style">

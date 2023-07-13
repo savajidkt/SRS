@@ -25,6 +25,8 @@ class EmailTemplate extends Model
      */
     protected $fillable = [
         'name',
+        'template_name',
+        'course',
         'type',
         'subject',
         'template',
@@ -33,11 +35,18 @@ class EmailTemplate extends Model
 
     public function getActionAttribute(): string
     {
-     
-       
-            $editAction = '<a href="' . route('templatemanager.edit', $this->id) . '"><i class="fa-regular fa-pen-to-square edit-ico" title="Edit"></i></a> ';
-        
 
+        if ($this->type == "email") {
+            $editAction = '<a href="' . route('templatemanager.edit', $this->id) . '"><i class="fa-regular fa-pen-to-square edit-ico" title="Edit"></i></a> ';
+        } else if ($this->type == "help") {
+            $editAction = '<a href="' . route('templatemanager-edit-help', $this). '"><i class="fa-regular fa-pen-to-square edit-ico" title="Edit"></i></a> ';
+        
+        } else if ($this->type == "template") {
+            $editAction = '<a href="' . route('templatemanager-edit-template', $this). '"><i class="fa-regular fa-pen-to-square edit-ico" title="Edit"></i></a> ';
+        
+        } else if ($this->type == "message") {
+            $editAction = '<a href="' . route('templatemanager-edit-message', $this). '"><i class="fa-regular fa-pen-to-square edit-ico" title="Edit"></i></a> ';
+        }
         return $editAction;
     }
 }

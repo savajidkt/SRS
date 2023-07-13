@@ -84,9 +84,9 @@ Auth::routes();
 
 Route::post('/check-name', [ClientController::class, 'checkName'])->name('check-name');
 # Front Routes
-Route::group(['authGrouping' => 'users.auth','middleware' => 'auth:web'], function () {
-    
-    Route::get('/',[DashboardController::class, 'index']);
+Route::group(['authGrouping' => 'users.auth', 'middleware' => 'auth:web'], function () {
+
+    Route::get('/', [DashboardController::class, 'index']);
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::resource('/profile', ProfileController::class);
     Route::resource('/client', ClientController::class);
@@ -97,9 +97,18 @@ Route::group(['authGrouping' => 'users.auth','middleware' => 'auth:web'], functi
     Route::resource('/courseattendees', CourseAttendeesController::class);
 
     Route::resource('/templatemanager', TemplateManagersController::class);
+
     Route::get('/templatemanager-help/', [TemplateManagersController::class, 'help'])->name('templatemanager-help');
+    Route::get('/templatemanager-edit-help/{templatemanager}/edit', [TemplateManagersController::class, 'editHelp'])->name('templatemanager-edit-help');
+    Route::post('/templatemanager-edit-help/{templatemanager}/update', [TemplateManagersController::class, 'updateHelp'])->name('templatemanager-update-help');
+
     Route::get('/templatemanager-template/', [TemplateManagersController::class, 'common'])->name('templatemanager-common');
+    Route::get('/templatemanager-edit-template/{templatemanager}/edit', [TemplateManagersController::class, 'editTemplate'])->name('templatemanager-edit-template');
+    Route::post('/templatemanager-edit-template/{templatemanager}/update', [TemplateManagersController::class, 'updateTemplate'])->name('templatemanager-update-template');
+
     Route::get('/templatemanager-message/', [TemplateManagersController::class, 'customize'])->name('templatemanager-customize');
+    Route::get('/templatemanager-edit-message/{templatemanager}/edit', [TemplateManagersController::class, 'editMessage'])->name('templatemanager-edit-message');
+    Route::post('/templatemanager-edit-message/{templatemanager}/update', [TemplateManagersController::class, 'updateMessage'])->name('templatemanager-update-message');
 
     /*Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('checkSurveyStatus');
     Route::get('/change-password', [ResetPasswordController::class, 'firstTimePasswordChange'])->name('change-password');

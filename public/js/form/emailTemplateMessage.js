@@ -11,16 +11,13 @@ var FrmTemplateManagerPreference = function () {
             focusInvalid: false,
             ignore: "",
             rules: {
-                template_name: {
+                name: {
                     required: true,
-                },
-                subject: {
-                    required: true
                 },
                 template: {
                     required: true
                 },
-                          
+
             },
             highlight: function (element) {
 
@@ -37,7 +34,7 @@ var FrmTemplateManagerPreference = function () {
                     error.insertAfter("#cke_email-compose-editor");
                 } else {
                     error.insertAfter(element);
-                 }
+                }
             },
             submitHandler: function (form) {
                 form.submit();
