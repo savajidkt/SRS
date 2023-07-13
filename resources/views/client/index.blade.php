@@ -20,12 +20,12 @@
           <div>
           <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="javascript:void(0)">Client Management</a></li>
-              <li class="breadcrumb-item active"><a href="./chart-morris.html">View Clients</a></li>
+              <li class="breadcrumb-item active"><a href="javascript:void(0)">View Clients</a></li>
           </ol>
       </div>
   </div>
 
-  <div>
+  <div class="client-view-edit-cate">
   <table class="table table-bordered table-striped">
       <thead>
         <tr class="table-client-row">

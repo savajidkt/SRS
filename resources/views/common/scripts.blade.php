@@ -17,21 +17,68 @@
 <script src="{{asset('select/js/select2.full.min.js')}}"></script>
 <script>
 	var sidebar = document.getElementById("main-wrapper")
+		var ham = document.getElementsByClassName("hamburger")
+
 
 	function updateSize() {
-	 
+// 	 var x = localStorage.getItem("showsidebar");
 	  if (window.innerWidth < 992) {
 
 
-	sidebar.classList.add("menu-toggle")
+	sidebar.classList.add("hide_sidebar")
+		sidebar.classList.remove("show_sidebar")
+		var mob = localStorage.getItem("mobile");
+		console.log(mob)
+		if(mob === "mobile")
+		{
+
+		    		sidebar.classList.remove("menu-toggle")
+		    				    localStorage.removeItem("mobile");
+		    				    			localStorage.setItem("desktop", "desktop");
+		}
+		else{
+		    
+		}
+		
+	
+
+// 	localStorage.removeItem("showsidebar");
+// 	  localStorage.setItem("showsidebar", true);
+	
 	}else{
 
-	  sidebar.classList.remove("menu-toggle")
+	  sidebar.classList.remove("hide_sidebar")
+	sidebar.classList.add("show_sidebar")
+			localStorage.setItem("mobile", "mobile");
+				var desk = localStorage.getItem("desktop");
+		console.log(mob)
+		if(desk === "desktop")
+		{
+
+		    		sidebar.classList.remove("menu-toggle")
+		    				    localStorage.removeItem("desktop");
+		    				    		
+		}
+		else{
+		    
+		}
+			
 	  }
 
 	}
 
 	updateSize();
 	window.addEventListener("resize", updateSize);
+	
+	
+	jQuery(function ($) {
+    jQuery(document).ready(function () {
+        	  if (window.innerWidth < 992) {
+        	      	sidebar.classList.remove("menu-toggle")
+        	      
+        	  }
+    })
+	})
+       
 </script>
  

@@ -15,6 +15,7 @@ class Questions extends Model
      */
     protected $fillable = [
         'question',
+        'category_id',
     ];
 
     public function getActionAttribute(): string

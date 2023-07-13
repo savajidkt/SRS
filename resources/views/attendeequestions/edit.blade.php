@@ -14,16 +14,22 @@
             </div> -->
         <!-- <div class="col-sm-6 justify-content-sm-end mt-2 mt-sm-0 d-flex"> -->
         <div>
-            <h3>EDIT QUESTION</h3>
+            <h3 class="edit-attendee-q">EDIT QUESTION</h3>
         </div>
     </div>
     <form action="{{route('attendee.update',$model)}}" method="POST">
         @csrf
         @method('PUT')
         
-        <div class="col-md-6">
-            <div class="form-group">
-                <label class="text-label">Name Category<span class="filedrequired"> *</span></label>
+        
+        <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label attendee-question">Question</label>
+            <textarea class="form-control" name="question" id="exampleFormControlTextarea1" rows="3" placeholder="I am able to tell others how I am feeling about a situation" required>{{(isset($model->question))?$model->question:''}}</textarea>
+        </div>
+
+        <div class="col-md-6 edit-question-category-at">
+            <div class="form-group form-group-category">
+                <label class="text-label text-label-category">Category<span class="filedrequired text-error"> *</span></label>
                 <div class="input-error">
                     <select class="form-select form-select-sm" aria-label=".form-select-sm example" id="category_id" name="category_id" >
                         <option value="1" {{ isset($model->category_id) && $model->category_id == 1 ? 'selected' : '' }}>Emotive</option>
@@ -37,13 +43,11 @@
                 </div>
             </div>
         </div>
-        <div class="mb-3">
-            <label for="exampleFormControlTextarea1" class="form-label attendee-question">Question</label>
-            <textarea class="form-control" name="question" id="exampleFormControlTextarea1" rows="3" placeholder="I am able to tell others how I am feeling about a situation" required>{{(isset($model->question))?$model->question:''}}</textarea>
-        </div>
+        <div class="btn-influencing-question">
         <button type="submit" class="btn btn-primary">Update</button>
         {{-- <button type="button" class="btn btn-primary">Cancel</button> --}}
         <a href="{{ route('attendee.index') }}" class="btn btn-primary">Cancel</a>
+        </div>
     </form>
     <!-- row -->
 </div>

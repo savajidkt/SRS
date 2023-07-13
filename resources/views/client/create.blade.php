@@ -37,12 +37,14 @@
                             @csrf
                             @include('client.form')
                             <div id="newRow"></div>
+                            <div class="btn-client-edit">
                             <button type="submit" class="btn btn-primary">Save Changes</button>
                             <a href="{{ route('client.index')}}" class="btn btn-primary">Cancel</a>
                             
                             <button class="btn btn-primary" type="button" data-repeater-create>                               
                                 <span>Add New Contact</span>
                             </button>
+                            </div>
 
                             
                         </form>

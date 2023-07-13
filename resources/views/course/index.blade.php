@@ -16,8 +16,8 @@
       <!-- <div class="col-sm-6 justify-content-sm-end mt-2 mt-sm-0 d-flex"> -->
           <div>
           <ol class="breadcrumb">
-              <li class="breadcrumb-item"><a href="javascript:void(0)">Client Management</a></li>
-              <li class="breadcrumb-item active"><a href="./chart-morris.html">View Clients</a></li>
+              <li class="breadcrumb-item"><a href="javascript:void(0)">Course Management</a></li>
+              <li class="breadcrumb-item active"><a href="./chart-morris.html">View Courses</a></li>
           </ol>
       </div>
   </div>

@@ -32,13 +32,12 @@ class FeedbackRepository
             {
 
                 $courseAttendees = CourseAttendees::where('course_id',$course->id)->first();
-               
                 if($courseAttendees)
                 {
-                    
                     $AttendeeRefreshArrList = [];
                     foreach ($data['contacte'] as $key => $contacte) 
                     {         
+                       
                         $AttendeeRefreshArrListArr = [
                             'course_id'    => $course->id,
                             'organizer_id'    => $CompanyOrganizer->id,
@@ -51,13 +50,14 @@ class FeedbackRepository
 
                         $AttendeeRefreshArrList[] = $AttendeeRefreshArrListArr;
 
+                      
                         $data['course'] = $course;
                         $data['courseAttendeesList'] = $courseAttendees;
-                        Mail::to($contacte['email'])->send(new AttendeeReferensMail($data));                        
+                       
+                        Mail::to($contacte['email'])->send(new AttendeeReferensMail($data));
+                      
                         $attendeeRefresh = AttendeeReferens::create($AttendeeRefreshArrListArr);
                     }
-
-                    
                 }
                 
             }
@@ -66,9 +66,6 @@ class FeedbackRepository
         
         return $attendeeRefresh;
     }
-
-
-    
 
     /**
      * Method update

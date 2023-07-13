@@ -35,20 +35,20 @@
                                         <div class="row">
                                             <div class="col-lg-12 mb-4 form-style add_course_step_2_col">
                                                 <div class="form-group train-deet add_course_form">
-                                                    <label class="text-label">First Name*</label>
+                                                    <label class="text-label">First Name<span class="filedrequired">*</span></label>
                                                     <input type="text" name="first_name"  class="form-control" placeholder="" required>
                                                 </div>
                                             
                                             
                                                 <div class="form-group train-deet add_course_form">
-                                                    <label class="text-label">Surname*</label>
+                                                    <label class="text-label">Surname<span class="filedrequired">*</span></label>
                                                     <input type="text" name="last_name" class="form-control" placeholder="" required>
                                                 </div>
                                             
                                         
                                            
                                                 <div class="form-group train-deet add_course_form">
-                                                    <label class="text-label">Email Address*</label>
+                                                    <label class="text-label">Email Address<span class="filedrequired">*</span></label>
                                                     <div class="input-group">
                                                         <input type="hidden" name="course_id" value="1">
                                                         <input type="email" name="email" class="form-control" id="inputGroupPrepend2" aria-describedby="inputGroupPrepend2" placeholder="" required>

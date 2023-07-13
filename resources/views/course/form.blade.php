@@ -17,7 +17,7 @@ $mycountphp = 1;
         <div class="row">
             <div class="col-lg-12 mb-4 form-style">
                 <div class="form-group">
-                    <label class="text-label">Name of Course<span class="filedrequired"> *</span></label>
+                    <label class="text-label">Name of Course<span class="filedrequired">*</span></label>
                     <div class="input-error">
                         <select class="form-select form-select-sm" aria-label=".form-select-sm example" id="course_category_id" name="course_category_id" >
                             {{-- <option value="">Select Course</option> --}}
@@ -30,7 +30,7 @@ $mycountphp = 1;
                     </div>
                 </div>
                 <div class="form-group dat-o-c">
-                    <label class="text-label headi-doc">Date of Course<span class="filedrequired"> *</span></label>
+                    <label class="text-label headi-doc">Date of Course<span class="filedrequired">*</span></label>
                     <div class="input-error">
                         <input type="date" name="start_date" id="start_date" class="form-control" value="{{(isset($model->start_date))?$model->start_date:''}}" onchange="Func_a(this)" placeholder="" required>
                     </div>
@@ -43,7 +43,7 @@ $mycountphp = 1;
                 </div>
                 
                     <div class="form-group">
-                        <label class="text-label">Course Duration<span class="filedrequired"> *</span></label>
+                        <label class="text-label">Course Duration<span class="filedrequired">*</span></label>
                         <div class="input-error">
                             <select class="form-select form-select-sm select2" aria-label=".form-select-sm example" id="duration" name="duration">
                                 <option value="">Select Duration</option>
@@ -80,7 +80,7 @@ $mycountphp = 1;
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="text-label">Client<span class="filedrequired"> *</span></label>
+                        <label class="text-label">Client<span class="filedrequired">*</span></label>
                         <div class="input-error">
                             <select class="form-select form-select-sm select2" aria-label=".form-select-sm example" id="client_id" name="client_id">
                                 <option value="">Please Select</option>
@@ -94,7 +94,7 @@ $mycountphp = 1;
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="text-label">Path<span class="filedrequired"> *</span></label>
+                        <label class="text-label">Path<span class="filedrequired">*</span></label>
                         <div class="input-error">
                             <select class="form-select form-select-sm " aria-label=".form-select-sm example" id="path" name="path" >
                                 {{-- <option value="">Please Select</option> --}}
@@ -118,27 +118,27 @@ $mycountphp = 1;
                     <div class="row d-flex align-items-end">
                         <div class="col-lg-12 mb-4 form-style">
                             <div class="form-group train-deet">
-                                <label class="itemcost">First Name<span class="filedrequired"> *</span></label>
+                                <label class="itemcost">First Name<span class="filedrequired">*</span></label>
                                 <div class="input-error">
                                     <input type="text" class="form-control" name="first_name"
                                     value="{{$trainer->first_name}}" />
                                 </div>
                             </div>
                             <div class="form-group train-deet">
-                                <label class="itemcost">Last Name<span class="filedrequired"> *</span></label>
+                                <label class="itemcost">Last Name<span class="filedrequired">*</span></label>
                                 <div class="input-error">
                                     <input type="text" class="form-control" name="last_name"
                                     value="{{$trainer->last_name}}" />
                                 </div>
                             </div>
                             <div class="form-group train-deet">
-                                <label class="itemcost">Email Address<span class="filedrequired"> *</span></label>
+                                <label class="itemcost">Email Address<span class="filedrequired">*</span></label>
                                 <div class="input-error">
                                     <input type="email" class="form-control" name="email" value="{{$trainer->email}}" id="email_{{ $key }}" />
                                 </div>
                             </div>
                             <div class="form-group train-deet">
-                                <label class="itemcost">Confirm Email Address<span class="filedrequired"> *</span></label>
+                                <label class="itemcost">Confirm Email Address<span class="filedrequired">*</span></label>
                                 <div class="input-error">
                                     <input type="email" class="form-control" name="email_confirm"  value="{{$trainer->email}}" />
                                 </div>
@@ -161,27 +161,27 @@ $mycountphp = 1;
                 <div class="row d-flex align-items-end">
                     <div class="col-lg-12 mb-4 form-style">
                         <div class="form-group train-deet">
-                            <label class="itemcost">First Name<span class="filedrequired"> *</span></label>
+                            <label class="itemcost">First Name<span class="filedrequired">*</span></label>
                             <div class="input-error">
                                 <input type="text" class="form-control" name="first_name"
                                 value="" />
                             </div>
                         </div>
                         <div class="form-group train-deet">
-                            <label class="itemcost">Last Name<span class="filedrequired"> *</span></label>
+                            <label class="itemcost">Last Name<span class="filedrequired">*</span></label>
                             <div class="input-error">
                                 <input type="text" class="form-control" name="last_name"
                                 value="" />
                             </div>
                         </div>
                         <div class="form-group train-deet">
-                            <label class="itemcost">Email Address<span class="filedrequired"> *</span></label>
+                            <label class="itemcost">Email Address<span class="filedrequired">*</span></label>
                             <div class="input-error">
                                 <input type="email" class="form-control" name="email" value="" id="email_0" email-id="email"  />
                             </div>
                         </div>
                         <div class="form-group train-deet">
-                            <label class="itemcost">Confirm Email Address<span class="filedrequired"> *</span></label>
+                            <label class="itemcost">Confirm Email Address<span class="filedrequired">*</span></label>
                             <div class="input-error">
                                 <input type="email" class="form-control" name="email_confirm"  value="" id="confirm_email_0" confirm-email-id="confirm_email" />
                             </div>

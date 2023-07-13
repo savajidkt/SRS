@@ -49,9 +49,9 @@ class CourseAttendeeRepository
                     $trainerDetail = TrainerDetail::where('course_id',$course->id)->get();
                     $data['attendee_name'] = ucwords($attendees['first_name'] . " " . $attendees['last_name']);
                     $data['trainerDetail'] = $trainerDetail;
-                    
 
                     
+
                     $course->companyorganizer->update(array('confirm_attendee' => 1));
                     $courseAttendees = CourseAttendees::create($attendeesArr);
                     $data['attendee_id'] = $courseAttendees->id;

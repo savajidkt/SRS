@@ -54,6 +54,7 @@ class FeedbackContacteController extends Controller
 
     public function store(Request $request)
     {
+       
         $this->feedbackRepository->create($request->all());
         return redirect()->route('attendees-questionnaire',$request->key)->with('success', "Course created successfully!");
     }
@@ -85,7 +86,6 @@ class FeedbackContacteController extends Controller
 
     public function StoreAttendeesquestion(Request $request)
     {
-       
         $course = Course::where('key', $request->key)->first();
         if($course) 
         {
@@ -94,7 +94,7 @@ class FeedbackContacteController extends Controller
             {
                 $AttendeeQuestionsList = [];
                 foreach ($request['answer'] as  $key=> $answer) {
-                    $AttendeeQuestionsArr = [
+                    $AttendeeQuestionsArr = [                        
                         'attendees_id'    => $attendeeReferens->attendees_id,
                         'question_id'    => $key,
                         'answer'    => $answer,
@@ -230,9 +230,9 @@ class FeedbackContacteController extends Controller
                         'answer'    => $answer,
                         'type'    => 1,
                     ];
-                   
+
                     $attendeeQuestions = QuestionnaireAnswers::create($AttendeeQuestionsArr);
-                    
+                  
                 }
                 $trainer_name = '';
                 if($course->trainer)
@@ -298,15 +298,15 @@ class FeedbackContacteController extends Controller
                 if($vlue->referralusers){
                     $isFill = "YES - ".date('d/m/Y H:i:s', strtotime($vlue->referralusers->created_at));
                 }
-
+                   
                 $returnTable .= "<tr> <td width=\"301\" valign=\"top\" style=\"background-color:#8DB3E2\"><p>".$vlue['first_name'] .$vlue['last_name']."</p></td><td width=\"247\" valign=\"top\" style=\"background-color:#DBE5F1\"><p>".$isFill."</p></td></tr>";
             }
             $returnTable .= "</tbody>";
             $returnTable .= "</table>";
         }
-
+                    
         return $returnTable;
-    }
+                }
 public function chaseEmailFeedback($id)
     {
 

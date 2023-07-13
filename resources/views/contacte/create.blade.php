@@ -130,6 +130,9 @@ display: none;
        
          </div>
           
+
+            
+
               <div class="card">
                 <div class="card-header attendee-home-lgt attendee-bg-clr add-contact-font">
                     <strong>360-DEGREE FEEDBACK CONTACTS</strong>
@@ -148,19 +151,20 @@ display: none;
                 
                 @endif
                 
-
+                
               </div>
 
               <div class="row myclsdiv {{  (isset($ext_id) && $ext_id == "360-frm") ? 'hide' :'' }}">
                 <div class="col-xl-6 col-xxl-12">
 
                     <div class="card">
+                      
                         <div class="card-body">
                             <div class="basic-form">
                                 <form class="contacte-repeater" action="{{ route('store-contacte') }}" method="post"
                                         enctype="multipart/form-data" id="contacte">
                                     @csrf
-                                        <input type="hidden" value="{{ $id }}" name="key">
+                                        <input type="hidden" value="{{ $id }}" name="key" >
                                         <input type="hidden" value="{{ $ext_id }}" name="attendee_id">
                                     <div class="">
                                         <div data-repeater-list="contacte">
