@@ -16,6 +16,46 @@
     <link href="{{ asset('css/style.css')}}" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" integrity="sha512-nMNlpuaDPrqlEls3IX/Q56H36qvBASwb3ipuo3MxeWbsQB1881ox0cRv7UPTgBlriqoynt35KjEwgGUeUXIPnw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+      .error-bg{
+      background-color:#000066;
+      }
+
+      .error-danger{
+        color: #D8000C;
+        background-color:#FFBABA;
+        border:1px solid #D8000C;
+      }
+
+      .error-style-decor{
+        list-style-type:circle;
+        color:red;
+      }
+
+      .error-text{
+        color: #D8000C;
+      }
+
+
+      .error-heading-text{
+        color:#fff;
+        font-size:18px;
+        font-weight:500;
+      }
+
+      .attendee-home-error{
+        margin-left:0rem;
+        overflow-y: hidden !important;
+      }
+
+      .success-text-clr{
+        color:#006400;
+      }
+
+      #attendee-error .attendee-home-error{
+      margin-left:0rem !important;
+      }
+    </style>
   </head>
 
   <body>

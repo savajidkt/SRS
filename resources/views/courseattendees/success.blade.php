@@ -14,13 +14,55 @@
     />
     <!--CSS-->
     <link href="{{ asset('css/style.css')}}" rel="stylesheet" />
+    <link href="{{ asset('css/custom-style.css')}}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" integrity="sha512-nMNlpuaDPrqlEls3IX/Q56H36qvBASwb3ipuo3MxeWbsQB1881ox0cRv7UPTgBlriqoynt35KjEwgGUeUXIPnw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
       .accordion-add-contact-colr p{
           color: #454545 !important;
       }
-  </style>
+      .bg-details>h5, p {
+          color: #454545;
+      } 
+      .error-bg{
+      background-color:#000066;
+      }
+
+      .error-danger{
+        color: #D8000C;
+        background-color:#FFBABA;
+        border:1px solid #D8000C;
+      }
+
+      .error-style-decor{
+        list-style-type:circle;
+        color:red;
+      }
+
+      .error-text{
+        color: #D8000C;
+      }
+
+
+      .error-heading-text{
+        color:#fff;
+        font-size:18px;
+        font-weight:500;
+      }
+
+      .attendee-home-error{
+        margin-left:0rem;
+        overflow-y: hidden !important;
+      }
+
+      .success-text-clr{
+        color:#006400;
+      }
+
+      #attendee-error .attendee-home-error{
+      margin-left:0rem !important;
+      }
+    </style>
   </head>
 
   <body>
@@ -94,26 +136,17 @@
 
                 <div class="alert alert-success alert-dismissible d-flex align-items-center fade show success-text-clr">
                     <i class="bi-check-circle-fill"></i>
-                    <strong class="mx-2">Thank You!</strong> Your attendees have been successfully added and joining instructions have been emailed to each of them.
-                    <!-- <button type="button" class="btn-close" data-bs-dismiss="alert"></button> -->
+                    {!! $message !!}
                 </div>
 
                         
             </div>
 
-            <div class="footer attendee-home sticky-bottom">
-                <div class="copyright">
-                  <p>
-                    Copyright © 2023 SRS-The Development Team Ltd. | All Rights Reserved
-                    <a href="./Index.html" target="_blank">www.srs-development.co.uk</a>
-                  </p>
-                </div>
-              </div>
-
+  
             </div>
         </div>
           
-
+</div>
           
       <!--**********************************
             Content body end
@@ -123,7 +156,14 @@
             Footer start
         ***********************************-->
       
-        
+        <div class="footer attendee-home sticky-bottom">
+          <div class="copyright">
+            <p>
+              Copyright © 2023 SRS-The Development Team Ltd. | All Rights Reserved
+              <a href="./Index.html" target="_blank">www.srs-development.co.uk</a>
+            </p>
+          </div>
+        </div>
 
 
       <!--**********************************
@@ -154,19 +194,19 @@
     <script>
       const currentDateTime = new Date();
 
-const options = {
-weekday: 'long',
-year: 'numeric',
-month: 'long',
-day: 'numeric',
-hour: 'numeric',
-minute: 'numeric',
-second: 'numeric',
-hour12: false
-};
+            const options = {
+            weekday: 'long',
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+            hour: 'numeric',
+            minute: 'numeric',
+            second: 'numeric',
+            hour12: false
+            };
 
-const formattedDateTime = currentDateTime.toLocaleDateString('en-US', options);
-document.getElementById("demo").innerHTML = formattedDateTime;
+            const formattedDateTime = currentDateTime.toLocaleDateString('en-US', options);
+            document.getElementById("demo").innerHTML = formattedDateTime;
 
     </script>
 
@@ -189,6 +229,39 @@ if (panel.style.maxHeight) {
 } 
 });
 }
+
+function getDateTime() {
+        var now     = new Date(); 
+        var year    = now.getFullYear();
+        var month   = now.getMonth()+1; 
+        var day     = now.getDate();
+        var hour    = now.getHours();
+        var minute  = now.getMinutes();
+        var second  = now.getSeconds(); 
+        if(month.toString().length == 1) {
+             month = '0'+month;
+        }
+        if(day.toString().length == 1) {
+             day = '0'+day;
+        }   
+        if(hour.toString().length == 1) {
+             hour = '0'+hour;
+        }
+        if(minute.toString().length == 1) {
+             minute = '0'+minute;
+        }
+        if(second.toString().length == 1) {
+             second = '0'+second;
+        }   
+        var dateTime = year+'/'+month+'/'+day+' '+hour+':'+minute+':'+second;   
+         return dateTime;
+    }
+
+    // example usage: realtime clock
+    setInterval(function(){
+        currentTime = getDateTime();
+        document.getElementById("demo").innerHTML = currentTime;
+    }, 1000);
 </script>
 
   </body>

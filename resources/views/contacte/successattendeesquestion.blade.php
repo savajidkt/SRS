@@ -20,6 +20,48 @@
       .accordion-add-contact-colr p{
           color: #454545 !important;
       }
+
+      .bg-details>h5, p {
+          color: #454545;
+      } 
+      .error-bg{
+      background-color:#000066;
+      }
+
+      .error-danger{
+        color: #D8000C;
+        background-color:#FFBABA;
+        border:1px solid #D8000C;
+      }
+
+      .error-style-decor{
+        list-style-type:circle;
+        color:red;
+      }
+
+      .error-text{
+        color: #D8000C;
+      }
+
+
+      .error-heading-text{
+        color:#fff;
+        font-size:18px;
+        font-weight:500;
+      }
+
+      .attendee-home-error{
+        margin-left:0rem;
+        overflow-y: hidden !important;
+      }
+
+      .success-text-clr{
+        color:#006400;
+      }
+
+      #attendee-error .attendee-home-error{
+      margin-left:0rem !important;
+      }
   </style>
   </head>
 
@@ -93,9 +135,11 @@
                 
 
                 <div class="alert alert-success alert-dismissible d-flex align-items-center fade show success-text-clr">
-                    <i class="bi-check-circle-fill"></i>
-                    <strong class="mx-2">Thank You!</strong> for completing your online form for your upcoming course with SRS The Development Team. We look forward to working with you soon.
-                    If you have any queries or need any more details please contact your company organiser.
+                    <i class="bi-check-circle-fill"></i>  <strong class="mx-2"></strong> 
+                    {!! $message !!}
+                   
+                    {{-- <strong class="mx-2">Thank You!</strong> for completing your online form for your upcoming course with SRS The Development Team. We look forward to working with you soon. --}}
+                    {{-- If you have any queries or need any more details please contact your company organiser. --}}
                     
                     
                     <!-- <button type="button" class="btn-close" data-bs-dismiss="alert"></button> -->

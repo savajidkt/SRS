@@ -86,6 +86,7 @@ class FeedbackContacteController extends Controller
 
     public function StoreAttendeesquestion(Request $request)
     {
+        $message = '';
         $course = Course::where('key', $request->key)->first();
         if($course) 
         {
@@ -133,7 +134,13 @@ class FeedbackContacteController extends Controller
                 }
             }
         }
-        return view('contacte.successattendeesquestion');
+        $messgeTemplate = getEmailTemplatesByID(13);
+        if ($messgeTemplate)
+        {
+            $paramArr = [];
+            $message  = replaceHTMLBodyWithParam($messgeTemplate['template'],$paramArr);
+        }
+        return view('contacte.successattendeesquestion',['message' => $message]);
     }
     public function getQuestionnaire360List($attendeesArrList)
     {
@@ -277,7 +284,13 @@ class FeedbackContacteController extends Controller
             }
         }
         // exit;
-        return view('contacte.successquestion');
+        $messgeTemplate = getEmailTemplatesByID(14);
+        if ($messgeTemplate)
+        {
+            $paramArr = [];
+            $message  = replaceHTMLBodyWithParam($messgeTemplate['template'],$paramArr);
+        }
+        return view('contacte.successquestion',['message' => $message]);
     }
     public function getAttendeerefList($course_id)
     {

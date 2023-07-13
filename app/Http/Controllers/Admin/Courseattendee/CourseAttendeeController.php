@@ -58,6 +58,7 @@ class CourseAttendeeController extends Controller
     public function store(Request $request)
     {
         $sidebar = '';
+        $message = '';
         $course = Course::where('key',$request->key)->first();
        
         if($course) {
@@ -73,12 +74,17 @@ class CourseAttendeeController extends Controller
                     
             
                 }
+                $messgeTemplate = getEmailTemplatesByID(12);
+                if ($messgeTemplate)
+                {
+                    $message  = replaceHTMLBodyWithParam($messgeTemplate['template'],$paramArr);
+                }
             }
         }
 
        
         $this->courseAttendeeRepository->create($request->all());
-        return view('courseattendees.success',['sidebar' => $sidebar]);
+        return view('courseattendees.success',['sidebar' => $sidebar , 'message' => $message]);
         // return redirect()->back()->with('success', "Course Attendees successfully!");
     }
 }
