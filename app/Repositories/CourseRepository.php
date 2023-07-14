@@ -94,6 +94,17 @@ class CourseRepository
 
                 $course->trainerDetail()->save(new TrainerDetail($invoiceArr));
             }
+            
+            $organizerData = [
+                'course_id'    => $course->id,
+                'first_name'    => $data['org_first_name'],
+                'last_name'    => $data['org_last_name'],
+                'email'    => $data['org_email'],
+                'confirm_attendee'    => 1            
+            ];
+            $data['key'] = $course->key;
+            $course->companyorganizer()->update($organizerData);
+            Mail::to($data['org_email'])->send(new CompanyOrganizerMail($data));
 
             return $course;
         }

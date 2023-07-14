@@ -1,3 +1,9 @@
+{{-- @php
+$mycountphp = 1;
+    if(count($model->attendees) > 0){
+        $mycountphp = count($model->attendees);
+    }   
+@endphp --}}
 @extends('layouts.app')
 @section('page_title', 'SRS')
 @section('content')
@@ -11,11 +17,14 @@
             display: none;
         }
     </style>
+    <script>
+        var myCount = 1;
+    </script>
     <!--**********************************
                     Content body start
                 ***********************************-->
 
-        <div class="container-fluid">
+        {{-- <div class="container-fluid">
             <div class="row">
                 <div class="col-xl-12 col-xxl-12">
                     <div class="card">
@@ -76,17 +85,96 @@
                     </div>
                 </div>
             </div>
+        </div> --}}
+
+        <div class="container-fluid ">
+            <div class="row">
+                <div class="col-xl-6 col-xxl-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title">ATTENDEES</h4>
+                        </div>
+                        <div class="card-body">
+                            <hr>
+                            <h5>ATTENDEE DETAILS</h5>
+                            <hr>
+                            <div class="basic-form">
+                                <form class="attendees-repeater" action="{{ route('store-attendees') }}" method="post"
+                                    enctype="multipart/form-data" id="attendees">
+                                    @csrf
+                                    {{-- <input type="hidden" value="{{ $id }}" name="key" > --}}
+                                    <div class="">
+                                        <div data-repeater-list="attendees">
+                                            <div data-repeater-item>
+                                                <div class="form-row">
+                                                    <div class="form-group col-md-6 form-gap-2">
+                                                        <label>First Name</label>
+                                                        <input type="text" name="first_name" class="form-control" placeholder="Sue" required>
+                                                    </div>
+                                                    <div class="form-group col-md-6 form-gap-2">
+                                                        <label>Last Name</label>
+                                                        <input type="text" name="last_name" class="form-control" placeholder="Swindell" required>
+                                                    </div>
+                                                    <div class="form-group col-md-6 form-gap-2">
+                                                        <label>Email Address</label>
+                                                        <input type="email" name="email" class="form-control" placeholder="sue.swindell@srs-development.co.uk" required>
+                                                    </div>
+                                                    <div class="form-group col-md-6 form-gap-2">
+                                                        <label class="text-label">Your Job Title</label>
+                                                        <select class="form-select form-select-sm" name="job_title" id="form-select-sm-attendee-1" aria-label=".form-select-sm example">
+                                                            <option selected disabled>Select Job Title</option>
+                                                            <option value="1">Director</option>
+                                                            <option value="2">Department Head</option>
+                                                            <option value="3">Manager</option>
+                                                            <option value="4">Project Manager / Specialist</option>
+                                                            <option value="5">Team Member</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-md-2 col-12 mb-50">
+                                                        <div class="form-group">
+                                                            <button
+                                                                class="btn btn-outline-danger text-nowrap px-1"
+                                                                data-repeater-delete type="button">
+                                                            <i data-feather="x" class="mr-25"></i>
+                                                            <span>Delete</span>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                    <hr/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Send Instructions</button>
+                                    <button type="button" class="btn btn-primary">Cancel</button>
+                                    <button type="button" class="btn btn-primary" data-repeater-create>Add Another Attendee</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+        
+            
+        
 
     <!--**********************************
                     Content body end
                 ***********************************-->
 @endsection
 @section('extra-script')
-    <script src="{{ asset('js/jquery.validate.min.js') }}"></script>
+    {{-- <script src="{{ asset('js/jquery.validate.min.js') }}"></script>
     <script src="{{ asset('js/form/course.js') }}"></script>
     <script src="{{ asset('js/form/course/jquery.repeater.min.js') }}"></script>
-    <script src="{{ asset('js/form/course/form-repeater.js') }}"></script>
+    <script src="{{ asset('js/form/course/form-repeater.js') }}"></script> --}}
+
+    <script src="{{ asset('js/jquery.validate.min.js') }}"></script>
+    <script src="{{ asset('js/form/editcourse/editcourse.js') }}"></script>
+     
+    
+    <script src="{{ asset('js/form/editcourse/jquery.repeater.min.js') }}"></script>
+    <script src="{{ asset('js/form/editcourse/form-repeater.js') }}"></script>
     <script>
         $('.select2').select2();
     </script>

@@ -7,6 +7,7 @@ use App\Http\Requests\Admin\CreateRequest as AdminCreateRequest;
 use App\Http\Requests\Course\CreateRequest;
 use App\Http\Requests\Course\EditRequest;
 use App\Models\Client;
+use App\Models\CompanyOrganizer;
 use Illuminate\Http\Request;
 use App\Models\Course;
 use App\Models\CourseCategory;
@@ -117,7 +118,8 @@ class CourseController extends Controller
         $course->loadMissing('trainerDetail');
         $courseCategory = CourseCategory::all();
         $clientList = Client::all();
-        return view('course.edit', ['model' => $course,'courseCategory' => $courseCategory,'clientList' => $clientList]);
+        $companyOrganizer = CompanyOrganizer::where('course_id',$course->id)->first();
+        return view('course.edit', ['model' => $course,'courseCategory' => $courseCategory,'clientList' => $clientList,'companyOrganizer' => $companyOrganizer]);
     }
 
     /**
@@ -130,6 +132,7 @@ class CourseController extends Controller
      */
     public function update(EditRequest $request, Course $course)
     {
+        // dd($request->all());
         $this->courseRepository->update($request->all(), $course);
         return redirect()->route('course.index')->with('success', "Course updated successfully!");
     }
@@ -145,5 +148,6 @@ class CourseController extends Controller
         $this->courseRepository->delete($course);
         return response()->json(['status' => true,'message' => '']);
     }
+
 }
 

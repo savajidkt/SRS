@@ -14,6 +14,19 @@
         .accordion-add-contact-colr p{
             color: #454545 !important;
         }
+
+        .question-container{
+        padding-top: 30px;
+      }
+
+      .question-attendee-home-content{
+        padding-bottom: 20px;
+      }
+
+      .question-attendee-home-content .btn-primary:focus, .btn-primary.focus {
+    box-shadow: none;
+    color: white;
+}
     </style>
 </head>
 
@@ -97,7 +110,7 @@
         ***********************************-->
 
         <div class="content-body attendee-home">
-            <div class="container-fluid">
+            <div class="container-fluid question-container">
                 <!--**********************************
             Content body end
         ***********************************-->
@@ -111,7 +124,7 @@
 
                 </div>
 
-                <div class="card">
+                <div class="card question-attendee-home-content">
                     <div class="card-header attendee-bg-clr attendee-home-lgt">
                         ATTENDEE QUESTIONNAIRE
                     </div>

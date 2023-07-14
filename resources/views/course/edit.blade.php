@@ -2,68 +2,120 @@
 @section('page_title', 'SRS')
 @section('content')
 <style>
-    .filedrequired, .help-block-error{ color: #FF1616}
+    .filedrequired,
+    .help-block-error {
+    color: #FF1616
+    }
+    .hide {
+    display: none;
+    }
 </style>
-    <!--**********************************
-            Content body start
-        ***********************************-->
-
-    <div class="container-fluid">
-        <div class="row page-titles mx-0">
-            <!-- <div class="col-sm-6 p-md-0">
-                    <div class="welcome-text">
-                        <h4>Hi, welcome back!</h4>
-                        <p class="mb-0">Sue Swindell</p>
-                    </div>
-                </div> -->
-            <!-- <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex"> -->
-            <div>
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="javascript:void(0)">Course Management</a></li>
-                    <li class="breadcrumb-item active"><a href="javascript:void(0)">Add Courses</a></li>
-                </ol>
-            </div>
+<!--**********************************
+    Content body start
+    ***********************************-->
+<div class="container-fluid">
+    <div class="row page-titles mx-0">
+        <div>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="javascript:void(0)">Course Management</a></li>
+                <li class="breadcrumb-item active"><a href="javascript:void(0)">Edit Course</a></li>
+            </ol>
         </div>
-        <!-- row -->
-        <div class="row">
-            <div class="col-xl-12 col-xxl-12">
-                <div class="card">
+    </div>
+    <!-- row -->
+    <div class="row">
+        <div class="col-xl-12 col-xxl-12">
+            <form class="invoice-repeater step-form-horizontal" id="course" action="{{route('course.update', $model)}}"
+                method="post" enctype="multipart/form-data" id="step-form-horizontal">
+                @csrf
+                @method('PUT')
+                <div class="card step_1">
                     <div class="card-header">
                         <h4 class="card-title">Please Enter Course Details</h4>
                     </div>
                     <div class="card-body">
-                        <form class="invoice-repeater" id="course" action="{{route('course.update', $model)}}" method="post"
-                            enctype="multipart/form-data" id="step-form-horizontal" class="step-form-horizontal">
-                            @csrf
-                            @method('PUT')
-                            @include('course.form')
-                            <div id="newRow"></div>
-                            <button type="submit" class="btn btn-primary">Next</button>
-                            <a href="{{ route('course.index')}}" class="btn btn-primary">Cancel</a>
-                            
-                            <button class="btn btn-primary" type="button" data-repeater-create>                               
-                                <span>Add New Contact</span>
-                            </button>
-
-                            
-                        </form>
+                        @include('course.form')
+                        <div id="newRow"></div>
+                        <button type="submit" class="btn btn-primary">Next</button>
+                        <a href="{{ route('course.index')}}" class="btn btn-primary">Cancel</a>
+                        <button class="btn btn-primary" type="button" data-repeater-create>Add Another Trainer</button>
                     </div>
                 </div>
-            </div>
+                <div class="card step_2 hide">
+                    <div class="card-header">
+                        <h4 class="card-title">COURSE DETAILS</h4>
+                    </div>
+                    <div class="card-body add_course_form_content">
+                        <div>
+                            <hr>
+                            <h4>COMPANY ORGANIZER DETAILS</h4>
+                            <hr>
+                            <section>
+                                <div class="row">
+                                    <div class="col-lg-12 mb-4 form-style add_course_step_2_col">
+                                        <div class="form-group train-deet">
+                                            <label class="itemcost">First Name<span class="filedrequired">*</span></label>
+                                            <div class="input-error">
+                                                <input type="text" class="form-control" name="org_first_name"
+                                                    value="{{ $companyOrganizer->first_name }}" />
+                                            </div>
+                                        </div>
+                                        <div class="form-group train-deet">
+                                            <label class="itemcost">Surname<span class="filedrequired">*</span></label>
+                                            <div class="input-error">
+                                                <input type="text" class="form-control" name="org_last_name"
+                                                    value="{{ $companyOrganizer->last_name }}" />
+                                            </div>
+                                        </div>
+                                        <div class="form-group train-deet">
+                                            <label class="itemcost">Email Address<span class="filedrequired">*</span></label>
+                                            <div class="input-error">
+                                                <input type="text" class="form-control" name="org_email"
+                                                    value="{{ $companyOrganizer->email }}" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Update</button>
+                        <a href="{{ route('course.index') }}" class="btn btn-primary">Cancel</a>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
-
-
-    <!--**********************************
-            Content body end
-        ***********************************-->
+</div>
+<!--**********************************
+    Content body end
+    ***********************************-->
 @endsection
 @section('extra-script')
-    <script src="{{ asset('js/jquery.validate.min.js') }}"></script>
-    <script src="{{ asset('js/form/course.js') }}"></script>
-    <script src="{{ asset('js/form/course/jquery.repeater.min.js') }}"></script>
-    <script src="{{ asset('js/form/course/form-repeater.js') }}"></script>
-    <script>
-        $('.select2').select2();
-    </script>
+<script src="{{ asset('js/jquery.validate.min.js') }}"></script>
+<script src="{{ asset('js/form/course.js') }}"></script>
+<script src="{{ asset('js/form/course/jquery.repeater.min.js') }}"></script>
+<script src="{{ asset('js/form/course/form-repeater.js') }}"></script>
+<script>
+    $('.select2').select2();
+</script>
+<script>
+    function Func_a(e) {
+    
+        // alert();
+        // Get the specific date
+    
+        var specificDate = new Date($(e).val());
+    
+        // Subtract one day from the specific date
+        var yesterday = new Date(specificDate);
+        yesterday.setDate(specificDate.getDate() - 1);
+    
+        // Format the yesterday's date
+        var formattedDate = yesterday.toISOString().split('T')[0];
+    
+        // Output the formatted date
+        $('#end_date').val(formattedDate);
+        // console.log(formattedDate);
+    }
+</script>
 @endsection

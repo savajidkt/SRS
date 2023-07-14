@@ -94,4 +94,9 @@ class CourseAttendeeController extends Controller
         return view('courseattendees.success',['sidebar' => $sidebar , 'message' => $message]);
         // return redirect()->back()->with('success', "Course Attendees successfully!");
     }
+
+    public function editattendees($id)
+    {
+        return view('course.editattendees',['id' => $id]);
+    }
 }

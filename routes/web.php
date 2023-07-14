@@ -110,6 +110,7 @@ Route::group(['authGrouping' => 'users.auth', 'middleware' => 'auth:web'], funct
     Route::get('/templatemanager-edit-message/{templatemanager}/edit', [TemplateManagersController::class, 'editMessage'])->name('templatemanager-edit-message');
     Route::post('/templatemanager-edit-message/{templatemanager}/update', [TemplateManagersController::class, 'updateMessage'])->name('templatemanager-update-message');
 
+    Route::get('editcourse-attendees/{id}', [CourseAttendeeController::class, 'editattendees'])->name('editcourse-attendees');
     /*Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('checkSurveyStatus');
     Route::get('/change-password', [ResetPasswordController::class, 'firstTimePasswordChange'])->name('change-password');
     //Route::resource('/survey', SurveyController::class);

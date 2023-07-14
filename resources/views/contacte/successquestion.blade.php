@@ -62,6 +62,10 @@
       #attendee-error .attendee-home-error{
       margin-left:0rem !important;
       }
+
+      .success-error-content{
+        margin:0 15px;
+      }
   </style>
   </head>
 
@@ -129,6 +133,7 @@
               
                             
             <div class="card error-bg">
+                <div class="success-error-content">
                 <div class="card-header error-heading-text">
                   Thank You
                 </div>
@@ -136,23 +141,15 @@
 
                 <div class="alert alert-success alert-dismissible d-flex align-items-center fade show success-text-clr">
                     <i class="bi-check-circle-fill"></i>
-                    {!! $message !!}
-                    
-                    
+                    {!! $message !!}                    
                     <!-- <button type="button" class="btn-close" data-bs-dismiss="alert"></button> -->
                 </div>
 
+                </div>
                         
             </div>
 
-            <div class="footer attendee-home sticky-bottom">
-                <div class="copyright">
-                  <p>
-                    Copyright © 2023 SRS-The Development Team Ltd. | All Rights Reserved
-                    <a href="./Index.html" target="_blank">www.srs-development.co.uk</a>
-                  </p>
-                </div>
-              </div>
+
 
             </div>
         </div>
@@ -167,7 +164,14 @@
             Footer start
         ***********************************-->
       
-        
+        <div class="footer attendee-home sticky-bottom">
+                <div class="copyright">
+                  <p>
+                    Copyright © 2023 SRS-The Development Team Ltd. | All Rights Reserved
+                    <a href="./Index.html" target="_blank">www.srs-development.co.uk</a>
+                  </p>
+                </div>
+              </div>
 
 
       <!--**********************************
