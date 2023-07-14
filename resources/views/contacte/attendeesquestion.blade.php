@@ -129,6 +129,7 @@
                             enctype="multipart/form-data">
                             @csrf
                             <input type="hidden" value="{{ $id }}" name="key">
+                            <input type="hidden" value="{{ $attendee_id }}" name="attendee_id">
                             <table class="table table-striped table-bordered">
                                 <thead>
                                     <tr>

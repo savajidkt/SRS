@@ -16,7 +16,6 @@
                 ***********************************-->
 
         <div class="container-fluid">
-            <!-- row -->
             <div class="row">
                 <div class="col-xl-12 col-xxl-12">
                     <div class="card">

@@ -44,7 +44,6 @@ class FeedbackContacteController extends Controller
                 if ($emailTemplate) {
                     $paramArr['contact_name'] = ucwords($CompanyOrganizer->first_name . " " . $CompanyOrganizer->last_name);
                     $sidebar = replaceHTMLBodyWithParam($emailTemplate['template'], $paramArr);
-                    
             
                 }
             }
@@ -54,17 +53,30 @@ class FeedbackContacteController extends Controller
 
     public function store(Request $request)
     {
+        
        
         $this->feedbackRepository->create($request->all());
-        return redirect()->route('attendees-questionnaire',$request->key)->with('success', "Course created successfully!");
+        return redirect()->route('attendees-questionnaire',[$request->key,$request->attendee_id])->with('success', "Course created successfully!");
     }
 
-    public function attendeesquestion($id)
+    public function attendeesquestion($id,$attendee_id)
     {
+        // dd($attendee_id);
        
         $sidebar = '';
         $course = Course::where('key',$id)->first();
-       
+        $questionnaireAnswers = QuestionnaireAnswers::where('attendees_id',$attendee_id)->where('type',0)->count();
+        if($questionnaireAnswers> 0)
+        {
+            $messgeTemplate = getEmailTemplatesByID(16);
+            if ($messgeTemplate)
+            {
+                $paramArr = [];
+                $message  = replaceHTMLBodyWithParam($messgeTemplate['template'],$paramArr);
+            }
+            return view('contacte.error',['message' => $message]);
+    
+        }
         if($course) {
             $CompanyOrganizer = CompanyOrganizer::where('course_id', $course->id)->first();
            
@@ -81,7 +93,7 @@ class FeedbackContacteController extends Controller
             }
         }
         $attendeeQuestion = AttendeeQuestions::all();
-        return view('contacte.attendeesquestion',['attendeeQuestion' => $attendeeQuestion ,'id' => $id,'sidebar' => $sidebar]);
+        return view('contacte.attendeesquestion',['attendeeQuestion' => $attendeeQuestion ,'id' => $id,'sidebar' => $sidebar,'attendee_id' => $attendee_id]);
     }
 
     public function StoreAttendeesquestion(Request $request)
@@ -96,7 +108,7 @@ class FeedbackContacteController extends Controller
                 $AttendeeQuestionsList = [];
                 foreach ($request['answer'] as  $key=> $answer) {
                     $AttendeeQuestionsArr = [                        
-                        'attendees_id'    => $attendeeReferens->attendees_id,
+                        'attendees_id'    => $request->attendee_id,
                         'question_id'    => $key,
                         'answer'    => $answer,
                         'type'    => 0,
@@ -195,7 +207,18 @@ class FeedbackContacteController extends Controller
     {
         $sidebar = '';
         $course = Course::where('key',$id)->first();
-       
+        $questionnaireAnswers = QuestionnaireAnswers::where('attendees_id',$attendee_id)->where('type',1)->count();
+        if($questionnaireAnswers> 0)
+        {
+            $messgeTemplate = getEmailTemplatesByID(16);
+            if ($messgeTemplate)
+            {
+                $paramArr = [];
+                $message  = replaceHTMLBodyWithParam($messgeTemplate['template'],$paramArr);
+            }
+            return view('contacte.error',['message' => $message]);
+    
+        }
         if($course) {
             $CompanyOrganizer = CompanyOrganizer::where('course_id', $course->id)->first();
            
@@ -220,7 +243,6 @@ class FeedbackContacteController extends Controller
       
         $SafeencryptionObj = new Safeencryption;
         
-        // dd($request);
         $course = Course::where('key', $request->key)->first();
         if($course) 
         {

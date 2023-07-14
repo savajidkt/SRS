@@ -24,6 +24,7 @@ class CourseAttendeeController extends Controller
      */
     public function index($id)
     {
+        $message = '';
        $course = Course::where('key',$id)->first();
        if($course)
        {
@@ -42,7 +43,13 @@ class CourseAttendeeController extends Controller
         }
         else
         {
-            return view('courseattendees.error');
+            $messgeTemplate = getEmailTemplatesByID(15);
+            if ($messgeTemplate)
+            {
+                $paramArr = [];
+                $message  = replaceHTMLBodyWithParam($messgeTemplate['template'],$paramArr);
+            }
+            return view('courseattendees.error',['message' => $message]);
         }
         
        }
