@@ -134,13 +134,13 @@ $mycountphp = 1;
                             <div class="form-group train-deet">
                                 <label class="itemcost">Email Address<span class="filedrequired">*</span></label>
                                 <div class="input-error">
-                                    <input type="email" class="form-control" name="email" value="{{$trainer->email}}" id="email_{{ $key }}" />
+                                    <input type="email" class="form-control" name="email" value="{{$trainer->email}}" email-id="email" id="email_{{ $key }}" />
                                 </div>
                             </div>
                             <div class="form-group train-deet">
                                 <label class="itemcost">Confirm Email Address<span class="filedrequired">*</span></label>
                                 <div class="input-error">
-                                    <input type="email" class="form-control" name="email_confirm"  value="{{$trainer->email}}" />
+                                    <input type="email" class="form-control" name="email_confirm"  value="{{$trainer->email}}" id="confirm_email_0" confirm-email-id="confirm_email" />
                                 </div>
                             </div>
                         </div>

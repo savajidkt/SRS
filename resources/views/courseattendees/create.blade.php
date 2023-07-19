@@ -38,6 +38,9 @@ $mycountphp = 1;
         .accordion-add-contact-colr p{
             color: #454545 !important;
         }
+        .has_error {
+    border: 1px solid red;
+}
     </style>
   </head>
 
@@ -160,27 +163,27 @@ $mycountphp = 1;
                                                         <div class="form-group col-md-6 form-gap-2">
                                                             <label>First Name<span class="filedrequired">*</span></label>
                                                             <div class="input-error">
-                                                                <input type="text" name="first_name" class="form-control" placeholder="Sue" onkeyup="this.value=this.value.replace(/[^A-z]/g,'');" required>
+                                                                <input type="text" name="first_name" id="first_name" class="form-control"  onkeyup="this.value=this.value.replace(/[^A-z]/g,'');" required>
                                                         
                                                             </div>
                                                         </div>
                                                         <div class="form-group col-md-6 form-gap-2">
                                                             <label>Last Name<span class="filedrequired">*</span></label>
                                                             <div class="input-error">
-                                                                <input type="text" name="last_name" class="form-control" placeholder="Swindell" onkeyup="this.value=this.value.replace(/[^A-z]/g,'');" required>
+                                                                <input type="text" name="last_name" class="form-control"  onkeyup="this.value=this.value.replace(/[^A-z]/g,'');" required>
                                                             </div>
                                                         </div>
                                                         
                                                         <div class="form-group col-md-6 form-gap-2">
                                                             <label>Email Address<span class="filedrequired">*</span></label>
                                                             <div class="input-error">
-                                                                <input type="email" name="email" class="form-control" placeholder="sue.swindell@srs-development.co.uk" required>
+                                                                <input type="email" name="email" class="form-control"  required>
                                                             </div>
                                                         </div>
                                                         <div class="form-group col-md-6 form-gap-2">
                                                             <label class="text-label">Your Job Title</label>
                                                             <select class="form-select form-select-sm" name="job_title" id="form-select-sm-attendee-1" aria-label=".form-select-sm example">
-                                                                <option selected disabled>Select Job Title</option>
+                                                                <option value="" selected disabled>Select Job Title</option>
                                                                 <option value="1">Director</option>
                                                                 <option value="2">Department Head</option>
                                                                 <option value="3">Manager</option>
@@ -283,10 +286,10 @@ $mycountphp = 1;
 
     </script>
 
-    <script>
+    {{-- <script>
       $('#form-select-sm-attendee-1').select2();
       $('#form-select-sm-attendee-2').select2();
-    </script>
+    </script> --}}
 
 <script>
         var acc = document.getElementsByClassName("accordion");

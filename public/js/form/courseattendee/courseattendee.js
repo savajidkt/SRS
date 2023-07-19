@@ -27,7 +27,13 @@ var FrmAttendeesPreference = function() {
             },
             errorPlacement: function(error, element) {
 
-                error.insertAfter(element);
+                if (element.attr("name") == "first_name") {
+                    error.insertAfter("#first_name");
+                } else if (element.attr("name") == "password") {
+                    error.insertAfter(".password-error");
+                } else {
+                    error.insertAfter(element);
+                }
 
             },
             submitHandler: function(form) {

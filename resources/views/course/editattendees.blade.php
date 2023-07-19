@@ -124,7 +124,7 @@ $mycountphp = 1;
                                                         <div class="form-group col-md-6 form-gap-2">
                                                             <label class="text-label">Your Job Title</label>
                                                             <select class="form-select form-select-sm" name="job_title" id="form-select-sm-attendee-1" aria-label=".form-select-sm example">
-                                                                <option selected disabled>Select Job Title</option>
+                                                                <option value="" selected disabled>Select Job Title</option>
                                                                 <option value="1" {{ isset($attendees->job_title) && $attendees->job_title == '1' ? 'selected' : '' }}>Director</option>
                                                                 <option value="2" {{ isset($attendees->job_title) && $attendees->job_title == '2' ? 'selected' : '' }}>Department Head</option>
                                                                 <option value="3" {{ isset($attendees->job_title) && $attendees->job_title == '3' ? 'selected' : '' }}>Manager</option>
