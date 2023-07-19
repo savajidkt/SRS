@@ -179,13 +179,13 @@ display: none;
                                                         <div class="form-group col-md-6 form-gap-2">
                                                             <label>First Name</label>
                                                             <div class="input-error">
-                                                                <input type="text" class="form-control" name="first_name" placeholder="Sue" >
+                                                                <input type="text" class="form-control" name="first_name" onkeyup="this.value=this.value.replace(/[^A-z]/g,'');" placeholder="Sue" >
                                                             </div>
                                                         </div>
                                                         <div class="form-group col-md-6 form-gap-2">
                                                             <label>Last Name</label>
                                                             <div class="input-error">
-                                                                <input type="text" class="form-control" name="last_name" placeholder="Swindell" >
+                                                                <input type="text" class="form-control" name="last_name" onkeyup="this.value=this.value.replace(/[^A-z]/g,'');" placeholder="Swindell" >
                                                             </div>
                                                         </div>
                                                         

@@ -38,8 +38,9 @@ class ChaseReferensMail extends Mailable
 
       $emailBody = replaceHTMLBodyWithParam($emailTemplate['template'], $data);
       $emailSubject = replaceHTMLBodyWithParam($emailTemplate['subject'], array('attendee_name' => $data['attendee_name']));
+      $emailHeaderFooter = getEmailTemplatesHeaderFooter();
 
-      return $this->subject($emailSubject)->markdown('admin.Mail.companyOrganizerMail', ['emailBody' => $emailBody]);
+      return $this->subject($emailSubject)->markdown('admin.Mail.companyOrganizerMail', ['emailBody' => $emailBody,'emailHeaderFooter' => $emailHeaderFooter]);
     }
     return false;
   }

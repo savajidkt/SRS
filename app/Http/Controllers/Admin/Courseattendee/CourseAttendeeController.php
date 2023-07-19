@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Libraries\Safeencryption;
 use App\Models\CompanyOrganizer;
 use App\Models\Course;
+use App\Models\CourseAttendees;
 use App\Repositories\CourseAttendeeRepository;
 use Illuminate\Http\Request;
 
@@ -64,6 +65,7 @@ class CourseAttendeeController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request);
         $sidebar = '';
         $message = '';
         $course = Course::where('key',$request->key)->first();
@@ -95,8 +97,30 @@ class CourseAttendeeController extends Controller
         // return redirect()->back()->with('success', "Course Attendees successfully!");
     }
 
-    public function editattendees($id)
+    public function editattendees(CourseAttendees $courseAttendees,$id)
     {
-        return view('course.editattendees',['id' => $id]);
+        $courseAttendeesList = CourseAttendees::where('course_id',$id)->get();
+        return view('course.editattendees',['model' => $courseAttendees,'id' => $id,'courseAttendeesList' => $courseAttendeesList,'action'=>'edit']);
     }
+
+    public function update(Request $request ,CourseAttendees $courseAttendees,$id)
+    {
+        // dd($courseAttendees);
+        $this->courseAttendeeRepository->update($request->all(),$courseAttendees,$id);
+        return redirect()->route('course.index')->with('success', "Attendees updated successfully!");
+    }
+
+    // public function edit(Client $client)
+    // {
+    //     $client->loadMissing('contacts');
+    //     $countries = Country::all();
+    //     return view('client.edit', ['model' => $client,'countries' => $countries,'action'=>'edit']);
+    // }
+    // public function update(EditRequest $request, Client $client)
+    // {
+       
+    //     $this->clientRepository->update($request->all(), $client);
+
+    //     return redirect()->route('client.index')->with('success', "Client updated successfully!");
+    // }
 }

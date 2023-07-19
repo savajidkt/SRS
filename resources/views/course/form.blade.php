@@ -121,14 +121,14 @@ $mycountphp = 1;
                                 <label class="itemcost">First Name<span class="filedrequired">*</span></label>
                                 <div class="input-error">
                                     <input type="text" class="form-control" name="first_name"
-                                    value="{{$trainer->first_name}}" />
+                                    value="{{$trainer->first_name}}" onkeyup="this.value=this.value.replace(/[^A-z]/g,'');" />
                                 </div>
                             </div>
                             <div class="form-group train-deet">
                                 <label class="itemcost">Last Name<span class="filedrequired">*</span></label>
                                 <div class="input-error">
                                     <input type="text" class="form-control" name="last_name"
-                                    value="{{$trainer->last_name}}" />
+                                    value="{{$trainer->last_name}}" onkeyup="this.value=this.value.replace(/[^A-z]/g,'');" />
                                 </div>
                             </div>
                             <div class="form-group train-deet">
@@ -164,14 +164,14 @@ $mycountphp = 1;
                             <label class="itemcost">First Name<span class="filedrequired">*</span></label>
                             <div class="input-error">
                                 <input type="text" class="form-control" name="first_name"
-                                value="" />
+                                value="" onkeyup="this.value=this.value.replace(/[^A-z]/g,'');" />
                             </div>
                         </div>
                         <div class="form-group train-deet">
                             <label class="itemcost">Last Name<span class="filedrequired">*</span></label>
                             <div class="input-error">
                                 <input type="text" class="form-control" name="last_name"
-                                value="" />
+                                value="" onkeyup="this.value=this.value.replace(/[^A-z]/g,'');" />
                             </div>
                         </div>
                         <div class="form-group train-deet">

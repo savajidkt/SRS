@@ -71,6 +71,28 @@ if (!function_exists('getEmailTemplatesByID')) {
     }
 }
 
+if (!function_exists('getEmailTemplatesHeaderFooter')) {
+    /**
+     * getEmailTemplatesByID return email templates lists
+     */
+    function getEmailTemplatesHeaderFooter()
+    {
+
+        $returnArr = [];
+        $header = EmailTemplate::where('id', 17)->where('status', 1)->first();
+        if($header){
+            $returnArr['header'] = $header->template;
+        }
+        
+        $footer = EmailTemplate::where('id', 18)->where('status', 1)->first();
+        if($footer){
+            $returnArr['footer'] = replaceHTMLBodyWithParam($footer->template, array('year' => date('Y')));
+           
+        }
+        return $returnArr;
+    }
+}
+
 if (!function_exists('replaceHTMLBodyWithParam')) {
     /**
      * replaceHTMLBodyWithParam replace string

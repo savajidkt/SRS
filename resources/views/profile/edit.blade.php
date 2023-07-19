@@ -29,7 +29,7 @@
                             <div class="form-row">
                                 <div class="form-group col-md-6 form-gap-2">
                                     <label>First Name <span class="text-danger">*</span></label>
-                                    <input class="form-control" id="first_name" type="text" name="first_name" placeholder="Sue" value="{{auth()->user()->first_name}}" aria-describedby="login-first_name" autofocus="" tabindex="1" required />
+                                    <input class="form-control" id="first_name" type="text" name="first_name" placeholder="Sue" value="{{auth()->user()->first_name}}" aria-describedby="login-first_name" autofocus="" tabindex="1" onkeyup="this.value=this.value.replace(/[^A-z]/g,'');" required />
                                         @error('first_name')
                                         <span class="invalid-feedback" style="display: block;" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -38,7 +38,7 @@
                                 </div>
                                 <div class="form-group col-md-6 form-gap-2">
                                     <label>Last Name <span class="text-danger">*</span></label>
-                                    <input class="form-control" id="last_name" type="text" name="last_name" placeholder="Swindell" value="{{auth()->user()->last_name}}" aria-describedby="login-last_name" autofocus="" tabindex="1" required />
+                                    <input class="form-control" id="last_name" type="text" name="last_name" placeholder="Swindell" value="{{auth()->user()->last_name}}" aria-describedby="login-last_name" autofocus="" tabindex="1" onkeyup="this.value=this.value.replace(/[^A-z]/g,'');" required />
                                         @error('last_name')
                                         <span class="invalid-feedback" style="display: block;" role="alert">
                                             <strong>{{ $message }}</strong>

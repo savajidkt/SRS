@@ -80,12 +80,15 @@ class CompanyOrganizerMail extends Mailable
     $paramArr['year'] = date('Y');
   // dd($paramArr);
     $emailTemplate = getEmailTemplatesByID(1);
+    
     if ($emailTemplate) {
 
       $emailBody = replaceHTMLBodyWithParam($emailTemplate['template'], $paramArr);
       $emailSubject = replaceHTMLBodyWithParam($emailTemplate['subject'], array('course_date' => dateFormat($data['start_date'])));
+      $emailHeaderFooter = getEmailTemplatesHeaderFooter();
+     
       // return $this->subject($emailSubject)->with('body', $emailBody);
-      return $this->subject($emailSubject)->markdown('admin.Mail.companyOrganizerMail', ['emailBody' => $emailBody]);
+      return $this->subject($emailSubject)->markdown('admin.Mail.companyOrganizerMail', ['emailBody' => $emailBody, 'emailHeaderFooter' => $emailHeaderFooter]);
 
     }
     return false;

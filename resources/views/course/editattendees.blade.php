@@ -1,9 +1,9 @@
-{{-- @php
+@php
 $mycountphp = 1;
-    if(count($model->attendees) > 0){
-        $mycountphp = count($model->attendees);
+    if(count($courseAttendeesList) > 0){
+        $mycountphp = count($courseAttendeesList);
     }   
-@endphp --}}
+@endphp
 @extends('layouts.app')
 @section('page_title', 'SRS')
 @section('content')
@@ -18,7 +18,7 @@ $mycountphp = 1;
         }
     </style>
     <script>
-        var myCount = 1;
+        var myCount = {{ $mycountphp }};   
     </script>
     <!--**********************************
                     Content body start
@@ -99,51 +99,54 @@ $mycountphp = 1;
                             <h5>ATTENDEE DETAILS</h5>
                             <hr>
                             <div class="basic-form">
-                                <form class="attendees-repeater" action="{{ route('store-attendees') }}" method="post"
+                                <form class="attendees-repeater" action="{{ route('update-attendees',$id) }}" method="post"
                                     enctype="multipart/form-data" id="attendees">
                                     @csrf
-                                    {{-- <input type="hidden" value="{{ $id }}" name="key" > --}}
                                     <div class="">
-                                        <div data-repeater-list="attendees">
-                                            <div data-repeater-item>
-                                                <div class="form-row">
-                                                    <div class="form-group col-md-6 form-gap-2">
-                                                        <label>First Name</label>
-                                                        <input type="text" name="first_name" class="form-control" placeholder="Sue" required>
-                                                    </div>
-                                                    <div class="form-group col-md-6 form-gap-2">
-                                                        <label>Last Name</label>
-                                                        <input type="text" name="last_name" class="form-control" placeholder="Swindell" required>
-                                                    </div>
-                                                    <div class="form-group col-md-6 form-gap-2">
-                                                        <label>Email Address</label>
-                                                        <input type="email" name="email" class="form-control" placeholder="sue.swindell@srs-development.co.uk" required>
-                                                    </div>
-                                                    <div class="form-group col-md-6 form-gap-2">
-                                                        <label class="text-label">Your Job Title</label>
-                                                        <select class="form-select form-select-sm" name="job_title" id="form-select-sm-attendee-1" aria-label=".form-select-sm example">
-                                                            <option selected disabled>Select Job Title</option>
-                                                            <option value="1">Director</option>
-                                                            <option value="2">Department Head</option>
-                                                            <option value="3">Manager</option>
-                                                            <option value="4">Project Manager / Specialist</option>
-                                                            <option value="5">Team Member</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="col-md-2 col-12 mb-50">
-                                                        <div class="form-group">
-                                                            <button
-                                                                class="btn btn-outline-danger text-nowrap px-1"
-                                                                data-repeater-delete type="button">
-                                                            <i data-feather="x" class="mr-25"></i>
-                                                            <span>Delete</span>
-                                                            </button>
+                                    @if(count($courseAttendeesList) > 0)
+                                    <div data-repeater-list="attendees">
+                                        @foreach ($courseAttendeesList as $key=> $attendees )
+                                            
+                                                <div data-repeater-item>
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md-6 form-gap-2">
+                                                            <label>First Name</label>
+                                                            <input type="text" name="first_name" value="{{$attendees->first_name}}" class="form-control" placeholder="Sue" onkeyup="this.value=this.value.replace(/[^A-z]/g,'');" required>
                                                         </div>
+                                                        <div class="form-group col-md-6 form-gap-2">
+                                                            <label>Last Name</label>
+                                                            <input type="text" name="last_name" value="{{$attendees->last_name}}" class="form-control" placeholder="Swindell" onkeyup="this.value=this.value.replace(/[^A-z]/g,'');" required>
+                                                        </div>
+                                                        <div class="form-group col-md-6 form-gap-2">
+                                                            <label>Email Address</label>
+                                                            <input type="email" name="email" value="{{$attendees->email}}" class="form-control" placeholder="sue.swindell@srs-development.co.uk" required>
+                                                        </div>
+                                                        <div class="form-group col-md-6 form-gap-2">
+                                                            <label class="text-label">Your Job Title</label>
+                                                            <select class="form-select form-select-sm" name="job_title" id="form-select-sm-attendee-1" aria-label=".form-select-sm example">
+                                                                <option selected disabled>Select Job Title</option>
+                                                                <option value="1" {{ isset($attendees->job_title) && $attendees->job_title == '1' ? 'selected' : '' }}>Director</option>
+                                                                <option value="2" {{ isset($attendees->job_title) && $attendees->job_title == '2' ? 'selected' : '' }}>Department Head</option>
+                                                                <option value="3" {{ isset($attendees->job_title) && $attendees->job_title == '3' ? 'selected' : '' }}>Manager</option>
+                                                                <option value="4" {{ isset($attendees->job_title) && $attendees->job_title == '4' ? 'selected' : '' }}>Project Manager / Specialist</option>
+                                                                <option value="5" {{ isset($attendees->job_title) && $attendees->job_title == '5' ? 'selected' : '' }}>Team Member</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="col-md-2 col-12 mb-50">
+                                                            <div class="form-group">
+                                                                <button class="btn btn-outline-danger text-nowrap px-1" data-repeater-delete type="button">
+                                                                    <i data-feather="x" class="mr-25"></i>
+                                                                    <span>Delete</span>
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                        <hr/>
                                                     </div>
-                                                    <hr/>
                                                 </div>
-                                            </div>
-                                        </div>
+                                            
+                                        @endforeach
+                                    </div>
+                                    @endif
                                     </div>
                                     <button type="submit" class="btn btn-primary">Send Instructions</button>
                                     <button type="button" class="btn btn-primary">Cancel</button>
@@ -155,19 +158,11 @@ $mycountphp = 1;
                 </div>
             </div>
         </div>
-        
-            
-        
-
     <!--**********************************
                     Content body end
                 ***********************************-->
 @endsection
 @section('extra-script')
-    {{-- <script src="{{ asset('js/jquery.validate.min.js') }}"></script>
-    <script src="{{ asset('js/form/course.js') }}"></script>
-    <script src="{{ asset('js/form/course/jquery.repeater.min.js') }}"></script>
-    <script src="{{ asset('js/form/course/form-repeater.js') }}"></script> --}}
 
     <script src="{{ asset('js/jquery.validate.min.js') }}"></script>
     <script src="{{ asset('js/form/editcourse/editcourse.js') }}"></script>
@@ -180,9 +175,6 @@ $mycountphp = 1;
     </script>
     <script>
         function Func_a(e) {
-
-            // alert();
-            // Get the specific date
 
             var specificDate = new Date($(e).val());
 

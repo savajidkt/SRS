@@ -65,7 +65,7 @@
                                                 <label class="itemcost">First Name<span class="filedrequired">*</span></label>
                                                 <div class="input-error">
                                                     <input type="text" class="form-control" name="org_first_name"
-                                                        value="" />
+                                                        value="" onkeyup="this.value=this.value.replace(/[^A-z]/g,'');"/>
                                                 </div>
                                             </div>
 
@@ -73,7 +73,7 @@
                                                 <label class="itemcost">Surname<span class="filedrequired">*</span></label>
                                                 <div class="input-error">
                                                     <input type="text" class="form-control" name="org_last_name"
-                                                        value="" />
+                                                        value="" onkeyup="this.value=this.value.replace(/[^A-z]/g,'');" />
                                                 </div>
                                             </div>
 

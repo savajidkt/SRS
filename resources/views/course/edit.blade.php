@@ -57,14 +57,14 @@
                                             <label class="itemcost">First Name<span class="filedrequired">*</span></label>
                                             <div class="input-error">
                                                 <input type="text" class="form-control" name="org_first_name"
-                                                    value="{{ $companyOrganizer->first_name }}" />
+                                                    value="{{ $companyOrganizer->first_name }}" onkeyup="this.value=this.value.replace(/[^A-z]/g,'');"/>
                                             </div>
                                         </div>
                                         <div class="form-group train-deet">
                                             <label class="itemcost">Surname<span class="filedrequired">*</span></label>
                                             <div class="input-error">
                                                 <input type="text" class="form-control" name="org_last_name"
-                                                    value="{{ $companyOrganizer->last_name }}" />
+                                                    value="{{ $companyOrganizer->last_name }}" onkeyup="this.value=this.value.replace(/[^A-z]/g,'');" />
                                             </div>
                                         </div>
                                         <div class="form-group train-deet">

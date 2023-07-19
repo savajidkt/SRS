@@ -28,6 +28,13 @@ $mycountphp = 1;
         var myCount = 1;
     </script>
     <style>
+        .filedrequired,
+        .help-block-error {
+        color: #FF1616
+        }
+        .hide {
+        display: none;
+        }
         .accordion-add-contact-colr p{
             color: #454545 !important;
         }
@@ -120,7 +127,7 @@ $mycountphp = 1;
         ***********************************-->
 
       <div class="content-body attendee-home ">
-        <div class="container-fluid ">
+        <div class="container-fluid">
       
             <div class="card">
                 <button class="accordion accordion-extra attendee-home-lgt attendee-bg-clr add-contact-font">INSTRUCTION</button>
@@ -151,19 +158,25 @@ $mycountphp = 1;
                                                 <div data-repeater-item>
                                                     <div class="form-row">
                                                         <div class="form-group col-md-6 form-gap-2">
-                                                            <label>First Name</label>
-                                                            <input type="text" name="first_name" class="form-control" placeholder="Sue" required>
+                                                            <label>First Name<span class="filedrequired">*</span></label>
+                                                            <div class="input-error">
+                                                                <input type="text" name="first_name" class="form-control" placeholder="Sue" onkeyup="this.value=this.value.replace(/[^A-z]/g,'');" required>
+                                                        
+                                                            </div>
                                                         </div>
                                                         <div class="form-group col-md-6 form-gap-2">
-                                                            <label>Last Name</label>
-                                                            <input type="text" name="last_name" class="form-control" placeholder="Swindell" required>
+                                                            <label>Last Name<span class="filedrequired">*</span></label>
+                                                            <div class="input-error">
+                                                                <input type="text" name="last_name" class="form-control" placeholder="Swindell" onkeyup="this.value=this.value.replace(/[^A-z]/g,'');" required>
+                                                            </div>
                                                         </div>
                                                         
                                                         <div class="form-group col-md-6 form-gap-2">
-                                                            <label>Email Address</label>
-                                                            <input type="email" name="email" class="form-control" placeholder="sue.swindell@srs-development.co.uk" required>
+                                                            <label>Email Address<span class="filedrequired">*</span></label>
+                                                            <div class="input-error">
+                                                                <input type="email" name="email" class="form-control" placeholder="sue.swindell@srs-development.co.uk" required>
+                                                            </div>
                                                         </div>
-                        
                                                         <div class="form-group col-md-6 form-gap-2">
                                                             <label class="text-label">Your Job Title</label>
                                                             <select class="form-select form-select-sm" name="job_title" id="form-select-sm-attendee-1" aria-label=".form-select-sm example">

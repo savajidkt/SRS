@@ -109,9 +109,9 @@ $myTable = "";
       {
         $emailSubject = replaceHTMLBodyWithParam($emailTemplate['subject'], array('company_name' => $data['trainerArr']['company_organiser_attendees_name'], 'course_name' => $data['trainerArr']['course_name'], 'course_date' => dateFormat($data['trainerArr']['course_end_date'])));
       }
-      
+      $emailHeaderFooter = getEmailTemplatesHeaderFooter();
       // return $this->subject($emailSubject)->with('body', $emailBody);
-      return $this->subject($emailSubject)->markdown('admin.Mail.companyOrganizerMail', ['emailBody' => $emailBody]);
+      return $this->subject($emailSubject)->markdown('admin.Mail.companyOrganizerMail', ['emailBody' => $emailBody,'emailHeaderFooter' => $emailHeaderFooter]);
 
     }
     return false;

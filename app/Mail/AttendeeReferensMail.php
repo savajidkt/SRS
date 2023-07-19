@@ -93,7 +93,8 @@ class AttendeeReferensMail extends Mailable
       $emailBody = replaceHTMLBodyWithParam($emailTemplate['template'], $paramArr);
       $emailSubject = replaceHTMLBodyWithParam($emailTemplate['subject'], array('attendee_name' => $data['courseAttendeesList']['first_name'] . ' ' . $data['courseAttendeesList']['last_name'],'course_date' => dateFormat($data['course']['start_date'])));
       // return $this->subject($emailSubject)->with('body', $emailBody);
-      return $this->subject($emailSubject)->markdown('admin.Mail.companyOrganizerMail', ['emailBody' => $emailBody]);
+      $emailHeaderFooter = getEmailTemplatesHeaderFooter();
+      return $this->subject($emailSubject)->markdown('admin.Mail.companyOrganizerMail', ['emailBody' => $emailBody,'emailHeaderFooter' => $emailHeaderFooter]);
 
     }
     return false;
