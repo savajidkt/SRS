@@ -66,6 +66,10 @@
       .success-error-content{
         margin:0 15px;
       }
+
+      .attendee-home-error p{
+        margin-bottom: 0rem !important;
+      }
   </style>
   </head>
 
@@ -142,19 +146,20 @@
 
                 <div class="alert alert-success alert-dismissible d-flex align-items-center fade show success-text-clr">
                     <i class="bi-check-circle-fill"></i>  <strong class="mx-2"></strong> 
-                    {!! $message !!}
-                   
+                    <div class="success-customise-para">
+                      {!! $message !!}
+                    </div>
                     {{-- <strong class="mx-2">Thank You!</strong> for completing your online form for your upcoming course with SRS The Development Team. We look forward to working with you soon. --}}
                     {{-- If you have any queries or need any more details please contact your company organiser. --}}
                     <!-- <button type="button" class="btn-close" data-bs-dismiss="alert"></button> -->
                 </div>
-                    
+
                 </div>
 
                         
             </div>
 
-
+            
             </div>
         </div>
           
@@ -168,7 +173,7 @@
             Footer start
         ***********************************-->
       
-        <div class="footer attendee-home sticky-bottom">
+              <div class="footer attendee-home sticky-bottom">
                 <div class="copyright">
                   <p>
                     Copyright © 2023 SRS-The Development Team Ltd. | All Rights Reserved
@@ -176,7 +181,7 @@
                   </p>
                 </div>
               </div>
-        
+
 
 
       <!--**********************************

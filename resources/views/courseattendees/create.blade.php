@@ -138,9 +138,9 @@ $mycountphp = 1;
                   {!! $sidebar !!}
                 </div>
              
-               </div>
+            </div>
 
-              <div class="row">
+            <div class="row">
                 <div class="col-xl-6 col-xxl-12">
 
                     <div class="card">
@@ -205,6 +205,7 @@ $mycountphp = 1;
                                                         </div>
                                                         <hr/>
                                                     </div>
+                                                    <hr />
                                                 </div>
                                             </div>
                                         </div>        

@@ -26,7 +26,7 @@ echo ($emailHeaderFooter['header']) ? $emailHeaderFooter['header'] : '';
 @endphp
                                         </span>
                                     </td>
-                                    <td align="right"><a href="{site_url}"><img src="{site_url}/images/srs_logo.jpg" border="0" alt="SRS THE DEVELOPMENT" /></a></td>
+                                    <td align="right"><a href="{site_url}"><img src="{{ asset('images/srs_logo.jpg')}}" border="0" alt="SRS THE DEVELOPMENT" /></a></td>
                                 </tr>
                             </tbody>
                         </table>

@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Mail;
 use App\Mail\CourseTrainerMail;
 use App\Mail\ThankyouMail;
 use App\Mail\ChaseReferensMail;
+use App\Models\Client;
 use Illuminate\Support\Facades\URL;
 use App\Models\CompanyOrganizer;
 
@@ -132,6 +133,9 @@ class FeedbackContacteController extends Controller
                         $trainerArr['company_address'] = '';
                         $trainerArr['company_organiser_attendees_email'] = $course->companyorganizer->email;
 
+                        $client = Client::where('id',$course->client_id)->first();
+                        $trainerArr['company_address'] = $client->address_one. "," . $client->address_tow ."<br>".$client->town . "," .$client->post_code;
+                        $trainerArr['company_name'] = $client->company_name;
                         $attendeesArrList = CourseAttendees::where('course_id',$course->id)->get();
                         // $attendeesArrList = $attendeesArr;
 
@@ -276,6 +280,11 @@ class FeedbackContacteController extends Controller
                         $trainerArr['company_organiser_attendees_name'] = $course->companyorganizer->first_name. " " . $course->companyorganizer->last_name;
                         $trainerArr['company_address'] = '';
                         $trainerArr['company_organiser_attendees_email'] = $course->companyorganizer->email;
+
+                        $client = Client::where('id',$course->client_id)->first();
+                        $trainerArr['company_address'] = $client->address_one. "," . $client->address_tow ."<br>".$client->town . "," .$client->post_code;
+                        $trainerArr['company_name'] = $client->company_name;
+                        
                         $attendeesArrList = CourseAttendees::where('course_id',$course->id)->get();
                         $trainerArr['attendees_list'] = $this->getAttendeeList($attendeesArrList);
                         $trainerArr['questionnaire_360'] = $this->getQuestionnaire360List($attendeesArrList);

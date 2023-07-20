@@ -66,6 +66,11 @@
       .success-error-content{
         margin:0 15px;
       }
+
+      .attendee-error .attendee-home-error .container-fluid  .success-error-content .success-text-clr p{
+        margin-bottom:0rem !important;
+      }
+
   </style>
   </head>
 
@@ -141,15 +146,17 @@
 
                 <div class="alert alert-success alert-dismissible d-flex align-items-center fade show success-text-clr">
                     <i class="bi-check-circle-fill"></i>
-                    {!! $message !!}                    
+                    <div class="success-customise-para">
+                    {!! $message !!}
                     <!-- <button type="button" class="btn-close" data-bs-dismiss="alert"></button> -->
+              </div>
                 </div>
 
                 </div>
                         
             </div>
 
-
+            
 
             </div>
         </div>

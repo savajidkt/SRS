@@ -136,7 +136,6 @@ class CourseAttendeeRepository
                         'organizer_id'    => $CompanyOrganizer->id,
                     ];
                     $attendeesArrList[]=$attendeesArr;
-                    // dd($attendeesArr);
                     $data['course'] = $course;
                     $data['companyorganizer'] = $CompanyOrganizer;
                     $trainerDetail = TrainerDetail::where('course_id',$course->id)->get();

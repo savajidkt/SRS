@@ -23,6 +23,7 @@
       }
       .bg-details>h5, p {
           color: #454545;
+          margin-bottom:0rem !important;
       } 
       .error-bg{
       background-color:#000066;
@@ -57,10 +58,15 @@
 
       .success-text-clr{
         color:#006400;
+        border-radius:0rem;
       }
 
       #attendee-error .attendee-home-error{
       margin-left:0rem !important;
+      }
+
+      .success-error-content{
+        margin:0 15px;
       }
     </style>
   </head>
@@ -119,31 +125,39 @@
             <div class="container-fluid ">
       
             
-              <div class="card">
-                <button class="accordion accordion-extra attendee-home-lgt attendee-bg-clr add-contact-font">INSTRUCTION</button>
-                <div class="panel accordion-panel-extra accordion-add-contact-colr">
-                  {!! $sidebar !!}
-                </div>
-             
-               </div>
+              
               
                             
-            <div class="card error-bg">
-                <div class="card-header error-heading-text">
-                  Thank You
+              <div class="card error-bg">
+                <div class="success-error-content">
+
+                  <div class="card-header error-heading-text">
+                    Thank You
+                  </div>
+                  
+
+                  <div class="alert alert-success alert-dismissible d-flex align-items-center fade show success-text-clr">
+                      <i class="bi-check-circle-fill"></i>
+                      <div>
+                      {!! $message !!}
+                      <div>
+                  </div>
+
                 </div>
-                
 
-                <div class="alert alert-success alert-dismissible d-flex align-items-center fade show success-text-clr">
-                    <i class="bi-check-circle-fill"></i>
-                    {!! $message !!}
-                </div>
+                          
+              </div>
 
-                        
-            </div>
-
+              
   
             </div>
+        </div>
+        <div class="card">
+          <button class="accordion accordion-extra attendee-home-lgt attendee-bg-clr add-contact-font">INSTRUCTION</button>
+          <div class="panel accordion-panel-extra accordion-add-contact-colr">
+            {!! $sidebar !!}
+          </div>
+       
         </div>
           
 </div>
