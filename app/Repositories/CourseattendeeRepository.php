@@ -8,6 +8,7 @@ use App\Mail\CourseAttendeesMail;
 use App\Exceptions\GeneralException;
 use App\Libraries\Safeencryption;
 use App\Mail\CourseTrainerMail;
+use App\Models\Client;
 use App\Models\TrainerDetail;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Database\Eloquent\Collection;
@@ -73,6 +74,9 @@ class CourseAttendeeRepository
                         $trainerArr['company_organiser_attendees_email'] = $course->companyorganizer->email;
                         $trainerArr['attendees_list'] = $this->getAttendeeList($attendeesArrList);
                         // dd($trainerArr['attendees_list']);
+                        $client = Client::where('id',$course->client_id)->first();
+                        $trainerArr['company_address'] = $client->address_one. "," . $client->address_tow ."<br>".$client->town . "," .$client->post_code;
+                        $trainerArr['company_name'] = $client->company_name;
                         $data['trainerArr'] = $trainerArr;
                         Mail::to($trainer->email)->send(new CourseTrainerMail($data));
                     }

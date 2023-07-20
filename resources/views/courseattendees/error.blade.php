@@ -18,19 +18,19 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" integrity="sha512-nMNlpuaDPrqlEls3IX/Q56H36qvBASwb3ipuo3MxeWbsQB1881ox0cRv7UPTgBlriqoynt35KjEwgGUeUXIPnw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
       .accordion-add-contact-colr p{
-          color: #D8000C !important;
+          color: red !important;
       }
       .bg-details>h5, p {
-          color: #D8000C;
+          color: red;
       } 
       .error-bg{
       background-color:#000066;
       }
 
       .error-danger{
-        color: #D8000C;
+        color: red;
         background-color:#FFBABA;
-        border:1px solid #D8000C;
+        border:1px solid red;
       }
 
       .error-style-decor{
@@ -39,7 +39,7 @@
       }
 
       .error-text{
-        color: #D8000C;
+        color: red;
       }
 
 
@@ -129,9 +129,9 @@
 
                 <div class="alert alert-warning alert-dismissible fade show error-danger" role="alert">
                     {!! $message !!}
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    {{-- <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
-                    </button>
+                    </button> --}}
                 </div>
 
                         

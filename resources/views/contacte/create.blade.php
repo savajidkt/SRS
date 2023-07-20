@@ -29,7 +29,10 @@
             color: #454545 !important;
         }
         .hide{
-display: none;
+            display: none;
+        }
+        .has_error {
+            border: 1px solid red;
         }
     </style>
   </head>
@@ -177,26 +180,26 @@ display: none;
                                                     
                                                     <div class="form-row">
                                                         <div class="form-group col-md-6 form-gap-2">
-                                                            <label>First Name</label>
+                                                            <label>First Name<span class="filedrequired">*</span></label>
                                                             <div class="input-error">
                                                                 <input type="text" class="form-control" name="first_name" onkeyup="this.value=this.value.replace(/[^A-z]/g,'');" placeholder="Sue" >
                                                             </div>
                                                         </div>
                                                         <div class="form-group col-md-6 form-gap-2">
-                                                            <label>Last Name</label>
+                                                            <label>Last Name<span class="filedrequired">*</span></label>
                                                             <div class="input-error">
                                                                 <input type="text" class="form-control" name="last_name" onkeyup="this.value=this.value.replace(/[^A-z]/g,'');" placeholder="Swindell" >
                                                             </div>
                                                         </div>
                                                         
                                                         <div class="form-group col-md-6 form-gap-2">
-                                                            <label>Email Address</label>
+                                                            <label>Email Address<span class="filedrequired">*</span></label>
                                                             <div class="input-error">
                                                                 <input type="email" class="form-control" name="email" placeholder="sue.swindell@srs-development.co.uk" id="email_0" email-id="email">
                                                             </div>
                                                         </div>
                                                         <div class="form-group col-md-6 form-gap-2">
-                                                            <label>Confirm Email Address</label>
+                                                            <label>Confirm Email Address<span class="filedrequired">*</span></label>
                                                             <div class="input-error">
                                                                 <input type="email" class="form-control" name="confirm_email" placeholder="sue.swindell@srs-development.co.uk" id="confirm_email_0" confirm-email-id="confirm_email">
                                                             </div>
@@ -205,7 +208,7 @@ display: none;
                                                         <label class="text-label">Relationship</label>
                                                         <div class="input-error">
                                                             <select class="form-select form-select-sm" name="relationship" id="form-select-sm-attendee" aria-label=".form-select-sm example">
-                                                                <option selected disabled>Select Relationship</option>
+                                                                <option value="" selected disabled>Select Relationship</option>
                                                                 <option value="1">He/She is my line manager</option>
                                                                 <option value="2">He/She reports to me</option>
                                                                 <option value="3">He/She is my colleague/peer</option>

@@ -29,9 +29,9 @@
       }
 
       .error-danger{
-        color: #D8000C;
+        color: red;
         background-color:#FFBABA;
-        border:1px solid #D8000C;
+        border:1px solid red;
       }
 
       .error-style-decor{
@@ -40,7 +40,7 @@
       }
 
       .error-text{
-        color: #D8000C;
+        color: red;
       }
 
 

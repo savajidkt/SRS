@@ -182,14 +182,16 @@ $mycountphp = 1;
                                                         </div>
                                                         <div class="form-group col-md-6 form-gap-2">
                                                             <label class="text-label">Your Job Title</label>
-                                                            <select class="form-select form-select-sm" name="job_title" id="form-select-sm-attendee-1" aria-label=".form-select-sm example">
-                                                                <option value="" selected disabled>Select Job Title</option>
-                                                                <option value="1">Director</option>
-                                                                <option value="2">Department Head</option>
-                                                                <option value="3">Manager</option>
-                                                                <option value="4">Project Manager / Specialist</option>
-                                                                <option value="5">Team Member</option>
-                                                            </select>
+                                                            <div class="input-error">
+                                                                <select class="form-select form-select-sm" name="job_title" id="form-select-sm-attendee-1" aria-label=".form-select-sm example" required>
+                                                                    <option value="" selected disabled>Select Job Title</option>
+                                                                    <option value="1">Director</option>
+                                                                    <option value="2">Department Head</option>
+                                                                    <option value="3">Manager</option>
+                                                                    <option value="4">Project Manager / Specialist</option>
+                                                                    <option value="5">Team Member</option>
+                                                                </select>
+                                                            </div>
                                                         </div>
                                                         <div class="col-md-2 col-12 mb-50">
                                                             <div class="form-group">
