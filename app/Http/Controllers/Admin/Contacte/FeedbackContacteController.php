@@ -34,7 +34,18 @@ class FeedbackContacteController extends Controller
     {
         $sidebar = '';
         $course = Course::where('key',$id)->first();
-       
+        $questionnaireAnswers = QuestionnaireAnswers::where('attendees_id',$ext_id)->where('type',0)->count();
+        if($questionnaireAnswers> 0)
+        {
+            $messgeTemplate = getEmailTemplatesByID(16);
+            if ($messgeTemplate)
+            {
+                $paramArr = [];
+                $message  = replaceHTMLBodyWithParam($messgeTemplate['template'],$paramArr);
+            }
+            return view('contacte.error',['message' => $message]);
+    
+        }
         if($course) {
             $CompanyOrganizer = CompanyOrganizer::where('course_id', $course->id)->first();
            

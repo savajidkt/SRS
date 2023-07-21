@@ -31,7 +31,7 @@ class TemplateManagersController extends Controller
         if ($request->ajax()) {
 
             $data = EmailTemplate::select('*')->where('type', 'email');
-
+            $data->orderBy($request->order[0]['column'], $request->order[0]['dir']);
             return DataTables::of($data)
                 ->addIndexColumn()
                 ->editColumn('template_name', function (EmailTemplate $emailTemplate) {
@@ -90,7 +90,7 @@ class TemplateManagersController extends Controller
         if ($request->ajax()) {
 
             $data = EmailTemplate::select('*')->where('type', 'help');
-
+            $data->orderBy($request->order[0]['column'], $request->order[0]['dir']);
             return DataTables::of($data)
                 ->addIndexColumn()
                 ->editColumn('name', function (EmailTemplate $emailTemplate) {
@@ -147,7 +147,7 @@ class TemplateManagersController extends Controller
         if ($request->ajax()) {
 
             $data = EmailTemplate::select('*')->where('type', 'template');
-
+            $data->orderBy($request->order[0]['column'], $request->order[0]['dir']);
             return DataTables::of($data)
                 ->addIndexColumn()
                 ->editColumn('name', function (EmailTemplate $emailTemplate) {
@@ -189,7 +189,7 @@ class TemplateManagersController extends Controller
         if ($request->ajax()) {
 
             $data = EmailTemplate::select('*')->where('type', 'message');
-
+            $data->orderBy($request->order[0]['column'], $request->order[0]['dir']);
             return DataTables::of($data)
                 ->addIndexColumn()
                 ->editColumn('name', function (EmailTemplate $emailTemplate) {

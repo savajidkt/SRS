@@ -16,6 +16,12 @@ $mycountphp = 1;
         .hide {
             display: none;
         }
+
+        @media only screen and (max-width: 525px){
+.edit-attendees-container-fluid button.btn.btn-outline-danger{
+font-size:13px !important;
+}
+}
     </style>
     <script>
         var myCount = {{ $mycountphp }};   
@@ -24,18 +30,18 @@ $mycountphp = 1;
                     Content body start
                 ***********************************-->
 
-        {{-- <div class="container-fluid">
+        {{-- <div class="container-fluid edit-attendees-container-fluid">
             <div class="row">
                 <div class="col-xl-12 col-xxl-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title">ATTENDEES</h4>
+                            <h4 class="card-title">Attendees</h4>
                         </div>
                         <div class="card-body add_course_form_content">
                             <form action="#" id="step-form-horizontal" class="step-form-horizontal">
                                 <div>
                                     <hr>
-                                    <h4>ATTENDEE DETAILS 1</h4>
+                                    <h4>Attendee Details 1</h4>
                                     <hr>
                                     <section>
                                         <div class="row">
@@ -87,66 +93,68 @@ $mycountphp = 1;
             </div>
         </div> --}}
 
-        <div class="container-fluid ">
+        <div class="container-fluid  edit-attendees-container-fluid">
             <div class="row">
                 <div class="col-xl-6 col-xxl-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title">ATTENDEES</h4>
+                            <h4 class="card-title">Attendees</h4>
                         </div>
                         <div class="card-body">
                             <hr>
-                            <h5>ATTENDEE DETAILS</h5>
-                            <hr>
+                            <h4>Attendee Details</h4>
+                            {{-- <hr> --}}
+                            <br/>
                             <div class="basic-form">
                                 <form class="attendees-repeater" action="{{ route('update-attendees',$model) }}" method="post"
                                     enctype="multipart/form-data" id="attendees">
                                     @csrf
+                                    {{-- <input type="hidden" value="{{ $id }}" name="key" > --}}
                                     <div class="">
                                     @if(count($courseAttendeesList) > 0)
-                                    <div data-repeater-list="attendees">
+                                        <div data-repeater-list="attendees">
                                         @foreach ($courseAttendeesList as $key=> $attendees )
                                             
-                                                <div data-repeater-item>
-                                                    <div class="form-row">
-                                                        <div class="form-group col-md-6 form-gap-2">
-                                                            <label>First Name</label>
+                                            <div data-repeater-item>
+                                                <div class="form-row">
+                                                    <div class="form-group col-md-6 form-gap-2">
+                                                        <label>First Name</label>
                                                             <input type="text" name="first_name" value="{{$attendees->first_name}}" class="form-control" placeholder="Sue" onkeyup="this.value=this.value.replace(/[^A-z]/g,'');" required>
-                                                        </div>
-                                                        <div class="form-group col-md-6 form-gap-2">
-                                                            <label>Last Name</label>
+                                                    </div>
+                                                    <div class="form-group col-md-6 form-gap-2">
+                                                        <label>Last Name</label>
                                                             <input type="text" name="last_name" value="{{$attendees->last_name}}" class="form-control" placeholder="Swindell" onkeyup="this.value=this.value.replace(/[^A-z]/g,'');" required>
-                                                        </div>
-                                                        <div class="form-group col-md-6 form-gap-2">
-                                                            <label>Email Address</label>
+                                                    </div>
+                                                    <div class="form-group col-md-6 form-gap-2">
+                                                        <label>Email Address</label>
                                                             <input type="email" name="email" value="{{$attendees->email}}" class="form-control" placeholder="sue.swindell@srs-development.co.uk" required>
-                                                        </div>
-                                                        <div class="form-group col-md-6 form-gap-2">
-                                                            <label class="text-label">Your Job Title</label>
-                                                            <select class="form-select form-select-sm" name="job_title" id="form-select-sm-attendee-1" aria-label=".form-select-sm example">
+                                                    </div>
+                                                    <div class="form-group col-md-6 form-gap-2">
+                                                        <label class="text-label">Your Job Title</label>
+                                                        <select class="form-select form-select-sm" name="job_title" id="form-select-sm-attendee-1" aria-label=".form-select-sm example">
                                                                 <option value="" selected disabled>Select Job Title</option>
                                                                 <option value="1" {{ isset($attendees->job_title) && $attendees->job_title == '1' ? 'selected' : '' }}>Director</option>
                                                                 <option value="2" {{ isset($attendees->job_title) && $attendees->job_title == '2' ? 'selected' : '' }}>Department Head</option>
                                                                 <option value="3" {{ isset($attendees->job_title) && $attendees->job_title == '3' ? 'selected' : '' }}>Manager</option>
                                                                 <option value="4" {{ isset($attendees->job_title) && $attendees->job_title == '4' ? 'selected' : '' }}>Project Manager / Specialist</option>
                                                                 <option value="5" {{ isset($attendees->job_title) && $attendees->job_title == '5' ? 'selected' : '' }}>Team Member</option>
-                                                            </select>
-                                                        </div>
-                                                        <div class="col-md-2 col-12 mb-50">
-                                                            <div class="form-group">
-                                                                <button class="btn btn-outline-danger text-nowrap px-1" data-repeater-delete type="button">
-                                                                    <i data-feather="x" class="mr-25"></i>
-                                                                    <span>Delete</span>
-                                                                </button>
-                                                            </div>
-                                                        </div>
-                                                        <hr/>
+                                                        </select>
                                                     </div>
+                                                    <div class="col-md-2 col-12 mb-50">
+                                                        <div class="form-group">
+                                                                <button class="btn btn-outline-danger text-nowrap px-1" data-repeater-delete type="button">
+                                                            <i data-feather="x" class="mr-25"></i>
+                                                            <span>Delete</span>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                    {{-- <hr/> --}}
                                                 </div>
                                                 <hr/>
+                                            </div>
                                             
                                         @endforeach
-                                    </div>
+                                        </div>
                                     @endif
                                     </div>
                                     <button type="submit" class="btn btn-primary">Send Instructions</button>
@@ -157,7 +165,7 @@ $mycountphp = 1;
                         </div>
                     </div>
                 </div>
-            </div>
+        </div>
         </div>
     <!--**********************************
                     Content body end

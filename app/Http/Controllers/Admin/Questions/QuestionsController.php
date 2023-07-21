@@ -29,6 +29,7 @@ class QuestionsController extends Controller
         if ($request->ajax()) {
 
             $data = Questions::select('*');
+            $data->orderBy($request->order[0]['column'], $request->order[0]['dir']);
             return DataTables::of($data)
                 ->addIndexColumn()
                 ->addColumn('question', function (Questions $question) {

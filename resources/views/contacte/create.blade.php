@@ -231,6 +231,7 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <hr/>
                                     </div>
                                     <button type="submit" class="btn btn-primary">Send to 360 Contacts</button>
                                     <button type="button" class="btn btn-primary">Cancel</button>

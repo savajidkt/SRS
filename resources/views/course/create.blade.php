@@ -10,12 +10,35 @@
         .hide {
             display: none;
         }
+
+        @media screen and (max-width: 992px){
+.add_course_step_2_col .email-customize{
+white-space: nowrap !important;
+}
+.add_course_form_content .form-group {
+    display: grid;
+    grid-template-columns: 100% !important;
+    justify-content: flex-start !important;
+}
+}
+
+.add_course_step_2_col .email-customize{
+white-space: nowrap !important;
+}
+
+.company-organizer-customise-section{
+    margin-bottom:15px;
+}
+
+.course-company-edit-container{
+    overflow-y:hidden !important;
+}
     </style>
     <!--**********************************
                     Content body start
                 ***********************************-->
 
-    <div class="container-fluid">
+    <div class="container-fluid course-company-edit-container">
         <div class="row page-titles mx-0">
 
             <div>
@@ -54,15 +77,15 @@
                         <div class="card-body add_course_form_content">
                             <div>
                                 <hr>
-                                <h4>COMPANY ORGANIZER DETAILS</h4>
+                                <h4>Company Organizer Details</h4>
                                 <hr>
-                                <section>
+                                <section class="company-organizer-customise-section">
                                     <div class="row">
                                         <div class="col-lg-12 mb-4 form-style add_course_step_2_col">
                                             
 
                                             <div class="form-group train-deet">
-                                                <label class="itemcost">First Name<span class="filedrequired">*</span></label>
+                                                <label class="itemcost email-customize">First Name<span class="filedrequired">*</span></label>
                                                 <div class="input-error">
                                                     <input type="text" class="form-control" name="org_first_name"
                                                         value="" onkeyup="this.value=this.value.replace(/[^A-z]/g,'');"/>
@@ -70,7 +93,7 @@
                                             </div>
 
                                             <div class="form-group train-deet">
-                                                <label class="itemcost">Surname<span class="filedrequired">*</span></label>
+                                                <label class="itemcost email-customize">Surname<span class="filedrequired">*</span></label>
                                                 <div class="input-error">
                                                     <input type="text" class="form-control" name="org_last_name"
                                                         value="" onkeyup="this.value=this.value.replace(/[^A-z]/g,'');" />
@@ -78,7 +101,7 @@
                                             </div>
 
                                             <div class="form-group train-deet">
-                                                <label class="itemcost">Email Address<span class="filedrequired">*</span></label>
+                                                <label class="itemcost email-customize">Email Address<span class="filedrequired">*</span></label>
                                                 <div class="input-error">
                                                     <input type="text" class="form-control" name="org_email"
                                                         value="" />

@@ -36,7 +36,7 @@ $mycountphp = 1;
                     </div>
                 </div>
                 <div class="form-group dat-o-c">
-                    <label class="text-label headi-doc">Questionnaire End Date<span class="filedrequired"> *</span></label>
+                    <label class="text-label">Questionnaire End Date<span class="filedrequired">*</span></label>
                     <div class="input-error">
                         <input type="date" name="end_date" id="end_date" class="form-control" value="{{(isset($model->end_date))?$model->end_date:''}}" placeholder="" required>
                     </div>
@@ -109,8 +109,8 @@ $mycountphp = 1;
     </section>
     <hr>
     <h4><strong>Trainer Details</strong></h4>
+    <br/>
     <!-- <section> -->
-    <hr>
     <div data-repeater-list="invoice">
         @if(count($model->trainerDetail) > 0)
             @foreach ($model->trainerDetail as $key=> $trainer)
@@ -132,13 +132,13 @@ $mycountphp = 1;
                                 </div>
                             </div>
                             <div class="form-group train-deet">
-                                <label class="itemcost">Email Address<span class="filedrequired">*</span></label>
+                                <label class="itemcost email-customize">Email Address<span class="filedrequired">*</span></label>
                                 <div class="input-error">
                                     <input type="email" class="form-control" name="email" value="{{$trainer->email}}" email-id="email" id="email_{{ $key }}" />
                                 </div>
                             </div>
                             <div class="form-group train-deet">
-                                <label class="itemcost">Confirm Email Address<span class="filedrequired">*</span></label>
+                                <label class="itemcost email-customize">Confirm Email Address<span class="filedrequired">*</span></label>
                                 <div class="input-error">
                                     <input type="email" class="form-control" name="email_confirm"  value="{{$trainer->email}}" id="confirm_email_0" confirm-email-id="confirm_email" />
                                 </div>
