@@ -111,6 +111,30 @@
     <script src="{{ asset('js/form/course/form-repeater.js') }}"></script>
     <script>
         $('.select2').select2();
+
+        $('#client_id').on('change', function() {
+            var selected_option_value = $(this).find(":selected").val();
+            if(selected_option_value == '')
+            {
+                $('#client_id-error').show();
+            }else
+            {
+                $('#client_id-error').hide();
+            }
+        });
+
+        $('#duration').on('change', function() {
+            var selected_option_value = $(this).find(":selected").val();
+            if(selected_option_value == '')
+            {
+                $('#duration-error').show();
+            }
+            else
+            {
+                $('#duration-error').hide();
+            }
+        });
+
     </script>
     <script>
         function Func_a(e) {

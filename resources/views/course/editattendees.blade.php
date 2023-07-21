@@ -99,7 +99,7 @@ $mycountphp = 1;
                             <h5>ATTENDEE DETAILS</h5>
                             <hr>
                             <div class="basic-form">
-                                <form class="attendees-repeater" action="{{ route('update-attendees',$id) }}" method="post"
+                                <form class="attendees-repeater" action="{{ route('update-attendees',$model) }}" method="post"
                                     enctype="multipart/form-data" id="attendees">
                                     @csrf
                                     <div class="">
@@ -143,6 +143,7 @@ $mycountphp = 1;
                                                         <hr/>
                                                     </div>
                                                 </div>
+                                                <hr/>
                                             
                                         @endforeach
                                     </div>

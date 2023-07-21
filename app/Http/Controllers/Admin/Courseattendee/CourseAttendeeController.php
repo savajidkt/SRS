@@ -97,30 +97,16 @@ class CourseAttendeeController extends Controller
         // return redirect()->back()->with('success', "Course Attendees successfully!");
     }
 
-    public function editattendees(CourseAttendees $courseAttendees,$id)
+    public function editattendees(CourseAttendees $courseAttendees)
     {
-        $courseAttendeesList = CourseAttendees::where('course_id',$id)->get();
-        return view('course.editattendees',['model' => $courseAttendees,'id' => $id,'courseAttendeesList' => $courseAttendeesList,'action'=>'edit']);
+        $courseAttendeesList = CourseAttendees::where('course_id',$courseAttendees->id)->get();
+        return view('course.editattendees',['model' => $courseAttendees,'id' => $courseAttendees->id,'courseAttendeesList' => $courseAttendeesList]);
     }
 
-    public function update(Request $request ,CourseAttendees $courseAttendees,$id)
+    public function update(Request $request ,CourseAttendees $courseAttendees)
     {
-        // dd($courseAttendees);
-        $this->courseAttendeeRepository->update($request->all(),$courseAttendees,$id);
+        $this->courseAttendeeRepository->update($request->all(),$courseAttendees);
         return redirect()->route('course.index')->with('success', "Attendees updated successfully!");
     }
 
-    // public function edit(Client $client)
-    // {
-    //     $client->loadMissing('contacts');
-    //     $countries = Country::all();
-    //     return view('client.edit', ['model' => $client,'countries' => $countries,'action'=>'edit']);
-    // }
-    // public function update(EditRequest $request, Client $client)
-    // {
-       
-    //     $this->clientRepository->update($request->all(), $client);
-
-    //     return redirect()->route('client.index')->with('success', "Client updated successfully!");
-    // }
 }

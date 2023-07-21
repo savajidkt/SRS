@@ -116,9 +116,10 @@ class CourseAttendeeRepository
      * @return Course
      * @throws Exception
      */
-    public function update(array $data ,CourseAttendees $courseAttendees,$id): CourseAttendees
+    public function update(array $data ,CourseAttendees $courseAttendees): CourseAttendees
     {
-        $course = Course::where('id',$id)->first();
+        // dd($courseAttendees);
+        $course = Course::where('id',$courseAttendees->id)->first();
         if($course)
         {
             $CompanyOrganizer = CompanyOrganizer::where('course_id',$course->id)->first();
@@ -135,14 +136,16 @@ class CourseAttendeeRepository
                         'course_id'    => $course->id,
                         'organizer_id'    => $CompanyOrganizer->id,
                     ];
+                    
                     $attendeesArrList[]=$attendeesArr;
+                    
                     $data['course'] = $course;
                     $data['companyorganizer'] = $CompanyOrganizer;
                     $trainerDetail = TrainerDetail::where('course_id',$course->id)->get();
                     $data['attendee_name'] = ucwords($attendees['first_name'] . " " . $attendees['last_name']);
                     $data['trainerDetail'] = $trainerDetail;
                     $course->companyorganizer->update(array('confirm_attendee' => 1));
-                    $courseAttendees->update($attendeesArr);
+                    $courseAttendees->update($attendeesArrList);
                     // dd($courseAttendees);
                     $data['attendee_id'] = $courseAttendees->id;
                     // Mail::to($attendees['email'])->send(new CourseAttendeesMail($data));
@@ -164,7 +167,7 @@ class CourseAttendeeRepository
                         $trainerArr['company_organiser_attendees_email'] = $course->companyorganizer->email;
                         $trainerArr['attendees_list'] = $this->getAttendeeList($attendeesArrList);
                         $data['trainerArr'] = $trainerArr;
-                        dd($data);
+                        // dd($data);
                         // Mail::to($trainer->email)->send(new CourseTrainerMail($data));
                     }
                 }  
