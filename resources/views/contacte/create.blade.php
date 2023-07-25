@@ -182,26 +182,26 @@
                                                         <div class="form-group col-md-6 form-gap-2">
                                                             <label>First Name<span class="filedrequired">*</span></label>
                                                             <div class="input-error">
-                                                                <input type="text" class="form-control" name="first_name" onkeyup="this.value=this.value.replace(/[^A-z]/g,'');" placeholder="Sue" >
+                                                                <input type="text" class="form-control" name="first_name" onkeyup="this.value=this.value.replace(/[^A-z]/g,'');" placeholder="" >
                                                             </div>
                                                         </div>
                                                         <div class="form-group col-md-6 form-gap-2">
                                                             <label>Last Name<span class="filedrequired">*</span></label>
                                                             <div class="input-error">
-                                                                <input type="text" class="form-control" name="last_name" onkeyup="this.value=this.value.replace(/[^A-z]/g,'');" placeholder="Swindell" >
+                                                                <input type="text" class="form-control" name="last_name" onkeyup="this.value=this.value.replace(/[^A-z]/g,'');" placeholder="" >
                                                             </div>
                                                         </div>
                                                         
                                                         <div class="form-group col-md-6 form-gap-2">
                                                             <label>Email Address<span class="filedrequired">*</span></label>
                                                             <div class="input-error">
-                                                                <input type="email" class="form-control" name="email" placeholder="sue.swindell@srs-development.co.uk" id="email_0" email-id="email">
+                                                                <input type="email" class="form-control" name="email" placeholder="" id="email_0" email-id="email">
                                                             </div>
                                                         </div>
                                                         <div class="form-group col-md-6 form-gap-2">
                                                             <label>Confirm Email Address<span class="filedrequired">*</span></label>
                                                             <div class="input-error">
-                                                                <input type="email" class="form-control" name="confirm_email" placeholder="sue.swindell@srs-development.co.uk" id="confirm_email_0" confirm-email-id="confirm_email">
+                                                                <input type="email" class="form-control" name="confirm_email" placeholder="" id="confirm_email_0" confirm-email-id="confirm_email">
                                                             </div>
                                                         </div>
                                                         <div class="form-group col-md-6 form-gap-2">

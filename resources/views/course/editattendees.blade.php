@@ -102,7 +102,8 @@ font-size:13px !important;
                         </div>
                         <div class="card-body">
                             <hr>
-                            <h4>Attendee Details</h4>
+                            <h4><strong>Attendee Details</strong></h4>
+                            <hr>
                             {{-- <hr> --}}
                             <br/>
                             <div class="basic-form">
@@ -119,18 +120,25 @@ font-size:13px !important;
                                                 <div class="form-row">
                                                     <div class="form-group col-md-6 form-gap-2">
                                                         <label>First Name</label>
+                                                        <div class="input-error">
                                                             <input type="text" name="first_name" value="{{$attendees->first_name}}" class="form-control" placeholder="Sue" onkeyup="this.value=this.value.replace(/[^A-z]/g,'');" required>
+                                                        </div>
                                                     </div>
                                                     <div class="form-group col-md-6 form-gap-2">
                                                         <label>Last Name</label>
+                                                        <div class="input-error">
                                                             <input type="text" name="last_name" value="{{$attendees->last_name}}" class="form-control" placeholder="Swindell" onkeyup="this.value=this.value.replace(/[^A-z]/g,'');" required>
+                                                        </div>
                                                     </div>
                                                     <div class="form-group col-md-6 form-gap-2">
                                                         <label>Email Address</label>
+                                                        <div class="input-error">
                                                             <input type="email" name="email" value="{{$attendees->email}}" class="form-control" placeholder="sue.swindell@srs-development.co.uk" required>
+                                                        </div>
                                                     </div>
                                                     <div class="form-group col-md-6 form-gap-2">
                                                         <label class="text-label">Your Job Title</label>
+                                                        <div class="input-error">
                                                         <select class="form-select form-select-sm" name="job_title" id="form-select-sm-attendee-1" aria-label=".form-select-sm example">
                                                                 <option value="" selected disabled>Select Job Title</option>
                                                                 <option value="1" {{ isset($attendees->job_title) && $attendees->job_title == '1' ? 'selected' : '' }}>Director</option>
@@ -139,6 +147,7 @@ font-size:13px !important;
                                                                 <option value="4" {{ isset($attendees->job_title) && $attendees->job_title == '4' ? 'selected' : '' }}>Project Manager / Specialist</option>
                                                                 <option value="5" {{ isset($attendees->job_title) && $attendees->job_title == '5' ? 'selected' : '' }}>Team Member</option>
                                                         </select>
+                                                        </div>
                                                     </div>
                                                     <div class="col-md-2 col-12 mb-50">
                                                         <div class="form-group">
@@ -152,7 +161,6 @@ font-size:13px !important;
                                                 </div>
                                                 <hr/>
                                             </div>
-                                            
                                         @endforeach
                                         </div>
                                     @endif

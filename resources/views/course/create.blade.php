@@ -77,7 +77,7 @@ white-space: nowrap !important;
                         <div class="card-body add_course_form_content">
                             <div>
                                 <hr>
-                                <h4>Company Organizer Details</h4>
+                                <h4><strong>Company Organizer Details</strong></h4>
                                 <hr>
                                 <section class="company-organizer-customise-section">
                                     <div class="row">

@@ -22,6 +22,7 @@ class AttendeeReferens extends Model
         'last_name',
         'email',
         'relationship',
+        'questionnaire_filled',
     ];
 
     public function attendeeuser()

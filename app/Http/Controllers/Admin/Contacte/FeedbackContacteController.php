@@ -20,6 +20,7 @@ use App\Mail\ChaseReferensMail;
 use App\Models\Client;
 use Illuminate\Support\Facades\URL;
 use App\Models\CompanyOrganizer;
+use Illuminate\Support\Facades\DB;
 
 class FeedbackContacteController extends Controller
 {
@@ -65,8 +66,6 @@ class FeedbackContacteController extends Controller
 
     public function store(Request $request)
     {
-        
-       
         $this->feedbackRepository->create($request->all());
         return redirect()->route('attendees-questionnaire',[$request->key,$request->attendee_id])->with('success', "Course created successfully!");
     }
@@ -127,9 +126,11 @@ class FeedbackContacteController extends Controller
                     ];
 
                     $AttendeeQuestionsList[] = $AttendeeQuestionsArr;
-                    
+
                     $attendeeQuestions = QuestionnaireAnswers::create($AttendeeQuestionsArr);
+                    
                 }
+                $attendeeReferens->update(['questionnaire_filled' => 'YES']);
                 if($course->trainer)
                 {
                     foreach ($course->trainer as $key => $trainer) {
@@ -275,9 +276,12 @@ class FeedbackContacteController extends Controller
                         'type'    => 1,
                     ];
 
+                   
                     $attendeeQuestions = QuestionnaireAnswers::create($AttendeeQuestionsArr);
+                    
                   
                 }
+                $attendeeReferens->update(array('questionnaire_filled' => 'YES'));
                 $trainer_name = '';
                 if($course->trainer)
                 {
@@ -318,7 +322,6 @@ class FeedbackContacteController extends Controller
                 $attendeeArr['attendees_list'] = $this->getAttendeerefList($course->id);
                 $data['attendeeArr'] = $attendeeArr;
                 $data['key'] = $request->key.'/360-frm';
-                // $data['ext_ext'] = '360-frm';
                 $newkey = $SafeencryptionObj->encode($key);
                 Mail::to($attende->email)->send(new ThankyouMail($data));
 

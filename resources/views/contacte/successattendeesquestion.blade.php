@@ -102,7 +102,9 @@
                             
                                 <div>
                                 <div class="welcome-text text-center">
+                                  <body onload="startTime()">
                                     <p id="demo"></p>
+                                </body>
                                 </div>
                             </div>
                         </div>
@@ -209,24 +211,40 @@
     <script src="{{ asset('js/custom.min.js')}}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js" integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script>
-      const currentDateTime = new Date();
+    <script type="text/javascript">
+      function startTime()
+      {
+          var today=new Date();
+          //                   1    2    3    4    5    6    7    8    9   10    11  12   13   14   15   16   17   18   19   20   21   22   23   24   25   26   27   28   29   30   31   32   33
+          var suffixes = ['','st','nd','rd','th','th','th','th','th','th','th','th','th','th','th','th','th','th','th','th','th','st','nd','rd','th','th','th','th','th','th','th','st','nd','rd'];
 
-const options = {
-weekday: 'long',
-year: 'numeric',
-month: 'long',
-day: 'numeric',
-hour: 'numeric',
-minute: 'numeric',
-second: 'numeric',
-hour12: false
-};
+          var weekday = new Array(7);
+          weekday[0] = "Sunday";
+          weekday[1] = "Monday";
+          weekday[2] = "Tuesday";
+          weekday[3] = "Wednesday";
+          weekday[4] = "Thursday";
+          weekday[5] = "Friday";
+          weekday[6] = "Saturday";
 
-const formattedDateTime = currentDateTime.toLocaleDateString('en-US', options);
-document.getElementById("demo").innerHTML = formattedDateTime;
+          var month = new Array(12);
+          month[0] = "January";
+          month[1] = "February";
+          month[2] = "March";
+          month[3] = "April";
+          month[4] = "May";
+          month[5] = "June";
+          month[6] = "July";
+          month[7] = "August";
+          month[8] = "September";
+          month[9] = "October";
+          month[10] = "November";
+          month[11] = "December";
 
-    </script>
+          document.getElementById('demo').innerHTML=(weekday[today.getDay()] + ',' + " " + today.getDate()+'<sup>'+suffixes[today.getDate()]+'</sup>' + " " + month[today.getMonth()] + " " + today.getFullYear() + ' at ' + today.toLocaleTimeString());
+          t=setTimeout(function(){startTime()},500);
+      }
+  </script>
 
 <script>
   var acc = document.getElementsByClassName("accordion");
