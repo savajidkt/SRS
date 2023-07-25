@@ -72,7 +72,7 @@ white-space: nowrap !important;
 
                     <div class="card step_2 hide">
                         <div class="card-header">
-                            <h4 class="card-title">COURSE DETAILS</h4>
+                            <h4 class="card-title">Course Details</h4>
                         </div>
                         <div class="card-body add_course_form_content">
                             <div>

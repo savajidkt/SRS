@@ -20,7 +20,6 @@ use App\Mail\ChaseReferensMail;
 use App\Models\Client;
 use Illuminate\Support\Facades\URL;
 use App\Models\CompanyOrganizer;
-use Illuminate\Support\Facades\DB;
 
 class FeedbackContacteController extends Controller
 {
@@ -31,11 +30,12 @@ class FeedbackContacteController extends Controller
         $this->feedbackRepository = $feedbackRepository;
     }
 
-    public function index($id, $ext_id = null)
+    public function index($id,$at_id = null,$ext_id = null)
     {
         $sidebar = '';
         $course = Course::where('key',$id)->first();
         $questionnaireAnswers = QuestionnaireAnswers::where('attendees_id',$ext_id)->where('type',0)->count();
+
         if($questionnaireAnswers> 0)
         {
             $messgeTemplate = getEmailTemplatesByID(16);
@@ -47,6 +47,7 @@ class FeedbackContacteController extends Controller
             return view('contacte.error',['message' => $message]);
     
         }
+       
         if($course) {
             $CompanyOrganizer = CompanyOrganizer::where('course_id', $course->id)->first();
            
@@ -61,34 +62,39 @@ class FeedbackContacteController extends Controller
                 }
             }
         }
-       return view('contacte.create',['id' => $id,'sidebar' => $sidebar,'ext_id' => $ext_id]);
+       return view('contacte.create',['id' => $id,'sidebar' => $sidebar,'ext_id' => $ext_id,'at_id' => $at_id]);
     }
 
     public function store(Request $request)
     {
         $this->feedbackRepository->create($request->all());
-        return redirect()->route('attendees-questionnaire',[$request->key,$request->attendee_id])->with('success', "Course created successfully!");
+        return redirect()->route('attendees-questionnaire',[$request->key,$request->attendee_id,$request->ext_id])->with('success', "Course created successfully!");
     }
 
-    public function attendeesquestion($id,$attendee_id)
+    public function attendeesquestion($id,$attendee_id,$ext_id = null)
     {
-        // dd($attendee_id);
-       
+        // dd($ext_id);
+
         $sidebar = '';
         $course = Course::where('key',$id)->first();
-        $questionnaireAnswers = QuestionnaireAnswers::where('attendees_id',$attendee_id)->where('type',0)->count();
-        if($questionnaireAnswers> 0)
-        {
-            $messgeTemplate = getEmailTemplatesByID(16);
-            if ($messgeTemplate)
+        // if($ext_id == 'null')
+        // {
+            
+            $questionnaireAnswers = QuestionnaireAnswers::where('attendees_id',$attendee_id)->where('type',0)->count();
+            if($questionnaireAnswers> 0)
             {
-                $paramArr = [];
-                $message  = replaceHTMLBodyWithParam($messgeTemplate['template'],$paramArr);
+                $messgeTemplate = getEmailTemplatesByID(16);
+                if ($messgeTemplate)
+                {
+                    $paramArr = [];
+                    $message  = replaceHTMLBodyWithParam($messgeTemplate['template'],$paramArr);
+                }
+                return view('contacte.error',['message' => $message]);
+        
             }
-            return view('contacte.error',['message' => $message]);
-    
-        }
-        if($course) {
+        // }
+        if($course) 
+        {
             $CompanyOrganizer = CompanyOrganizer::where('course_id', $course->id)->first();
            
             if($CompanyOrganizer) 
@@ -126,11 +132,10 @@ class FeedbackContacteController extends Controller
                     ];
 
                     $AttendeeQuestionsList[] = $AttendeeQuestionsArr;
-
-                    $attendeeQuestions = QuestionnaireAnswers::create($AttendeeQuestionsArr);
                     
+                    $attendeeQuestions = QuestionnaireAnswers::create($AttendeeQuestionsArr);
                 }
-                $attendeeReferens->update(['questionnaire_filled' => 'YES']);
+                $attendeeReferens->update(array('questionnaire_filled' => 'YES'));
                 if($course->trainer)
                 {
                     foreach ($course->trainer as $key => $trainer) {
@@ -155,6 +160,9 @@ class FeedbackContacteController extends Controller
                         $trainerArr['questionnaire_360'] = $this->getQuestionnaire360List($attendeesArrList);
                         $data['trainerArr'] = $trainerArr;
                         $data['self_attende'] = 'Yes';
+                        $attendeeData = CourseAttendees::where('id', $request->attendee_id)->first();
+                        $data['attendee_name'] = $attendeeData->first_name. " " . $attendeeData->last_name;
+                        $data['referens_name'] = '';
                         
                          Mail::to($trainer->email)->send(new CourseTrainerMail($data));
                         //  dd($data);
@@ -219,22 +227,26 @@ class FeedbackContacteController extends Controller
        
         return $returnTable;
     }
-    public function question($id,$attendee_id)
+    public function question($id,$attendee_id,$ext_id = null)
     {
+        // dd($ext_id);
         $sidebar = '';
         $course = Course::where('key',$id)->first();
-        $questionnaireAnswers = QuestionnaireAnswers::where('attendees_id',$attendee_id)->where('type',1)->count();
-        if($questionnaireAnswers> 0)
-        {
-            $messgeTemplate = getEmailTemplatesByID(16);
-            if ($messgeTemplate)
+        // if($ext_id == 'null')
+        // {
+            $questionnaireAnswers = QuestionnaireAnswers::where('attendees_id',$attendee_id)->where('type',1)->count();
+            if($questionnaireAnswers> 0)
             {
-                $paramArr = [];
-                $message  = replaceHTMLBodyWithParam($messgeTemplate['template'],$paramArr);
+                $messgeTemplate = getEmailTemplatesByID(16);
+                if ($messgeTemplate)
+                {
+                    $paramArr = [];
+                    $message  = replaceHTMLBodyWithParam($messgeTemplate['template'],$paramArr);
+                }
+                return view('contacte.error',['message' => $message]);
+        
             }
-            return view('contacte.error',['message' => $message]);
-    
-        }
+        // }
         if($course) {
             $CompanyOrganizer = CompanyOrganizer::where('course_id', $course->id)->first();
            
@@ -251,7 +263,7 @@ class FeedbackContacteController extends Controller
             }
         }
         $questions = Questions::all();
-        return view('contacte.question',['questions' => $questions,'attendee_id' => $attendee_id ,'id' => $id,'sidebar' => $sidebar]);
+        return view('contacte.question',['questions' => $questions,'attendee_id' => $attendee_id ,'id' => $id,'sidebar' => $sidebar,'ext_id' => $ext_id]);
     }
 
     public function storequestion(Request $request)
@@ -276,9 +288,7 @@ class FeedbackContacteController extends Controller
                         'type'    => 1,
                     ];
 
-                   
                     $attendeeQuestions = QuestionnaireAnswers::create($AttendeeQuestionsArr);
-                    
                   
                 }
                 $attendeeReferens->update(array('questionnaire_filled' => 'YES'));
@@ -305,7 +315,9 @@ class FeedbackContacteController extends Controller
                         $trainerArr['questionnaire_360'] = $this->getQuestionnaire360List($attendeesArrList);
                         $data['trainerArr'] = $trainerArr;
                         $data['self_attende'] = '360';
-                        
+                        $attendeeData = CourseAttendees::where('id',$request['attendee_id'])->first();
+                        $data['attendee_name'] = $attendeeData->first_name. " " . $attendeeData->last_name;
+                        $data['referens_name'] = $attendeeReferens->first_name. " " . $attendeeReferens->last_name;
                         Mail::to($trainer->email)->send(new CourseTrainerMail($data));
                     }
                 }
@@ -321,7 +333,9 @@ class FeedbackContacteController extends Controller
                 $attendeeArr['company_organiser_attendees_name'] = $course->companyorganizer->first_name. " " . $course->companyorganizer->last_name;
                 $attendeeArr['attendees_list'] = $this->getAttendeerefList($course->id);
                 $data['attendeeArr'] = $attendeeArr;
-                $data['key'] = $request->key.'/360-frm';
+                $data['key'] = $request->key.'/'.$request['attendee_id'].'/360-frm';
+                // $data['ext_ext'] = '360-frm';
+                // $data['attendees_id'] = $request['attendee_id'];
                 $newkey = $SafeencryptionObj->encode($key);
                 Mail::to($attende->email)->send(new ThankyouMail($data));
 

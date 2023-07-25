@@ -23,6 +23,7 @@
 
       .bg-details>h5, p {
           color: #454545;
+          margin-bottom: 0rem !important;
       } 
       .error-bg{
       background-color:#000066;
@@ -52,7 +53,6 @@
 
       .attendee-home-error{
         margin-left:0rem;
-        overflow-y: hidden !important;
       }
 
       .success-text-clr{
@@ -71,6 +71,103 @@
         margin-bottom:0rem !important;
       }
 
+      .success-text-clr a {
+    color: red;
+}
+
+.align-items-center.success-text-clr {
+    align-items: center !important;
+    gap: 15px;
+}
+
+.error-heading-text{
+  padding: 1.25rem;
+}
+
+.bi-check-circle-fill::before {
+    content: "\f26a";
+    font-size: 40px;
+}
+@media only screen and (min-width: 768px){
+[data-sidebar-style="mini"] .content-body.attendee-home-error {
+    margin-left: 0rem;
+}
+}
+
+.success-customise-para li {
+    list-style: disc;
+}
+
+.accordion-add-contact-colr{
+  margin:15px 0px;
+}
+
+.accordion-add-contact-colr a{
+color:red;
+}
+.content-body.attendee-home-error {
+    overflow-y: unset !important;
+}
+
+.content-body .container-fluid {
+    padding-right: 30px;
+    padding-left: 30px;
+    overflow-y: hidden !important;
+}
+.degree-feedback-contact-customise{
+                padding:18px 0px;
+            }
+
+            .degree-feedback-contact-customise li {
+    list-style: disc !important;
+    font-weight:normal !important;
+}
+
+.degree-feedback-contact-customise li a:hover{
+color:red;
+text-decoration:underline !important;
+}
+
+.degree-feedback-contact-customise ul {
+    padding: 0px 40px;
+}
+
+@media only screen and (min-width: 340px) and (max-width: 992px){
+.footer.attendee-home {
+    padding-left: 0rem;
+}
+}
+
+.header .header-content {
+    height: 100%;
+    padding-left: 0rem;
+    padding-right: 0rem;
+    align-items: center;
+    display: flex;
+}
+
+@media only screen and (max-width: 575px){
+  .header .header-content {
+    padding-left: 0rem !important;
+}
+  }
+
+  .success-customise-para ul {
+    color: red;
+    padding: 0px 35px;
+}
+
+.success-customise-para li a:hover{
+color:red;
+text-decoration:underline !important;
+}
+
+@media only screen and (max-width: 525px){
+
+.header .header-content {
+padding-right: 2rem !important;
+}
+}
   </style>
   </head>
 
@@ -103,9 +200,9 @@
                             
                                 <div>
                                 <div class="welcome-text text-center">
-                                  <body onload="startTime()">
-                                    <p id="demo"></p>
-                                </body>
+                                     <body onload="startTime()">
+                                        <p id="demo"></p>
+                                    </body>
                                 </div>
                             </div>
                         </div>
@@ -130,19 +227,13 @@
             <div class="container-fluid ">
       
             
-              {{-- <div class="card">
-                <button class="accordion accordion-extra attendee-home-lgt attendee-bg-clr add-contact-font">INSTRUCTION</button>
-                <div class="panel accordion-panel-extra accordion-add-contact-colr">
-                  {!! $sidebar !!}
-                </div>
-             
-               </div> --}}
+              
               
                             
             <div class="card error-bg">
                 <div class="success-error-content">
                 <div class="card-header error-heading-text">
-                  Thank You
+                  <strong>THANK YOU</strong>
                 </div>
                 
 
@@ -158,7 +249,15 @@
                         
             </div>
 
-            
+            {{-- <div class="card">
+                <button class="accordion-extra attendee-home-lgt attendee-bg-clr add-contact-font">INSTRUCTION</button>
+                <div class="accordion-add-contact-colr">
+                <div class="degree-feedback-contact-customise">
+                  {!! $sidebar !!}
+                </div>
+            </div>
+             
+               </div> --}}
 
             </div>
         </div>
@@ -209,39 +308,39 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js" integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script type="text/javascript">
-      function startTime()
-      {
-          var today=new Date();
-          //                   1    2    3    4    5    6    7    8    9   10    11  12   13   14   15   16   17   18   19   20   21   22   23   24   25   26   27   28   29   30   31   32   33
-          var suffixes = ['','st','nd','rd','th','th','th','th','th','th','th','th','th','th','th','th','th','th','th','th','th','st','nd','rd','th','th','th','th','th','th','th','st','nd','rd'];
+        function startTime()
+        {
+            var today=new Date();
+            //                   1    2    3    4    5    6    7    8    9   10    11  12   13   14   15   16   17   18   19   20   21   22   23   24   25   26   27   28   29   30   31   32   33
+            var suffixes = ['','st','nd','rd','th','th','th','th','th','th','th','th','th','th','th','th','th','th','th','th','th','st','nd','rd','th','th','th','th','th','th','th','st','nd','rd'];
 
-          var weekday = new Array(7);
-          weekday[0] = "Sunday";
-          weekday[1] = "Monday";
-          weekday[2] = "Tuesday";
-          weekday[3] = "Wednesday";
-          weekday[4] = "Thursday";
-          weekday[5] = "Friday";
-          weekday[6] = "Saturday";
+            var weekday = new Array(7);
+            weekday[0] = "Sunday";
+            weekday[1] = "Monday";
+            weekday[2] = "Tuesday";
+            weekday[3] = "Wednesday";
+            weekday[4] = "Thursday";
+            weekday[5] = "Friday";
+            weekday[6] = "Saturday";
 
-          var month = new Array(12);
-          month[0] = "January";
-          month[1] = "February";
-          month[2] = "March";
-          month[3] = "April";
-          month[4] = "May";
-          month[5] = "June";
-          month[6] = "July";
-          month[7] = "August";
-          month[8] = "September";
-          month[9] = "October";
-          month[10] = "November";
-          month[11] = "December";
+            var month = new Array(12);
+            month[0] = "January";
+            month[1] = "February";
+            month[2] = "March";
+            month[3] = "April";
+            month[4] = "May";
+            month[5] = "June";
+            month[6] = "July";
+            month[7] = "August";
+            month[8] = "September";
+            month[9] = "October";
+            month[10] = "November";
+            month[11] = "December";
 
-          document.getElementById('demo').innerHTML=(weekday[today.getDay()] + ',' + " " + today.getDate()+'<sup>'+suffixes[today.getDate()]+'</sup>' + " " + month[today.getMonth()] + " " + today.getFullYear() + ' at ' + today.toLocaleTimeString());
-          t=setTimeout(function(){startTime()},500);
-      }
-  </script>
+            document.getElementById('demo').innerHTML=(weekday[today.getDay()] + ',' + " " + today.getDate()+'<sup>'+suffixes[today.getDate()]+'</sup>' + " " + month[today.getMonth()] + " " + today.getFullYear() + ' at ' + today.toLocaleTimeString());
+            t=setTimeout(function(){startTime()},500);
+        }
+    </script>
 
 <script>
   var acc = document.getElementsByClassName("accordion");

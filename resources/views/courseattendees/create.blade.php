@@ -41,6 +41,38 @@ $mycountphp = 1;
         .has_error {
     border: 1px solid red;
 }
+
+.attendee-home .card-body h5 {
+    font-size: 1.2rem !important;
+}
+
+@media (min-width: 1200px) and (max-width: 1350px){
+.content-body.attendee-home {
+    margin-left: 0rem;
+}
+}
+
+@media only screen and (max-width: 525px){
+button.btn.btn-outline-danger {
+    font-size: 10px !important;
+    width: fit-content !important;
+}
+}
+@media only screen and (max-width: 1440px){
+    .attendee-home .card-body h5 {
+    font-size: 1rem !important;
+}
+}
+
+@media screen and (max-width: 767px){
+    .attendee-home .card-body h5 {
+    font-size: 15px !important;
+}
+}
+
+.degree-feedback-contact-customise{
+                padding:18px 0px;
+            }
     </style>
   </head>
 
@@ -130,26 +162,28 @@ $mycountphp = 1;
         ***********************************-->
 
       <div class="content-body attendee-home ">
-        <div class="container-fluid">
+        <div class="container-fluid ">
       
             <div class="card">
                 <button class="accordion accordion-extra attendee-home-lgt attendee-bg-clr add-contact-font">INSTRUCTION</button>
-                <div class="panel accordion-panel-extra accordion-add-contact-colr">
+            <div class="panel accordion-panel-extra accordion-add-contact-colr">
+                <div class="degree-feedback-contact-customise">
                   {!! $sidebar !!}
                 </div>
-             
             </div>
+             
+               </div>
 
-            <div class="row">
+              <div class="row">
                 <div class="col-xl-6 col-xxl-12">
 
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title">ATTENDEES</h4>
+                            <h4 class="card-title">Attendees</h4>
                         </div>
                         <div class="card-body">
                             <hr>
-                            <h5>ATTENDEE DETAILS</h5>
+                            <h5 class="card-title attendee-card-title"><strong>Attendee Details</strong></h5>
                             <hr>
                             <div class="basic-form">
                                 <form class="attendees-repeater" action="{{ route('store-attendees') }}" method="post"
@@ -171,27 +205,27 @@ $mycountphp = 1;
                                                             <label>Last Name<span class="filedrequired">*</span></label>
                                                             <div class="input-error">
                                                                 <input type="text" name="last_name" class="form-control"  onkeyup="this.value=this.value.replace(/[^A-z]/g,'');" required>
-                                                            </div>
+                                                        </div>
                                                         </div>
                                                         
                                                         <div class="form-group col-md-6 form-gap-2">
                                                             <label>Email Address<span class="filedrequired">*</span></label>
                                                             <div class="input-error">
                                                                 <input type="email" name="email" class="form-control"  required>
-                                                            </div>
+                                                        </div>
                                                         </div>
                                                         <div class="form-group col-md-6 form-gap-2">
                                                             <label class="text-label">Your Job Title</label>
                                                             <div class="input-error">
                                                                 <select class="form-select form-select-sm" name="job_title" id="form-select-sm-attendee-1" aria-label=".form-select-sm example" required>
-                                                                    <option value="" selected disabled>Select Job Title</option>
-                                                                    <option value="1">Director</option>
-                                                                    <option value="2">Department Head</option>
-                                                                    <option value="3">Manager</option>
-                                                                    <option value="4">Project Manager / Specialist</option>
-                                                                    <option value="5">Team Member</option>
-                                                                </select>
-                                                            </div>
+                                                                <option value="" selected disabled>Select Job Title</option>
+                                                                <option value="1">Director</option>
+                                                                <option value="2">Department Head</option>
+                                                                <option value="3">Manager</option>
+                                                                <option value="4">Project Manager / Specialist</option>
+                                                                <option value="5">Team Member</option>
+                                                            </select>
+                                                        </div>
                                                         </div>
                                                         <div class="col-md-2 col-12 mb-50">
                                                             <div class="form-group">
@@ -203,12 +237,13 @@ $mycountphp = 1;
                                                                 </button>
                                                             </div>
                                                         </div>
-                                                        <hr/>
+</hr>
                                                     </div>
-                                                    <hr />
                                                 </div>
+                                            
                                             </div>
-                                        </div>        
+                                        </div>     
+                                        <hr>   
                                     <button type="submit" class="btn btn-primary">Send Instructions</button>
                                     <button type="button" class="btn btn-primary">Cancel</button>
                                     <button type="button" class="btn btn-primary" data-repeater-create>Add Another Attendee</button>

@@ -18,6 +18,56 @@
       .accordion-add-contact-colr p{
           color: #454545 !important;
       }
+
+      .question-container{
+        padding-top: 30px;
+      }
+
+      .question-attendee-home-content{
+        padding-bottom: 20px;
+      }
+
+      .question-attendee-home-content .btn-primary:focus, .btn-primary.focus {
+    box-shadow: none;
+    color: white;
+}
+
+.degree-feedback-contact-customise{
+                padding:18px 0px;
+            }
+
+            @media only screen and (max-width: 575px){
+.header .header-content {
+    padding-left: 0rem;
+}
+
+.header {
+    padding-left: 0rem !important;
+ }
+
+ .table thead th {
+    font-size: 14px;
+ }
+
+ .accordion-extra {
+    font-size: 15px;
+}
+
+.header .header-content {
+    padding-left: 2rem !important;
+        }
+
+            }
+
+ .header {
+    padding-left: 0rem !important;
+ }
+
+ @media only screen and (min-width: 340px) and (max-width: 992px){
+.footer {
+    padding-left: 0rem;
+}
+ }
   </style>
   </head>
 
@@ -83,22 +133,24 @@
         ***********************************-->
 
       <div class="content-body attendee-home">
-        <div class="container-fluid">
+        <div class="container-fluid question-container">
           <!--**********************************
             Content body end
         ***********************************-->
 
         <div class="card">
           <button class="accordion accordion-extra attendee-home-lgt attendee-bg-clr add-contact-font">INSTRUCTION</button>
-          <div class="panel accordion-panel-extra accordion-add-contact-colr">
+        <div class="panel accordion-panel-extra accordion-add-contact-colr">
+          <div class="degree-feedback-contact-customise">
             {!! $sidebar !!}
           </div>
+        </div>
        
          </div>
 
-          <div class="card">
+          <div class="card question-attendee-home-content">
             <div class="card-header attendee-bg-clr attendee-home-lgt">
-              360 - DEEGRI FEEDBACK CONTACTS QUESTIONNAIRE
+              <strong>360 - DEGREE FEEDBACK CONTACTS QUESTIONNAIRE</strong>
             </div>
             <div class="card-body">
               <p class="card-text attendee-home-font">
@@ -160,7 +212,7 @@
                 </form>
             </div>
           </div>
-
+          </div>
           <!--**********************************
             Footer start
         ***********************************-->
@@ -186,7 +238,7 @@
           <!--**********************************
            Support ticket button end
         ***********************************-->
-        </div>
+        
       </div>
       <!--**********************************
         Main wrapper end

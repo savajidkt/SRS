@@ -3,6 +3,25 @@
 @section('content')
 <style>
     .filedrequired, .help-block-error{ color: #FF1616}
+    
+    @media screen and (max-width: 992px){
+.add_course_step_2_col .email-customize{
+white-space: nowrap !important;
+}
+.add_course_form_content .form-group {
+    display: grid;
+    grid-template-columns: 100% !important;
+    justify-content: flex-start !important;
+}
+}
+
+.add_course_step_2_col .email-customize{
+white-space: nowrap !important;
+}
+
+.company-organizer-customise-section{
+    margin-bottom:15px;
+}
 </style>
     <!--**********************************
             Content body start
@@ -22,33 +41,33 @@
                 <div class="col-xl-12 col-xxl-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title">COURSE DETAILS</h4>
+                            <h4 class="card-title"><strong>Course Details</strong></h4>
                         </div>
                         <div class="card-body add_course_form_content">
                             <form action="{{ route('companyorganizer.store') }}" method="post" id="step-form-horizontal" class="step-form-horizontal">
                                 @csrf
                                 <div>
                                     <hr>
-                                    <h4>COMPANY ORGANIZER DETAILS</h4>
+                                    <h4 class="card-title"><strong>Company Organizer Details</strong></h4>
                                    <hr>
-                                    <section>
+                                    <section class="add-course-customize-content">
                                         <div class="row">
                                             <div class="col-lg-12 mb-4 form-style add_course_step_2_col">
                                                 <div class="form-group train-deet add_course_form">
-                                                    <label class="text-label">First Name<span class="filedrequired">*</span></label>
+                                                    <label class="text-label email-customize">First Name<span class="filedrequired">*</span></label>
                                                     <input type="text" name="first_name"  class="form-control" placeholder="" required>
                                                 </div>
                                             
                                             
                                                 <div class="form-group train-deet add_course_form">
-                                                    <label class="text-label">Surname<span class="filedrequired">*</span></label>
+                                                    <label class="text-label email-customize">Surname<span class="filedrequired">*</span></label>
                                                     <input type="text" name="last_name" class="form-control" placeholder="" required>
                                                 </div>
                                             
                                         
                                            
                                                 <div class="form-group train-deet add_course_form">
-                                                    <label class="text-label">Email Address<span class="filedrequired">*</span></label>
+                                                    <label class="text-label email-customize">Email Address<span class="filedrequired">*</span></label>
                                                     <div class="input-group">
                                                         <input type="hidden" name="course_id" value="1">
                                                         <input type="email" name="email" class="form-control" id="inputGroupPrepend2" aria-describedby="inputGroupPrepend2" placeholder="" required>

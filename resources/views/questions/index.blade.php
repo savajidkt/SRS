@@ -25,7 +25,7 @@
         </div>
     </div>
     <!-- <div class="col-xl-12 col-xxl-12"> -->
-    <div class="">
+    <div class="influencing-question-customise-content">
         <select id="customFilter" name="category_id" class="form-control custom-cls">
             <option value="">Select Category</option>
                 <option value="1">Emotive</option>

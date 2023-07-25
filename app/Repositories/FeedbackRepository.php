@@ -23,7 +23,7 @@ class FeedbackRepository
      */
     public function create(array $data): AttendeeReferens
     {
-        
+        // dd($data);
         $course = Course::where('key',$data['key'])->first();
         if($course)
         {
@@ -49,7 +49,6 @@ class FeedbackRepository
                         ];
 
                         $AttendeeRefreshArrList[] = $AttendeeRefreshArrListArr;
-
                       
                         $data['course'] = $course;
                         $data['courseAttendeesList'] = $courseAttendees;

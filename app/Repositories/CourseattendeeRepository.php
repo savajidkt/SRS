@@ -78,6 +78,7 @@ class CourseAttendeeRepository
                         $trainerArr['company_address'] = $client->address_one. "," . $client->address_tow ."<br>".$client->town . "," .$client->post_code;
                         $trainerArr['company_name'] = $client->company_name;
                         $data['trainerArr'] = $trainerArr;
+                        $data['referens_name'] = '';
                         Mail::to($trainer->email)->send(new CourseTrainerMail($data));
                     }
                 }

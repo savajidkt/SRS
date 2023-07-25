@@ -26,24 +26,24 @@
                     <?php
                     
  if( $model->type == "email" ){
-           ?>                 <li class="breadcrumb-item"><a href="{{ route('templatemanager.index') }}">Template Manager</a></li>           
-                            <li class="breadcrumb-item active"><a href="{{ route('templatemanager.index') }}">Email Template Manager</a></li>
+           ?>                 <li class="breadcrumb-item"><a href="javascript:void(0)">Template Manager</a></li>           
+                            <li class="breadcrumb-item active"><a href="javascript:void(0)">Email Template Manager</a></li>
                             <?php
         } else if( $model->type == "help" ){
             ?>                            
-                             <li class="breadcrumb-item"><a href="{{ route('templatemanager-help') }}">Help Template Manager</a></li> 
-                            <li class="breadcrumb-item active"><a href="{{ route('templatemanager-help') }}">Email Help Template Manager</a></li>
+                             <li class="breadcrumb-item"><a href="javascript:void(0)">Template Manager</a></li> 
+                            <li class="breadcrumb-item active"><a href="javascript:void(0)">Help Template Manager</a></li>
                             <?php
 
         } else if( $model->type == "message" ){
             ?>                            
-            ?>                 <li class="breadcrumb-item"><a href="{{ route('templatemanager-customize') }}">Customize Template Manager</a></li> 
-                            <li class="breadcrumb-item active"><a href="{{ route('templatemanager-customize') }}">Email Customize Template Manager</a></li>
+            ?>                 <li class="breadcrumb-item"><a href="javascript:void(0)">Template Manager</a></li> 
+                            <li class="breadcrumb-item active"><a href="javascript:void(0)">Message Template Manager</a></li>
                             <?php
         } else if( $model->type == "template" ){
             ?>
-                                            <li class="breadcrumb-item"><a href="{{ route('templatemanager-common') }}">Common Template Manager</a></li> 
-                            <li class="breadcrumb-item active"><a href="{{ route('templatemanager-common') }}">Email Common Template Manager</a></li>
+                                            <li class="breadcrumb-item"><a href="javascript:void(0)">Template Manager</a></li> 
+                            <li class="breadcrumb-item active"><a href="javascript:void(0)">Common Template Manager</a></li>
                             
                             <?php
         }

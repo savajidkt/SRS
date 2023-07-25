@@ -27,6 +27,53 @@
     box-shadow: none;
     color: white;
 }
+
+.attendee-error .header .header-content {
+    height: 100%;
+    padding-left: 0rem;
+    padding-right: 0rem;
+    align-items: center;
+    display: flex;
+}
+
+.degree-feedback-contact-customise{
+                padding:18px 0px;
+            }
+
+            @media only screen and (max-width: 575px){
+.header .header-content {
+    padding-left: 0rem;
+}
+
+.header {
+    padding-left: 0rem !important;
+ }
+
+ .table thead th {
+    font-size: 14px;
+ }
+
+ .accordion-extra {
+    font-size: 15px;
+}
+
+.header .header-content {
+    padding-left: 2rem !important;
+        }
+
+            }
+
+ .header {
+    padding-left: 0rem !important;
+ }
+
+ @media only screen and (min-width: 340px) and (max-width: 992px){
+.footer {
+    padding-left: 0rem;
+}
+ }
+
+ 
     </style>
 </head>
 
@@ -119,14 +166,18 @@
                     <button
                         class="accordion accordion-extra attendee-home-lgt attendee-bg-clr add-contact-font">INSTRUCTION</button>
                     <div class="panel accordion-panel-extra accordion-add-contact-colr">
+                    <div class="degree-feedback-contact-customise">
                         {!! $sidebar !!}
+</div>
                     </div>
 
                 </div>
 
                 <div class="card question-attendee-home-content">
                     <div class="card-header attendee-bg-clr attendee-home-lgt">
+                        <strong>
                         ATTENDEE QUESTIONNAIRE
+</strong>
                     </div>
                     <div class="card-body">
                         <p class="card-text attendee-home-font">

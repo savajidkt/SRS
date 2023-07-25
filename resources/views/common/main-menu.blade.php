@@ -1,4 +1,4 @@
-        <div class="quixnav">
+        <div class="quixnav_custom_sidebar">
             <div class="quixnav-scroll">
                 <ul class="metismenu" id="menu">
                     <li class="nav-label first">Main Menu</li>

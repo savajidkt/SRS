@@ -22,7 +22,7 @@
         @method('PUT')
         
         
-        <div class="mb-3">
+        <div class="mb-3 question-customize-para">
             <label for="exampleFormControlTextarea1" class="form-label attendee-question">Question</label>
             <textarea class="form-control" name="question" id="exampleFormControlTextarea1" rows="3" placeholder="I am able to tell others how I am feeling about a situation" required>{{(isset($model->question))?$model->question:''}}</textarea>
         </div>

@@ -92,6 +92,8 @@ $myTable = "";
     $paramArr['company_organiser_attendees_email'] = $data['trainerArr']['company_organiser_attendees_email'];
     $paramArr['course_end_date'] = dateFormat($data['trainerArr']['course_end_date']);
     $paramArr['attendees_list'] = $myTable;
+    $paramArr['attendee_name'] = $data['attendee_name'];
+    $paramArr['referens_name'] = $data['referens_name'];
     // $paramArr['link'] = URL::to('/course-attendees/'.$data['key']);
     $paramArr['year'] = date('Y');
 

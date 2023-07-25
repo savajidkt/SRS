@@ -17,13 +17,13 @@
           <div>
           <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="javascript:void(0)">Course Management</a></li>
-              <li class="breadcrumb-item active"><a href="./chart-morris.html">View Courses</a></li>
+              <li class="breadcrumb-item active"><a href="javascript:void(0)">View Courses</a></li>
           </ol>
       </div>
   </div>
 
-  <div>
-  <table class="table table-bordered table-striped">
+  <div class="course-content-style">
+  <table class="table table-bordered table-striped course-table-style">
       <thead>
         <tr class="table-client-row">
             <th scope="col">ID</th>

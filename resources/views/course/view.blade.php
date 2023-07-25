@@ -16,7 +16,7 @@
                                                                                                                         Content body start
                                                                                                                     ***********************************-->
 
-    <div class="container-fluid">
+    <div class="container-fluid course-view-influencing-container">
         <div class="row row-a page-titles mx-0">
             <div class="col-sm-6 p-md-0-a">
                 <div class="view-course-text-a">
@@ -62,7 +62,7 @@
 
 
             @if ($modal->attendees->count() > 0)
-                <div class="card">
+                <div class="card course-view-customize">
                     @foreach ($modal->attendees as $key => $attendees)
                         @php
                             $isBackGroud = getBackgroudColorByStatus($attendees);

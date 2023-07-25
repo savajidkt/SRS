@@ -17,7 +17,7 @@ $mycountphp = 1;
         <div class="row">
             <div class="col-lg-12 mb-4 form-style">
                 <div class="form-group train-deet">
-                    <label class="text-label">Company Name<span class="filedrequired"> *</span></label>
+                    <label class="text-label">Company Name<span class="filedrequired">*</span></label>
                     {{-- <input type="text" name="firstName" class="form-control" placeholder="" > --}}
                     <div class="input-error">
                         <input class="form-control " id="company_name" type="text" name="company_name"
@@ -36,7 +36,7 @@ $mycountphp = 1;
                     
                 </div>
                 <div class="form-group train-deet">
-                    <label class="text-label">Address Line 1<span class="filedrequired"> *</span></label>
+                    <label class="text-label">Address Line 1<span class="filedrequired">*</span></label>
                     <div class="input-error">
                         <input class="form-control" id="address_one" type="text" name="address_one"
                             placeholder="Address" value="{{(isset($model->address_one))?$model->address_one:''}}" aria-describedby="login-address_one"
@@ -62,7 +62,7 @@ $mycountphp = 1;
                     </div>
                 </div>
                 <div class="form-group train-deet">
-                    <label class="text-label">Town<span class="filedrequired"> *</span></label>
+                    <label class="text-label">Town<span class="filedrequired">*</span></label>
                     <div class="input-error">
                         <input class="form-control" id="town" type="text" name="town" placeholder="Town"
                             value="{{(isset($model->town))?$model->town:''}}" aria-describedby="login-town" autofocus=""                              />
@@ -74,7 +74,7 @@ $mycountphp = 1;
                     </div>
                 </div>
                 <div class="form-group train-deet">
-                    <label class="text-label">Country<span class="filedrequired"> *</span></label>
+                    <label class="text-label">Country<span class="filedrequired">*</span></label>
                     <div class="input-error">
                         <select class="form-select form-select-sm select2" aria-label=".form-select-sm example" id="country" name="country" >
                             <option value="">Select Country</option>
@@ -97,7 +97,7 @@ $mycountphp = 1;
                     </div>
                 </div>
                 <div class="form-group train-deet">
-                    <label class="text-label">Post Code<span class="filedrequired"> *</span></label>
+                    <label class="text-label">Post Code<span class="filedrequired">*</span></label>
                     <div class="input-error">
                         <input class="form-control" id="post_code" type="text" name="post_code" placeholder="Post Code"
                             value="{{(isset($model->post_code))?$model->post_code:''}}" aria-describedby="login-post_code" autofocus=""                              />
@@ -138,14 +138,14 @@ $mycountphp = 1;
 
                 <div class="col-lg-12 mb-4 form-style">
                     <div class="form-group train-deet">
-                        <label class="itemcost">First Name<span class="filedrequired"> *</span></label>
+                        <label class="itemcost">First Name<span class="filedrequired">*</span></label>
                         <div class="input-error">
                             <input type="text" class="form-control" name="first_name"
                             value="{{$contact->first_name}}" onkeyup="this.value=this.value.replace(/[^A-z]/g,'');" />
                         </div>
                     </div>
                     <div class="form-group train-deet">
-                        <label class="itemcost">Last Name<span class="filedrequired"> *</span></label>
+                        <label class="itemcost">Last Name<span class="filedrequired">*</span></label>
                         <div class="input-error">
                             <input type="text" class="form-control" name="last_name"
                             value="{{$contact->last_name}}" onkeyup="this.value=this.value.replace(/[^A-z]/g,'');" />
@@ -153,7 +153,7 @@ $mycountphp = 1;
                     </div>
 
                     <div class="form-group train-deet">
-                        <label class="itemcost">Phone Number<span class="filedrequired"> *</span></label>
+                        <label class="itemcost">Phone Number<span class="filedrequired">*</span></label>
                         <div class="input-error">
                             <input type="text" class="form-control" name="phone_number"
                             value="{{$contact->phone_number}}" onkeyup="this.value = this.value.replace(/^\.|[^\d\.]/g, '')" />
@@ -162,14 +162,14 @@ $mycountphp = 1;
 
 
                     <div class="form-group train-deet">
-                        <label class="itemcost">Mobile Number<span class="filedrequired"> *</span></label>
+                        <label class="itemcost">Mobile Number<span class="filedrequired">*</span></label>
                         <div class="input-error">
                             <input type="text" class="form-control" name="mobile_number"
                             value="{{$contact->mobile_number}}" onkeyup="this.value = this.value.replace(/^\.|[^\d\.]/g, '')" />
                         </div>
                     </div>
                     <div class="form-group train-deet">
-                        <label class="itemcost">Email Address<span class="filedrequired"> *</span></label>
+                        <label class="itemcost">Email Address<span class="filedrequired">*</span></label>
                         <div class="input-error">
                             <input type="email" class="form-control" name="email" value="{{$contact->email}}" />
                         </div>
@@ -202,20 +202,20 @@ $mycountphp = 1;
 
                 <div class="col-lg-12 mb-4 form-style">
                     <div class="form-group train-deet">
-                        <label class="text-label">First Name<span class="filedrequired"> *</span></label>
+                        <label class="text-label">First Name<span class="filedrequired">*</span></label>
                         <div class="input-error">
                             <input type="text" class="form-control" name="first_name" value="" onkeyup="this.value=this.value.replace(/[^A-z]/g,'');"  >
                         </div>
                     </div>
                     <div class="form-group train-deet">
-                        <label class="text-label">Last Name<span class="filedrequired"> *</span></label>
+                        <label class="text-label">Last Name<span class="filedrequired">*</span></label>
                         <div class="input-error">
                             <input type="text" class="form-control" name="last_name" value="" onkeyup="this.value=this.value.replace(/[^A-z]/g,'');" />
                         </div>
                     </div>
 
                     <div class="form-group train-deet">
-                        <label class="text-label">Phone Number<span class="filedrequired"> *</span></label>
+                        <label class="text-label">Phone Number<span class="filedrequired">*</span></label>
                         <div class="input-error">
                             <input type="text" class="form-control" name="phone_number"
                             value="" onkeyup="this.value = this.value.replace(/^\.|[^\d\.]/g, '')" />
@@ -224,14 +224,14 @@ $mycountphp = 1;
 
 
                     <div class="form-group train-deet">
-                        <label class="text-label">Mobile Number<span class="filedrequired"> *</span></label>
+                        <label class="text-label">Mobile Number<span class="filedrequired">*</span></label>
                         <div class="input-error">
                             <input type="text" class="form-control" name="mobile_number"
                             value="" onkeyup="this.value = this.value.replace(/^\.|[^\d\.]/g, '')"  />
                         </div>
                     </div>
                     <div class="form-group train-deet">
-                        <label class="text-label">Email Address<span class="filedrequired"> *</span></label>
+                        <label class="text-label">Email Address<span class="filedrequired">*</span></label>
                         <div class="input-error">
                             <input type="email" class="form-control" name="email" value=""  />
                         </div>

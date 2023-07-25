@@ -12,7 +12,7 @@
                                                     value="{{ $model->name }}">
                                             </div>
                                         </div>                                       
-                                        <div class="form-group edit-email-form-group">
+                                        <div class="form-group edit-email-form-group subject-style">
                                             <label class="text-label">Notes</label>
                                             <div class="email-content-style">
                                                 <textarea name="template" id="email-compose-editor" class="ckeditor textarea_editor form-control bg-transparent"

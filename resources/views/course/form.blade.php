@@ -138,7 +138,7 @@ $mycountphp = 1;
                                 </div>
                             </div>
                             <div class="form-group train-deet">
-                                <label class="itemcost email-customize">Confirm Email Address<span class="filedrequired">*</span></label>
+                                <label class="itemcost">Confirm Email Address<span class="filedrequired">*</span></label>
                                 <div class="input-error">
                                     <input type="email" class="form-control" name="email_confirm"  value="{{$trainer->email}}" id="confirm_email_0" confirm-email-id="confirm_email" />
                                 </div>

@@ -19,7 +19,7 @@
             <!-- <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex"> -->
             <div>
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{route('templatemanager.index')}}">Template Manager</a></li>
+                    <li class="breadcrumb-item"><a href="javascript:void(0)">Template Manager</a></li>
                     <li class="breadcrumb-item active"><a href="javascript:void(0)">Edit Email Template</a></li>
                 </ol>
             </div>

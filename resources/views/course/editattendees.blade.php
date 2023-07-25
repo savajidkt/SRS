@@ -19,9 +19,18 @@ $mycountphp = 1;
 
         @media only screen and (max-width: 525px){
 .edit-attendees-container-fluid button.btn.btn-outline-danger{
-font-size:13px !important;
+font-size:12px !important;
 }
 }
+
+@media only screen and (max-width: 525px) and (min-width: 323px){
+.btn.btn-primary {
+    width: fit-content;
+    font-size: 12px !important;
+}
+}
+
+
     </style>
     <script>
         var myCount = {{ $mycountphp }};   
