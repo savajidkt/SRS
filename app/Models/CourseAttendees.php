@@ -37,6 +37,11 @@ class CourseAttendees extends Model
         return $this->hasOne(QuestionnaireAnswers::class,'attendees_id','id')->where('type',0);
     }
 
+    public function questionnaireanser()
+    {
+        return $this->hasMany(QuestionnaireAnswers::class,'attendees_id','id')->where('type',0);
+    }
+
     public function questionnaireref()
     {
         return $this->hasMany(QuestionnaireAnswers::class,'attendees_id','id')->select('contact_id')->distinct()

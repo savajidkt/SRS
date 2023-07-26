@@ -26,7 +26,7 @@
             </div>
             <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
                 <ol class="breadcrumb breadcrumb-a">
-                    <li class="breadcrumb-item"><a href="javascript:void(0)"><button type="button"
+                    <li class="breadcrumb-item"><a href="{{ route('trainer-report',$modal->id) }}"><button type="button"
                                 class="btn btn-dark send-report-btn-a">Send Report to Trainer(s)</button>
                         </a></li>
                 </ol>
@@ -88,7 +88,7 @@
                             </p>
 
                             @if ($attendees->questionnaireself)
-                                <a href="javascript:void(0)" class="btn btn-primary">View Report</a>
+                                <a href="{{ route('export-attendees',$attendees->id) }}" class="btn btn-primary">View Report</a>
                             @else
                                 <a href="{{ route('chase-email-attendees', $attendees->id) }}"
                                     class="card-link btn btn-primary">Send Chase Email</a>

@@ -113,6 +113,10 @@ Route::group(['authGrouping' => 'users.auth', 'middleware' => 'auth:web'], funct
     Route::get('editcourse-attendees/{courseAttendees}/edit', [CourseAttendeeController::class, 'editattendees'])->name('editcourse-attendees');
     Route::post('update-attendees/{courseAttendees}/update', [CourseAttendeeController::class, 'update'])->name('update-attendees');
     
+
+    Route::get('report-export-attendees/{id}', [CourseAttendeeController::class, 'exportAttendees'])->name('export-attendees');
+    Route::get('send-trainer-report/{id}', [CourseAttendeeController::class, 'trainerReport'])->name('trainer-report');
+
     /*Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('checkSurveyStatus');
     Route::get('/change-password', [ResetPasswordController::class, 'firstTimePasswordChange'])->name('change-password');
     //Route::resource('/survey', SurveyController::class);
