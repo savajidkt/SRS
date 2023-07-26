@@ -47,7 +47,7 @@ Route::post('store-contacte', [FeedbackContacteController::class, 'store'])->nam
 Route::get('attendees-questionnaire/{id}/{parameter?}/{ext_id?}', [FeedbackContacteController::class, 'attendeesquestion'])->name('attendees-questionnaire');
 Route::post('store-attendeesquestion', [FeedbackContacteController::class, 'StoreAttendeesquestion'])->name('store-attendeesquestion');
 
-Route::get('question/{id}/{parameter?}/{ext_id?}', [FeedbackContacteController::class, 'question'])->name('question');
+Route::get('question/{id}/{parameter?}/{ext_id?}/{contact_id?}', [FeedbackContacteController::class, 'question'])->name('question');
 Route::post('store-question', [FeedbackContacteController::class, 'storequestion'])->name('store-question');
 
 Route::get('chase-email-attendees/{id}', [CourseAttendeeController::class, 'chaseEmailAttendees'])->name('chase-email-attendees');

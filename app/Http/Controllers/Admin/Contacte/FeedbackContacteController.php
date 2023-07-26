@@ -77,8 +77,8 @@ class FeedbackContacteController extends Controller
 
         $sidebar = '';
         $course = Course::where('key',$id)->first();
-        // if($ext_id == 'null')
-        // {
+        if($ext_id != '360-frm')
+        {
             
             $questionnaireAnswers = QuestionnaireAnswers::where('attendees_id',$attendee_id)->where('type',0)->count();
             if($questionnaireAnswers> 0)
@@ -92,7 +92,7 @@ class FeedbackContacteController extends Controller
                 return view('contacte.error',['message' => $message]);
         
             }
-        // }
+        }
         if($course) 
         {
             $CompanyOrganizer = CompanyOrganizer::where('course_id', $course->id)->first();
@@ -227,13 +227,13 @@ class FeedbackContacteController extends Controller
        
         return $returnTable;
     }
-    public function question($id,$attendee_id,$ext_id = null)
+    public function question($id,$attendee_id,$ext_id = null,$contact_id = null)
     {
-        // dd($ext_id);
+        // dd($contact_id);
         $sidebar = '';
         $course = Course::where('key',$id)->first();
-        // if($ext_id == 'null')
-        // {
+        if($ext_id != '360-frm')
+        {
             $questionnaireAnswers = QuestionnaireAnswers::where('attendees_id',$attendee_id)->where('type',1)->count();
             if($questionnaireAnswers> 0)
             {
@@ -246,7 +246,7 @@ class FeedbackContacteController extends Controller
                 return view('contacte.error',['message' => $message]);
         
             }
-        // }
+        }
         if($course) {
             $CompanyOrganizer = CompanyOrganizer::where('course_id', $course->id)->first();
            
@@ -263,7 +263,7 @@ class FeedbackContacteController extends Controller
             }
         }
         $questions = Questions::all();
-        return view('contacte.question',['questions' => $questions,'attendee_id' => $attendee_id ,'id' => $id,'sidebar' => $sidebar,'ext_id' => $ext_id]);
+        return view('contacte.question',['questions' => $questions,'attendee_id' => $attendee_id ,'id' => $id,'sidebar' => $sidebar,'ext_id' => $ext_id,'contact_id' => $contact_id]);
     }
 
     public function storequestion(Request $request)
@@ -281,7 +281,7 @@ class FeedbackContacteController extends Controller
                 foreach ($request['answer'] as  $key => $answer) {
                     
                     $AttendeeQuestionsArr = [
-                        'contact_id'    => $attendeeReferens->id,
+                        'contact_id'    => $request['contact_id'],
                         'attendees_id'    => $request['attendee_id'],
                         'question_id'    => $key,
                         'answer'    => $answer,

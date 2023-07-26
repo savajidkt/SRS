@@ -49,13 +49,14 @@ class FeedbackRepository
                         ];
 
                         $AttendeeRefreshArrList[] = $AttendeeRefreshArrListArr;
-                      
+                        // dd($AttendeeRefreshArrListArr);
                         $data['course'] = $course;
                         $data['courseAttendeesList'] = $courseAttendees;
-                       
+                        $attendeeRefresh = AttendeeReferens::create($AttendeeRefreshArrListArr);
+                        $data['contact_id'] = $attendeeRefresh->id;
                         Mail::to($contacte['email'])->send(new AttendeeReferensMail($data));
                       
-                        $attendeeRefresh = AttendeeReferens::create($AttendeeRefreshArrListArr);
+                        
                     }
                 }
                 

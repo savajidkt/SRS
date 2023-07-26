@@ -168,6 +168,7 @@
                 @csrf
                     <input type="hidden" value="{{ $id }}" name="key">
                     <input type="hidden" value="{{ $attendee_id }}" name="attendee_id">
+                    <input type="hidden" value="{{ $contact_id }}" name="contact_id">
                     <table class="table table-striped table-bordered">
                         <thead>
                         <tr>

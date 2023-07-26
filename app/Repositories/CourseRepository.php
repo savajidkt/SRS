@@ -84,16 +84,16 @@ class CourseRepository
         ];
 
         if ($course->update($courseData)) {
-            $course->trainerDetail()->delete();
-            foreach ($data['invoice'] as $key => $invoice) {
-                $invoiceArr = [
-                    'first_name'    => $invoice['first_name'],
-                    'last_name'    => $invoice['last_name'],
-                    'email'    => $invoice['email'],
-                ];
+            // $course->trainerDetail()->delete();
+            // foreach ($data['invoice'] as $key => $invoice) {
+            //     $invoiceArr = [
+            //         'first_name'    => $invoice['first_name'],
+            //         'last_name'    => $invoice['last_name'],
+            //         'email'    => $invoice['email'],
+            //     ];
 
-                $course->trainerDetail()->save(new TrainerDetail($invoiceArr));
-            }
+            //     $course->trainerDetail()->save(new TrainerDetail($invoiceArr));
+            // }
             
             $organizerData = [
                 'course_id'    => $course->id,

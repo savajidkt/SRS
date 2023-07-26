@@ -14,7 +14,7 @@
                             <table style="font-family: arial, helvetica, sans-serif; font-size: 14px; color: #e9eaed; text-align: left; line-height: 30px; width: 600px;" border="0" cellspacing="0" cellpadding="0">
                                 <tbody>
                                     <tr>
-                                        <td style="color: #fff" align="left" class="white_color">
+                                        <td style="color: #fff" align="left" class="">
                                             <span style="font-size: 24px;">
                                             @php
                                             echo ($emailHeaderFooter['header']) ? $emailHeaderFooter['header'] : '';
@@ -56,7 +56,7 @@
                                             <tbody>
                                                 <tr>
                                                     <td width="25"></td>
-                                                    <td align="right" class="white_color">
+                                                    <td align="right" class="">
                                                         @php
                                                         echo ($emailHeaderFooter['footer']) ? $emailHeaderFooter['footer'] : '';
                                                         @endphp

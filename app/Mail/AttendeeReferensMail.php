@@ -81,7 +81,7 @@ class AttendeeReferensMail extends Mailable
     $paramArr['attendee_name'] = $data['courseAttendeesList']['first_name'] . ' ' . $data['courseAttendeesList']['last_name'];
     $paramArr['course_date'] = dateFormat($data['course']['start_date']);
     $paramArr['contacte_list'] = $contacte_list;
-    $paramArr['link'] = URL::to('/question/'. $data['key'].'/'.$data['attendee_id'].'/'.$data['ext_id']);
+    $paramArr['link'] = URL::to('/question/'. $data['key'].'/'.$data['attendee_id'].'/'.$data['ext_id'].'/'.$data['contact_id']);
     $paramArr['questionnaire_end_date'] = dateFormat($data['course']['end_date']);
     $paramArr['year'] = date('Y');
     $paramArr['first_name'] = $firstName;
