@@ -143,8 +143,6 @@ white-space: nowrap !important;
             $('#duration-error').hide();
         }
     });
-
-    
 </script>
 <script>
     function Func_a(e) {

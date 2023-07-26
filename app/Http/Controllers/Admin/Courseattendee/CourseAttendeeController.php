@@ -14,7 +14,6 @@ use App\Libraries\Safeencryption;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 use App\Repositories\CourseAttendeeRepository;
-use Illuminate\Http\Request;
 
 class CourseAttendeeController extends Controller
 {

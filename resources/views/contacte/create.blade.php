@@ -184,7 +184,7 @@ button.btn.btn-outline-danger {
                         <p class="card-text attendee-home-font">You already added 1 contact. if you do not want to add more then you can skip this step.
                         </p>
                         <div class="btn-grp">
-                            <a href="{{ route('feedback-contacte',$id) }}" class="btn btn-primary mySkepBTN">Skip this step</a>
+                            <a href="{{ route('attendees-questionnaire',[$id,$at_id]) }}" class="btn btn-primary mySkepBTN">Skip this step</a>
                             <p class="attendee-home-font">or</p>
                             <a href="javascript:void(0);" class="btn btn-primary myAddedBTN">Add New Contact</a>
                         </div>
