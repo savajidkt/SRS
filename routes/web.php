@@ -54,6 +54,9 @@ Route::get('chase-email-attendees/{id}', [CourseAttendeeController::class, 'chas
 Route::get('chase-email-feedback/{id}', [FeedbackContacteController::class, 'chaseEmailFeedback'])->name('chase-email-feedback');
 //Route::post('first-password-change', [UserController::class, 'changePassword'])->name('first.password.change');
 
+Route::get('report-export-attendees/{id}', [CourseAttendeeController::class, 'exportAttendees'])->name('export-attendees');
+Route::get('send-trainer-report/{id}', [CourseAttendeeController::class, 'trainerReport'])->name('trainer-report');
+
 
 
 // Route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'], function () {
@@ -112,10 +115,7 @@ Route::group(['authGrouping' => 'users.auth', 'middleware' => 'auth:web'], funct
 
     Route::get('editcourse-attendees/{courseAttendees}/edit', [CourseAttendeeController::class, 'editattendees'])->name('editcourse-attendees');
     Route::post('update-attendees/{courseAttendees}/update', [CourseAttendeeController::class, 'update'])->name('update-attendees');
-    
 
-    Route::get('report-export-attendees/{id}', [CourseAttendeeController::class, 'exportAttendees'])->name('export-attendees');
-    Route::get('send-trainer-report/{id}', [CourseAttendeeController::class, 'trainerReport'])->name('trainer-report');
 
     /*Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('checkSurveyStatus');
     Route::get('/change-password', [ResetPasswordController::class, 'firstTimePasswordChange'])->name('change-password');

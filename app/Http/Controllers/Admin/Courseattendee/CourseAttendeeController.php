@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use App\Models\CourseAttendees;
 use App\Models\CompanyOrganizer;
 use App\Libraries\Safeencryption;
+use Illuminate\Support\Facades\App;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 use App\Repositories\CourseAttendeeRepository;
@@ -104,39 +105,26 @@ class CourseAttendeeController extends Controller
 
     public function exportAttendees($attendee_id)
     {
-
-        $courseAttendeesList = CourseAttendees::where('id', $attendee_id)->first();
-        //dd($courseAttendeesList->questionnaireanser);
-        // dd($courseAttendeesList->courses[0]->clientname->company_name);
+        $courseAttendeesList = CourseAttendees::where('id', $attendee_id)->first();       
         $pdf_file = $attendee_id . "_report.pdf";
         if (!Storage::disk('pdf')->exists($pdf_file)) {
             if ($courseAttendeesList->courses->count() > 0) {
                 if ($courseAttendeesList->courses[0]->coursecategoryname->course_name == "Influencing Questions") {
-                    $fileName = "SRS Influencing Report - " . $courseAttendeesList->courses[0]->clientname->company_name . ' - ' . str_replace("-", ".", $courseAttendeesList->courses[0]->start_date) . ' - ' . ucwords($courseAttendeesList->first_name . " " . $courseAttendeesList->last_name) . '.pdf';
-                    ob_get_clean();
-                    ob_start();
-                    //$myContent = view('pdf.report', ['courseAttendeesList' => $courseAttendeesList])->render();
-
-                    //echo $myContent; exit;
-
-                    $pdf = PDF::loadView('pdf.report', ['courseAttendeesList' => $courseAttendeesList]);
-                    return $pdf->stream($fileName);
-
-                    // $myContent = ob_get_clean();
+                    $fileNamePDF = "SRS Influencing Report - " . $courseAttendeesList->courses[0]->clientname->company_name . ' - ' . str_replace("-", ".", $courseAttendeesList->courses[0]->start_date) . ' - ' . ucwords($courseAttendeesList->first_name . " " . $courseAttendeesList->last_name) . '.pdf';
+                    $myContent = view('pdf.report', ['courseAttendeesList' => $courseAttendeesList]);                    
+                   
                     if ($myContent != "") {
                         try {
                             $options = new Options();
-
-                            //$options->setDpi(300);
+                            $options->set('isRemoteEnabled', true);
                             $options->set('defaultFont', 'calibri');
                             $options->setIsFontSubsettingEnabled(true);
                             $dompdf = new Dompdf($options);
                             $dompdf->loadHtml($myContent);
                             $dompdf->setPaper('Legal', 'portrait');
                             $dompdf->render();
-                            //$dompdf->stream("file.pdf", array("Attachment" => false));
-                            $dompdf->stream($fileName, array("Attachment" => false));
-                            exit();
+                            $dompdf->stream($fileNamePDF, array("Attachment" => false));
+                            exit;
                         } catch (Exception $e) {
                             print_r($e->getMesssage());
                             exit;
@@ -145,18 +133,6 @@ class CourseAttendeeController extends Controller
                 }
             }
         }
-
-
-
-
-        $data = [
-            'title' => 'Welcome to ItSolutionStuff.com',
-            'date' => date('m/d/Y')
-        ];
-
-        $pdf = PDF::loadView('pdf.report', $data);
-
-        return $pdf->stream('itsolutionstuff.pdf');
     }
 
     public function trainerReport($course_id)

@@ -98,10 +98,10 @@ foreach ($categories as $id => $name) {
 }
 
 /* pChart library inclusions */
-@include 'app/Libraries/pChart/classes/pData.class.php';
-@include 'app/Libraries/pChart/classes/pDraw.class.php';
-@include 'app/Libraries/pChart/classes/pRadar.class.php';
-@include 'app/Libraries/pChart/classes/pImage.class.php';
+@include_once 'app/Libraries/pChart/classes/pData.class.php';
+@include_once 'app/Libraries/pChart/classes/pDraw.class.php';
+@include_once 'app/Libraries/pChart/classes/pRadar.class.php';
+@include_once 'app/Libraries/pChart/classes/pImage.class.php';
 
 $gData = [];
 foreach ($scores as $name => $score) {
@@ -491,7 +491,7 @@ foreach ($scores as $name => $score) {
                     ?>
                 </td>
                 <td style="width: 30%; text-align:right;border-left:none;color:#000066;">
-                    <img src="{{ url("/public/images/srs_logo2.gif") }}" />
+                    <img src="{{ url("/public/images/srs_logo2.png") }} " />
                 </td>
             </tr>
         </table>
@@ -634,18 +634,18 @@ foreach ($scores as $name => $score) {
         <b>1 = QUITE like you </b><br>
         <b>0 = NOT like you</b>
     </div>
-    <table class="table question_table" style="width: 99%; margin-top: 1em;" border="1" align="center">
+    <table class="table question_table" style="width: 99%; margin-top: 1em;border:1px solid #000;" align="center">
         <thead>
             <tr valign="bottom">
-                <th width="1" class="bottom-border" style="padding-right:0px"></th>
-                <th width="250" class="bottom-border"></th>
-                <th width="10" class="bottom-border" style="padding-bottom: 10px;padding-right:0px;" align="left"
+                <th width="1" class="bottom-border" style="padding-right:0px; border-right: 1px solid #000;"></th>
+                <th width="250" class="bottom-border" style="border-right: 1px solid #000;"></th>
+                <th width="10" class="bottom-border" style="padding-bottom: 10px;padding-right:0px; border-right: 1px solid #000;" align="left"
                     valign="bottom"><img src="<?php echo loadImage('Your Score', 'text=Your*Score&whitebg=0&font=22'); ?>" />
                 </th>
                 <?php
                 foreach ($scores as $name => $score) {
                     if ($name != 'ATTENDEE') {
-                        echo " <th width='10' class='bottom-border' style=\"padding-bottom: 10px;padding-right:0px\" align=\"left\" valign=\"bottom\">" . '<img src="' . loadImage($name, 'text=' . str_replace(' ', '*', $name) . '&whitebg=1') . '" /></th>';
+                        echo " <th width='10' class='bottom-border' style=\"padding-bottom: 10px;padding-right:0px; border-right: 1px solid #000; \" align=\"left\" valign=\"bottom\">" . '<img src="' . loadImage($name, 'text=' . str_replace(' ', '*', $name) . '&whitebg=1') . '" /></th>';
                     }
                 }
                 ?>
@@ -675,14 +675,14 @@ foreach ($scores as $name => $score) {
                         $index = 7;
                     }
                     ?>
-            <tr>
+            <tr style="border-top: 1px solid #000;">
                 <td class="<?php echo $styles[$index]; ?>" width="1"><?php
                 echo $k;
                 $k++;
                 ?></td>
-                <td width="<?php echo $questionWidth; ?>" style="font-size:12px;" class="purpletext">
+                <td width="<?php echo $questionWidth; ?>" style="font-size:12px;" class="purpletext" style="border-right: 1px solid #000;">
                     <?php echo $result->question; ?></td>
-                <td width="10" style="padding-right:0px" align="center">
+                <td width="10" style="padding-right:0px" align="center" style="border-right: 1px solid #000;">
                     <?php echo $raw_scores['ATTENDEE'][$result->id]; ?></td>
                 <?php
                 foreach ($scores as $name => $score) {
@@ -690,7 +690,7 @@ foreach ($scores as $name => $score) {
                         $raw_scores[$name][$result->id] = 0;
                     }
                     if ($name != 'ATTENDEE') {
-                        echo " <td width='10' style=\"padding-right:0px\" align='center'>" . $raw_scores[$name][$result->id] . '</td> ';
+                        echo " <td width='10' style=\"padding-right:0px; border-right: 1px solid #000;\" align='center'>" . $raw_scores[$name][$result->id] . '</td> ';
                     }
                 }
                 ?>
@@ -706,18 +706,18 @@ foreach ($scores as $name => $score) {
     <div class="sep50"></div>
     <div class="sep50"></div>
     <div class="sep50"></div>
-    <table class="table question_table" style="width: 99%; margin-top: 1em;" border="1" align="center">
+    <table class="table question_table" style="width: 99%; margin-top: 1em;border:1px solid #000;"  align="center">
         <thead>
             <tr valign="bottom">
-                <th width="1" class="bottom-border" style="padding-right:0px"></th>
-                <th width="250" class="bottom-border"></th>
-                <th width="10" class="bottom-border" style="padding-bottom: 10px;padding-right:0px;"
+                <th width="1" class="bottom-border" style="padding-right:0px; border-right: 1px solid #000; "></th>
+                <th width="250" class="bottom-border" style="border-right: 1px solid #000; "></th>
+                <th width="10" class="bottom-border" style="padding-bottom: 10px;padding-right:0px; border-right: 1px solid #000;"
                     align="left" valign="bottom"><img src="<?php echo loadImage('Your Score', 'text=Your*Score&whitebg=0&font=22'); ?>" />
                 </th>
                 <?php
                 foreach ($scores as $name => $score) {
                     if ($name != 'ATTENDEE') {
-                        echo " <th width='10' class='bottom-border' style=\"padding-bottom: 10px;padding-right:0px\" align=\"left\" valign=\"bottom\">" . '<img src="' . loadImage($name, 'text=' . str_replace(' ', '*', $name) . '&whitebg=1') . '" /></th>';
+                        echo " <th width='10' class='bottom-border' style=\"padding-bottom: 10px;padding-right:0px; border-right: 1px solid #000;\" align=\"left\" valign=\"bottom\">" . '<img src="' . loadImage($name, 'text=' . str_replace(' ', '*', $name) . '&whitebg=1') . '" /></th>';
                     }
                 }
                 ?>
@@ -736,7 +736,7 @@ foreach ($scores as $name => $score) {
         </tfoot>
         <tbody>
             <?php
-            echo "<pre>";
+           
                 $results = getQuestions(15, 20);
                
                 $questionWidth = 500 - ((count($scores) * 30) + 40);
@@ -749,15 +749,15 @@ foreach ($scores as $name => $score) {
                         $index = 7;
                     }
                     ?>
-            <tr>
-                <td class="<?php echo $styles[$index]; ?>" width="1"><?php
+            <tr style="border-top: 1px solid #000;">
+                <td class="<?php echo $styles[$index]; ?>" width="1" style="border-right: 1px solid #000;"><?php
                 echo $k;
                 $k++;
                 ?></td>
-                <td width="<?php echo $questionWidth; ?>" style="font-size:12px;" class="purpletext">
+                <td width="<?php echo $questionWidth; ?>" style="font-size:12px;" class="purpletext" style="border-right: 1px solid #000;">
                     <?php echo $result->question; ?>
                 </td>
-                <td width="10" style="padding-right:0px" align="center">
+                <td width="10" style="padding-right:0px" align="center" style="border-right: 1px solid #000;">
                      @if (array_key_exists($result->id,$raw_scores['ATTENDEE']))
                      <?php echo $raw_scores['ATTENDEE'][$result->id]; ?></td>
                      @else
@@ -772,7 +772,7 @@ foreach ($scores as $name => $score) {
                         $raw_scores[$name][$result->id] = 0;
                     }
                     if ($name != 'ATTENDEE') {
-                        echo " <td width='10' style=\"padding-right:0px\" align='center'>" . $raw_scores[$name][$result->id] . '</td> ';
+                        echo " <td width='10' style=\"padding-right:0px; border-right: 1px solid #000;\" align='center'>" . $raw_scores[$name][$result->id] . '</td> ';
                     }
                 }
                 ?>
