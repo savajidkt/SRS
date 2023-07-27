@@ -137,6 +137,6 @@ class CourseAttendeeController extends Controller
 
     public function trainerReport($course_id)
     {
-        echo "Triner";
+        
     }
 }

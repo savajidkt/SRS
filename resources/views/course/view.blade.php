@@ -13,8 +13,8 @@
     </style>
 
     <!--**********************************
-                                                                                                                        Content body start
-                                                                                                                    ***********************************-->
+                                                                                                                            Content body start
+                                                                                                                        ***********************************-->
 
     <div class="container-fluid course-view-influencing-container">
         <div class="row row-a page-titles mx-0">
@@ -26,7 +26,7 @@
             </div>
             <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
                 <ol class="breadcrumb breadcrumb-a">
-                    <li class="breadcrumb-item"><a href="{{ route('trainer-report',$modal->id) }}"><button type="button"
+                    <li class="breadcrumb-item"><a href="{{ route('trainer-report', $modal->id) }}"><button type="button"
                                 class="btn btn-dark send-report-btn-a">Send Report to Trainer(s)</button>
                         </a></li>
                 </ol>
@@ -87,9 +87,10 @@
                                 </span>
                             </p>
 
-                            @if ($attendees->questionnaireself)
-                                <a href="{{ route('export-attendees',$attendees->id) }}" class="btn btn-primary">View Report</a>
-                            @else
+                            @if (enableReportButton($attendees))
+                                <a href="{{ route('export-attendees', $attendees->id) }}" class="btn btn-primary">View
+                                    Report</a>
+                            @elseif (!$attendees->questionnaireself)
                                 <a href="{{ route('chase-email-attendees', $attendees->id) }}"
                                     class="card-link btn btn-primary">Send Chase Email</a>
                             @endif

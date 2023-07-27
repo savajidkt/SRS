@@ -2,13 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/D:/Development/htdocs/SRS/app/Http/Controllers/Admin/Courseattendee/CourseAttendeeController.php</file>
-            <file>file:/D:/Development/htdocs/SRS/app/Helpers/helper.php</file>
-            <file>file:/D:/Development/htdocs/SRS/.env</file>
-            <file>file:/D:/Development/htdocs/SRS/index.php</file>
-            <file>file:/D:/Development/htdocs/SRS/resources/views/pdf/report.blade.php</file>
-            <file>file:/D:/Development/htdocs/SRS/app/Http/Controllers/Admin/Profile/ProfileController.php</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>
