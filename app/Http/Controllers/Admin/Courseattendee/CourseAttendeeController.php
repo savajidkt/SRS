@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Admin\Courseattendee;
 
-
 use PDF;
 use Exception;
 use Dompdf\Dompdf;
@@ -10,14 +9,17 @@ use Dompdf\Options;
 use App\Models\Course;
 use Illuminate\Http\Request;
 use App\Models\CourseAttendees;
+use App\Mail\ChaseAttendeesMail;
 use App\Models\CompanyOrganizer;
 use App\Libraries\Safeencryption;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\URL;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Mail;
 use App\Mail\CourseTrainerMailReport;
+use App\Models\TrainerDetail;
 use Illuminate\Support\Facades\Storage;
 use App\Repositories\CourseAttendeeRepository;
-use Illuminate\Support\Facades\Mail;
 
 class CourseAttendeeController extends Controller
 {
@@ -164,8 +166,8 @@ class CourseAttendeeController extends Controller
 							<th width="66" valign="top" style="background-color:#17365D;color:white;"><p>Download</p></th>
 						  </tr>';
         if ($Course->attendees) {
-          
-            foreach ($Course->attendees as $key => $value) {               
+
+            foreach ($Course->attendees as $key => $value) {
                 $name  = $value->first_name . ' ' . $value->last_name;
                 $questionnaire_filled = "NO";
                 $reportLink = "";
@@ -204,11 +206,41 @@ class CourseAttendeeController extends Controller
                     $data = [];
                     $data['emailBody'] = replaceHTMLBodyWithParam($emailTemplate['template'], $emailArr);
                     $data['emailSubject'] = replaceHTMLBodyWithParam($emailTemplate['subject'], array('company_name' => $emailArr['company_name'], 'course_name' => $emailArr['course_name'], 'course_date' => dateFormat($Course->start_date)));
-                    $data['emailHeaderFooter'] = getEmailTemplatesHeaderFooter();                   
-                    Mail::to('jj.parejiya@gmail.com')->send(new CourseTrainerMailReport($data));
+                    $data['emailHeaderFooter'] = getEmailTemplatesHeaderFooter();
+                    Mail::to($value->email)->send(new CourseTrainerMailReport($data));
                 }
             }
         }
         return redirect()->back()->with('success', 'Report Summary has been Sent to Trainers');
+    }
+
+    public function chaseEmailAttendees($id)
+    {
+        $CourseAttendees = CourseAttendees::find($id);
+        if ($CourseAttendees) {
+            $Course = Course::find($CourseAttendees->course_id);
+            if ($Course) {
+                $TrainerDetail = TrainerDetail::where('course_id', $CourseAttendees->course_id)->get();
+                $trainerDetailName = '';
+                if ($TrainerDetail) {
+                    foreach ($TrainerDetail as $key => $value) {
+                        $trainerDetailName .= ucwords($value->first_name . " " . $value->last_name) . ", ";
+                    }
+                }
+                $trainerDetailName = trim($trainerDetailName, ', ');
+                $paramArr = [];
+                $paramArr['site_url'] = URL::to('/');
+                $paramArr['attendee_name'] = $CourseAttendees->first_name . ' ' . $CourseAttendees->last_name;
+                $paramArr['course_date'] = dateFormat($Course->start_date);
+                $paramArr['questionnaire_end_date'] = dateFormat($Course->end_date);
+                $paramArr['trainer_list'] = $trainerDetailName;
+                $paramArr['link'] = URL::to('/feedback-contacte/' . $Course->key . '/' . $id);
+                Mail::to($CourseAttendees->email)->send(new ChaseAttendeesMail($paramArr));
+                return redirect()->route('course.show', $CourseAttendees->course_id)->with('success', "Chase Email has been sent Successfully");
+            } else {
+                return redirect()->back()->with('error', 'Chase Email has been sent Failed!');
+            }
+        }
+        return redirect()->back()->with('error', 'Chase Email has been sent Failed!');
     }
 }
