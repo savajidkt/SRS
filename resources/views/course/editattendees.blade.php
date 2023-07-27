@@ -148,7 +148,7 @@ font-size:12px !important;
                                                     <div class="form-group col-md-6 form-gap-2">
                                                         <label class="text-label">Your Job Title</label>
                                                         <div class="input-error">
-                                                        <select class="form-select form-select-sm select2"  data-select2-id="job_title{{$attendees->id}}" data-minimum-results-for-search="Infinity" name="job_title" id="form-select-sm-attendee-1" aria-label=".form-select-sm example">
+                                                        <select class="form-select form-select-sm select2" data-select2-id="job_title{{$attendees->id}}" data-minimum-results-for-search="Infinity"  name="job_title" id="form-select-sm-attendee-1" aria-label=".form-select-sm example">
                                                                 <option value="" selected disabled>Select Jo b Title</option>
                                                                 <option value="1" {{ isset($attendees->job_title) && $attendees->job_title == '1' ? 'selected' : '' }}>Director</option>
                                                                 <option value="2" {{ isset($attendees->job_title) && $attendees->job_title == '2' ? 'selected' : '' }}>Department Head</option>

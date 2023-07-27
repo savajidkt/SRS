@@ -74,6 +74,7 @@ class CourseRepository
      */
     public function update(array $data, Course $course): Course
     {
+        // dd($data);
         $courseData = [
             'course_category_id'    => $data['course_category_id'],
             'start_date'     => $data['start_date'],
@@ -84,16 +85,17 @@ class CourseRepository
         ];
 
         if ($course->update($courseData)) {
-            // $course->trainerDetail()->delete();
-            // foreach ($data['invoice'] as $key => $invoice) {
-            //     $invoiceArr = [
-            //         'first_name'    => $invoice['first_name'],
-            //         'last_name'    => $invoice['last_name'],
-            //         'email'    => $invoice['email'],
-            //     ];
-
-            //     $course->trainerDetail()->save(new TrainerDetail($invoiceArr));
-            // }
+            $course->trainerDetail()->delete();
+            foreach ($data['invoice'] as $key => $invoice) {
+                $invoiceArr = [
+                    'first_name'    => $invoice['first_name'],
+                    'last_name'    => $invoice['last_name'],
+                    'email'    => $invoice['email'],
+                ];
+                
+                $course->trainerDetail()->save(new TrainerDetail($invoiceArr));
+                
+            }
             
             $organizerData = [
                 'course_id'    => $course->id,
@@ -102,6 +104,7 @@ class CourseRepository
                 'email'    => $data['org_email'],
                 'confirm_attendee'    => 1            
             ];
+            dd($organizerData);
             $data['key'] = $course->key;
             $course->companyorganizer()->update($organizerData);
             Mail::to($data['org_email'])->send(new CompanyOrganizerMail($data));

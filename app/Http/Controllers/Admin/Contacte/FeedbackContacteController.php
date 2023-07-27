@@ -136,7 +136,7 @@ class FeedbackContacteController extends Controller
                     
                     $attendeeQuestions = QuestionnaireAnswers::create($AttendeeQuestionsArr);
                 }
-                $attendeeReferens->update(array('questionnaire_filled' => 'YES'));
+                // $attendeeReferens->update(array('questionnaire_filled' => 'YES'));
                 if($course->trainer)
                 {
                     foreach ($course->trainer as $key => $trainer) {
@@ -275,7 +275,7 @@ class FeedbackContacteController extends Controller
         $course = Course::where('key', $request->key)->first();
         if($course) 
         {
-            $attendeeReferens = AttendeeReferens::where('course_id', $course->id)->first();
+            $attendeeReferens = AttendeeReferens::where('id', $request['contact_id'])->first();
             if($attendeeReferens) 
             {
                 $AttendeeQuestionsList = [];
