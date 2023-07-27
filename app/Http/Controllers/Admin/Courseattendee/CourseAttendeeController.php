@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin\Courseattendee;
 
+
 use PDF;
 use Exception;
 use Dompdf\Dompdf;
@@ -166,8 +167,8 @@ class CourseAttendeeController extends Controller
 							<th width="66" valign="top" style="background-color:#17365D;color:white;"><p>Download</p></th>
 						  </tr>';
         if ($Course->attendees) {
-
-            foreach ($Course->attendees as $key => $value) {
+          
+            foreach ($Course->attendees as $key => $value) {               
                 $name  = $value->first_name . ' ' . $value->last_name;
                 $questionnaire_filled = "NO";
                 $reportLink = "";
@@ -206,7 +207,7 @@ class CourseAttendeeController extends Controller
                     $data = [];
                     $data['emailBody'] = replaceHTMLBodyWithParam($emailTemplate['template'], $emailArr);
                     $data['emailSubject'] = replaceHTMLBodyWithParam($emailTemplate['subject'], array('company_name' => $emailArr['company_name'], 'course_name' => $emailArr['course_name'], 'course_date' => dateFormat($Course->start_date)));
-                    $data['emailHeaderFooter'] = getEmailTemplatesHeaderFooter();
+                    $data['emailHeaderFooter'] = getEmailTemplatesHeaderFooter();                   
                     Mail::to($value->email)->send(new CourseTrainerMailReport($data));
                 }
             }
