@@ -45,5 +45,10 @@ class Client extends Model
         $deleteAction = '<a href="'.route('client.destroy', $this).'" class="delete_action" data-id="'. $this->id.'" data-method="delete"><i class="fa-sharp fa-solid fa-xmark" title="Remove"></i></a>';
         return $editAction.''.$viewAction.''.$deleteAction;
     }
+
+    public function clientdetails()
+    {
+        return $this->hasOne(ClientContact::class,'client_id','id');
+    }
     
 }
