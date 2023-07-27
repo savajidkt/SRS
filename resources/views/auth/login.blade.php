@@ -70,6 +70,7 @@
                             </span>
                             @enderror
  --}}
+ 
                             <input id="password" type="password" class="form-control form-control-merge @error('password') is-invalid @enderror" name="password" required placeholder="Password">
                             @error('password')
                             <span class="invalid-feedback" role="alert">
