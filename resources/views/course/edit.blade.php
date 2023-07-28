@@ -118,6 +118,24 @@ white-space: nowrap !important;
 <script src="{{ asset('js/form/course.js') }}"></script>
 <script src="{{ asset('js/form/course/jquery.repeater.min.js') }}"></script>
 <script src="{{ asset('js/form/course/form-repeater.js') }}"></script>
+
+<script type="text/javascript">
+    $(function() {
+        var dtToday = new Date();
+        var month = dtToday.getMonth() + 1;
+        var day = dtToday.getDate();
+        var year = dtToday.getFullYear();
+        if (month < 10)
+            month = '0' + month.toString();
+        if (day < 10)
+            day = '0' + day.toString();
+        var maxDate = year + '-' + month + '-' + day;
+        $('#start_date').attr('min', maxDate);
+
+
+    });
+</script>
+
 <script>
     $('.select2').select2();
 
@@ -146,6 +164,13 @@ white-space: nowrap !important;
 </script>
 <script>
     function Func_a(e) {
+
+        var inputDate = new Date($(e).val());
+            var oneDayInMillis = 24 * 60 * 60 * 1000;
+            var resultDate = new Date(inputDate.getTime() + oneDayInMillis);
+            var resultDateStr = resultDate.toISOString().split('T')[0];
+            console.log(resultDateStr);
+            $('#end_date').attr('max', resultDateStr);
     
         // alert();
         // Get the specific date
