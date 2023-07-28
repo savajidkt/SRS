@@ -8,7 +8,7 @@
     Author URL: http://www.themeforest.net/user/pixinvent
 ==========================================================================================*/
 
-$(function() {
+$(function () {
     'use strict';
     if (myCount == 1) {
         $('.text-nowrap').hide();
@@ -16,8 +16,12 @@ $(function() {
 
     // form repeater jquery
     $('.contacte-repeater').repeater({
-        show: function() {
+        show: function () {
             $(this).slideDown();
+            var id = 1;
+         //   $('#my_contact_data_' + id + ' .select2-container').remove();
+            $('#my_contact_data_' + id + ' .my-select2').select2();
+        //    $('#my_contact_data_' + id + ' .select2-container').css('width', '100%');
 
             myCount = myCount + 1;
             if (myCount > 1) {
@@ -25,7 +29,7 @@ $(function() {
             }
 
         },
-        hide: function(deleteElement) {
+        hide: function (deleteElement) {
             myCount = myCount - 1;
 
             if (myCount == 1) {

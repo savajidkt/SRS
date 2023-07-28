@@ -20,7 +20,13 @@
     <style>
          .has_error{ border: 1px solid red;}
     </style>
- 
+ <script>
+    window.addEventListener( "pageshow", function ( event ) {
+	if(window.performance.navigation.type == 2){
+    location.reload();
+}
+});
+ </script>
 </head>
 
 <body>

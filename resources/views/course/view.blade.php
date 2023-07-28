@@ -13,8 +13,8 @@
     </style>
 
     <!--**********************************
-                                                                                                                            Content body start
-                                                                                                                        ***********************************-->
+                                                                                                                                                                    Content body start
+                                                                                                                                                                ***********************************-->
 
     <div class="container-fluid course-view-influencing-container">
         <div class="row row-a page-titles mx-0">
@@ -62,8 +62,9 @@
 
 
             @if ($modal->attendees->count() > 0)
-                <div class="card course-view-customize">
-                    @foreach ($modal->attendees as $key => $attendees)
+
+                @foreach ($modal->attendees as $key => $attendees)
+                    <div class="card">
                         @php
                             $isBackGroud = getBackgroudColorByStatus($attendees);
                         @endphp
@@ -102,17 +103,18 @@
                             </div>
                         </div>
 
-
                         @if ($attendees->referraluser->count() > 0)
                             <div class="row">
                                 @foreach ($attendees->referraluser as $key => $referraluser)
                                     <div class="col-md-4 card-block-info-con">
                                         <div class="card">
+
                                             @if ($referraluser->referralusers)
                                                 <div class="card-block card-block-info">
                                                 @else
                                                     <div class="card-block card-block-info form-not-filled">
                                             @endif
+
 
                                             <div class="card-block-content">
                                                 <h4 class="card-title">
@@ -132,20 +134,15 @@
                                                     <a href="{{ route('chase-email-feedback', $referraluser->id) }}"
                                                         class="card-link btn btn-primary">Send Chase Email</a>
                                                 @endif
-
                                             </div>
                                         </div>
                                     </div>
                             </div>
                         @endforeach
-                </div>
-            @else
-                <div class="card-body card-text-middle">
-                    <p class="card-text card-text-a">No 360 CONTACT available</p>
-                </div>
-            @endif
-            @endforeach
+                    </div>
+                @endif
         </div>
+        @endforeach
         @endif
     </div>
     </div>

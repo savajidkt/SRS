@@ -104,7 +104,7 @@ class CourseRepository
                 'email'    => $data['org_email'],
                 'confirm_attendee'    => 1            
             ];
-            dd($organizerData);
+            
             $data['key'] = $course->key;
             $course->companyorganizer()->update($organizerData);
             Mail::to($data['org_email'])->send(new CompanyOrganizerMail($data));
