@@ -116,14 +116,18 @@ class CourseAttendeeRepository
     public function update(array $data, CourseAttendees $courseAttendees): CourseAttendees
     {
 
+
         $course = Course::where('id', $data['defualt_course_id'])->first();
         if ($course) {
             $CompanyOrganizer = CompanyOrganizer::where('course_id', $course->id)->first();
             if ($CompanyOrganizer) {
                 $attendeesArrList = [];
+                $removeAttendList = [];
+
+                $courseAttendeesData = CourseAttendees::where('course_id', $course->id)->get()->toArray();
+
                 foreach ($data['attendees'] as $key => $attendees) {
-
-
+                    $removeAttendList[$attendees['id']] = "";
                     $attendeesArr = [
                         'first_name'    => $attendees['first_name'],
                         'last_name'    => $attendees['last_name'],
@@ -132,7 +136,6 @@ class CourseAttendeeRepository
                         'course_id'    => $course->id,
                         'organizer_id'    => $CompanyOrganizer->id,
                     ];
-
                     if (strlen($attendees['id']) > 0 && $attendees['id'] != "") {
                         $courseAttendeesUpdate = CourseAttendees::find($attendees['id']);
                         $courseAttendeesUpdate->update($attendeesArr);
@@ -142,7 +145,6 @@ class CourseAttendeeRepository
                     }
 
                     $attendeesArrList[] = $attendeesArr;
-
                     $data['course'] = $course;
                     $data['companyorganizer'] = $CompanyOrganizer;
                     $trainerDetail = TrainerDetail::where('course_id', $course->id)->get();
@@ -154,7 +156,15 @@ class CourseAttendeeRepository
                     $data['attendee_id'] = $courseAttendees->id;
                     // Mail::to($attendees['email'])->send(new CourseAttendeesMail($data));
                 }
-                // dd($course->trainer);
+                if ($courseAttendeesData) {
+                    foreach ($courseAttendeesData as $key1 => $value1) {
+                        if (!array_key_exists($value1['id'], $removeAttendList)) {
+                            $courseAttendeesDelete = CourseAttendees::find($value1['id']);
+                            $courseAttendeesDelete->forceDelete();
+                        }
+                    }
+                }
+
                 // $course->companyorganizer()->update($organizerData);
                 if ($course->trainer) {
                     foreach ($course->trainer as $key => $trainer) {
