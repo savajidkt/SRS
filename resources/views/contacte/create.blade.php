@@ -232,7 +232,7 @@
                                             <div data-repeater-list="contacte">
                                                 <div data-repeater-item>
                                                     {{-- <div class="row d-flex align-items-end"> --}}
-                                                    <div class="form-row contacte-form-content" id="my_contact_data_0" my-contacts-data="my_contact_data">
+                                                    <div class="form-row contacte-form-content" >
 
                                                       
 
@@ -279,8 +279,8 @@
                                                             <div class="input-error">
                                                                 <select class="form-select form-select-sm my-select2"
                                                                    
-                                                                    name="relationship" id="form-select-sm-attendee"
-                                                                    aria-label=".form-select-sm example">
+                                                                    name="relationship" 
+                                                                    aria-label=".form-select-sm example" id="my_contact_data_0" my-contacts-data="my_contact_data">
                                                                     <option value="" selected disabled>Select
                                                                         Relationship</option>
                                                                     <option value="1">He/She is my line manager
@@ -363,7 +363,7 @@
     <script src="{{ asset('select/js/form-select2.js') }}"></script>
     <script src="{{ asset('select/js/select2.full.min.js') }}"></script>
     <script>
-        $('#my_contact_data_0 .my-select2').select2();
+        $('#my_contact_data_0').select2();
     </script>
     <script>
         // const currentDateTime = new Date();
