@@ -52,7 +52,7 @@ class LoginController extends Controller
      */
     public function login(Request $request)
     {
-        // dd($request);
+        
         $this->validateLogin($request);
 
         // If the class is using the ThrottlesLogins trait, we can automatically throttle
@@ -106,9 +106,11 @@ class LoginController extends Controller
         if ($response = $this->authenticated($request, $this->guard()->user())) {
             return $response;
         }
-
-        return $request->wantsJson()
-                    ? new JsonResponse([], 204)
-                    : redirect()->intended($this->redirectPath());
+        $profile_path = $this->redirectTo.'/'.$this->guard()->user()->id.'/edit';
+        //dd($profile_path);
+        return redirect($profile_path);
+        // return $request->wantsJson()
+        //             ? new JsonResponse([], 204)
+        //             : redirect()->intended($profile_path);
     }
 }
