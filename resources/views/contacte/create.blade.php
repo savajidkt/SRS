@@ -363,7 +363,9 @@
     <script src="{{ asset('select/js/form-select2.js') }}"></script>
     <script src="{{ asset('select/js/select2.full.min.js') }}"></script>
     <script>
-        $('#my_contact_data_0').select2();
+        $('#my_contact_data_0').select2({
+        minimumResultsForSearch: Infinity
+    });
     </script>
     <script>
         // const currentDateTime = new Date();
