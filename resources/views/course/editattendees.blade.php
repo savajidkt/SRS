@@ -119,17 +119,23 @@ font-size:12px !important;
                                 <form class="attendees-repeater" action="{{ route('update-attendees',$model) }}" method="post"
                                     enctype="multipart/form-data" id="attendees">
                                     @csrf
+                                    
                                     {{-- <input type="hidden" value="{{ $id }}" name="key" > --}}
                                     <div class="">
                                     @if(count($courseAttendeesList) > 0)
                                         <div data-repeater-list="attendees">
                                         @foreach ($courseAttendeesList as $key=> $attendees )
+                                        <input type="hidden" name="defualt_course_id" value="{{$attendees->course_id}}">
+                                        <input type="hidden" name="defualt_organizer_id" value="{{$attendees->organizer_id}}">
                                             
                                             <div data-repeater-item>
                                                 <div class="form-row">
                                                     <div class="form-group col-md-6 form-gap-2">
                                                         <label>First Name</label>
                                                         <div class="input-error">
+                                                            <input type="hidden" name="id" value="{{$attendees->id}}">
+                                                            <input type="hidden" name="course_id" value="{{$attendees->course_id}}">
+                                                            <input type="hidden" name="organizer_id" value="{{$attendees->organizer_id}}">
                                                             <input type="text" name="first_name" value="{{$attendees->first_name}}" class="form-control" placeholder="Sue" onkeyup="this.value=this.value.replace(/[^A-z]/g,'');" required>
                                                         </div>
                                                     </div>

@@ -105,6 +105,7 @@ class CourseAttendeeController extends Controller
 
     public function update(Request $request, CourseAttendees $courseAttendees)
     {
+        
         $this->courseAttendeeRepository->update($request->all(), $courseAttendees);
         return redirect()->route('course.index')->with('success', "Attendees updated successfully!");
     }
