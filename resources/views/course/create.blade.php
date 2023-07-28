@@ -11,32 +11,33 @@
             display: none;
         }
 
-        @media screen and (max-width: 992px){
-.add_course_step_2_col .email-customize{
-white-space: nowrap !important;
-}
-.add_course_form_content .form-group {
-    display: grid;
-    grid-template-columns: 100% !important;
-    justify-content: flex-start !important;
-}
-}
+        @media screen and (max-width: 992px) {
+            .add_course_step_2_col .email-customize {
+                white-space: nowrap !important;
+            }
 
-.add_course_step_2_col .email-customize{
-white-space: nowrap !important;
-}
+            .add_course_form_content .form-group {
+                display: grid;
+                grid-template-columns: 100% !important;
+                justify-content: flex-start !important;
+            }
+        }
 
-.company-organizer-customise-section{
-    margin-bottom:15px;
-}
+        .add_course_step_2_col .email-customize {
+            white-space: nowrap !important;
+        }
 
-.course-company-edit-container{
-    overflow-y:hidden !important;
-}
+        .company-organizer-customise-section {
+            margin-bottom: 15px;
+        }
+
+        .course-company-edit-container {
+            overflow-y: hidden !important;
+        }
     </style>
     <!--**********************************
-                    Content body start
-                ***********************************-->
+                            Content body start
+                        ***********************************-->
 
     <div class="container-fluid course-company-edit-container">
         <div class="row page-titles mx-0">
@@ -82,31 +83,36 @@ white-space: nowrap !important;
                                 <section class="company-organizer-customise-section">
                                     <div class="row">
                                         <div class="col-lg-12 mb-4 form-style add_course_step_2_col">
-                                            
+
 
                                             <div class="form-group train-deet">
-                                                <label class="itemcost email-customize">First Name<span class="filedrequired">*</span></label>
+                                                <label class="itemcost email-customize">First Name<span
+                                                        class="filedrequired">*</span></label>
                                                 <div class="input-error">
                                                     <input type="text" class="form-control" name="org_first_name"
-                                                        value="" onkeyup="this.value=this.value.replace(/[^A-z]/g,'');"/>
+                                                        value=""
+                                                        onkeyup="this.value=this.value.replace(/[^A-z]/g,'');" />
                                                 </div>
                                             </div>
 
                                             <div class="form-group train-deet">
-                                                <label class="itemcost email-customize">Surname<span class="filedrequired">*</span></label>
+                                                <label class="itemcost email-customize">Surname<span
+                                                        class="filedrequired">*</span></label>
                                                 <div class="input-error">
                                                     <input type="text" class="form-control" name="org_last_name"
-                                                        value="" onkeyup="this.value=this.value.replace(/[^A-z]/g,'');" />
+                                                        value=""
+                                                        onkeyup="this.value=this.value.replace(/[^A-z]/g,'');" />
                                                 </div>
                                             </div>
 
                                             <div class="form-group train-deet">
-                                                <label class="itemcost email-customize">Email Address<span class="filedrequired">*</span></label>
+                                                <label class="itemcost email-customize">Email Address<span
+                                                        class="filedrequired">*</span></label>
                                                 <div class="input-error">
                                                     <input type="text" class="form-control" name="org_email"
                                                         value="" />
                                                 </div>
-                                            </div> 
+                                            </div>
 
                                         </div>
                                     </div>
@@ -124,56 +130,67 @@ white-space: nowrap !important;
     </div>
 
     <!--**********************************
-                    Content body end
-                ***********************************-->
+                            Content body end
+                        ***********************************-->
 @endsection
 @section('extra-script')
     <script src="{{ asset('js/jquery.validate.min.js') }}"></script>
     <script src="{{ asset('js/form/course.js') }}"></script>
     <script src="{{ asset('js/form/course/jquery.repeater.min.js') }}"></script>
     <script src="{{ asset('js/form/course/form-repeater.js') }}"></script>
-    <script>
-        $('.select2').select2();
 
+    <script type="text/javascript">
+        $(function() {
+            var dtToday = new Date();
+            var month = dtToday.getMonth() + 1;
+            var day = dtToday.getDate();
+            var year = dtToday.getFullYear();
+            if (month < 10)
+                month = '0' + month.toString();
+            if (day < 10)
+                day = '0' + day.toString();
+            var maxDate = year + '-' + month + '-' + day;
+            $('#start_date').attr('min', maxDate);
+
+
+        });
+    </script>
+
+    <script>
         $('#client_id').on('change', function() {
             var selected_option_value = $(this).find(":selected").val();
-            if(selected_option_value == '')
-            {
+            if (selected_option_value == '') {
                 $('#client_id-error').show();
-            }else
-            {
+            } else {
                 $('#client_id-error').hide();
             }
         });
 
         $('#duration').on('change', function() {
             var selected_option_value = $(this).find(":selected").val();
-            if(selected_option_value == '')
-            {
+            if (selected_option_value == '') {
                 $('#duration-error').show();
-            }
-            else
-            {
+            } else {
                 $('#duration-error').hide();
             }
         });
-
     </script>
     <script>
         function Func_a(e) {
 
-            // alert();
-            // Get the specific date
+            var inputDate = new Date($(e).val());
+            var oneDayInMillis = 24 * 60 * 60 * 1000;
+            var resultDate = new Date(inputDate.getTime() + oneDayInMillis);
+            var resultDateStr = resultDate.toISOString().split('T')[0];
+            console.log(resultDateStr);
+            $('#end_date').attr('max', resultDateStr);
 
             var specificDate = new Date($(e).val());
-
             // Subtract one day from the specific date
             var yesterday = new Date(specificDate);
             yesterday.setDate(specificDate.getDate() - 1);
-
             // Format the yesterday's date
             var formattedDate = yesterday.toISOString().split('T')[0];
-
             // Output the formatted date
             $('#end_date').val(formattedDate);
             // console.log(formattedDate);
