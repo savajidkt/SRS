@@ -8,44 +8,44 @@
         }
     </style>
     <!--**********************************
-                        Content body start
-                    ***********************************-->
+                            Content body start
+                        ***********************************-->
 
     <div class="container-fluid edit-template-container-customise-manager">
         <div class="row page-titles mx-0">
             <!-- <div class="col-sm-6 p-md-0">
-                                <div class="welcome-text">
-                                    <h4>Hi, welcome back!</h4>
-                                    <p class="mb-0">Sue Swindell</p>
-                                </div>
-                            </div> -->
+                                    <div class="welcome-text">
+                                        <h4>Hi, welcome back!</h4>
+                                        <p class="mb-0">Sue Swindell</p>
+                                    </div>
+                                </div> -->
             <!-- <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex"> -->
             <div>
-                <ol class="breadcrumb">                    
-                 
+                <ol class="breadcrumb">
+
                     <?php
                     
  if( $model->type == "email" ){
-           ?>                 <li class="breadcrumb-item"><a href="javascript:void(0)">Template Manager</a></li>           
-                            <li class="breadcrumb-item active"><a href="javascript:void(0)">Email Template Manager</a></li>
-                            <?php
+           ?> <li class="breadcrumb-item"><a href="javascript:void(0)">Template Manager</a></li>
+                    <li class="breadcrumb-item active"><a href="javascript:void(0)">Email Template Manager</a></li>
+                    <?php
         } else if( $model->type == "help" ){
-            ?>                            
-                             <li class="breadcrumb-item"><a href="javascript:void(0)">Template Manager</a></li> 
-                            <li class="breadcrumb-item active"><a href="javascript:void(0)">Help Template Manager</a></li>
-                            <?php
+            ?>
+                    <li class="breadcrumb-item"><a href="javascript:void(0)">Template Manager</a></li>
+                    <li class="breadcrumb-item active"><a href="javascript:void(0)">Help Template Manager</a></li>
+                    <?php
 
         } else if( $model->type == "message" ){
-            ?>                            
-            ?>                 <li class="breadcrumb-item"><a href="javascript:void(0)">Template Manager</a></li> 
-                            <li class="breadcrumb-item active"><a href="javascript:void(0)">Message Template Manager</a></li>
-                            <?php
+            ?>
+                    ?> <li class="breadcrumb-item"><a href="javascript:void(0)">Template Manager</a></li>
+                    <li class="breadcrumb-item active"><a href="javascript:void(0)">Message Template Manager</a></li>
+                    <?php
         } else if( $model->type == "template" ){
             ?>
-                                            <li class="breadcrumb-item"><a href="javascript:void(0)">Template Manager</a></li> 
-                            <li class="breadcrumb-item active"><a href="javascript:void(0)">Common Template Manager</a></li>
-                            
-                            <?php
+                    <li class="breadcrumb-item"><a href="javascript:void(0)">Template Manager</a></li>
+                    <li class="breadcrumb-item active"><a href="javascript:void(0)">Common Template Manager</a></li>
+
+                    <?php
         }
 
 ?>
@@ -100,16 +100,30 @@
 
 
     <!--**********************************
-                        Content body end
-                    ***********************************-->
+                            Content body end
+                        ***********************************-->
 @endsection
 @section('extra-script')
+
     <script src="{{ asset('js/jquery.validate.min.js') }}"></script>
     <script src="{{ asset('js/form/emailTemplate.js') }}"></script>
-    <script src="//cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
+    {{-- <script src="https://srs-reporting.co.uk/ckeditor/ckeditor.js"></script> --}}
+    <script src="{{ asset('js/ckeditor/ckeditor.js') }}"></script>
     <script type="text/javascript">
+    if (typeof browser === "undefined") {
+    var browser = 'chrome';
+}
         $(document).ready(function() {
-            $('.ckeditor').ckeditor();
+            // $('.ckeditor').ckeditor();
+
+            CKEDITOR.replace('ckeditor', {
+                height: ['550px']
+            });
+            
+
+            
+            
+            
         });
     </script>
 @endsection
