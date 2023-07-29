@@ -74,9 +74,8 @@ class TemplateManagersController extends Controller
      */
     public function update(EditRequest $request, EmailTemplate $templatemanager)
     {
-
         $this->templateManagerRepository->update($request->all(), $templatemanager);
-        return redirect()->route('templatemanager.edit', $templatemanager->id)->with('success', 'Email Template updated successfully!');
+        return redirect()->route('templatemanager.index')->with('success', 'Email Template updated successfully!');
     }
 
 
@@ -103,7 +102,6 @@ class TemplateManagersController extends Controller
                     return $emailTemplate->action;
                 })
                 ->rawColumns(['action'])->make(true);
-                
         }
 
 
@@ -133,7 +131,7 @@ class TemplateManagersController extends Controller
     public function updateHelp(EditHelpRequest $request, EmailTemplate $templatemanager)
     {
         $this->templateManagerRepository->updateHelp($request->all(), $templatemanager);
-        return redirect()->route('templatemanager-edit-help', $templatemanager)->with('success', 'Email Template updated successfully!');
+        return redirect()->route('templatemanager-help')->with('success', 'Email Template updated successfully!');
     }
 
 
@@ -167,7 +165,7 @@ class TemplateManagersController extends Controller
     }
 
     public function editTemplate(EmailTemplate $templatemanager)
-    {
+    {       
         return view('template-managers.edit-template', ['model' => $templatemanager]);
     }
 
@@ -175,7 +173,7 @@ class TemplateManagersController extends Controller
     public function updateTemplate(EditTemplateRequest $request, EmailTemplate $templatemanager)
     {
         $this->templateManagerRepository->updateTemplate($request->all(), $templatemanager);
-        return redirect()->route('templatemanager-edit-template', $templatemanager)->with('success', 'Email Template updated successfully!');
+        return redirect()->route('templatemanager-common')->with('success', 'Email Template updated successfully!');
     }
 
 
@@ -210,13 +208,15 @@ class TemplateManagersController extends Controller
 
     public function editMessage(EmailTemplate $templatemanager)
     {
+       
         return view('template-managers.edit-message', ['model' => $templatemanager]);
     }
 
 
     public function updateMessage(EditMessageRequest $request, EmailTemplate $templatemanager)
     {
-        $this->templateManagerRepository->updateMessage($request->all(), $templatemanager);
-        return redirect()->route('templatemanager-edit-message', $templatemanager)->with('success', 'Email Template updated successfully!');
+        
+        $this->templateManagerRepository->updateMessage($request->all(), $templatemanager);       
+        return redirect()->route('templatemanager-customize')->with('success', 'Email Template updated successfully!');
     }
 }

@@ -68,7 +68,7 @@
                         UPDATE TEMPLATE
                     </div>
                     <div class="card-body">
-                        <form id="templatemanager" action="{{ route('templatemanager-update-template', $model) }}"
+                        <form id="templatemanager" action="{{ route('templatemanager-update-message', $model) }}"
                             method="post" enctype="multipart/form-data" id="step-form-horizontal"
                             class="step-form-horizontal">
                             @csrf
