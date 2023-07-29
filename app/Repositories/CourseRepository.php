@@ -76,7 +76,6 @@ class CourseRepository
      */
     public function update(array $data, Course $course): Course
     {
-        // dd($data);
         $courseData = [
             'course_category_id'    => $data['course_category_id'],
             'start_date'     => $data['start_date'],

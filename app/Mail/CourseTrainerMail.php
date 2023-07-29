@@ -63,7 +63,7 @@ class CourseTrainerMail extends Mailable
     $emailtemp_id = 3;
     $data = $this->data;
     // dd($data);
-$myTable = "";
+$myTable = "";  
     if( isset($data['self_attende']) && $data['self_attende'] == 'Yes' ){
       $attendees_lists = $data['trainerArr']['attendees_list'];
       $questionnaire_360 = $data['trainerArr']['questionnaire_360'];
@@ -92,8 +92,8 @@ $myTable = "";
     $paramArr['company_organiser_attendees_email'] = $data['trainerArr']['company_organiser_attendees_email'];
     $paramArr['course_end_date'] = dateFormat($data['trainerArr']['course_end_date']);
     $paramArr['attendees_list'] = $myTable;
-    $paramArr['attendee_name'] = $data['attendee_name'];
-    $paramArr['referens_name'] = $data['referens_name'];
+    $paramArr['attendee_name'] = isset($data['attendee_name']) ? $data['attendee_name'] : '' ;
+    $paramArr['referens_name'] = isset($data['referens_name']) ? $data['referens_name'] : '' ; 
     // $paramArr['link'] = URL::to('/course-attendees/'.$data['key']);
     $paramArr['year'] = date('Y');
 

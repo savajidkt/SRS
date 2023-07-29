@@ -118,8 +118,37 @@ white-space: nowrap !important;
 <script src="{{ asset('js/form/course.js') }}"></script>
 <script src="{{ asset('js/form/course/jquery.repeater.min.js') }}"></script>
 <script src="{{ asset('js/form/course/form-repeater.js') }}"></script>
-
+<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 <script type="text/javascript">
+
+$( function() {
+        $( "#start_date" ).datepicker({
+            dateFormat: "dd/mm/yy",
+            minDate: 0,
+            autoclose: true,
+            onSelect: function(selected) {
+                var selectedDate = $("#start_date").datepicker("getDate");
+            var dt = new Date(selectedDate);
+             dt.setDate( dt.getDate() - 1 );
+
+                console.log(dt);
+                //$("#end_date").val(dt);
+                $("#end_date").datepicker("option","maxDate", selected);
+                $("#end_date").datepicker("setDate", dt);
+            }
+        });
+        var selectedDate = $("#start_date").datepicker("getDate");
+        console.log(selectedDate);
+        $( "#end_date" ).datepicker({
+            dateFormat: "dd/mm/yy",
+            autoclose: true,
+            maxDate:selectedDate
+        });
+        
+        //$("#end_date").datepicker("option","maxDate", selectedDate);
+    } );
+
     $(function() {
         var dtToday = new Date();
         var month = dtToday.getMonth() + 1;
