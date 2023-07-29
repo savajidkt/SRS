@@ -26,7 +26,6 @@ $(function() {
                 initSelect2(selectElement);
             });
 
-
             myCount = myCount + 1;
             if (myCount > 1) {
                 $('.text-nowrap').show();
@@ -44,3 +43,9 @@ $(function() {
         }
     });
 });
+
+function initSelect2(selectElement) {
+    $(selectElement).select2({
+        minimumResultsForSearch: Infinity
+    });
+}

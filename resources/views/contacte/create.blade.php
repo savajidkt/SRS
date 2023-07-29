@@ -216,7 +216,7 @@
                                         method="post" enctype="multipart/form-data" id="contacte">
                                         @csrf
                                         <input type="hidden" value="{{ $id }}" name="key">
-                                        <input type="hidden" value="{{ $ext_id }}" name="ext_id">
+                                        <input type="hidden" value="{{ isset($ext_id) ? $ext_id:'con' }}" name="ext_id">
                                         @if ($ext_id == '360-frm')
                                             <input type="hidden" value="{{ $at_id }}" name="attendee_id">
                                         @else
@@ -360,10 +360,8 @@
     <script src="{{ asset('js/form/contacte/contacte.js') }}"></script>
     <script src="{{ asset('js/form/contacte/jquery.repeater.min.js') }}"></script>
     <script src="{{ asset('js/form/contacte/form-repeater.js') }}"></script>
-    
     <script src="{{ asset('select/js/form-select2.js') }}"></script>
     <script src="{{ asset('select/js/select2.full.min.js') }}"></script>
-
     <script>
         $('#my_contact_data_0').select2({
         minimumResultsForSearch: Infinity

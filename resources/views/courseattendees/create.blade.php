@@ -22,7 +22,6 @@ $mycountphp = 1;
     <link href="{{ asset('css/style.css')}}" rel="stylesheet" />
     <link href="{{ asset('css/custom-style.css')}}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.0/font/bootstrap-icons.css">
-    {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" integrity="sha512-nMNlpuaDPrqlEls3IX/Q56H36qvBASwb3ipuo3MxeWbsQB1881ox0cRv7UPTgBlriqoynt35KjEwgGUeUXIPnw==" crossorigin="anonymous" referrerpolicy="no-referrer" /> --}}
     <link rel="stylesheet" type="text/css" href="{{ asset('select/css/select2.min.css') }}">
 
     <script>
@@ -38,6 +37,7 @@ $mycountphp = 1;
         }
         .accordion-add-contact-colr p{
             color: #454545 !important;
+            padding-left: 15px;
         }
         .has_error {
     border: 1px solid red;
@@ -74,6 +74,155 @@ button.btn.btn-outline-danger {
 .degree-feedback-contact-customise{
                 padding:18px 0px;
             }
+
+            .footer {
+    background: rgba(255, 255, 255, 0.1) !important;
+}
+
+.attendee-home .card{
+    width:100% !important;
+}
+
+/*the container must be positioned relative:*/
+.customise-select {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.customise-select select {
+  display: none; /*hide original SELECT element:*/
+}
+
+/*style the arrow inside the select element:*/
+.select-selected:after {
+  position: absolute;
+  content: "";
+  top: 17px;
+  right: 15px;
+  width: 0;
+  height: 0;
+  border: 6px solid transparent;
+  border-color: #828690 transparent transparent transparent;
+}
+
+
+
+/*point the arrow upwards when the select box is open (active):*/
+.select-selected.select-arrow-active:after {
+  border-color: transparent transparent #828690 transparent;
+  top: 10px;
+}
+
+/*style the items (options), including the selected item:*/
+.select-items div,.select-selected {
+  color: #828690;
+  padding: 8px 16px;
+  border: 1px solid #eaeaea;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  user-select: none;
+}
+
+/*style items (options):*/
+.select-items {
+  position: absolute;
+  background-color: #fff;
+  border-radius: 0rem;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 99;
+height:100px;
+  overflow-y:scroll;
+}
+
+/*hide the items when the select box is closed:*/
+.select-hide {
+  display: none;
+}
+
+.select-items div:hover, .same-as-selected {
+  background-color: #000066;
+  color:#fff !important;
+}
+
+.select-selected {
+    border: 1px solid #eaeaea;
+}
+
+
+.accordion-extra:after {
+    content: '\002B';
+    color: #fff;
+    font-weight: bold;
+    float: right;
+    margin-left: 5px;
+    display:none;
+}
+
+@media only screen and (max-width: 525px){
+
+    button.accordion-extra.attendee-home-lgt.attendee-bg-clr.add-contact-font {
+    font-size: 16px;
+}
+
+label.text-label {
+    font-size: 14px !important;
+}
+
+.attendee-home .btn.btn-primary {
+    width: fit-content;
+    font-size: 14px !important;
+}
+
+button.btn.btn-outline-danger {
+    font-size: 14px !important;
+    width: fit-content !important;
+}
+
+}
+
+@media only screen and (max-width: 429px){
+.attendee-home .btn.btn-primary {
+    width: fit-content;
+    font-size: 13px !important;
+    margin-bottom: 5px;
+}
+
+button.btn.btn-outline-danger {
+    font-size: 13px !important;
+    width: fit-content !important;
+}
+}
+
+
+@media only screen and (min-width: 1441px){
+
+    button.accordion-extra.attendee-home-lgt.attendee-bg-clr.add-contact-font {
+    font-size: 19.2px;
+}
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1440px){
+    button.accordion-extra.attendee-home-lgt.attendee-bg-clr.add-contact-font {
+    font-size: 17px;
+}
+}
+
+@media screen and (max-width: 992px){
+.header .header-content {
+    padding-left: 0rem !important;
+    padding-right: 0rem;
+}
+
+.header {
+padding-left: 0rem;
+}
+}
+
+
+
     </style>
   </head>
 
@@ -123,7 +272,7 @@ button.btn.btn-outline-danger {
                                 <div>
                                 <div class="welcome-text text-center">
                                     <body onload="startTime()">
-                                        <p id="demo"></p>
+                                    <p id="demo"></p>
                                     </body>
                                 </div>
                             </div>
@@ -167,15 +316,7 @@ button.btn.btn-outline-danger {
       <div class="content-body attendee-home ">
         <div class="container-fluid ">
       
-            <div class="card">
-                <button class="accordion accordion-extra attendee-home-lgt attendee-bg-clr add-contact-font">INSTRUCTION</button>
-            <div class="panel accordion-panel-extra accordion-add-contact-colr">
-                <div class="degree-feedback-contact-customise">
-                  {!! $sidebar !!}
-                </div>
-            </div>
-             
-               </div>
+            
 
               <div class="row">
                 <div class="col-xl-6 col-xxl-12">
@@ -219,16 +360,18 @@ button.btn.btn-outline-danger {
                                                         </div>
                                                         <div class="form-group col-md-6 form-gap-2">
                                                             <label class="text-label">Your Job Title</label>
-                                                            <div class="input-error">
-                                                                <select class="form-select form-select-sm" name="job_title" id="form-select-sm-attendee-1" aria-label=".form-select-sm example" required>
-                                                                <option value="" selected disabled>Select Job Title</option>
-                                                                <option value="1">Director</option>
-                                                                <option value="2">Department Head</option>
-                                                                <option value="3">Manager</option>
-                                                                <option value="4">Project Manager / Specialist</option>
-                                                                <option value="5">Team Member</option>
-                                                            </select>
-                                                        </div>
+                                                            <div class="input-error customise-select">
+                                                                <div class="input-error">
+                                                                    <select class="form-select form-select-sm my-select2" name="job_title" aria-label=".form-select-sm example" id="my_contact_data_0" my-contacts-data="my_contact_data" required>
+                                                                        <option value="" selected disabled>Select Job Title</option>
+                                                                        <option value="1">Director</option>
+                                                                        <option value="2">Department Head</option>
+                                                                        <option value="3">Manager</option>
+                                                                        <option value="4">Project Manager / Specialist</option>
+                                                                        <option value="5">Team Member</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                         <div class="col-md-2 col-12 mb-50">
                                                             <div class="form-group">
@@ -240,13 +383,13 @@ button.btn.btn-outline-danger {
                                                                 </button>
                                                             </div>
                                                         </div>
-                                                        <hr/>
                                                     </div>
                                                 </div>
+                                                <hr/>
                                             
                                             </div>
                                         </div>     
-                                        <hr>   
+                                        {{-- <hr/>    --}}
                                     <button type="submit" class="btn btn-primary">Send Instructions</button>
                                     <button type="button" class="btn btn-primary">Cancel</button>
                                     <button type="button" class="btn btn-primary" data-repeater-create>Add Another Attendee</button>
@@ -255,9 +398,19 @@ button.btn.btn-outline-danger {
                         </div>
                     </div>
                 </div>
+
+                <div class="card">
+                <button class="accordion-extra attendee-home-lgt attendee-bg-clr add-contact-font">INSTRUCTION</button>
+            <div class="accordion-add-contact-colr">
+                <div class="degree-feedback-contact-customise">
+                  {!! $sidebar !!}
+                </div>
+            </div>
+               </div>
+
             </div>
           </div>
-          </div>
+          
       <!--**********************************
             Content body end
         ***********************************-->
@@ -284,7 +437,7 @@ button.btn.btn-outline-danger {
       <!--**********************************
            Support ticket button end
         ***********************************-->
-  
+        </div>
     <!--**********************************
         Main wrapper end
     ***********************************-->
@@ -296,19 +449,19 @@ button.btn.btn-outline-danger {
     <script src="{{ asset('vendor/global/global.min.js')}}"></script> 
     <script src="{{ asset('js/quixnav-init.js')}}"></script>
     <script src="{{ asset('js/custom.min.js')}}"></script>
-    
-    <script src="{{asset('select/js/form-select2.js')}}"></script>
-    <script src="{{asset('select/js/select2.full.min.js')}}"></script>
-    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js" integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> --}}
-    
-     <script src="{{ asset('js/jquery.validate.min.js') }}"></script>
-     <script src="{{ asset('js/form/courseattendee/courseattendee.js') }}"></script>
-     
-    
+
+    <script src="{{ asset('js/jquery.validate.min.js') }}"></script>
+    <script src="{{ asset('js/form/courseattendee/courseattendee.js') }}"></script>
     <script src="{{ asset('js/form/courseattendee/jquery.repeater.min.js') }}"></script>
     <script src="{{ asset('js/form/courseattendee/form-repeater.js') }}"></script>
-    
+
+    <script src="{{ asset('select/js/form-select2.js') }}"></script>
+    <script src="{{ asset('select/js/select2.full.min.js') }}"></script>
+    <script>
+        $('#my_contact_data_0').select2({
+            minimumResultsForSearch: Infinity
+        });
+    </script>
 
     <script type="text/javascript">
         function startTime()
@@ -345,9 +498,6 @@ button.btn.btn-outline-danger {
         }
     </script>
 
-    <script>
-        $('.select2').select2();
-    </script>
     {{-- <script>
       $('#form-select-sm-attendee-1').select2();
       $('#form-select-sm-attendee-2').select2();
@@ -373,5 +523,88 @@ button.btn.btn-outline-danger {
     });
     }
   </script>
+
+<script>
+// var x, i, j, l, ll, selElmnt, a, b, c;
+// /*look for any elements with the class "customise-select":*/
+// x = document.getElementsByClassName("customise-select");
+// l = x.length;
+// for (i = 0; i < l; i++) {
+//   selElmnt = x[i].getElementsByTagName("select")[0];
+//   ll = selElmnt.length;
+//   /*for each element, create a new DIV that will act as the selected item:*/
+//   a = document.createElement("DIV");
+//   a.setAttribute("class", "select-selected");
+//   a.innerHTML = selElmnt.options[selElmnt.selectedIndex].innerHTML;
+//   x[i].appendChild(a);
+//   /*for each element, create a new DIV that will contain the option list:*/
+//   b = document.createElement("DIV");
+//   b.setAttribute("class", "select-items select-hide");
+//   for (j = 1; j < ll; j++) {
+//     /*for each option in the original select element,
+//     create a new DIV that will act as an option item:*/
+//     c = document.createElement("DIV");
+//     c.innerHTML = selElmnt.options[j].innerHTML;
+//     c.addEventListener("click", function(e) {
+//         /*when an item is clicked, update the original select box,
+//         and the selected item:*/
+//         var y, i, k, s, h, sl, yl;
+//         s = this.parentNode.parentNode.getElementsByTagName("select")[0];
+//         sl = s.length;
+//         h = this.parentNode.previousSibling;
+//         for (i = 0; i < sl; i++) {
+//           if (s.options[i].innerHTML == this.innerHTML) {
+//             s.selectedIndex = i;
+//             h.innerHTML = this.innerHTML;
+//             y = this.parentNode.getElementsByClassName("same-as-selected");
+//             yl = y.length;
+//             for (k = 0; k < yl; k++) {
+//               y[k].removeAttribute("class");
+//             }
+//             this.setAttribute("class", "same-as-selected");
+//             break;
+//           }
+//         }
+//         h.click();
+//     });
+//     b.appendChild(c);
+//   }
+//   x[i].appendChild(b);
+//   a.addEventListener("click", function(e) {
+//       /*when the select box is clicked, close any other select boxes,
+//       and open/close the current select box:*/
+//       e.stopPropagation();
+//       closeAllSelect(this);
+//       this.nextSibling.classList.toggle("select-hide");
+//       this.classList.toggle("select-arrow-active");
+//     });
+// }
+// function closeAllSelect(elmnt) {
+//   /*a function that will close all select boxes in the document,
+//   except the current select box:*/
+//   var x, y, i, xl, yl, arrNo = [];
+//   x = document.getElementsByClassName("select-items");
+//   y = document.getElementsByClassName("select-selected");
+//   xl = x.length;
+//   yl = y.length;
+//   for (i = 0; i < yl; i++) {
+//     if (elmnt == y[i]) {
+//       arrNo.push(i)
+//     } else {
+//       y[i].classList.remove("select-arrow-active");
+//     }
+//   }
+//   for (i = 0; i < xl; i++) {
+//     if (arrNo.indexOf(i)) {
+//       x[i].classList.add("select-hide");
+//     }
+//   }
+// }
+// /*if the user clicks anywhere outside the select box,
+// then close all select boxes:*/
+// document.addEventListener("click", closeAllSelect);
+</script>
+
+
   </body>
 </html>

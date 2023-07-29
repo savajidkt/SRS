@@ -33,6 +33,7 @@ class FeedbackContacteController extends Controller
 
     public function index($id,$at_id = null,$ext_id = null)
     {
+        // dd($at_id);
         $sidebar = '';
         $course = Course::where('key',$id)->first();
         $questionnaireAnswers = QuestionnaireAnswers::where('attendees_id',$ext_id)->where('type',0)->count();
@@ -50,14 +51,14 @@ class FeedbackContacteController extends Controller
         }
        
         if($course) {
-            $CompanyOrganizer = CompanyOrganizer::where('course_id', $course->id)->first();
+            $courseAttendees = CourseAttendees::where('id', $at_id)->first();
            
-            if($CompanyOrganizer) 
+            if($courseAttendees) 
             {
                 $emailTemplate = getEmailTemplatesByID(10);
                 
                 if ($emailTemplate) {
-                    $paramArr['contact_name'] = ucwords($CompanyOrganizer->first_name . " " . $CompanyOrganizer->last_name);
+                    $paramArr['contact_name'] = ucwords($courseAttendees->first_name . " " . $courseAttendees->last_name);
                     $sidebar = replaceHTMLBodyWithParam($emailTemplate['template'], $paramArr);
             
                 }
@@ -96,14 +97,14 @@ class FeedbackContacteController extends Controller
         }
         if($course) 
         {
-            $CompanyOrganizer = CompanyOrganizer::where('course_id', $course->id)->first();
+            $attendeeReferens = AttendeeReferens::where('id', $attendee_id)->first();
            
-            if($CompanyOrganizer) 
+            if($attendeeReferens) 
             {
                 $emailTemplate = getEmailTemplatesByID(11);
                 
                 if ($emailTemplate) {
-                    $paramArr['contact_name'] = ucwords($CompanyOrganizer->first_name . " " . $CompanyOrganizer->last_name);
+                    $paramArr['contact_name'] = ucwords($attendeeReferens->first_name . " " . $attendeeReferens->last_name);
                     $sidebar = replaceHTMLBodyWithParam($emailTemplate['template'], $paramArr);
                     
             
@@ -249,14 +250,14 @@ class FeedbackContacteController extends Controller
             }
         }
         if($course) {
-            $CompanyOrganizer = CompanyOrganizer::where('course_id', $course->id)->first();
+            $attendeeReferens = AttendeeReferens::where('id', $contact_id)->first();
            
-            if($CompanyOrganizer) 
+            if($attendeeReferens) 
             {
                 $emailTemplate = getEmailTemplatesByID(11);
                 
                 if ($emailTemplate) {
-                    $paramArr['contact_name'] = ucwords($CompanyOrganizer->first_name . " " . $CompanyOrganizer->last_name);
+                    $paramArr['contact_name'] = ucwords($attendeeReferens->first_name . " " . $attendeeReferens->last_name);
                     $sidebar = replaceHTMLBodyWithParam($emailTemplate['template'], $paramArr);
                     
             

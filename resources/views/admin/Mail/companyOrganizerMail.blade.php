@@ -60,10 +60,10 @@
                                     </table>
                                 </td>
                             </tr>
-                            <tr height="10">
+                            {{-- <tr height="10">
                                 <td>&nbsp;
                                 </td>
-                            </tr>
+                            </tr> --}}
                             <tr>
                                 <td bgcolor="#000066">
                                     <table
