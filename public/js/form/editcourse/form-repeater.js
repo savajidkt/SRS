@@ -10,6 +10,14 @@
 
 $(function() {
     'use strict';
+
+    var selects = $('body').find('.my-select2');
+    $.each(selects, function(i, selectElement) {
+        $(selectElement).removeClass('select2-hidden-accessible').next('.select2-container').remove();
+        $(selectElement).removeAttr('data-select2-id tabindex aria-hidden');
+        initSelect2(selectElement);
+    });
+
     if (myCount == 1) {
         $('.text-nowrap').hide();
     }
@@ -18,6 +26,13 @@ $(function() {
     $('.attendees-repeater').repeater({
         show: function() {
             $(this).slideDown();
+
+            var selects = $('body').find('.my-select2');
+            $.each(selects, function(i, selectElement) {
+                $(selectElement).removeClass('select2-hidden-accessible').next('.select2-container').remove();
+                $(selectElement).removeAttr('data-select2-id tabindex aria-hidden');
+                initSelect2(selectElement);
+            });
 
             myCount = myCount + 1;
             if (myCount > 1) {
@@ -36,3 +51,9 @@ $(function() {
         }
     });
 });
+
+function initSelect2(selectElement) {
+    $(selectElement).select2({
+        minimumResultsForSearch: Infinity
+    });
+}

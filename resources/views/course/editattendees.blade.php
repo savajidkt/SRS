@@ -28,6 +28,20 @@ font-size:12px !important;
     width: fit-content;
     font-size: 12px !important;
 }
+
+}
+
+
+@media only screen and (max-width: 390px){
+.btn.btn-primary {
+    width: fit-content;
+    font-size: 11px !important;
+    margin-bottom:5px;
+}
+
+button.btn.btn-outline-danger{
+font-size:11px !important;
+}
 }
 
 
@@ -124,59 +138,58 @@ font-size:12px !important;
                                     <div class="">
                                     @if(count($courseAttendeesList) > 0)
                                         <div data-repeater-list="attendees">
-                                        @foreach ($courseAttendeesList as $key=> $attendees )
-                                        <input type="hidden" name="defualt_course_id" value="{{$attendees->course_id}}">
-                                        <input type="hidden" name="defualt_organizer_id" value="{{$attendees->organizer_id}}">
-                                            
-                                            <div data-repeater-item>
-                                                <div class="form-row">
-                                                    <div class="form-group col-md-6 form-gap-2">
-                                                        <label>First Name</label>
-                                                        <div class="input-error">
-                                                            <input type="hidden" name="id" value="{{$attendees->id}}">
-                                                            <input type="hidden" name="course_id" value="{{$attendees->course_id}}">
-                                                            <input type="hidden" name="organizer_id" value="{{$attendees->organizer_id}}">
-                                                            <input type="text" name="first_name" value="{{$attendees->first_name}}" class="form-control" placeholder="Sue" onkeyup="this.value=this.value.replace(/[^A-z]/g,'');" required>
+                                            @foreach ($courseAttendeesList as $key=> $attendees )
+                                                <input type="hidden" name="defualt_course_id" value="{{$attendees->course_id}}">
+                                                <input type="hidden" name="defualt_organizer_id" value="{{$attendees->organizer_id}}">
+                                                <div data-repeater-item>
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md-6 form-gap-2">
+                                                            <label>First Name</label>
+                                                            <div class="input-error">
+                                                                <input type="hidden" name="id" value="{{$attendees->id}}">
+                                                                <input type="hidden" name="course_id" value="{{$attendees->course_id}}">
+                                                                <input type="hidden" name="organizer_id" value="{{$attendees->organizer_id}}">
+                                                                <input type="text" name="first_name" value="{{$attendees->first_name}}" class="form-control" placeholder="Sue" onkeyup="this.value=this.value.replace(/[^A-z]/g,'');" required>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="form-group col-md-6 form-gap-2">
-                                                        <label>Last Name</label>
-                                                        <div class="input-error">
-                                                            <input type="text" name="last_name" value="{{$attendees->last_name}}" class="form-control" placeholder="Swindell" onkeyup="this.value=this.value.replace(/[^A-z]/g,'');" required>
+                                                        <div class="form-group col-md-6 form-gap-2">
+                                                            <label>Last Name</label>
+                                                            <div class="input-error">
+                                                                <input type="text" name="last_name" value="{{$attendees->last_name}}" class="form-control" placeholder="Swindell" onkeyup="this.value=this.value.replace(/[^A-z]/g,'');" required>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="form-group col-md-6 form-gap-2">
-                                                        <label>Email Address</label>
-                                                        <div class="input-error">
-                                                            <input type="email" name="email" value="{{$attendees->email}}" class="form-control" placeholder="sue.swindell@srs-development.co.uk" required>
+                                                        <div class="form-group col-md-6 form-gap-2">
+                                                            <label>Email Address</label>
+                                                            <div class="input-error">
+                                                                <input type="email" name="email" value="{{$attendees->email}}" class="form-control" placeholder="sue.swindell@srs-development.co.uk" required>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="form-group col-md-6 form-gap-2">
-                                                        <label class="text-label">Your Job Title</label>
-                                                        <div class="input-error">
-                                                        <select class="form-select form-select-sm select2" data-select2-id="job_title{{$attendees->id}}" data-minimum-results-for-search="Infinity"  name="job_title" id="form-select-sm-attendee-1" aria-label=".form-select-sm example">
-                                                                <option value="" selected disabled>Select Jo b Title</option>
-                                                                <option value="1" {{ isset($attendees->job_title) && $attendees->job_title == '1' ? 'selected' : '' }}>Director</option>
-                                                                <option value="2" {{ isset($attendees->job_title) && $attendees->job_title == '2' ? 'selected' : '' }}>Department Head</option>
-                                                                <option value="3" {{ isset($attendees->job_title) && $attendees->job_title == '3' ? 'selected' : '' }}>Manager</option>
-                                                                <option value="4" {{ isset($attendees->job_title) && $attendees->job_title == '4' ? 'selected' : '' }}>Project Manager / Specialist</option>
-                                                                <option value="5" {{ isset($attendees->job_title) && $attendees->job_title == '5' ? 'selected' : '' }}>Team Member</option>
-                                                        </select>
+                                                        <div class="form-group col-md-6 form-gap-2">
+                                                            <label class="text-label">Your Job Title</label>
+                                                            <div class="input-error">
+                                                            <select class="form-select form-select-sm my-select2"  name="job_title"  aria-label=".form-select-sm example" id="my_contact_data_0" my-contacts-data="my_contact_data">
+                                                                    <option value="" selected disabled>Select Jo b Title</option>
+                                                                    <option value="1" {{ isset($attendees->job_title) && $attendees->job_title == '1' ? 'selected' : '' }}>Director</option>
+                                                                    <option value="2" {{ isset($attendees->job_title) && $attendees->job_title == '2' ? 'selected' : '' }}>Department Head</option>
+                                                                    <option value="3" {{ isset($attendees->job_title) && $attendees->job_title == '3' ? 'selected' : '' }}>Manager</option>
+                                                                    <option value="4" {{ isset($attendees->job_title) && $attendees->job_title == '4' ? 'selected' : '' }}>Project Manager / Specialist</option>
+                                                                    <option value="5" {{ isset($attendees->job_title) && $attendees->job_title == '5' ? 'selected' : '' }}>Team Member</option>
+                                                            </select>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="col-md-2 col-12 mb-50">
-                                                        <div class="form-group">
-                                                                <button class="btn btn-outline-danger text-nowrap px-1" data-repeater-delete type="button">
-                                                            <i data-feather="x" class="mr-25"></i>
-                                                            <span>Delete</span>
-                                                            </button>
+                                                        <div class="col-md-2 col-12 mb-50">
+                                                            <div class="form-group">
+                                                                    <button class="btn btn-outline-danger text-nowrap px-1" data-repeater-delete type="button">
+                                                                <i data-feather="x" class="mr-25"></i>
+                                                                <span>Delete</span>
+                                                                </button>
+                                                            </div>
                                                         </div>
+                                                        {{-- <hr/> --}}
                                                     </div>
-                                                    {{-- <hr/> --}}
+                                                    <hr/>
                                                 </div>
-                                                <hr/>
-                                            </div>
-                                        @endforeach
+                                            @endforeach
                                         </div>
                                     @endif
                                     </div>
@@ -203,7 +216,31 @@ font-size:12px !important;
     <script src="{{ asset('js/form/editcourse/jquery.repeater.min.js') }}"></script>
     <script src="{{ asset('js/form/editcourse/form-repeater.js') }}"></script>
     <script>
-        $('.select2').select2();
+        document.addEventListener('DOMContentLoaded', function() {
+
+        setTimeout(function() {
+                
+            var selects = $('body').find('.my-select2');
+        $.each(selects, function(i, selectElement) {
+            console.log(selectElement);
+            $(selectElement).removeClass('select2-hidden-accessible').next('.select2-container')
+            .remove();
+            $(selectElement).removeAttr('data-select2-id tabindex aria-hidden');
+            initSelect2(selectElement);
+        });
+
+                }, 200);
+
+
+
+        function initSelect2(selectElement) {
+            $(selectElement).select2({
+                minimumResultsForSearch: Infinity
+            });
+        }
+
+        }, false);
+        
     </script>
     <script>
         function Func_a(e) {

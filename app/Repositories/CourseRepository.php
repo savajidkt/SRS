@@ -7,6 +7,8 @@ use App\Models\CompanyOrganizer;
 use App\Mail\CompanyOrganizerMail;
 use App\Exceptions\GeneralException;
 use App\Libraries\Safeencryption;
+use App\Mail\UpdateCourseTrainerMail;
+use App\Models\Client;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Database\Eloquent\Collection;
 
@@ -92,8 +94,21 @@ class CourseRepository
                     'last_name'    => $invoice['last_name'],
                     'email'    => $invoice['email'],
                 ];
-                
+
+                $trainerArr = [];
+                $trainerArr['trainer_name'] = ucwords($invoice['first_name'] . " " . $invoice['last_name']);
+                $trainerArr['course_date'] = $course->start_date;
+                $trainerArr['course_end_date'] = $course->end_date;
+                $trainerArr['course_name'] = $course->coursecategoryname->course_name;
+                $trainerArr['company_organiser_attendees_name'] = $course->companyorganizer->first_name. " " . $course->companyorganizer->last_name;
+                $trainerArr['company_organiser_attendees_email'] = $course->companyorganizer->email;
+                $client = Client::where('id',$course->client_id)->first();
+                $trainerArr['company_address'] = $client->address_one. "," . $client->address_tow ."<br>".$client->town . "<br> Post Code" .$client->post_code;
+                $trainerArr['company_name'] = $client->company_name;
+                $data['trainerArr'] = $trainerArr; 
+                Mail::to($invoice['email'])->send(new UpdateCourseTrainerMail($data));
                 $course->trainerDetail()->save(new TrainerDetail($invoiceArr));
+
                 
             }
             
@@ -104,7 +119,6 @@ class CourseRepository
                 'email'    => $data['org_email'],
                 'confirm_attendee'    => 1            
             ];
-            
             $data['key'] = $course->key;
             $course->companyorganizer()->update($organizerData);
             Mail::to($data['org_email'])->send(new CompanyOrganizerMail($data));
