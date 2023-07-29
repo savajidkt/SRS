@@ -11,7 +11,7 @@
                                 Content body start
                             ***********************************-->
 
-    <div class="container-fluid">
+    <div class="container-fluid edit-template-container-customise-manager">
         <div class="row page-titles mx-0">
             <!-- <div class="col-sm-6 p-md-0">
                                         <div class="welcome-text">

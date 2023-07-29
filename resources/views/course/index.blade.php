@@ -84,11 +84,11 @@
                 "sLengthMenu": "Show  _MENU_ Entries",
                 },
             ajax: "{{ route('course.index') }}",
+            order: [[1, 'desc']],
             columns: [{
-                    data: 'id',
-                    name: 'id',
-                    // orderable: false,
-                    // searchable: true
+                    data: 'DT_RowIndex',
+                     orderable: false,
+                     searchable: false
                 },
                 {
                     data: 'course_category_id',

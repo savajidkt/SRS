@@ -11,33 +11,32 @@
             display: none;
         }
 
-        @media screen and (max-width: 992px) {
-            .add_course_step_2_col .email-customize {
-                white-space: nowrap !important;
-            }
+        @media screen and (max-width: 992px){
+.add_course_step_2_col .email-customize{
+white-space: nowrap !important;
+}
+.add_course_form_content .form-group {
+    display: grid;
+    grid-template-columns: 100% !important;
+    justify-content: flex-start !important;
+}
+}
 
-            .add_course_form_content .form-group {
-                display: grid;
-                grid-template-columns: 100% !important;
-                justify-content: flex-start !important;
-            }
-        }
+.add_course_step_2_col .email-customize{
+white-space: nowrap !important;
+}
 
-        .add_course_step_2_col .email-customize {
-            white-space: nowrap !important;
-        }
+.company-organizer-customise-section{
+    margin-bottom:15px;
+}
 
-        .company-organizer-customise-section {
-            margin-bottom: 15px;
-        }
-
-        .course-company-edit-container {
-            overflow-y: hidden !important;
-        }
+.course-company-edit-container{
+    overflow-y:hidden !important;
+}
     </style>
     <!--**********************************
-                            Content body start
-                        ***********************************-->
+                    Content body start
+                ***********************************-->
 
     <div class="container-fluid course-company-edit-container">
         <div class="row page-titles mx-0">
@@ -83,7 +82,7 @@
                                 <section class="company-organizer-customise-section">
                                     <div class="row">
                                         <div class="col-lg-12 mb-4 form-style add_course_step_2_col">
-
+                                            
 
                                             <div class="form-group train-deet">
                                                 <label class="itemcost email-customize">First Name<span
@@ -112,7 +111,7 @@
                                                     <input type="text" class="form-control" name="org_email"
                                                         value="" />
                                                 </div>
-                                            </div>
+                                            </div> 
 
                                         </div>
                                     </div>
@@ -130,16 +129,45 @@
     </div>
 
     <!--**********************************
-                            Content body end
-                        ***********************************-->
+                    Content body end
+                ***********************************-->
 @endsection
 @section('extra-script')
+<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+
     <script src="{{ asset('js/jquery.validate.min.js') }}"></script>
     <script src="{{ asset('js/form/course.js') }}"></script>
     <script src="{{ asset('js/form/course/jquery.repeater.min.js') }}"></script>
     <script src="{{ asset('js/form/course/form-repeater.js') }}"></script>
 
     <script type="text/javascript">
+      $( function() {
+        $( "#start_date" ).datepicker({
+            dateFormat: "dd/mm/yy",
+            minDate: 0,
+            autoclose: true,
+            onSelect: function(selected) {
+                var selectedDate = $("#start_date").datepicker("getDate");
+            var dt = new Date(selectedDate);
+             dt.setDate( dt.getDate() - 1 );
+
+                console.log(dt);
+                //$("#end_date").val(dt);
+                $("#end_date").datepicker("option","maxDate", selected);
+                $("#end_date").datepicker("setDate", dt);
+            }
+        });
+
+        $( "#end_date" ).datepicker({
+            dateFormat: "dd/mm/yy",
+            autoclose: true
+        }).on('change', function(){
+            //$('#start_date').hide();
+
+        });
+    } );
+
         $(function() {
             var dtToday = new Date();
             var month = dtToday.getMonth() + 1;
@@ -157,6 +185,7 @@
     </script>
 
     <script>
+
         $('#client_id').on('change', function() {
             var selected_option_value = $(this).find(":selected").val();
             if (selected_option_value == '') {
@@ -174,23 +203,28 @@
                 $('#duration-error').hide();
             }
         });
+        
     </script>
     <script>
+       
         function Func_a(e) {
 
             var inputDate = new Date($(e).val());
             var oneDayInMillis = 24 * 60 * 60 * 1000;
             var resultDate = new Date(inputDate.getTime() + oneDayInMillis);
             var resultDateStr = resultDate.toISOString().split('T')[0];
-            console.log(resultDateStr);
+
             $('#end_date').attr('max', resultDateStr);
 
             var specificDate = new Date($(e).val());
+
             // Subtract one day from the specific date
             var yesterday = new Date(specificDate);
             yesterday.setDate(specificDate.getDate() - 1);
+
             // Format the yesterday's date
             var formattedDate = yesterday.toISOString().split('T')[0];
+
             // Output the formatted date
             $('#end_date').val(formattedDate);
             // console.log(formattedDate);

@@ -6,7 +6,7 @@
     ***********************************-->
 
 
-    <div class="container-fluid">
+    <div class="container-fluid template-manager-customise-container">
         <div class="row page-titles mx-0">
             <!-- <div class="col-sm-6">
                     <div class="welcome-text">
@@ -110,13 +110,13 @@
                     "sLengthMenu": "Show  _MENU_ Entries",
                 },
                 ajax: "{{ route('templatemanager-help') }}",
+                order: [[1, 'desc']],
                 columns: [
                     
                     {
-                        data: 'id',
-                        name: 'id',
-                        // orderable: false,
-                        // searchable: true
+                        data: 'DT_RowIndex',
+                     orderable: false,
+                     searchable: false
                     },
                     {
                         data: 'name',

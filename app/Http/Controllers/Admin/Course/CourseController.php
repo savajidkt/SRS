@@ -104,7 +104,6 @@ class CourseController extends Controller
     public function show(Course $course)
     {
         //dd($course);
-        //return view('course.viewHtml',['modal'=>$course]);
         return view('course.view',['modal'=>$course]);
     }
 

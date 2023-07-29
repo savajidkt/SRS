@@ -87,11 +87,11 @@
                         d.customFilter = $('#customFilter').val();
                     }
                 },
+                order: [[1, 'desc']],
                 columns: [{
-                        data: 'id',
-                        name: 'id',
-                        // orderable: false,
-                        // searchable: true
+                    data: 'DT_RowIndex',
+                     orderable: false,
+                     searchable: false
                     },
                     {
                         data: 'question',

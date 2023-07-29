@@ -164,7 +164,7 @@ white-space: nowrap !important;
 </script>
 <script>
     function Func_a(e) {
-
+    
         var inputDate = new Date($(e).val());
             var oneDayInMillis = 24 * 60 * 60 * 1000;
             var resultDate = new Date(inputDate.getTime() + oneDayInMillis);
