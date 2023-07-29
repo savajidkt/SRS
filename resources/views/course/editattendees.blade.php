@@ -165,7 +165,7 @@ font-size:11px !important;
                                                             </div>
                                                         </div>
                                                         <div class="form-group col-md-6 form-gap-2">
-                                                            <label class="text-label">Your Job Title</label>
+                                                            <label class="text-label attendee_job_title_cls" id="attendee_job_title_0" data-c-id="0" attendee-job-title="attendee_job_title">Your Job Title</label>
                                                             <div class="input-error">
                                                             <select class="form-select form-select-sm my-select2"  name="job_title"  aria-label=".form-select-sm example" id="my_contact_data_0" my-contacts-data="my_contact_data">
                                                                     <option value="" selected disabled>Select Jo b Title</option>
@@ -222,7 +222,7 @@ font-size:11px !important;
                 
             var selects = $('body').find('.my-select2');
         $.each(selects, function(i, selectElement) {
-            console.log(selectElement);
+            
             $(selectElement).removeClass('select2-hidden-accessible').next('.select2-container')
             .remove();
             $(selectElement).removeAttr('data-select2-id tabindex aria-hidden');
