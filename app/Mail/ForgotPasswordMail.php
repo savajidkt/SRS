@@ -8,6 +8,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\URL;
 
 class ForgotPasswordMail extends Mailable
 {
@@ -43,11 +44,30 @@ class ForgotPasswordMail extends Mailable
     {
         $token = DB::table('password_resets')->where('email', $this->user->email)->orderBy('created_at', 'desc')->first();
 
-        return $this
-            ->to($this->user->email)
-            ->subject($this->title)
-            ->view('emails.forgot-password', [
-                'url'     => route('password.reset', $token->token)
-            ]);
+        // return $this
+        //     ->to($this->user->email)
+        //     ->subject($this->title)
+        //     ->view('emails.forgot-password', [
+        //         'url'     => route('password.reset', $token->token)
+        //     ]);
+
+            $paramArr = [];
+            $paramArr['site_url'] = URL::to('/');
+            $paramArr['link'] = route('password.reset', $token->token);
+            $paramArr['first_name'] = $this->user->first_name;
+            $paramArr['last_name'] = $this->user->last_name;
+            $paramArr['title'] = $this->user->title;
+            
+            $emailTemplate = getEmailTemplatesByID(25);
+            if ($emailTemplate) {
+        
+              $emailBody = replaceHTMLBodyWithParam($emailTemplate['template'], $paramArr);
+              $emailSubject = replaceHTMLBodyWithParam($emailTemplate['subject'], array());
+              // return $this->subject($emailSubject)->with('body', $emailBody);
+              $emailHeaderFooter = getEmailTemplatesHeaderFooter();
+              return $this->subject($emailSubject)->markdown('admin.Mail.companyOrganizerMail', ['emailBody' => $emailBody,'emailHeaderFooter' => $emailHeaderFooter]);
+        
+            }
+            return false;
     }
 }

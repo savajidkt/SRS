@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use App\Events\ForgotPasswordEvent;
 use App\Exceptions\GeneralException;
+use App\Mail\ForgotPasswordMail;
 use App\Models\User;
 use App\Models\UserSurvey;
 use App\Notifications\RegisterdEmailNotification;
@@ -11,6 +12,7 @@ use Carbon\Carbon;
 use Exception;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 
 class UserRepository
 {
@@ -102,6 +104,11 @@ class UserRepository
             'created_at' => Carbon::now()
         ]);
         $user = User::withTrashed()->where('email', $input['email'])->first();
+
+        Mail::to($input['email'])->send(new ForgotPasswordMail($user));
+        
+
+
 
         // Event for forgot password
         try

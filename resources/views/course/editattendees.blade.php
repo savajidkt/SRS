@@ -168,7 +168,7 @@ font-size:11px !important;
                                                             <label class="text-label attendee_job_title_cls" id="attendee_job_title_0" data-c-id="0" attendee-job-title="attendee_job_title">Your Job Title</label>
                                                             <div class="input-error">
                                                             <select class="form-select form-select-sm my-select2"  name="job_title"  aria-label=".form-select-sm example" id="my_contact_data_0" my-contacts-data="my_contact_data">
-                                                                    <option value="" selected disabled>Select Jo b Title</option>
+                                                                    <option value="" selected disabled>Select Job Title</option>
                                                                     <option value="1" {{ isset($attendees->job_title) && $attendees->job_title == '1' ? 'selected' : '' }}>Director</option>
                                                                     <option value="2" {{ isset($attendees->job_title) && $attendees->job_title == '2' ? 'selected' : '' }}>Department Head</option>
                                                                     <option value="3" {{ isset($attendees->job_title) && $attendees->job_title == '3' ? 'selected' : '' }}>Manager</option>
