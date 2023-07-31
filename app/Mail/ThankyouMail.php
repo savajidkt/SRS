@@ -67,7 +67,7 @@ class ThankyouMail extends Mailable
    
     $paramArr = [];
     $paramArr['site_url'] = URL::to('/');
-    $paramArr['course_date'] = dateFormat($data['attendeeArr']['course_date']);
+    $paramArr['course_date'] = $data['attendeeArr']['course_date'];
     $paramArr['attendees_name'] = $data['attendeeArr']['attendees_name'];
     $paramArr['ref_name'] = $data['attendeeArr']['ref_name'];
     $paramArr['link'] = URL::to('/feedback-contacte/'.$data['key']);
@@ -77,7 +77,7 @@ class ThankyouMail extends Mailable
     $paramArr['ref_list'] = $data['attendeeArr']['ref_name'];
     $paramArr['course_name'] = $data['attendeeArr']['course_name'];
     $paramArr['attendees_list'] = $data['attendeeArr']['attendees_list'];
-    // $paramArr['questionnaire_end_date'] = dateFormat($data['course']['end_date']);
+    // $paramArr['questionnaire_end_date'] = $data['course']['end_date'];
     $paramArr['year'] = date('Y');
 
     // dd($paramArr);
@@ -86,8 +86,8 @@ class ThankyouMail extends Mailable
     if ($emailTemplate) {
 
       $emailBody = replaceHTMLBodyWithParam($emailTemplate['template'], $paramArr);
-      // $emailSubject = replaceHTMLBodyWithParam($emailTemplate['subject'], array('course_date' => dateFormat($data['course']['start_date'])));
-      $emailSubject = replaceHTMLBodyWithParam($emailTemplate['subject'], array('company_name' => $data['attendeeArr']['company_organiser_attendees_name'], 'course_name' => $data['attendeeArr']['course_name'], 'course_date' => dateFormat($data['attendeeArr']['course_date'])));
+      // $emailSubject = replaceHTMLBodyWithParam($emailTemplate['subject'], array('course_date' => $data['course']['start_date']));
+      $emailSubject = replaceHTMLBodyWithParam($emailTemplate['subject'], array('company_name' => $data['attendeeArr']['company_organiser_attendees_name'], 'course_name' => $data['attendeeArr']['course_name'], 'course_date' => $data['attendeeArr']['course_date']));
       // return $this->subject($emailSubject)->with('body', $emailBody);
       $emailHeaderFooter = getEmailTemplatesHeaderFooter();
       return $this->subject($emailSubject)->markdown('admin.Mail.companyOrganizerMail', ['emailBody' => $emailBody,'emailHeaderFooter' => $emailHeaderFooter]);

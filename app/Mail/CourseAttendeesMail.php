@@ -72,11 +72,11 @@ class CourseAttendeesMail extends Mailable
     $paramArr = [];
     $paramArr['site_url'] = URL::to('/');
     // $paramArr['attendees_name'] = $data['attendees']['first_name'] . ' ' . $data['attendees']['last_name'];
-    $paramArr['course_date'] = dateFormat($data['course']['start_date']);
+    $paramArr['course_date'] = $data['course']['start_date'];
     $paramArr['trainer_list'] = $trainerDetail;
     $paramArr['attendee_name'] = $data['attendee_name'];
     $paramArr['link'] = URL::to('/feedback-contacte/'.$data['key'].'/'. $data['attendee_id']);
-    $paramArr['questionnaire_end_date'] = dateFormat($data['course']['end_date']);
+    $paramArr['questionnaire_end_date'] = $data['course']['end_date'];
     $paramArr['year'] = date('Y');
 
     // dd($paramArr);
@@ -85,7 +85,7 @@ class CourseAttendeesMail extends Mailable
     if ($emailTemplate) {
 
       $emailBody = replaceHTMLBodyWithParam($emailTemplate['template'], $paramArr);
-      $emailSubject = replaceHTMLBodyWithParam($emailTemplate['subject'], array('course_date' => dateFormat($data['course']['start_date'])));
+      $emailSubject = replaceHTMLBodyWithParam($emailTemplate['subject'], array('course_date' => $data['course']['start_date']));
       // return $this->subject($emailSubject)->with('body', $emailBody);
       $emailHeaderFooter = getEmailTemplatesHeaderFooter();
       return $this->subject($emailSubject)->markdown('admin.Mail.companyOrganizerMail', ['emailBody' => $emailBody,'emailHeaderFooter' => $emailHeaderFooter]);

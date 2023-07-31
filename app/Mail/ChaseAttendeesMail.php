@@ -38,7 +38,7 @@ class ChaseAttendeesMail extends Mailable
     if ($emailTemplate) {     
       $createdAt =  Carbon::createFromFormat('d/m/Y', $data['course_date'])->format('m/d/Y');
       $emailBody = replaceHTMLBodyWithParam($emailTemplate['template'], $data);
-      $emailSubject = replaceHTMLBodyWithParam($emailTemplate['subject'], array('course_date' => dateFormat($createdAt)));
+      $emailSubject = replaceHTMLBodyWithParam($emailTemplate['subject'], array('course_date' => $createdAt));
       $emailHeaderFooter = getEmailTemplatesHeaderFooter();
       return $this->subject($emailSubject)->markdown('admin.Mail.companyOrganizerMail', ['emailBody' => $emailBody,'emailHeaderFooter' => $emailHeaderFooter]);
     }

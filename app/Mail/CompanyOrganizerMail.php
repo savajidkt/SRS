@@ -73,10 +73,10 @@ class CompanyOrganizerMail extends Mailable
     $paramArr = [];
     $paramArr['site_url'] = URL::to('/');
     $paramArr['company_organiser_name'] = $data['org_first_name'] . ' ' . $data['org_last_name'];
-    $paramArr['course_date'] = dateFormat($data['start_date']);
+    $paramArr['course_date'] = $data['start_date'];
     $paramArr['trainer_list'] = $trainer_list;
     $paramArr['link'] = URL::to('/course-attendees/'. $data['key']);
-    $paramArr['course_end_date'] = dateFormat($data['end_date']);
+    $paramArr['course_end_date'] = $data['end_date'];
     $paramArr['year'] = date('Y');
   // dd($paramArr);
     $emailTemplate = getEmailTemplatesByID(1);
@@ -84,7 +84,7 @@ class CompanyOrganizerMail extends Mailable
     if ($emailTemplate) {
 
       $emailBody = replaceHTMLBodyWithParam($emailTemplate['template'], $paramArr);
-      $emailSubject = replaceHTMLBodyWithParam($emailTemplate['subject'], array('course_date' => dateFormat($data['start_date'])));
+      $emailSubject = replaceHTMLBodyWithParam($emailTemplate['subject'], array('course_date' => $data['start_date']));
       $emailHeaderFooter = getEmailTemplatesHeaderFooter();
      
       // return $this->subject($emailSubject)->with('body', $emailBody);

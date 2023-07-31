@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html class="sidebar_default no-js" lang="en">
 
 <head>
     <meta charset="utf-8">

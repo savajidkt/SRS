@@ -391,7 +391,7 @@ padding-left: 0rem;
                                         </div>     
                                         {{-- <hr/>    --}}
                                     <button type="submit" class="btn btn-primary">Send Instructions</button>
-                                    <button type="button" class="btn btn-primary">Cancel</button>
+                                    <a href="{{ route('login') }}" class="btn btn-primary">Cancel</a>
                                     <button type="button" class="btn btn-primary" data-repeater-create>Add Another Attendee</button>
                                 </form>
                             </div>

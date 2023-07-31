@@ -308,7 +308,7 @@
                                             </div>
                                         </div>
                                         <button type="submit" class="btn btn-primary">Send to 360 Contacts</button>
-                                        <button type="button" class="btn btn-primary">Cancel</button>
+                                        <a href="{{ route('login') }}" class="btn btn-primary">Cancel</a>
                                         <button type="button" class="btn btn-primary" data-repeater-create>Add New
                                             Contact</button>
                                     </form>

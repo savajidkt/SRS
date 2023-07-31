@@ -23,6 +23,7 @@ class CourseRepository
      */
     public function create(array $data): Course
     {
+        
         $key = Str::upper(Str::random(5));
         $SafeencryptionObj = new Safeencryption;
         $newkey = $SafeencryptionObj->encode($key);

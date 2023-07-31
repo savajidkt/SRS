@@ -140,7 +140,9 @@ white-space: nowrap !important;
     <script src="{{ asset('js/form/course.js') }}"></script>
     <script src="{{ asset('js/form/course/jquery.repeater.min.js') }}"></script>
     <script src="{{ asset('js/form/course/form-repeater.js') }}"></script>
-
+    <script>
+        $('.select2').select2();
+   </script>
     <script type="text/javascript">
       $( function() {
         $( "#start_date" ).datepicker({

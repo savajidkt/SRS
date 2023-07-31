@@ -83,14 +83,14 @@ $myTable = "";
     $paramArr = [];
     $paramArr['site_url'] = URL::to('/');
     $paramArr['trainer_name'] = $data['trainerArr']['trainer_name'];
-    $paramArr['course_date'] = dateFormat($data['trainerArr']['course_date']);
+    $paramArr['course_date'] = $data['trainerArr']['course_date'];
     // $paramArr['trainer_list'] = $trainerDetail;
     $paramArr['course_name'] = $data['trainerArr']['course_name'];
     $paramArr['company_organiser_attendees_name'] = $data['trainerArr']['company_organiser_attendees_name'];
     $paramArr['company_address'] = $data['trainerArr']['company_address'];
     $paramArr['company_name'] = $data['trainerArr']['company_name'];
     $paramArr['company_organiser_attendees_email'] = $data['trainerArr']['company_organiser_attendees_email'];
-    $paramArr['course_end_date'] = dateFormat($data['trainerArr']['course_end_date']);
+    $paramArr['course_end_date'] = $data['trainerArr']['course_end_date'];
     $paramArr['attendees_list'] = $myTable;
     $paramArr['attendee_name'] = isset($data['attendee_name']) ? $data['attendee_name'] : '' ;
     $paramArr['referens_name'] = isset($data['referens_name']) ? $data['referens_name'] : '' ; 
@@ -105,12 +105,12 @@ $myTable = "";
       $emailBody = replaceHTMLBodyWithParam($emailTemplate['template'], $paramArr);
       // dd($emailBody);
       if( isset($data['self_attende']) && $data['self_attende'] == 'Yes' ){
-        $emailSubject = replaceHTMLBodyWithParam($emailTemplate['subject'], array('company_name' => $data['trainerArr']['company_name'], 'course_name' => $data['trainerArr']['course_name'], 'course_date' => dateFormat($data['trainerArr']['course_end_date'])));
+        $emailSubject = replaceHTMLBodyWithParam($emailTemplate['subject'], array('company_name' => $data['trainerArr']['company_name'], 'course_name' => $data['trainerArr']['course_name'], 'course_date' => $data['trainerArr']['course_end_date']));
       } else if( isset($data['self_attende']) && $data['self_attende'] == '360' ){
-        $emailSubject = replaceHTMLBodyWithParam($emailTemplate['subject'], array('company_name' => $data['trainerArr']['company_name'], 'course_name' => $data['trainerArr']['course_name'], 'course_date' => dateFormat($data['trainerArr']['course_end_date'])));
+        $emailSubject = replaceHTMLBodyWithParam($emailTemplate['subject'], array('company_name' => $data['trainerArr']['company_name'], 'course_name' => $data['trainerArr']['course_name'], 'course_date' => $data['trainerArr']['course_end_date']));
       }else
       {
-        $emailSubject = replaceHTMLBodyWithParam($emailTemplate['subject'], array('company_name' => $data['trainerArr']['company_name'], 'course_name' => $data['trainerArr']['course_name'], 'course_date' => dateFormat($data['trainerArr']['course_end_date'])));
+        $emailSubject = replaceHTMLBodyWithParam($emailTemplate['subject'], array('company_name' => $data['trainerArr']['company_name'], 'course_name' => $data['trainerArr']['course_name'], 'course_date' => $data['trainerArr']['course_end_date']));
       }
       $emailHeaderFooter = getEmailTemplatesHeaderFooter();
       // return $this->subject($emailSubject)->with('body', $emailBody);

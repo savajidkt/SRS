@@ -72,23 +72,22 @@ class UpdateCourseTrainerMail extends Mailable
     $paramArr = [];
     $paramArr['site_url'] = URL::to('/');
     $paramArr['trainer_name'] = $data['trainerArr']['trainer_name'];
-    $paramArr['course_date'] = dateFormat($data['trainerArr']['course_date']);
+    $paramArr['course_date'] = $data['trainerArr']['course_date'];
     $paramArr['trainer_list'] = $trainer_list;
     $paramArr['course_name'] = $data['trainerArr']['course_name'];
     $paramArr['company_organiser_attendees_name'] = $data['trainerArr']['company_organiser_attendees_name'];
     $paramArr['company_address'] = $data['trainerArr']['company_address'];
     $paramArr['company_name'] = $data['trainerArr']['company_name'];
     $paramArr['company_organiser_attendees_email'] = $data['trainerArr']['company_organiser_attendees_email'];
-    $paramArr['course_end_date'] = dateFormat($data['trainerArr']['course_end_date']);
+    $paramArr['course_end_date'] = $data['trainerArr']['course_end_date'];
     $paramArr['year'] = date('Y');
 
-    // dd($paramArr);
   
     $emailTemplate = getEmailTemplatesByID(20);
     if ($emailTemplate) {
 
       $emailBody = replaceHTMLBodyWithParam($emailTemplate['template'], $paramArr);
-      $emailSubject = replaceHTMLBodyWithParam($emailTemplate['subject'], array('company_name' => $data['trainerArr']['company_name'], 'course_name' => $data['trainerArr']['course_name'], 'course_date' => dateFormat($data['trainerArr']['course_end_date'])));
+      $emailSubject = replaceHTMLBodyWithParam($emailTemplate['subject'], array('company_name' => $data['trainerArr']['company_name'], 'course_name' => $data['trainerArr']['course_name'], 'course_date' => $data['trainerArr']['course_end_date']));
       $emailHeaderFooter = getEmailTemplatesHeaderFooter();
       return $this->subject($emailSubject)->markdown('admin.Mail.companyOrganizerMail', ['emailBody' => $emailBody,'emailHeaderFooter' => $emailHeaderFooter]);
 

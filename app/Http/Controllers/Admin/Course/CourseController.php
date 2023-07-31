@@ -42,8 +42,8 @@ class CourseController extends Controller
                     return $course->coursecategoryname->course_name;
                 })
                 ->addColumn('start_date', function (Course $course) {
-                    // return $course->start_date;
-                    return date('d-m-Y',strtotime($course->start_date));
+                    return $course->start_date;
+                    // return date('d-m-Y',strtotime($course->start_date));
                 })
                 ->addColumn('duration', function (Course $course) {
                     return $course->duration;
