@@ -49,7 +49,7 @@
                                         <tbody>
                                             <tr>
                                                 <td width="25"></td>
-                                                <td>
+                                                <td style="padding-bottom: 15px;">
                                                     <br />
                                                     Kind regards<br />
                                                     SRS THE DEVELOPMENT TEAM
@@ -72,7 +72,7 @@
                                         <tbody>
                                             <tr>
                                                 <td width="25"></td>
-                                                <td align="right" class="white_color">
+                                                <td align="right" class="white_color" style="float: left;">
                                                     @php
                                                         echo $emailHeaderFooter['footer'] ? $emailHeaderFooter['footer'] : '';
                                                     @endphp

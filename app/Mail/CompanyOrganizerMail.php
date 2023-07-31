@@ -86,7 +86,10 @@ class CompanyOrganizerMail extends Mailable
       $emailBody = replaceHTMLBodyWithParam($emailTemplate['template'], $paramArr);
       $emailSubject = replaceHTMLBodyWithParam($emailTemplate['subject'], array('course_date' => $data['start_date']));
       $emailHeaderFooter = getEmailTemplatesHeaderFooter();
-     
+     echo "Hello";
+     exit;
+      file_put_contents('abbbbbbbbbbb.txt', print_r($emailBody,true));
+      
       // return $this->subject($emailSubject)->with('body', $emailBody);
       return $this->subject($emailSubject)->markdown('admin.Mail.companyOrganizerMail', ['emailBody' => $emailBody, 'emailHeaderFooter' => $emailHeaderFooter]);
 

@@ -1,0 +1,76 @@
+<table border="0" cellpadding="0" cellspacing="0" style="width:650px">
+	<tbody>
+		<tr>
+			<td>&nbsp;</td>
+			<td>
+			<p>Dear Jayesh Patel,</p>
+
+			<p>You are booked to train TEST CDA Systems Ltd on the 31/07/2023.</p>
+
+			<table border="1" cellpadding="5" cellspacing="0" style="border-collapse:collapse">
+				<tbody>
+					<tr>
+						<td style="background-color:#8db3e2; vertical-align:top">
+						<p>Name of course:</p>
+						</td>
+						<td style="background-color:#dbe5f1; vertical-align:top">
+						<p>Influencing Questions</p>
+						</td>
+					</tr>
+					<tr>
+						<td style="background-color:#8db3e2; vertical-align:top">
+						<p>Trainer:</p>
+						</td>
+						<td style="background-color:#dbe5f1; vertical-align:top">
+						<p>Jayesh Patel</p>
+						</td>
+					</tr>
+					<tr>
+						<td style="background-color:#8db3e2; vertical-align:top">
+						<p>Date of course:</p>
+						</td>
+						<td style="background-color:#dbe5f1; vertical-align:top">
+						<p>31/07/2023</p>
+						</td>
+					</tr>
+					<tr>
+						<td style="background-color:#8db3e2; vertical-align:top">
+						<p>Company organiser:</p>
+						</td>
+						<td style="background-color:#dbe5f1; vertical-align:top">
+						<p>test test</p>
+						</td>
+					</tr>
+					<tr>
+						<td style="background-color:#8db3e2; vertical-align:top">
+						<p>Company address:</p>
+						</td>
+						<td style="background-color:#dbe5f1; vertical-align:top">
+						<p>Test Address,Test Company 1<br>First Town,333333</p>
+						</td>
+					</tr>
+					<tr>
+						<td style="background-color:#8db3e2; vertical-align:top">
+						<p>Company organiser email address:</p>
+						</td>
+						<td style="background-color:#dbe5f1; vertical-align:top">
+						<p>jjj.parejiya@gmail.com</p>
+						</td>
+					</tr>
+					<tr>
+						<td style="background-color:#8db3e2; vertical-align:top">
+						<p>Date forms to be completed by</p>
+						</td>
+						<td style="background-color:#dbe5f1; vertical-align:top">
+						<p>30/07/2023</p>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+
+			<p>The below have been registered on the course byEmail3 test test</p>
+			<table border="1" cellspacing="0" cellpadding="5" style="border-collapse:collapse"><tr><th width="301" valign="top" style="background-color:#17365D;color:white;"><p>Attendee Name</p></th><th width="247" valign="top" style="background-color:#17365D;color:white;"><p>eMail Address</p></th></tr><tbody><tr> <td width="301" valign="top" style="background-color:#8DB3E2"><p>dsdsd sdsdsd</p></td><td width="247" valign="top" style="background-color:#DBE5F1"><a><p>dddddd@gmail.com</p></a></td></tr></tbody></table></td>
+			<td>&nbsp;</td>
+		</tr>
+	</tbody>
+</table>
