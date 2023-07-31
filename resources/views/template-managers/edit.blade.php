@@ -109,21 +109,9 @@
     <script src="{{ asset('js/form/emailTemplate.js') }}"></script>
     {{-- <script src="https://srs-reporting.co.uk/ckeditor/ckeditor.js"></script> --}}
     <script src="{{ asset('js/ckeditor/ckeditor.js') }}"></script>
-    <script type="text/javascript">
-    if (typeof browser === "undefined") {
-    var browser = 'chrome';
-}
+    <script type="text/javascript">   
         $(document).ready(function() {
-            // $('.ckeditor').ckeditor();
-
-            CKEDITOR.replace('ckeditor', {
-                height: ['550px']
-            });
-            
-
-            
-            
-            
+             $('.ckeditor').ckeditor();                      
         });
     </script>
 @endsection

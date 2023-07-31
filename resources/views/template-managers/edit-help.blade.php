@@ -113,7 +113,7 @@
 @section('extra-script')
     <script src="{{ asset('js/jquery.validate.min.js') }}"></script>
     <script src="{{ asset('js/form/emailTemplateEdit.js') }}"></script>
-    <script src="//cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
+    <script src="{{ asset('js/ckeditor/ckeditor.js') }}"></script>
     <script type="text/javascript">
         $(document).ready(function() {
             $('.ckeditor').ckeditor();
