@@ -55,10 +55,5 @@
 @section('extra-script')
     <script src="{{ asset('js/jquery.validate.min.js') }}"></script>
     <script src="{{ asset('js/form/emailTemplate.js') }}"></script>
-    <script src="{{ asset('js/ckeditor/ckeditor.js') }}"></script>
-    <script type="text/javascript">
-        $(document).ready(function() {
-           $('.ckeditor').ckeditor();
-        });
-    </script>   
+    <script src="{{ asset('js/ckeditor/ckeditor.js') }}"></script>      
 @endsection

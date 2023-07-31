@@ -5,19 +5,22 @@
 @section('content')
 
     <style>
+
         .filedrequired,
 
         .help-block-error {
 
             color: #FF1616
+
         }
+
     </style>
 
     <!--**********************************
 
-                                        Content body start
+                        Content body start
 
-                                    ***********************************-->
+                    ***********************************-->
 
 
 
@@ -27,23 +30,23 @@
 
             <!-- <div class="col-sm-6 p-md-0">
 
-                                                <div class="welcome-text">
+                                <div class="welcome-text">
 
-                                                    <h4>Hi, welcome back!</h4>
+                                    <h4>Hi, welcome back!</h4>
 
-                                                    <p class="mb-0">Sue Swindell</p>
+                                    <p class="mb-0">Sue Swindell</p>
 
-                                                </div>
+                                </div>
 
-                                            </div> -->
+                            </div> -->
 
             <!-- <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex"> -->
 
             <div>
 
-                <ol class="breadcrumb">
+                <ol class="breadcrumb">                    
 
-
+                 
 
                     <?php
 
@@ -51,45 +54,45 @@
 
  if( $model->type == "email" ){
 
-           ?> <li class="breadcrumb-item"><a href="javascript:void(0)">Template Manager</a></li>
+           ?>                 <li class="breadcrumb-item"><a href="javascript:void(0)">Template Manager</a></li>           
 
-                    <li class="breadcrumb-item active"><a href="javascript:void(0)">Email Template Manager</a></li>
+                            <li class="breadcrumb-item active"><a href="javascript:void(0)">Email Template Manager</a></li>
 
-                    <?php
+                            <?php
 
         } else if( $model->type == "help" ){
 
-            ?>
+            ?>                            
 
-                    <li class="breadcrumb-item"><a href="javascript:void(0)">Template Manager</a></li>
+                             <li class="breadcrumb-item"><a href="javascript:void(0)">Template Manager</a></li> 
 
-                    <li class="breadcrumb-item active"><a href="javascript:void(0)">Help Template Manager</a></li>
+                            <li class="breadcrumb-item active"><a href="javascript:void(0)">Help Template Manager</a></li>
 
-                    <?php
+                            <?php
 
 
 
         } else if( $model->type == "message" ){
 
-            ?>
+            ?>                            
 
-                    ?> <li class="breadcrumb-item"><a href="javascript:void(0)">Template Manager</a></li>
+            ?>                 <li class="breadcrumb-item"><a href="javascript:void(0)">Template Manager</a></li> 
 
-                    <li class="breadcrumb-item active"><a href="javascript:void(0)">Message Template Manager</a></li>
+                            <li class="breadcrumb-item active"><a href="javascript:void(0)">Message Template Manager</a></li>
 
-                    <?php
+                            <?php
 
         } else if( $model->type == "template" ){
 
             ?>
 
-                    <li class="breadcrumb-item"><a href="javascript:void(0)">Template Manager</a></li>
+                                            <li class="breadcrumb-item"><a href="javascript:void(0)">Template Manager</a></li> 
 
-                    <li class="breadcrumb-item active"><a href="javascript:void(0)">Common Template Manager</a></li>
+                            <li class="breadcrumb-item active"><a href="javascript:void(0)">Common Template Manager</a></li>
 
+                            
 
-
-                    <?php
+                            <?php
 
         }
 
@@ -122,6 +125,7 @@
                     <div class="card-body">
 
                         <form id="templatemanager" action="{{ route('templatemanager.update', $model) }}" method="post"
+
                             enctype="multipart/form-data" id="step-form-horizontal" class="step-form-horizontal">
 
                             @csrf
@@ -198,9 +202,9 @@
 
     <!--**********************************
 
-                                        Content body end
+                        Content body end
 
-                                    ***********************************-->
+                    ***********************************-->
 
 @endsection
 
@@ -213,7 +217,7 @@
     {{-- <script src="https://srs-reporting.co.uk/ckeditor/ckeditor.js"></script> --}}
 
     <script src="{{ asset('js/ckeditor/ckeditor.js') }}"></script>
-
-    
+   
 
 @endsection
+
