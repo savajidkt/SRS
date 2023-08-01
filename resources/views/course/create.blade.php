@@ -164,7 +164,8 @@ white-space: nowrap !important;
 
         $( "#end_date" ).datepicker({
             dateFormat: "dd/mm/yy",
-            autoclose: true
+            autoclose: true,
+            maxDate: 0,
         }).on('change', function(){
             //$('#start_date').hide();
 

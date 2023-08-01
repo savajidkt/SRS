@@ -7,7 +7,7 @@ use Carbon\Carbon;
 use App\Models\Questions;
 
 use App\Models\EmailTemplate;
-
+use App\Models\ReportQuestion;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
@@ -730,6 +730,24 @@ if (!function_exists('getQuestions')) {
     {
 
         return Questions::skip($start)->take($end)->get();
+
+    }
+
+}
+
+if (!function_exists('getQuestionsReport')) {
+
+    /**
+
+     * getEmailTemplatesByID return email templates lists
+
+     */
+
+    function getQuestionsReport($start,$end)
+
+    {
+
+        return ReportQuestion::skip($start)->take($end)->get();
 
     }
 

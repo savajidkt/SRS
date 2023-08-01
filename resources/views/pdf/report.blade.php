@@ -74,6 +74,8 @@ foreach ($result as $key1 => $value) {
     $data++;
 }
 
+
+
 $score_averages = [];
 
 foreach ($scores as $name => $score) {
@@ -134,9 +136,6 @@ foreach ($scores as $name => $score) {
     
     generateGraph($imgName, $nameArray, $scores['ATTENDEE'], $scores[$name], $name);
 }
-
-
-
 
 ?>
 
@@ -507,16 +506,18 @@ foreach ($scores as $name => $score) {
 
 
                                 <?php
-                                $messgeTemplate = getEmailTemplatesByID(18);
+                                // $messgeTemplate = getEmailTemplatesByID(18);
                               
-                                $footer_text = '';
-                                if ($messgeTemplate) {
-                                    $paramArr = ['year' => date('Y')];
-                                    $footer_text = replaceHTMLBodyWithParam($messgeTemplate['template'], $paramArr);
-                                }
-                                echo $footer_text; 
+                                // $footer_text = '';
+                                // if ($messgeTemplate) {
+                                //     $paramArr = ['year' => date('Y')];
+                                //     $footer_text = replaceHTMLBodyWithParam($messgeTemplate['template'], $paramArr);
+                                // }
+                                // echo $footer_text; 
+                               
                                 ?>
-
+<p>Copyright &copy; <?php echo date('Y'); ?> SRS-The Development Team Ltd. All Rights Reserved</p>
+<p><a href="http://www.srs-development.co.uk" target="blank">www.srs-development.co.uk</a></p>
 
                             </td>
                             <td valign="middle" style="width:20%;text-align: right;color:#000066">
@@ -547,7 +548,7 @@ foreach ($scores as $name => $score) {
     <div align="center" class="note">
         <h3 class="graph-title">Your Influencing Spectrum - All Results</h3><br /><br />
         <?php            
-        $image_all_result = url("/storage/app/public/pdf/{$target_attendee_id}_compare_with_average.png");
+        $image_all_result = url("/storage/app/public/pdf/{$target_attendee_id}_all_result.png");
         ?>
         <img src="<?php echo $image_all_result; ?>" />
     </div>
@@ -559,7 +560,7 @@ foreach ($scores as $name => $score) {
     <div align="center" class="note">
         <h3 class="graph-title">Your Influencing Spectrum - Comparison with Average score of others</h3><br /><br />
          <?php            
-        $image_compare_with_average = url("/storage/app/public/pdf/{$target_attendee_id}_all_result.png");
+        $image_compare_with_average = url("/storage/app/public/pdf/{$target_attendee_id}_compare_with_average.png");
         ?>
         <img src="<?php echo $image_compare_with_average; ?>" />
     </div>
@@ -665,12 +666,12 @@ foreach ($scores as $name => $score) {
         </tfoot>
         <tbody>
             <?php
-                $results = getQuestions(0, 15);
+            
+                $results = getQuestionsReport(0, 15);
                 $k = 1;
                 $questionWidth = 500 - ((count($scores) * 30) + 40);
                 foreach ($results as $key1 => $result) {
-
-
+                  
                     $index = $result->id % 7;
                     if ($index == 0) {
                         $index = 7;
@@ -684,19 +685,23 @@ foreach ($scores as $name => $score) {
                 <td width="<?php echo $questionWidth; ?>" style="font-size:12px;" class="purpletext" style="border-right: 1px solid #000;">
                     <?php echo $result->question; ?></td>
                 <td width="10" style="padding-right:0px" align="center" style="border-right: 1px solid #000;">
-                    <?php echo $raw_scores['ATTENDEE'][$result->id]; ?></td>
-                <?php
+                    <?php echo $raw_scores['ATTENDEE'][($result->id - 70)] ?></td>
+                <?php 
+              
                 foreach ($scores as $name => $score) {
-                    if ($raw_scores[$name][$result->id] == '') {
-                        $raw_scores[$name][$result->id] = 0;
+ if ($name != 'ATTENDEE') {
+                    if ($raw_scores[$name][($result->id - 35)] == '') {                        
+                        $raw_scores[$name][($result->id - 35)] = 0;
                     }
-                    if ($name != 'ATTENDEE') {
-                        echo " <td width='10' style=\"padding-right:0px; border-right: 1px solid #000;\" align='center'>" . $raw_scores[$name][$result->id] . '</td> ';
+                    
+                
+                        echo " <td width='10' style=\"padding-right:0px; border-right: 1px solid #000;\" align='center'>" . $raw_scores[$name][($result->id - 35)] . '</td> ';
                     }
                 }
+                  
                 ?>
             </tr>
-            <?php } ?>
+            <?php }  ?>
         </tbody>
     </table>
     <br>
@@ -738,7 +743,7 @@ foreach ($scores as $name => $score) {
         <tbody>
             <?php
            
-                $results = getQuestions(15, 20);
+                $results = getQuestionsReport(15, 20);
                
                 $questionWidth = 500 - ((count($scores) * 30) + 40);
                 foreach ($results as $key1 => $result) {
@@ -759,21 +764,17 @@ foreach ($scores as $name => $score) {
                     <?php echo $result->question; ?>
                 </td>
                 <td width="10" style="padding-right:0px" align="center" style="border-right: 1px solid #000;">
-                     @if (array_key_exists($result->id,$raw_scores['ATTENDEE']))
-                     <?php echo $raw_scores['ATTENDEE'][$result->id]; ?></td>
-                     @else
-                     <?php echo '0'; ?></td>
-                     @endif
+                    <?php echo $raw_scores['ATTENDEE'][($result->id - 70)]; ?>
                     
                 <?php
                 foreach ($scores as $name => $score) {
 
-                 //   if ($raw_scores[$name][$result->id] == '') {
-                        if (!array_key_exists($result->id,$raw_scores['ATTENDEE'])){
-                        $raw_scores[$name][$result->id] = 0;
-                    }
                     if ($name != 'ATTENDEE') {
-                        echo " <td width='10' style=\"padding-right:0px; border-right: 1px solid #000;\" align='center'>" . $raw_scores[$name][$result->id] . '</td> ';
+                    if ($raw_scores[$name][($result->id - 35)] == "") {                                               
+                        $raw_scores[$name][($result->id - 35)] = 0;
+                    }
+                    
+                        echo " <td width='10' style=\"padding-right:0px; border-right: 1px solid #000;\" align='center'>" . $raw_scores[$name][($result->id - 35)] . '</td> ';
                     }
                 }
                 ?>
