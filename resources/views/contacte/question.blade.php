@@ -68,7 +68,100 @@
     padding-left: 0rem;
 }
  }
+
+ .footer {
+    background: rgba(255, 255, 255, 0.1) !important;
+}
+
+.accordion-add-contact-colr p {
+    margin-left: 15px;
+}
+
+.accordion-extra:after {
+    content: '\002B';
+    color: #fff;
+    font-weight: bold;
+    float: right;
+    margin-left: 5px;
+    display:none;
+}
+ 
+@media screen and (max-width: 992px){
+.nav-header {
+    width: 3.75rem !important;
+}
+
+.logo-srs {
+    width: 50px !important;
+    height: auto !important;
+}
+
+.nav-header .brand-logo {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 1.125rem;
+    color: #fff;
+    text-decoration: none;
+    padding-left: 0.25rem;
+    font-weight: 700;
+}
+}
+
+@media screen and (max-width: 768px){
+    .table thead th {
+    font-size: 14px !important;
+    white-space: normal !important;
+}
+
+tbody th {
+    font-size: 13px;
+}
+
+.btn.btn-primary {
+    width: fit-content;
+    font-size: 12px !important;
+}
+
+p.card-text.attendee-home-font {
+    font-size: 13px;
+}
+
+.accordion-extra {
+    font-size: 14px;
+}
+
+.accordion-add-contact-colr p {
+    font-size: 13px;
+}
+
+}
+
+p.card-text.attendee-home-font {
+    padding-top: 10px;
+}
+
+@media screen and (max-width: 630px){
+  /* .header.attendee-home-header .header-content {
+    padding-left: 10.3125rem !important;
+} */
+.attendee-home-header .collapse.navbar-collapse.navbar-align {
+    padding-left: 5rem !important;
+    padding-right: 6rem !important;
+    white-space:normal !important;
+}
+}
+
   </style>
+  <script>
+    window.addEventListener( "pageshow", function ( event ) {
+    if(window.performance.navigation.type == 2){
+    location.reload();
+}
+});
+ </script>
   </head>
 
   <body>
@@ -106,14 +199,16 @@
             Header start
         ***********************************-->
 
-      <div class="header">
+      <div class="header attendee-home-header">
         <div class="header-content">
           <nav class="navbar navbar-expand">
             <div class="collapse navbar-collapse navbar-align">
               <div class="header-left">
                 <div>
                   <div class="welcome-text text-center">
-                    <p id="demo"></p>
+                    <body onload="startTime()">
+                        <p id="demo"></p>
+                    </body>
                   </div>
                 </div>
               </div>
@@ -138,15 +233,7 @@
             Content body end
         ***********************************-->
 
-        <div class="card">
-          <button class="accordion accordion-extra attendee-home-lgt attendee-bg-clr add-contact-font">INSTRUCTION</button>
-        <div class="panel accordion-panel-extra accordion-add-contact-colr">
-          <div class="degree-feedback-contact-customise">
-            {!! $sidebar !!}
-          </div>
-        </div>
-       
-         </div>
+        
 
           <div class="card question-attendee-home-content">
             <div class="card-header attendee-bg-clr attendee-home-lgt">
@@ -208,12 +295,23 @@
                     <div class="btn-grp">
                         <button type="submit" class="btn btn-primary">Submit</button>
 
-                        <a href="#" class="btn btn-primary">Cancel</a>
+                        <a href="{{ route('login') }}" class="btn btn-primary">Cancel</a>
                     </div>
                 </form>
-            </div>
+            
           </div>
           </div>
+
+          <div class="card">
+          <button class="accordion-extra attendee-home-lgt attendee-bg-clr add-contact-font">INSTRUCTION</button>
+        <div class="accordion-add-contact-colr">
+          <div class="degree-feedback-contact-customise">
+            {!! $sidebar !!}
+          </div>
+        </div>
+         </div>
+          
+
           <!--**********************************
             Footer start
         ***********************************-->
@@ -228,7 +326,6 @@
               </p>
             </div>
           </div>
-          
           <!--**********************************
             Footer end
         ***********************************-->
@@ -240,7 +337,7 @@
           <!--**********************************
            Support ticket button end
         ***********************************-->
-        
+</div>
       </div>
       <!--**********************************
         Main wrapper end
@@ -258,24 +355,40 @@
       {{-- <script src="{{ asset('js/form/final-submit.js') }}"></script> --}}
       <script src="{{ asset('js/form/questionfinal-submit.js') }}"></script>
 
-      <script>
-        const currentDateTime = new Date();
+      <script type="text/javascript">
+        function startTime()
+        {
+            var today=new Date();
+            //                   1    2    3    4    5    6    7    8    9   10    11  12   13   14   15   16   17   18   19   20   21   22   23   24   25   26   27   28   29   30   31   32   33
+            var suffixes = ['','st','nd','rd','th','th','th','th','th','th','th','th','th','th','th','th','th','th','th','th','th','st','nd','rd','th','th','th','th','th','th','th','st','nd','rd'];
 
-const options = {
-  weekday: 'long',
-  year: 'numeric',
-  month: 'long',
-  day: 'numeric',
-  hour: 'numeric',
-  minute: 'numeric',
-  second: 'numeric',
-  hour12: false
-};
+            var weekday = new Array(7);
+            weekday[0] = "Sunday";
+            weekday[1] = "Monday";
+            weekday[2] = "Tuesday";
+            weekday[3] = "Wednesday";
+            weekday[4] = "Thursday";
+            weekday[5] = "Friday";
+            weekday[6] = "Saturday";
 
-const formattedDateTime = currentDateTime.toLocaleDateString('en-US', options);
-document.getElementById("demo").innerHTML = formattedDateTime;
+            var month = new Array(12);
+            month[0] = "January";
+            month[1] = "February";
+            month[2] = "March";
+            month[3] = "April";
+            month[4] = "May";
+            month[5] = "June";
+            month[6] = "July";
+            month[7] = "August";
+            month[8] = "September";
+            month[9] = "October";
+            month[10] = "November";
+            month[11] = "December";
 
-      </script>
+            document.getElementById('demo').innerHTML=(weekday[today.getDay()] + ',' + " " + today.getDate()+'<sup>'+suffixes[today.getDate()]+'</sup>' + " " + month[today.getMonth()] + " " + today.getFullYear() + ' at ' + today.toLocaleTimeString());
+            t=setTimeout(function(){startTime()},500);
+        }
+    </script>
 
 <script>
   var acc = document.getElementsByClassName("accordion");

@@ -79,41 +79,46 @@ class CourseAttendeeController extends Controller
         $message = '';
 
         $course = Course::where('key', $id)->first();
-
+        if(!$course){
+            $messgeTemplate = getEmailTemplatesByID(23);
+            if ($messgeTemplate) {
+                $paramArr = [];
+                $message  = replaceHTMLBodyWithParam($messgeTemplate['template'], $paramArr);
+            }
+            return view('courseattendees.error', ['message' => $message]);
+        }
+        $isExpire = courseExpired($course->start_date, $course->end_date);  
+        if (!$isExpire) {
+            $messgeTemplate = getEmailTemplatesByID(22);
+            if ($messgeTemplate) {
+                $paramArr = [];
+                $message  = $messgeTemplate['template'];
+            }
+            
+            return view('courseattendees.errorexpire', ['message' => $message]);
+        }
+       
+        
         if ($course) {
 
             $CompanyOrganizer = CompanyOrganizer::where('course_id', $course->id)->where('confirm_attendee', 0)->first();
 
-            // dd($CompanyOrganizer);
+            //dd($CompanyOrganizer);
 
             if ($CompanyOrganizer) {
-
                 $emailTemplate = getEmailTemplatesByID(8);
-
                 if ($emailTemplate) {
-
                     $paramArr['contact_name'] = ucwords($CompanyOrganizer->first_name . " " . $CompanyOrganizer->last_name);
-
                     $sidebar = replaceHTMLBodyWithParam($emailTemplate['template'], $paramArr);
-
                 }
-
                 return view('courseattendees.create', ['id' => $id, 'model' => $course, 'sidebar' => $sidebar]);
-
             } else {
-
                 $messgeTemplate = getEmailTemplatesByID(15);
-
                 if ($messgeTemplate) {
-
                     $paramArr = [];
-
                     $message  = replaceHTMLBodyWithParam($messgeTemplate['template'], $paramArr);
-
                 }
-
                 return view('courseattendees.error', ['message' => $message]);
-
             }
 
         }
@@ -141,39 +146,25 @@ class CourseAttendeeController extends Controller
     {
 
         // dd($request);
-
+        if(empty($request->key)){
+            return redirect()->to(url('/'));
+        }
         $sidebar = '';
-
         $message = '';
-
         $course = Course::where('key', $request->key)->first();
-
-
-
         if ($course) {
 
             $CompanyOrganizer = CompanyOrganizer::where('course_id', $course->id)->first();
-
-
-
             if ($CompanyOrganizer) {
-
                 $emailTemplate = getEmailTemplatesByID(9);
 
-
-
                 if ($emailTemplate) {
-
                     $paramArr['contact_name'] = ucwords($CompanyOrganizer->first_name . " " . $CompanyOrganizer->last_name);
-
                     $sidebar = replaceHTMLBodyWithParam($emailTemplate['template'], $paramArr);
-
                 }
 
                 $messgeTemplate = getEmailTemplatesByID(12);
-
                 if ($messgeTemplate) {
-
                     $message  = replaceHTMLBodyWithParam($messgeTemplate['template'], $paramArr);
 
                 }
@@ -196,8 +187,7 @@ class CourseAttendeeController extends Controller
 
 
 
-    public function editattendees(CourseAttendees $courseAttendees)
-
+    public function editattendees(Course $courseAttendees)
     {
 
         $courseAttendeesList = CourseAttendees::where('course_id', $courseAttendees->id)->get();
@@ -208,10 +198,8 @@ class CourseAttendeeController extends Controller
 
 
 
-    public function update(Request $request, CourseAttendees $courseAttendees)
-
+    public function update(Request $request, Course $courseAttendees)
     {
-
         $this->courseAttendeeRepository->update($request->all(), $courseAttendees);
 
         return redirect()->route('course.index')->with('success', "Attendees updated successfully!");
@@ -452,7 +440,7 @@ class CourseAttendeeController extends Controller
 
                     foreach ($TrainerDetail as $key => $value) {
 
-                        $trainerDetailName .= ucwords($value->first_name . " " . $value->last_name) . ", ";
+                        $trainerDetailName .= ucwords($value->first_name . " " . $value->last_name) . " <br>";
 
                     }
 
@@ -488,6 +476,6 @@ class CourseAttendeeController extends Controller
 
         return redirect()->back()->with('error', 'Chase Email has been sent Failed!');
 
-    }
-
+        
+    }    
 }

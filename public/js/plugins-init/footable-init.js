@@ -1,6 +1,6 @@
-(function($){
-	"use strict"
-
-	$('#footable').footable();
-	
+(function($){
+	"use strict"
+
+	$('#footable').footable();
+	
 })(jQuery);

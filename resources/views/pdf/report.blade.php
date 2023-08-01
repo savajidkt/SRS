@@ -131,6 +131,7 @@ foreach ($scores as $name => $score) {
     $extraCharts['name'][] = $name;
     $imgName = $target_attendee_id . '_' . str_replace(' ', '-', $name) . '.png';
     $extraCharts['image'][] = $imgName;    
+    
     generateGraph($imgName, $nameArray, $scores['ATTENDEE'], $scores[$name], $name);
 }
 
@@ -503,8 +504,11 @@ foreach ($scores as $name => $score) {
                     <table border="0" width="100%">
                         <tr>
                             <td style="width: 80%; text-align: left;color:#000066" valign="middle">
+
+
                                 <?php
-                                $messgeTemplate = getEmailTemplatesByID(18);                              
+                                $messgeTemplate = getEmailTemplatesByID(18);
+                              
                                 $footer_text = '';
                                 if ($messgeTemplate) {
                                     $paramArr = ['year' => date('Y')];
@@ -512,6 +516,8 @@ foreach ($scores as $name => $score) {
                                 }
                                 echo $footer_text; 
                                 ?>
+
+
                             </td>
                             <td valign="middle" style="width:20%;text-align: right;color:#000066">
                                 <div class="page-number pagenum"></div>

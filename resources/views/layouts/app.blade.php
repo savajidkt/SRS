@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="sidebar_default no-js" lang="en">
+<html lang="en">
 
 <head>
     <meta charset="utf-8">
@@ -20,7 +20,7 @@
     <style>
          .has_error{ border: 1px solid red;}
     </style>
- <script>
+  <script>
     window.addEventListener( "pageshow", function ( event ) {
 	if(window.performance.navigation.type == 2){
     location.reload();

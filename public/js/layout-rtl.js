@@ -1,9 +1,9 @@
-(function($) {
-    "use strict"
-
-    new quixSettings({
-        direction: "rtl"
-    });
-
-
+(function($) {
+    "use strict"
+
+    new quixSettings({
+        direction: "rtl"
+    });
+
+
 })(jQuery);

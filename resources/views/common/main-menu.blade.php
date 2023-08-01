@@ -12,7 +12,7 @@
 
                     
                     <li><a class="has-arrow no-icon" href="{{ route('profile.edit',Auth::user()->id)}}" aria-expanded="false"><i
-                        class="icon icon-app-store"></i><span class="nav-text">Profile</span></a>
+                        class="icon icon-app-store"></i><span class="nav-text">My Profile</span></a>
                     
                     <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
                                 class="icon icon-chart-bar-33"></i><span class="nav-text">Client Management</span></a>

@@ -32,7 +32,7 @@
             <div class="form-group form-group-category">
                 <label class="text-label text-label-category">Category<span class="filedrequired text-error">*</span></label>
                 <div class="input-error">
-                    <select class="form-select form-select-sm" aria-label=".form-select-sm example" id="category_id" name="category_id" >
+                    <select class="form-select form-select-sm select2" aria-label=".form-select-sm example" id="category_id" name="category_id" >
                         <option value="1" {{ isset($model->category_id) && $model->category_id == 1 ? 'selected' : '' }}>Emotive</option>
                         <option value="2" {{ isset($model->category_id) && $model->category_id == 2 ? 'selected' : '' }}>Assertive</option>
                         <option value="3" {{ isset($model->category_id) && $model->category_id == 3 ? 'selected' : '' }}>Persuasive</option>
@@ -59,7 +59,9 @@
 ***********************************-->
 @endsection
 @section('extra-script')
-
+<script>
+    $('.select2').select2();
+</script>
 <script src="{{asset('vendor/select2/js/select2.full.min.js')}}"></script>
 <script src="{{asset('js/plugins-init/select2-init.js')}}"></script>
 @endsection

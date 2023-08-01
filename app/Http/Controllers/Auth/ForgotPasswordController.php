@@ -75,7 +75,6 @@ class ForgotPasswordController extends Controller
      */
     public function forgotPassword(ForgotPasswordRequest $request)
     {
-        // dd($request);
         $this->repository->forgotPassword($request->validated());
         return redirect()->back()->with('status', 'Password reset link sent to your email successfully.');
     }

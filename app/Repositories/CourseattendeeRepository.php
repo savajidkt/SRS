@@ -35,7 +35,7 @@ class CourseAttendeeRepository
                         'first_name'    => $attendees['first_name'],
                         'last_name'    => $attendees['last_name'],
                         'email'    => $attendees['email'],
-                        'job_title'    => $attendees['job_title'],
+                        'job_title'    => isset($attendees['job_title']) ? $attendees['job_title'] : '2',
                         'course_id'    => $course->id,
                         'organizer_id'    => $CompanyOrganizer->id,
                     ];
@@ -54,6 +54,7 @@ class CourseAttendeeRepository
                     $courseAttendees = CourseAttendees::create($attendeesArr);
                     $data['attendee_id'] = $courseAttendees->id;
                     Mail::to($attendees['email'])->send(new CourseAttendeesMail($data));
+                   
                     // exit();
                 }
                 // dd($course->trainer);
@@ -67,12 +68,12 @@ class CourseAttendeeRepository
                         $trainerArr['course_name'] = $course->coursecategoryname->course_name;
 
                         $trainerArr['company_organiser_attendees_name'] = $course->companyorganizer->first_name. " " . $course->companyorganizer->last_name;
-                        $trainerArr['company_address'] = $course->end_date;
+                        // $trainerArr['company_address'] = $course->end_date;
                         $trainerArr['company_organiser_attendees_email'] = $course->companyorganizer->email;
                         $trainerArr['attendees_list'] = $this->getAttendeeList($attendeesArrList);
                         // dd($trainerArr['attendees_list']);
                         $client = Client::where('id',$course->client_id)->first();
-                        $trainerArr['company_address'] = $client->address_one. "," . $client->address_tow ."<br>".$client->town . "," .$client->post_code;
+                        $trainerArr['company_address'] = $client->address_one. "<br>" . $client->address_tow ."<br>".$client->town . "<br>" . "Post Code : ".$client->post_code;
                         $trainerArr['company_name'] = $client->company_name;
                         $data['trainerArr'] = $trainerArr;
                         $data['referens_name'] = '';
@@ -93,11 +94,11 @@ class CourseAttendeeRepository
         $returnTable="";
         if(is_array($attendeesArrList) && count($attendeesArrList) > 0){
             $returnTable .= "<table border=\"1\" cellspacing=\"0\" cellpadding=\"5\" style=\"border-collapse:collapse\">";
-            $returnTable .="<tr><th width=\"301\" valign=\"top\" style=\"background-color:#17365D;color:white;\"><p>Attendee Name</p></th><th width=\"247\" valign=\"top\" style=\"background-color:#17365D;color:white;\"><p>eMail Address</p></th></tr>";
+            $returnTable .="<tr><th width=\"301\" valign=\"top\" style=\"background-color:#17365D;color:white;\"><p style=\"margin-top: 10px; margin-bottom: 10px; font-family: arial,helvetica,sans-serif; font-size: 14px; line-height: 2em;\">Attendee Name</p></th><th width=\"247\" valign=\"top\" style=\"background-color:#17365D;color:white;\"><p style=\"margin-top: 10px; margin-bottom: 10px; font-family: arial,helvetica,sans-serif; font-size: 14px; line-height: 2em;\">eMail Address</p></th></tr>";
             $returnTable .= "<tbody>";
             // dd($attendeesArrList);
             foreach($attendeesArrList as $key=> $vlue){
-                $returnTable .= "<tr> <td width=\"301\" valign=\"top\" style=\"background-color:#8DB3E2\"><p>".$vlue['first_name']. " " .$vlue['last_name']."</p></td><td width=\"247\" valign=\"top\" style=\"background-color:#DBE5F1\"><a><p>".$vlue['email']."</p></a></td></tr>";
+                $returnTable .= "<tr> <td width=\"301\" valign=\"top\" style=\"background-color:#8DB3E2\"><p style=\"margin-top: 10px; margin-bottom: 10px; font-family: arial,helvetica,sans-serif; font-size: 14px; line-height: 2em;\">".$vlue['first_name']. " " .$vlue['last_name']."</p></td><td width=\"247\" valign=\"top\" style=\"background-color:#DBE5F1\"><a href=\"mailto:".$vlue['email']."\"><p style=\"margin-top: 10px; margin-bottom: 10px; font-family: arial,helvetica,sans-serif; font-size: 14px; line-height: 2em;\">".$vlue['email']."</p></a></td></tr>";
             }
             $returnTable .= "</tbody>";
             $returnTable .= "</table>";
@@ -114,7 +115,7 @@ class CourseAttendeeRepository
      * @return Course
      * @throws Exception
      */
-    public function update(array $data ,CourseAttendees $courseAttendees): CourseAttendees
+    public function update(array $data , Course $courseAttendees)
     {
 
 
@@ -133,16 +134,16 @@ class CourseAttendeeRepository
                         'first_name'    => $attendees['first_name'],
                         'last_name'    => $attendees['last_name'],
                         'email'    => $attendees['email'],
-                        'job_title'    => $attendees['job_title'],
+                        'job_title'    => isset($attendees['job_title']) ? $attendees['job_title'] : '2',
                         'course_id'    => $course->id,
                         'organizer_id'    => $CompanyOrganizer->id,
                     ];
                     if (strlen($attendees['id']) > 0 && $attendees['id'] != "") {
-                        $courseAttendeesUpdate = CourseAttendees::find($attendees['id']);
-                        $courseAttendeesUpdate->update($attendeesArr);
+                        $courseAttendee = CourseAttendees::find($attendees['id']);
+                        $courseAttendee = $courseAttendee->update($attendeesArr);
                     } else {
-                        $courseAttendeesInsert = new CourseAttendees;
-                        $courseAttendeesInsert->create($attendeesArr);
+                        $courseAttendee = new CourseAttendees;
+                        $courseAttendee = $courseAttendee->create($attendeesArr);
                     }
                    
                     $attendeesArrList[]=$attendeesArr;
@@ -156,7 +157,7 @@ class CourseAttendeeRepository
                         $data['attendee_name'] = ucwords($attendees['first_name'] . " " . $attendees['last_name']);
                         $data['trainerDetail'] = $trainerDetail;
                         $course->companyorganizer->update(array('confirm_attendee' => 1));
-                        $data['attendee_id'] = $courseAttendees->id;
+                        $data['attendee_id'] = $courseAttendee->id;
                         Mail::to($attendees['email'])->send(new CourseAttendeesMail($data));
                     }
 
@@ -173,9 +174,6 @@ class CourseAttendeeRepository
                 }
 
                 // $course->companyorganizer()->update($organizerData);
-                if (strlen($attendees['id']) > 0 && $attendees['id'] != "") {
-                       
-                } else {
                 if ($course->trainer) {
                     $client = Client::where('id',$course->client_id)->first();
                     $attendeesArrList = CourseAttendees::where('course_id',$course->id)->get();
@@ -187,7 +185,7 @@ class CourseAttendeeRepository
                         $trainerArr['course_end_date'] = $course->end_date;
                         $trainerArr['course_name'] = $course->coursecategoryname->course_name;
                         $trainerArr['company_organiser_attendees_name'] = $course->companyorganizer->first_name. " " . $course->companyorganizer->last_name;
-                        $trainerArr['company_address'] = $course->end_date;
+                        $trainerArr['company_address'] = $client->address_one. "<br>" . $client->address_tow ."<br>".$client->town . "<br>" . "Post Code : ".$client->post_code;
                         $trainerArr['company_organiser_attendees_email'] = $course->companyorganizer->email;
                         $trainerArr['attendees_list'] = $this->getAttendeeList($attendeesArrList);
                         $trainerArr['questionnaire_360'] = $this->getQuestionnaire360List($attendeesArrList);
@@ -199,8 +197,7 @@ class CourseAttendeeRepository
                         Mail::to($trainer->email)->send(new CourseTrainerMail($data));
                         
                     }
-                 }
-                }  
+                 }  
             }
         }
      
@@ -215,7 +212,7 @@ class CourseAttendeeRepository
        
         if($attendeesArrList){
             $returnTable .= "<table border=\"1\" cellspacing=\"0\" cellpadding=\"5\" style=\"border-collapse:collapse\">";
-            $returnTable .="<tr><th width=\"170\" valign=\"top\" style=\"background-color:#17365D;color:white;\"><p>Attendee Name</p></th><th width=\"215\" valign=\"top\" style=\"background-color:#17365D;color:white;\"><p align=\"center\">Own Questionnaire Completed</p></th><th width=\"124\" valign=\"top\" style=\"background-color:#17365D;color:white;\"><p>Number of 360 Degree Invites Sent</p></th><th width=\"124\" valign=\"top\" style=\"background-color:#17365D;color:white;\"><p>Number of 360 Degree Forms Completed</p></th></tr>";
+            $returnTable .="<tr><th width=\"170\" valign=\"top\" style=\"background-color:#17365D;color:white;\"><p style=\"margin-top: 10px; margin-bottom: 10px; font-family: arial,helvetica,sans-serif; font-size: 14px; line-height: 2em;\">Attendee Name</p></th><th width=\"215\" valign=\"top\" style=\"background-color:#17365D;color:white;\"><p style=\"margin-top: 10px; margin-bottom: 10px; font-family: arial,helvetica,sans-serif; font-size: 14px; line-height: 2em;\">Own Questionnaire Completed</p></th><th width=\"124\" valign=\"top\" style=\"background-color:#17365D;color:white;\"><p style=\"margin-top: 10px; margin-bottom: 10px; font-family: arial,helvetica,sans-serif; font-size: 14px; line-height: 2em;\">Number of 360 Degree Invites Sent</p></th><th width=\"124\" valign=\"top\" style=\"background-color:#17365D;color:white;\"><p style=\"margin-top: 10px; margin-bottom: 10px; font-family: arial,helvetica,sans-serif; font-size: 14px; line-height: 2em;\">Number of 360 Degree Forms Completed</p></th></tr>";
             $returnTable .= "<tbody>";
 
             //dd($attendeesArrList);
@@ -224,7 +221,7 @@ class CourseAttendeeRepository
                 if($vlue->questionnaireself !=null){
                     $isFill = "YES - ".date('d/m/Y H:i:s', strtotime($vlue->questionnaireself->created_at));
                 }
-                $returnTable .= "<tr><td width=\"170\" valign=\"top\" style=\"background-color:#8DB3E2\"><p>".$vlue->first_name."</p></td><td width=\"215\" valign=\"top\" style=\"background-color:#DBE5F1\"><p>".$isFill."</p></td><td width=\"124\" valign=\"top\" style=\"background-color:#DBE5F1\"><p align=\"center\">".$vlue->referraluser->count()."</p></td><td width=\"124\" valign=\"top\" style=\"background-color:#DBE5F1\"><p align=\"center\">".$vlue->questionnaireref->count()."</p></td></tr>";
+                $returnTable .= "<tr><td width=\"170\" valign=\"top\" style=\"background-color:#8DB3E2\"><p style=\"margin-top: 10px; margin-bottom: 10px; font-family: arial,helvetica,sans-serif; font-size: 14px; line-height: 2em;\">".$vlue->first_name."</p></td><td width=\"215\" valign=\"top\" style=\"background-color:#DBE5F1\"><p style=\"margin-top: 10px; margin-bottom: 10px; font-family: arial,helvetica,sans-serif; font-size: 14px; line-height: 2em;\">".$isFill."</p></td><td width=\"124\" valign=\"top\" style=\"background-color:#DBE5F1\"><p style=\"margin-top: 10px; margin-bottom: 10px; font-family: arial,helvetica,sans-serif; font-size: 14px; line-height: 2em;\">".$vlue->referraluser->count()."</p></td><td width=\"124\" valign=\"top\" style=\"background-color:#DBE5F1\"><p style=\"margin-top: 10px; margin-bottom: 10px; font-family: arial,helvetica,sans-serif; font-size: 14px; line-height: 2em;\">".$vlue->questionnaireref->count()."</p></td></tr>";
             }
             $returnTable .= "</tbody>";
             $returnTable .= "</table>";

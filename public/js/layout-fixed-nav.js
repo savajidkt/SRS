@@ -1,9 +1,9 @@
-(function($) {
-    "use strict"
-
-    new quixSettings({
-        sidebarPosition: "fixed"
-    });
-
-
+(function($) {
+    "use strict"
+
+    new quixSettings({
+        sidebarPosition: "fixed"
+    });
+
+
 })(jQuery);

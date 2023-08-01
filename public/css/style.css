@@ -56129,9 +56129,7 @@ input[type="date"] {
 font-size: 14px !important;
 }
 
-.header-left {
-margin-left:10px;
-}
+
 
 .table thead th {
     font-size: 16px;
@@ -56666,3 +56664,166 @@ margin-right:18px !important
     font-size: 10px !important;
 }
 }
+
+@media screen and (max-width: 1440px){
+.registration-login-page .log-btn {
+    font-size: 18px !important;
+}
+
+input#email::placeholder {
+    font-size: 20px !important;
+}
+
+input#password::placeholder {
+    font-size: 20px !important;
+}
+}
+
+
+@media screen and (max-width: 1160px){
+.registration-login-page .sign-btn {
+    font-size: 16px !important;
+}
+
+.registration-login-page .log-btn {
+    font-size: 16px !important;
+}
+
+.em-pass label {
+    font-size: 18px !important;
+}
+}
+
+@media screen and (max-width: 530px){
+.registration-login-page .sign-btn {
+    font-size: 14px !important;
+}
+
+.registration-login-page .log-btn {
+    font-size: 14px !important;
+}
+
+.em-pass label {
+    font-size: 17px !important;
+}
+
+input#email::placeholder {
+    font-size: 17px !important;
+}
+
+input#password::placeholder {
+    font-size: 17px !important;
+}
+}
+
+.em-pass input[type="email"] {
+    color: #828690;
+}
+
+
+input#email::placeholder {
+    font-size: 18px !important;
+}
+
+input#password::placeholder {
+    font-size: 18px !important;
+}
+
+.footer {
+    background: rgba(255, 255, 255, 0.1) !important;
+}
+
+.form-checkbox {
+    display: none !important;
+}
+
+.login-page-form input[type="password"] {
+margin-bottom: 20px !important;
+}
+
+
+.content-body{
+min-height: 89vh !important;
+}
+
+#main-wrapper{
+display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 88vh !important;
+}
+
+
+
+div.dataTables_wrapper div.dataTables_processing {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 200px;
+    margin-left: -100px;
+    margin-top: -26px;
+    text-align: center;
+    padding: 1em 0;
+    display: none !important;
+}
+
+@media screen and (max-width: 630px){
+
+.navbar {
+    position: relative;
+    display: grid !important;
+gap: 20px;
+}
+
+.navbar-expand .navbar-collapse {
+    display: flex;
+    height:auto !important;
+    flex-direction:column;
+    text-align: left;
+    align-items: flex-start;
+padding: 15px;
+}
+
+.navbar-expand .navbar-nav {
+    flex-direction: row;
+    transform: translate(0%, -50%) !important;
+    position: absolute;
+    right: 0;
+top:50%;
+left:95%;
+}
+p#demo{
+margin-bottom:0rem !important;
+margin-top: 0px !important;
+white-space:normal !important;
+line-height:1.2;
+}
+.header-left{
+margin-top:0px !important;
+display:flex;
+align-items:flex-start;
+}
+.hamburger{
+width:100% !important;
+top:0px !important;
+}
+.nav-control {
+    right: -3rem !important;
+}
+}
+
+@media screen and (max-width: 992px) and (min-width:767px){
+[data-sidebar-style="full"][data-layout="vertical"] .menu-toggle .header {
+    padding-left: 10.75rem !important;
+}
+
+.header {
+    padding-left: 10rem !important;
+}
+
+}
+.form-group.train-deet[data-select2-id] >.input-error {
+  display: flex;
+  flex-direction: column-reverse;
+}
+

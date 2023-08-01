@@ -64,7 +64,7 @@ class CourseAttendeesMail extends Mailable
     $trainerDetail = '';
     if ($data['trainerDetail']) {
       foreach ($data['trainerDetail'] as $key => $value) {
-        $trainerDetail .= ucwords($value->first_name . " " . $value->last_name);
+        $trainerDetail .= ucwords($value->first_name . " " . $value->last_name. " <br>");
       }
     }
     

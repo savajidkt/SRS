@@ -22,6 +22,8 @@
 
         }
 
+        
+
     </style>
 
 
@@ -74,7 +76,7 @@
 
                     <span class="pull-left">Start Date :
 
-                        {{ isset($modal->start_date) ? dateFormat($modal->start_date, 'd/m/Y') : '' }}</span>
+                        {{ $modal->start_date }}</span>
 
                     <span class="pull-right">Duration : {{ isset($modal->duration) ? $modal->duration : '' }}</span>
 

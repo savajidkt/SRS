@@ -58,4 +58,5 @@ class GeneralException extends Exception
             ->with('error', $this->message);
         }
     }
+    
 }

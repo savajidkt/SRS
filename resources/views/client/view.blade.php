@@ -17,7 +17,7 @@
                 </div>
                 <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
                     <ol class="breadcrumb breadcrumb-a">
-                        <li class="breadcrumb-item"><a href="javascript:void(0)">Location: {{$model->town}}</a></li>
+                        <li class="breadcrumb-item"><a href="javascript:void(0)">Location : {{$model->town}}</a></li>
                     <!-- <li class="breadcrumb-item active"><a href="javascript:void(0)">Herts</a></li> -->
                     </ol>
                 </div>
@@ -34,7 +34,7 @@
                         <h5 class="card-title card-title-ab">{{$model->address_one}},{{$model->address_tow}}</h5>
                         <p class="card-text-a">
                         <span class="card-title card-title-ab">
-                            Post Code: {{$model->post_code}}</span></p>
+                            Post Code : {{$model->post_code}}</span></p>
                     </div>
                     </div>
 
@@ -44,13 +44,13 @@
                     </div>
                     @foreach ($model->contacts as $key=> $contact )
                         <div class="card-body">
-                            <p class="card-text card-text-a"><span class="card-title card-title-ab">{{$contact->first_name}}{{$contact->last_name}}</span></p>
+                            <p class="card-text card-text-a"><span class="card-title card-title-ab">{{$contact->first_name . ' '}}{{$contact->last_name}}</span></p>
                             <p class="card-text card-text-a"><span class="card-title card-title-ab">Job Title :</span> {{$contact->job_title}}</p>
                             <p class="card-text card-text-a"><span class="card-title card-title-ab">Phone Number :</span> {{$contact->phone_number}}</p>
-                            <p class="card-text card-text-a"><span class="card-title card-title-ab">Mobile Number </span> {{$contact->mobile_number}}</p>
-                            <p class="card-text card-text-a"><span class="card-title card-title-ab">Email Address :</span>{{$contact->email}}</p>
+                            <p class="card-text card-text-a"><span class="card-title card-title-ab">Mobile Number : </span> {{$contact->mobile_number}}</p>
+                            <p class="card-text card-text-a"><span class="card-title card-title-ab">Email Address : </span>{{$contact->email}}</p>
                         </div>
-                        <hr>
+                        
                     @endforeach
                     
                     </div>

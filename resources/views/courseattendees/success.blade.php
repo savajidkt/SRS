@@ -128,9 +128,7 @@ color:#454545;
     display:none;
 }
 
-.content-body.attendee-home-error {
-    overflow-y: unset !important;
-}
+
 
 .content-body .container-fluid {
     padding-right: 30px;
@@ -180,13 +178,47 @@ text-decoration:underline !important;
 }
   }
 
+  .attendee-home-error{
+  min-height:88vh !important;
+}
+
+.attendee-error{
+
+display: flex !important;
+  flex-direction: column;
+  justify-content: space-between;
+  
+}
+
+.footer {
+    background: rgba(255, 255, 255, 0.1) !important;
+}
+
+@media screen and (max-width: 992px){
+.header .header-content {
+    padding-left: 0rem !important;
+    padding-right: 0rem;
+}
+}
+
+@media screen and (max-width: 630px){
+  /* .header.attendee-home-header .header-content {
+    padding-left: 10.3125rem !important;
+} */
+.attendee-error .collapse.navbar-collapse.navbar-align {
+    padding-left: 5rem !important;
+    padding-right: 6rem !important;
+    white-space:normal !important;
+}
+}
+
 
     </style>
   </head>
 
   <body>
    
-    <div id="main-wrapper attendee-error">
+    <div id="main-wrapper attendee-error" class="attendee-error">
       <!--**********************************
             Nav header start
         ***********************************-->

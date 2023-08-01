@@ -23,7 +23,7 @@ class FeedbackRepository
      */
     public function create(array $data): AttendeeReferens
     {
-        // dd($data);
+         //dd($data);
         $course = Course::where('key',$data['key'])->first();
         if($course)
         {
@@ -53,11 +53,12 @@ class FeedbackRepository
                         $data['course'] = $course;
                         $data['courseAttendeesList'] = $courseAttendees;
                         $attendeeRefresh = AttendeeReferens::create($AttendeeRefreshArrListArr);
-
                         $data['contact_id'] = $attendeeRefresh->id;
+                        $data['first_name'] = ucwords($contacte['first_name']);
+                        $data['last_name'] = ucwords($contacte['last_name']);
                         Mail::to($contacte['email'])->send(new AttendeeReferensMail($data));
-                      
-                        
+                       
+
                     }
                 }
                 

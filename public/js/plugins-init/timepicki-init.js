@@ -1,6 +1,6 @@
-(function($) {
-    'use strict'
-
-    $('#timepicki').timepicki();
-
+(function($) {
+    'use strict'
+
+    $('#timepicki').timepicki();
+
 })(jQuery);

@@ -1,6 +1,6 @@
-(function($) {
-    "use strict"
-
-    $('.dropify').dropify();
-
+(function($) {
+    "use strict"
+
+    $('.dropify').dropify();
+
 })(jQuery);

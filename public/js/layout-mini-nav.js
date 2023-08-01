@@ -1,9 +1,9 @@
-(function($) {
-    "use strict"
-
-    new quixSettings({
-        sidebarStyle: "mini"
-    });
-
-
+(function($) {
+    "use strict"
+
+    new quixSettings({
+        sidebarStyle: "mini"
+    });
+
+
 })(jQuery);

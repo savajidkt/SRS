@@ -40,15 +40,18 @@ Route::post('forgot-password', [ForgotPasswordController::class, 'forgotPassword
 Route::post('reset-password', [ForgotPasswordController::class, 'submitResetPasswordForm'])->name('reset.password.post');
 Route::get('course-attendees/{id}', [CourseAttendeeController::class, 'index'])->name('add-course-attendees');
 Route::post('store-attendees', [CourseAttendeeController::class, 'store'])->name('store-attendees');
+Route::get('store-attendees', [CourseAttendeeController::class, 'store'])->name('store-attendees');
 
 Route::get('feedback-contacte/{id}/{at_id?}/{parameter?}', [FeedbackContacteController::class, 'index'])->name('feedback-contacte');
 Route::post('store-contacte', [FeedbackContacteController::class, 'store'])->name('store-contacte');
 
 Route::get('attendees-questionnaire/{id}/{parameter?}/{ext_id?}', [FeedbackContacteController::class, 'attendeesquestion'])->name('attendees-questionnaire');
 Route::post('store-attendeesquestion', [FeedbackContacteController::class, 'StoreAttendeesquestion'])->name('store-attendeesquestion');
+Route::get('store-attendeesquestion', [FeedbackContacteController::class, 'StoreAttendeesquestion'])->name('store-attendeesquestion');
 
 Route::get('question/{id}/{parameter?}/{ext_id?}/{contact_id?}', [FeedbackContacteController::class, 'question'])->name('question');
 Route::post('store-question', [FeedbackContacteController::class, 'storequestion'])->name('store-question');
+
 
 Route::get('chase-email-attendees/{id}', [CourseAttendeeController::class, 'chaseEmailAttendees'])->name('chase-email-attendees');
 Route::get('chase-email-feedback/{id}', [FeedbackContacteController::class, 'chaseEmailFeedback'])->name('chase-email-feedback');
@@ -56,6 +59,8 @@ Route::get('chase-email-feedback/{id}', [FeedbackContacteController::class, 'cha
 
 Route::get('report-export-attendees/{id}', [CourseAttendeeController::class, 'exportAttendees'])->name('export-attendees');
 Route::get('send-trainer-report/{id}', [CourseAttendeeController::class, 'trainerReport'])->name('trainer-report');
+Route::get('thankyou/{temp_id}', [FeedbackContacteController::class, 'thankyou'])->name('thankyou');
+
 
 
 

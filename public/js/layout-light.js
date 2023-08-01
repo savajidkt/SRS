@@ -1,9 +1,9 @@
-(function($) {
-    "use strict"
-
-    new quixSettings({
-        version: "light"
-    });
-
-
+(function($) {
+    "use strict"
+
+    new quixSettings({
+        version: "light"
+    });
+
+
 })(jQuery);

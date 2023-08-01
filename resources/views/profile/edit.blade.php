@@ -2,7 +2,7 @@
 @section('page_title','SRS')
 @section('content')
 <!-- users list start -->
-<div class="container-fluid">
+<div class="container-fluid profile-container-fluid">
     <div class="row page-titles mx-0">
         
         <div>

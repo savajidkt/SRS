@@ -221,9 +221,26 @@ padding-left: 0rem;
 }
 }
 
-
+@media screen and (max-width: 630px){
+  /* .header.attendee-home-header .header-content {
+    padding-left: 10.3125rem !important;
+} */
+.attendee-home-header .collapse.navbar-collapse.navbar-align {
+    padding-left: 6rem !important;
+    padding-right: 6rem !important;
+    white-space:normal !important;
+}
+}
 
     </style>
+    <script>
+    window.addEventListener( "pageshow", function ( event ) {
+        
+    if(window.performance.navigation.type == 2){
+    location.reload();
+}
+});
+ </script>
   </head>
 
   <body>
@@ -263,7 +280,7 @@ padding-left: 0rem;
             Header start
         ***********************************-->
       
-        <div class="header">
+        <div class="header attendee-home-header">
             <div class="header-content">
                 <nav class="navbar navbar-expand">
                     <div class="collapse navbar-collapse navbar-align ">
@@ -341,7 +358,7 @@ padding-left: 0rem;
                                                         <div class="form-group col-md-6 form-gap-2">
                                                             <label>First Name<span class="filedrequired">*</span></label>
                                                             <div class="input-error">
-                                                                <input type="text" name="first_name" id="first_name" class="form-control"  onkeyup="this.value=this.value.replace(/[^A-z]/g,'');" required>
+                                                                <input type="text" name="first_name"  class="form-control"  onkeyup="this.value=this.value.replace(/[^A-z]/g,'');" required>
                                                         
                                                             </div>
                                                         </div>
