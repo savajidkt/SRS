@@ -175,7 +175,7 @@
 
                             @if (enableReportButton($attendees))
 
-                                <a href="{{ route('export-attendees', $attendees->id) }}" class="btn btn-primary">View
+                                <a href="{{ route('export-attendees', $attendees->id) }}" target="_blank" class="btn btn-primary">View
 
                                     Report</a>
 

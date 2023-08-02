@@ -23,6 +23,35 @@ class AttendeequestionsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+
+    // public function getQuestionsListDataTableClienSide(Request $request)
+    // {
+    //     $data = array();
+    //     $question = AttendeeQuestions::all();
+    //     $question_count = AttendeeQuestions::all()->count();
+
+    //     if ($question) {
+    //         $k = 1;
+    //         foreach ($question as $key => $value) {
+    //             $row = array();
+    //             $row[] = $k;
+    //             $row[] = $value->question;
+    //             $row[] = '<a href="'. route('attendee.edit', $value->id).'"><i class="fa-regular fa-pen-to-square edit-ico" title="Edit"></i></a> ';
+    //             $data[] = $row;
+    //             $k++;
+    //         }
+    //     }
+
+    //     $output = array(
+    //         "sEcho" => 0,
+    //         "recordsTotal" => $question_count,
+    //         "recordsFiltered" => $question_count,
+    //         "aaData" => $data,
+    //     );
+    //     echo json_encode($output);
+    // }
+
     public function index(Request $request)
     {
         // dd($request->all());
@@ -38,9 +67,9 @@ class AttendeequestionsController extends Controller
                 ->addColumn('action', function ($row) {
                     return $row->action;
                 })
-                ->filter(function ($query) use($request) {
+                ->filter(function ($query) use ($request) {
                     if (!empty($request->customFilter)) {
-                        $query->where('category_id',$request->customFilter);
+                        $query->where('category_id', $request->customFilter);
                     }
                 }, true)
                 ->rawColumns(['action'])->make(true);
@@ -107,7 +136,7 @@ class AttendeequestionsController extends Controller
      */
     public function update(EditRequest $request, AttendeeQuestions $attendee)
     {
-    //    dd($request->all());
+        //    dd($request->all());
         $this->attendeequestionsRepository->update($request->all(), $attendee);
 
         return redirect()->route('attendee.index')->with('success', "Attendee updated successfully!");

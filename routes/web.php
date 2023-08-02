@@ -103,6 +103,10 @@ Route::group(['authGrouping' => 'users.auth', 'middleware' => 'auth:web'], funct
     Route::resource('/client', ClientController::class);
     Route::resource('/course', CourseController::class);
     Route::resource('/attendee', AttendeequestionsController::class);
+
+    //Route::get('/attendee-question/{id?}', [AttendeequestionsController::class, 'getQuestionsListDataTableClienSide'])->name('getquestions-attendees');
+    
+
     Route::resource('/questions', QuestionsController::class);
     Route::resource('/companyorganizer', CompanyOrganizerController::class);
     Route::resource('/courseattendees', CourseAttendeesController::class);

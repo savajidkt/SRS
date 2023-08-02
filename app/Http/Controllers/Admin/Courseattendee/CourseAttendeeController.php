@@ -223,7 +223,7 @@ class CourseAttendeeController extends Controller
 
                     $fileNamePDF = "SRS Influencing Report - " . $courseAttendeesList->courses[0]->clientname->company_name . ' - ' . str_replace("-", ".", $courseAttendeesList->courses[0]->start_date) . ' - ' . ucwords($courseAttendeesList->first_name . " " . $courseAttendeesList->last_name) . '.pdf';
 
-                    $myContent = view('pdf.report', ['courseAttendeesList' => $courseAttendeesList]);
+                    $myContent = view('pdf.report', ['courseAttendeesList' => $courseAttendeesList, 'fileNamePDF'=>$fileNamePDF]);
 
 
 
@@ -247,7 +247,7 @@ class CourseAttendeeController extends Controller
 
                             $dompdf->render();
 
-                            $dompdf->stream($fileNamePDF, array("Attachment" => false));
+                            $dompdf->stream("SRS Influencing Report - " . $courseAttendeesList->courses[0]->clientname->company_name . ' - ' . str_replace("-", ".", $courseAttendeesList->courses[0]->start_date) . ' - ' . ucwords($courseAttendeesList->first_name . " " . $courseAttendeesList->last_name) . '.pdf', array("Attachment" => false));
 
                             exit;
 

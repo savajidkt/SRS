@@ -150,6 +150,7 @@ foreach ($scores as $name => $score) {
 <html>
 
 <head>
+    <title><?php echo $fileNamePDF; ?></title>
     <style type="text/css" media="all">
         @media print {
             body {
@@ -477,7 +478,7 @@ foreach ($scores as $name => $score) {
             height: 50px;
 
         }
-    </style>
+    </style>    
 </head>
 
 <body>
