@@ -90,7 +90,7 @@ class CourseController extends Controller
      */
     public function store(CreateRequest $request)
     {
-         dd($request->all());
+        
         $this->courseRepository->create($request->all());
         return redirect()->route('course.index')->with('success', "Course created successfully!");
     }
@@ -133,7 +133,7 @@ class CourseController extends Controller
      */
     public function update(EditRequest $request, Course $course)
     {
-         dd($request->all());
+       
         $this->courseRepository->update($request->all(), $course);
         return redirect()->route('course.index')->with('success', "Course updated successfully!");
     }
