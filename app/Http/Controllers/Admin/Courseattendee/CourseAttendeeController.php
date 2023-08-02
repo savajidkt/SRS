@@ -303,9 +303,9 @@ class CourseAttendeeController extends Controller
 
         $course_organisor_email = $Course->clientname->clientdetails->email;
 
-        $atteendeeTable = '<table border="1" cellspacing="0" cellpadding="5" style="border-collapse:collapse"><tr><th width="301" valign="top" style="background-color:#17365D;color:white;"><p>Attendee Name</p></th><th width="247" valign="top" style="background-color:#17365D;color:white;"><p>eMail Address</p></th></tr><tbody>';
+        $atteendeeTable = '<table border="1" cellspacing="0" cellpadding="5" style="border-collapse:collapse; width: 100%;"><tr><th width="301" valign="top" style="background-color:#17365D;color:white;"><p>Attendee Name</p></th><th width="247" valign="top" style="background-color:#17365D;color:white;"><p>eMail Address</p></th></tr><tbody>';
 
-        $atteendeeDetailTable = '<table border="1" cellspacing="0" cellpadding="5" style="border-collapse:collapse">
+        $atteendeeDetailTable = '<table border="1" cellspacing="0" cellpadding="5" style="border-collapse:collapse; width: 100%;">
 
 						  <tr>
 

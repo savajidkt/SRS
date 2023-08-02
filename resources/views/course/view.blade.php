@@ -28,14 +28,7 @@
 
 
 
-    <!--**********************************
-
-                                                                                                                                                                    Content body start
-
-                                                                                                                                                                ***********************************-->
-
-
-
+    
     <div class="container-fluid course-view-influencing-container">
 
         <div class="row row-a page-titles mx-0">
@@ -283,10 +276,13 @@
                         @endforeach
 
                     </div>
-
+                @else
+                    <div class="row card-text-middle" style="color: #454545;padding-top: 20px;">
+                        No 360 CONTACT available
+                    </div>
                 @endif
 
-        </div>
+        
 
         @endforeach
 

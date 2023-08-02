@@ -74,14 +74,16 @@ foreach ($result as $key1 => $value) {
     $data++;
 }
 
-
-
 $score_averages = [];
 
 foreach ($scores as $name => $score) {
     if ($name != 'ATTENDEE') {
         for ($i = 1; $i <= 7; $i++) {
-            $score_averages[$i] = $score[$i];
+            if(isset($score_averages[$i])){
+                $score_averages[$i] = $score_averages[$i] + $score[$i];
+            }else{
+                $score_averages[$i] = $score[$i];
+            }
         }
     }
 }
@@ -136,6 +138,9 @@ foreach ($scores as $name => $score) {
     
     generateGraph($imgName, $nameArray, $scores['ATTENDEE'], $scores[$name], $name);
 }
+
+
+
 
 ?>
 
@@ -514,7 +519,8 @@ foreach ($scores as $name => $score) {
                                 //     $footer_text = replaceHTMLBodyWithParam($messgeTemplate['template'], $paramArr);
                                 // }
                                 // echo $footer_text; 
-                               
+                              
+                              
                                 ?>
 <p>Copyright &copy; <?php echo date('Y'); ?> SRS-The Development Team Ltd. All Rights Reserved</p>
 <p><a href="http://www.srs-development.co.uk" target="blank">www.srs-development.co.uk</a></p>
@@ -671,7 +677,8 @@ foreach ($scores as $name => $score) {
                 $k = 1;
                 $questionWidth = 500 - ((count($scores) * 30) + 40);
                 foreach ($results as $key1 => $result) {
-                  
+
+
                     $index = $result->id % 7;
                     if ($index == 0) {
                         $index = 7;
@@ -686,8 +693,7 @@ foreach ($scores as $name => $score) {
                     <?php echo $result->question; ?></td>
                 <td width="10" style="padding-right:0px" align="center" style="border-right: 1px solid #000;">
                     <?php echo $raw_scores['ATTENDEE'][($result->id - 70)] ?></td>
-                <?php 
-              
+                <?php
                 foreach ($scores as $name => $score) {
  if ($name != 'ATTENDEE') {
                     if ($raw_scores[$name][($result->id - 35)] == '') {                        
@@ -698,10 +704,9 @@ foreach ($scores as $name => $score) {
                         echo " <td width='10' style=\"padding-right:0px; border-right: 1px solid #000;\" align='center'>" . $raw_scores[$name][($result->id - 35)] . '</td> ';
                     }
                 }
-                  
                 ?>
             </tr>
-            <?php }  ?>
+            <?php } ?>
         </tbody>
     </table>
     <br>

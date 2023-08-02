@@ -93,7 +93,7 @@ class CourseAttendeeRepository
       //  dd($attendeesArrList);
         $returnTable="";
         if(is_array($attendeesArrList) && count($attendeesArrList) > 0){
-            $returnTable .= "<table border=\"1\" cellspacing=\"0\" cellpadding=\"5\" style=\"border-collapse:collapse\">";
+            $returnTable .= "<table border=\"1\" cellspacing=\"0\" cellpadding=\"5\" style=\"border-collapse:collapse; width: 100%;\">";
             $returnTable .="<tr><th width=\"301\" valign=\"top\" style=\"background-color:#17365D;color:white;\"><p style=\"margin-top: 10px; margin-bottom: 10px; font-family: arial,helvetica,sans-serif; font-size: 14px; line-height: 2em;\">Attendee Name</p></th><th width=\"247\" valign=\"top\" style=\"background-color:#17365D;color:white;\"><p style=\"margin-top: 10px; margin-bottom: 10px; font-family: arial,helvetica,sans-serif; font-size: 14px; line-height: 2em;\">eMail Address</p></th></tr>";
             $returnTable .= "<tbody>";
             // dd($attendeesArrList);
@@ -211,7 +211,7 @@ class CourseAttendeeRepository
         $returnTable .= "<p>Form completion Status</p>";
        
         if($attendeesArrList){
-            $returnTable .= "<table border=\"1\" cellspacing=\"0\" cellpadding=\"5\" style=\"border-collapse:collapse\">";
+            $returnTable .= "<table border=\"1\" cellspacing=\"0\" cellpadding=\"5\" style=\"border-collapse:collapse; width: 100%;\">";
             $returnTable .="<tr><th width=\"170\" valign=\"top\" style=\"background-color:#17365D;color:white;\"><p style=\"margin-top: 10px; margin-bottom: 10px; font-family: arial,helvetica,sans-serif; font-size: 14px; line-height: 2em;\">Attendee Name</p></th><th width=\"215\" valign=\"top\" style=\"background-color:#17365D;color:white;\"><p style=\"margin-top: 10px; margin-bottom: 10px; font-family: arial,helvetica,sans-serif; font-size: 14px; line-height: 2em;\">Own Questionnaire Completed</p></th><th width=\"124\" valign=\"top\" style=\"background-color:#17365D;color:white;\"><p style=\"margin-top: 10px; margin-bottom: 10px; font-family: arial,helvetica,sans-serif; font-size: 14px; line-height: 2em;\">Number of 360 Degree Invites Sent</p></th><th width=\"124\" valign=\"top\" style=\"background-color:#17365D;color:white;\"><p style=\"margin-top: 10px; margin-bottom: 10px; font-family: arial,helvetica,sans-serif; font-size: 14px; line-height: 2em;\">Number of 360 Degree Forms Completed</p></th></tr>";
             $returnTable .= "<tbody>";
 
