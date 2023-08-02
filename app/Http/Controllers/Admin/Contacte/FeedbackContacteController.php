@@ -324,7 +324,7 @@ class FeedbackContacteController extends Controller
            
             if($attendeeReferens) 
             {
-                $emailTemplate = getEmailTemplatesByID(11);
+                $emailTemplate = getEmailTemplatesByID(21);
                 
                 if ($emailTemplate) {
                     $paramArr['contact_name'] = ucwords($attendeeReferens->first_name . " " . $attendeeReferens->last_name);
