@@ -189,6 +189,10 @@
     white-space:normal !important;
 }
 }
+.form-group.train-deet[data-select2-id] >.input-error {
+  display: flex;
+  flex-direction: column-reverse;
+}
             
         </style>
         <script>

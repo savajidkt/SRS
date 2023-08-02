@@ -15,6 +15,11 @@ var FrmAttendeesPreference = function() {
                     required: true
                 },
             },
+            rules: {
+                job_title: {
+                    required: false
+                },
+            },
             highlight: function(element) {
 
                 // add a class "has_error" to the element 

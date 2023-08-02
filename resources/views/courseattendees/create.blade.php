@@ -376,10 +376,14 @@ padding-left: 0rem;
                                                         </div>
                                                         </div>
                                                         <div class="form-group col-md-6 form-gap-2">
-                                                            <label class="text-label">Your Job Title</label>
+                                                            {{-- <label class="text-label">Your Job Title</label> --}}
+                                                             <label class="text-label attendee_job_title_cls"
+                                                            id="attendee_job_title_0" data-c-id="0"
+                                                            attendee-job-title="attendee_job_title">Your Job
+                                                            Title</label>
                                                             <div class="input-error customise-select">
                                                                 <div class="input-error">
-                                                                    <select class="form-select form-select-sm my-select2" name="job_title" aria-label=".form-select-sm example" id="my_contact_data_0" my-contacts-data="my_contact_data" required>
+                                                                    <select class="form-select form-select-sm my-select2" name="job_title" aria-label=".form-select-sm example" id="my_contact_data_0" my-contacts-data="my_contact_data" >
                                                                         <option value="" selected disabled>Select Job Title</option>
                                                                         <option value="1">Director</option>
                                                                         <option value="2">Department Head</option>

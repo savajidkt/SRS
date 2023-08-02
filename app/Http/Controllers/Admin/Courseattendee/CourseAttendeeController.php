@@ -149,29 +149,29 @@ class CourseAttendeeController extends Controller
         if(empty($request->key)){
             return redirect()->to(url('/'));
         }
-        $sidebar = '';
-        $message = '';
+        // $sidebar = '';
+        // $message = '';
         $course = Course::where('key', $request->key)->first();
-        if ($course) {
+        // if ($course) {
 
-            $CompanyOrganizer = CompanyOrganizer::where('course_id', $course->id)->first();
-            if ($CompanyOrganizer) {
-                $emailTemplate = getEmailTemplatesByID(9);
+        //     $CompanyOrganizer = CompanyOrganizer::where('course_id', $course->id)->first();
+        //     if ($CompanyOrganizer) {
+        //         $emailTemplate = getEmailTemplatesByID(9);
 
-                if ($emailTemplate) {
-                    $paramArr['contact_name'] = ucwords($CompanyOrganizer->first_name . " " . $CompanyOrganizer->last_name);
-                    $sidebar = replaceHTMLBodyWithParam($emailTemplate['template'], $paramArr);
-                }
+        //         if ($emailTemplate) {
+        //             $paramArr['contact_name'] = ucwords($CompanyOrganizer->first_name . " " . $CompanyOrganizer->last_name);
+        //             $sidebar = replaceHTMLBodyWithParam($emailTemplate['template'], $paramArr);
+        //         }
 
-                $messgeTemplate = getEmailTemplatesByID(12);
-                if ($messgeTemplate) {
-                    $message  = replaceHTMLBodyWithParam($messgeTemplate['template'], $paramArr);
+        //         $messgeTemplate = getEmailTemplatesByID(12);
+        //         if ($messgeTemplate) {
+        //             $message  = replaceHTMLBodyWithParam($messgeTemplate['template'], $paramArr);
 
-                }
+        //         }
 
-            }
+        //     }
 
-        }
+        // }
 
 
 
@@ -179,9 +179,8 @@ class CourseAttendeeController extends Controller
 
         $this->courseAttendeeRepository->create($request->all());
 
-        return view('courseattendees.success', ['sidebar' => $sidebar, 'message' => $message]);
-
-        // return redirect()->back()->with('success', "Course Attendees successfully!");
+        // return view('courseattendees.success', ['sidebar' => $sidebar, 'message' => $message]);
+        return redirect()->route('course-attendee-thankyou',$course->id);
 
     }
 
@@ -478,4 +477,24 @@ class CourseAttendeeController extends Controller
 
         
     }    
+    public function courseattendeethankyou($id)
+    {
+        $CompanyOrganizer = CompanyOrganizer::where('course_id', $id)->first();
+        if ($CompanyOrganizer) {
+            $emailTemplate = getEmailTemplatesByID(9);
+
+            if ($emailTemplate) {
+                $paramArr['contact_name'] = ucwords($CompanyOrganizer->first_name . " " . $CompanyOrganizer->last_name);
+                $sidebar = replaceHTMLBodyWithParam($emailTemplate['template'], $paramArr);
+            }
+
+            $messgeTemplate = getEmailTemplatesByID(12);
+            if ($messgeTemplate) {
+                $message  = replaceHTMLBodyWithParam($messgeTemplate['template'], $paramArr);
+
+            }
+
+        }
+        return view('courseattendees.success', ['sidebar' => $sidebar, 'message' => $message]);
+    }
 }

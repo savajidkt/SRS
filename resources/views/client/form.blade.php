@@ -156,7 +156,7 @@ $mycountphp = 1;
                         <label class="itemcost">Phone Number<span class="filedrequired">*</span></label>
                         <div class="input-error">
                             <input type="text" class="form-control" name="phone_number"
-                            value="{{$contact->phone_number}}" onkeyup="this.value = this.value.replace(/^\.|[^\d\.]/g, '')" />
+                            value="{{$contact->phone_number}}" onkeyup="this.value = this.value.replace(/^\.|[^\d\]/g, '')" />
                         </div>
                     </div>
 

@@ -220,13 +220,14 @@ class FeedbackContacteController extends Controller
                 }
             }
         }
-        $messgeTemplate = getEmailTemplatesByID(13);
-        if ($messgeTemplate)
-        {
-            $paramArr = [];
-            $message  = replaceHTMLBodyWithParam($messgeTemplate['template'],$paramArr);
-        }
-        return view('contacte.successattendeesquestion',['message' => $message]);
+        // $messgeTemplate = getEmailTemplatesByID(13);
+        // if ($messgeTemplate)
+        // {
+        //     $paramArr = [];
+        //     $message  = replaceHTMLBodyWithParam($messgeTemplate['template'],$paramArr);
+        // }
+        // return view('contacte.successattendeesquestion',['message' => $message]);
+        return redirect()->route('contacte-thankyou');
     }
     public function getQuestionnaire360List($attendeesArrList)
     {
@@ -481,5 +482,15 @@ public function chaseEmailFeedback($id)
             $message  = replaceHTMLBodyWithParam($messgeTemplate['template'],$paramArr);
         }
         return view('contacte.successquestion',['message' => $message]);
+    }
+    public function contactethankyou()
+    {
+        $messgeTemplate = getEmailTemplatesByID(13);
+        if ($messgeTemplate)
+        {
+            $paramArr = [];
+            $message  = replaceHTMLBodyWithParam($messgeTemplate['template'],$paramArr);
+        }
+        return view('contacte.successattendeesquestion',['message' => $message]);
     }
 }

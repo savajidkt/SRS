@@ -61,6 +61,9 @@ Route::get('report-export-attendees/{id}', [CourseAttendeeController::class, 'ex
 Route::get('send-trainer-report/{id}', [CourseAttendeeController::class, 'trainerReport'])->name('trainer-report');
 Route::get('thankyou/{temp_id}', [FeedbackContacteController::class, 'thankyou'])->name('thankyou');
 
+Route::get('courseattendeethankyou/{id}', [CourseAttendeeController::class, 'courseattendeethankyou'])->name('course-attendee-thankyou');
+Route::get('contactethankyou', [FeedbackContacteController::class, 'contactethankyou'])->name('contacte-thankyou');
+
 
 
 

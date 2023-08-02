@@ -72,7 +72,11 @@
     <script>
         $('.select2').select2();
     </script>
-        
+    <script type="text/javascript">
+        $('#post_code').keyup(function() {
+    $(this).val($(this).val().replace(/[^\w\s]+/g, ''));
+});
+    </script>
 
     {{-- <script type="text/javascript">
         $("#addRow").click(function () {
