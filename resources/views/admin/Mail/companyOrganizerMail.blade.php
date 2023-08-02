@@ -4,8 +4,8 @@
         <meta charset="utf-8">
         <title>Test</title>
     </head>
-    <body bgcolor="#EEE8D6" text="#00">
-        <div style="background: #EEE8D6;">
+    <body bgcolor="#FFFFFF" text="#00">
+        <div style="background: #FFFFFF;">
             <br />
         <table
             style="font-family: arial, helvetica, sans-serif; font-size: 12px; color: #000; text-align: left; width: 650px;"

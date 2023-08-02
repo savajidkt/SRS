@@ -77,7 +77,7 @@ class CourseController extends Controller
     public function create()
     {
         $rawData = new Course;
-        $courseCategory = CourseCategory::all();
+        $courseCategory = CourseCategory::first();        
         $clientList = Client::all();
         return view('course.create',['model' => $rawData,'courseCategory' => $courseCategory,'clientList' => $clientList]);
     }
@@ -90,7 +90,7 @@ class CourseController extends Controller
      */
     public function store(CreateRequest $request)
     {
-        // dd($request->all());
+         dd($request->all());
         $this->courseRepository->create($request->all());
         return redirect()->route('course.index')->with('success', "Course created successfully!");
     }
@@ -117,7 +117,7 @@ class CourseController extends Controller
     public function edit(Course $course)
     {
         $course->loadMissing('trainerDetail');
-        $courseCategory = CourseCategory::all();
+        $courseCategory = CourseCategory::first();
         $clientList = Client::all();
         $companyOrganizer = CompanyOrganizer::where('course_id',$course->id)->first();
         return view('course.edit', ['model' => $course,'courseCategory' => $courseCategory,'clientList' => $clientList,'companyOrganizer' => $companyOrganizer]);
@@ -133,7 +133,7 @@ class CourseController extends Controller
      */
     public function update(EditRequest $request, Course $course)
     {
-        // dd($request->all());
+         dd($request->all());
         $this->courseRepository->update($request->all(), $course);
         return redirect()->route('course.index')->with('success', "Course updated successfully!");
     }

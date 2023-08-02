@@ -16,19 +16,11 @@ $mycountphp = 1;
     <section>
         <div class="row">
             <div class="col-lg-12 mb-4 form-style">
-                <div class="form-group">
-                    <label class="text-label">Name of Course<span class="filedrequired">*</span></label>
-                    <div class="input-error">
-                        <select class="form-select form-select-sm select2" data-minimum-results-for-search="Infinity" aria-label=".form-select-sm example" id="course_category_id" name="course_category_id" >
-                            {{-- <option value="">Select Course</option> --}}
-                            @if(count($courseCategory) > 0)
-                                @foreach ($courseCategory as $key=> $category)
-                                    <option value="{{ $category->id }}" {{ ($model->course_category_id == $category->id) ? 'selected' : '' }}>{{ $category->course_name}}</option>
-                                @endforeach
-                            @endif
-                        </select>
-                    </div>
-                </div>
+
+                <input type="hidden" name="course_category_id" id="course_category_id" class="form-control"
+                value="{{ $courseCategory->id }}">
+            <input type="hidden" name="path" id="path" class="form-control" value="1">
+                
                 <div class="form-group dat-o-c">
                     <label class="text-label headi-doc">Date of Course<span class="filedrequired">*</span></label>
                     <div class="input-error">
@@ -93,17 +85,7 @@ $mycountphp = 1;
                             <div class="client_id-error"></div>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label class="text-label">Path<span class="filedrequired">*</span></label>
-                        <div class="input-error">
-                            <select class="form-select form-select-sm select2" data-minimum-results-for-search="Infinity" aria-label=".form-select-sm example" id="path" name="path" >
-                                {{-- <option value="">Please Select</option> --}}
-                                <option value="1" {{ isset($model->path) && $model->path == 1 ? 'selected' : '' }}>Automated email</option>
-                                {{-- <option value="2" {{ isset($model->path) && $model->path == 2 ? 'selected' : '' }}>PDF download</option> --}}
-                            </select>
-                            <div class="path-error"></div>
-                        </div>
-                    </div>
+                    
                 </div>
         </div>
     </section>
