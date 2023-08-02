@@ -60,6 +60,16 @@ class CompanyOrganizerMail extends Mailable
   public function build()
 
   {
+
+
+
+    // $emailTemplate = getEmailTemplatesByID(1);
+    // $emailBody = $emailTemplate['template'];
+    // $emailSubject = $emailTemplate['subject'];
+    // $emailHeaderFooter = getEmailTemplatesHeaderFooter();
+
+    // return $this->subject($emailSubject)->markdown('admin.Mail.companyOrganizerMail', ['emailBody' => $emailBody, 'emailHeaderFooter' => $emailHeaderFooter]);
+
     $data = $this->data;
     // dd($data);
     $trainer_list = '';

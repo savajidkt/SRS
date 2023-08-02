@@ -343,7 +343,7 @@
                                                             <label>Relationship</label>
                                                             <div class="input-error customise-select">
                                                                 <div class="input-error">
-                                                                    <select class="form-select form-select-sm my-select2"
+                                                                    <select class="form-select form-select-sm my-select2 mYChangeEvent"
                                                                         name="relationship" 
                                                                         aria-label=".form-select-sm example" id="my_contact_data_0" my-contacts-data="my_contact_data">
                                                                         <option value="" selected disabled>Select
@@ -448,38 +448,12 @@
         
     </script>
     <script>
-        // const currentDateTime = new Date();
-        
-        
-        
-        // const options = {
-        
-        // weekday: 'long',
-        
-        // year: 'numeric',
-        
-        // month: 'long',
-        
-        // day: 'numeric',
-        
-        // hour: 'numeric',
-        
-        // minute: 'numeric',
-        
-        // second: 'numeric',
-        
-        // hour12: false
-        
-        // };
-        
-        
-        
-        // const formattedDateTime = currentDateTime.toLocaleDateString('en-US', options);
-        
-        // document.getElementById("demo").innerHTML = formattedDateTime;
-        
-        
-        
+        $(document).ready(function () {
+            $(document).on("change",".mYChangeEvent",function(){
+                
+                $('#'+$(this).attr('data-select2-id')+'-error').hide();
+        });
+        }); 
     </script>
     <script type="text/javascript">
         function startTime()
