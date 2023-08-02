@@ -1,21 +1,25 @@
 @extends('layouts.app')
 @section('page_title', 'SRS')
 @section('content')
-<style>
-    .filedrequired, .help-block-error{ color: #FF1616; white-space:nowrap;}
-</style>
+    <style>
+        .filedrequired,
+        .help-block-error {
+            color: #FF1616;
+            white-space: nowrap;
+        }
+    </style>
     <!--**********************************
-            Content body start
-        ***********************************-->
+                Content body start
+            ***********************************-->
 
     <div class="container-fluid client-management-add-container">
         <div class="row page-titles mx-0">
             <!-- <div class="col-sm-6 p-md-0">
-                    <div class="welcome-text">
-                        <h4>Hi, welcome back!</h4>
-                        <p class="mb-0">Sue Swindell</p>
-                    </div>
-                </div> -->
+                        <div class="welcome-text">
+                            <h4>Hi, welcome back!</h4>
+                            <p class="mb-0">Sue Swindell</p>
+                        </div>
+                    </div> -->
             <!-- <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex"> -->
             <div>
                 <ol class="breadcrumb">
@@ -38,15 +42,15 @@
                             @include('client.form')
                             <div id="newRow"></div>
                             <div class="btn-client-edit">
-                            <button type="submit" class="btn btn-primary">Save Changes</button>
-                            <a href="{{ route('client.index')}}" class="btn btn-primary">Cancel</a>
-                            
-                            <button class="btn btn-primary" type="button" data-repeater-create>                               
-                                <span>Add New Contact</span>
-                            </button>
+                                <button type="submit" class="btn btn-primary">Save Changes</button>
+                                <a href="{{ route('client.index') }}" class="btn btn-primary">Cancel</a>
+
+                                <button class="btn btn-primary" type="button" data-repeater-create>
+                                    <span>Add New Contact</span>
+                                </button>
                             </div>
 
-                            
+
                         </form>
                     </div>
                 </div>
@@ -58,13 +62,13 @@
 
 
     <!--**********************************
-            Content body end
-        ***********************************-->
+                Content body end
+            ***********************************-->
 @endsection
 @section('extra-script')
 
 
-    
+
     <script src="{{ asset('js/jquery.validate.min.js') }}"></script>
     <script src="{{ asset('js/form/client.js') }}"></script>
     <script src="{{ asset('js/form/jquery.repeater.min.js') }}"></script>
@@ -72,23 +76,4 @@
     <script>
         $('.select2').select2();
     </script>
-    <script type="text/javascript">
-        $('#post_code').keyup(function() {
-    $(this).val($(this).val().replace(/[^\w\s]+/g, ''));
-});
-    </script>
-
-    {{-- <script type="text/javascript">
-        $("#addRow").click(function () {
-            var htmlData = $('#contact_form').html();
-            var contactTitle = "<h4> <span>Contact Details </span> <span><button type='button' class='btn btn-danger removeRow'> Remove </button></span></h4>";
-            // var contactTitle = "<h4>Contact Details </h4>";
-            // $('#contact_div').append(contactTitle+htmlData);
-            $('#contact_div').append("<div class='parent-div'>"+contactTitle+htmlData+"</div>");
-        });
-        $(document).on('click', '.removeRow', function () {
-            // console.log('test');
-            $(this).closest('div').remove();
-        });
-    </script> --}}
 @endsection
