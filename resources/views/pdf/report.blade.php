@@ -40,9 +40,11 @@ $questionCount = 1;
 $previousKey = [];
 
 foreach ($result as $key1 => $value) {
+    
    
     $key = $value->first_name . ' ' . $value->last_name;
     $index = $data % 7;
+
 
     if ($data == 8) {
         $data = 1;
@@ -677,6 +679,7 @@ foreach ($scores as $name => $score) {
                 $results = getQuestionsReport(0, 15);
                 $k = 1;
                 $questionWidth = 500 - ((count($scores) * 30) + 40);
+               
                 foreach ($results as $key1 => $result) {
 
 
@@ -684,6 +687,7 @@ foreach ($scores as $name => $score) {
                     if ($index == 0) {
                         $index = 7;
                     }
+                    
                     ?>
             <tr style="border-top: 1px solid #000;">
                 <td class="<?php echo $styles[$index]; ?>" width="1"><?php
@@ -693,16 +697,16 @@ foreach ($scores as $name => $score) {
                 <td width="<?php echo $questionWidth; ?>" style="font-size:12px;" class="purpletext" style="border-right: 1px solid #000;">
                     <?php echo $result->question; ?></td>
                 <td width="10" style="padding-right:0px" align="center" style="border-right: 1px solid #000;">
-                    <?php echo $raw_scores['ATTENDEE'][($result->id - 70)] ?></td>
+                    <?php echo isset($raw_scores['ATTENDEE'][($result->id - 70)]) ? $raw_scores['ATTENDEE'][($result->id - 70)] : '' ?></td>
                 <?php
                 foreach ($scores as $name => $score) {
  if ($name != 'ATTENDEE') {
-                    if ($raw_scores[$name][($result->id - 35)] == '') {                        
-                        $raw_scores[$name][($result->id - 35)] = 0;
+                    if ($raw_scores[$name][($result->id - 70)] == '') {                        
+                        $raw_scores[$name][($result->id - 70)] = 0;
                     }
                     
                 
-                        echo " <td width='10' style=\"padding-right:0px; border-right: 1px solid #000;\" align='center'>" . $raw_scores[$name][($result->id - 35)] . '</td> ';
+                        echo " <td width='10' style=\"padding-right:0px; border-right: 1px solid #000;\" align='center'>" . $raw_scores[$name][($result->id - 70)] . '</td> ';
                     }
                 }
                 ?>
@@ -770,17 +774,17 @@ foreach ($scores as $name => $score) {
                     <?php echo $result->question; ?>
                 </td>
                 <td width="10" style="padding-right:0px" align="center" style="border-right: 1px solid #000;">
-                    <?php echo $raw_scores['ATTENDEE'][($result->id - 70)]; ?>
+                    <?php echo isset($raw_scores['ATTENDEE'][($result->id - 70)]) ? $raw_scores['ATTENDEE'][($result->id - 70)] : '' ?>
                     
                 <?php
                 foreach ($scores as $name => $score) {
 
                     if ($name != 'ATTENDEE') {
-                    if ($raw_scores[$name][($result->id - 35)] == "") {                                               
-                        $raw_scores[$name][($result->id - 35)] = 0;
+                    if ($raw_scores[$name][($result->id - 70)] == "") {                                               
+                        $raw_scores[$name][($result->id - 70)] = 0;
                     }
                     
-                        echo " <td width='10' style=\"padding-right:0px; border-right: 1px solid #000;\" align='center'>" . $raw_scores[$name][($result->id - 35)] . '</td> ';
+                        echo " <td width='10' style=\"padding-right:0px; border-right: 1px solid #000;\" align='center'>" . $raw_scores[$name][($result->id - 70)] . '</td> ';
                     }
                 }
                 ?>

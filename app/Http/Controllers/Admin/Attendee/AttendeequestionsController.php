@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers\Admin\Attendee;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Http\Requests\Attendee\EditRequest;
 use App\Models\AttendeeQuestions;
-use App\Repositories\AttendeequestionsRepository;
+use App\Http\Controllers\Controller;
+use App\Models\QuestionnaireAnswers;
 use Yajra\DataTables\Facades\DataTables;
+use App\Http\Requests\Attendee\EditRequest;
+use App\Repositories\AttendeequestionsRepository;
 
 class AttendeequestionsController extends Controller
 {
@@ -54,7 +55,23 @@ class AttendeequestionsController extends Controller
 
     public function index(Request $request)
     {
-        // dd($request->all());
+        // $datata = QuestionnaireAnswers::all();
+        // $i = 1;
+        // foreach ($datata as $key => $value) {
+        //     if( $value->question_id >= 36 ){
+        //         if( $i == 36 ){
+        //             $i = 1;
+        //         }
+
+        //         QuestionnaireAnswers::where('id',$value->id)->update(['question_id'=>$i]);
+
+        //         echo "id: ".$value->id.'->'.$i;
+        //         echo "<br>";
+        //         $i++;
+        //     }
+            
+        // }
+        // exit;
         if ($request->ajax()) {
 
             $data = AttendeeQuestions::select('*');
