@@ -32,7 +32,7 @@
 
     
     <div class="container-fluid course-view-influencing-container">
-
+       
         <div class="row row-a page-titles mx-0">
 
             <div class="col-sm-6 p-md-0-a">
@@ -105,7 +105,8 @@
 
                                 <span class="card-title card-title-ab">
 
-                                    Email Address :</span> {{ isset($trainerDetail->email) ? $trainerDetail->email : '' }}
+                                        Email Address :</span>
+                                    {{ isset($trainerDetail->email) ? $trainerDetail->email : '' }}
 
                             </p>
 
@@ -127,16 +128,14 @@
 
                 @foreach ($modal->attendees as $key => $attendees)
 
-                    <div class="card card-question-ab">
+                   
 
                         @php
 
                             $isBackGroud = getBackgroudColorByStatus($attendees);
 
                         @endphp
-
-
-
+                        <div class="card">
                         <div class="card-header-a card-header {{ $isBackGroud ? 'bg-details' : '' }} ">Attendees :
 
                             {{ isset($attendees->first_name) ? $attendees->first_name . ' ' . $attendees->last_name : '' }}
@@ -176,8 +175,8 @@
 
 
                             @if (enableReportButton($attendees))
-
-                                <a href="{{ route('export-attendees', $attendees->id) }}" target="_blank" class="btn btn-primary">View
+                                    <a href="{{ route('export-attendees', $attendees->id) }}" target="_blank"
+                                        class="btn btn-primary">View
 
                                     Report</a>
 
@@ -193,9 +192,10 @@
 
 
 
-                        <div class="card text-center card-customise-view-report">
+                            <div class="card text-center ">
 
-                            <div class="card-header-a card-header {{ $isBackGroud ? 'bg-details' : '' }} card-text-middle">
+                                <div
+                                    class="card-header-a card-header {{ $isBackGroud ? 'bg-details' : '' }} card-text-middle">
 
                                 360 CONTACT
 
@@ -256,11 +256,7 @@
                                                     @endif
 
                                                 </p>
-
-                                                @if ($referraluser->referralusers)
-
-                                                @else
-
+                                                    @if (!$referraluser->referralusers)
                                                     <a href="{{ route('chase-email-feedback', $referraluser->id) }}"
 
                                                         class="card-link btn btn-primary">Send Chase Email</a>
@@ -283,9 +279,7 @@
                         No 360 CONTACT available
                     </div>
                 @endif
-
-        
-
+            </div>
         @endforeach
 
         @endif
@@ -293,7 +287,7 @@
     </div>
 
     </div>
-
+    </div>
 @endsection
 
 @section('extra-script')
@@ -303,5 +297,4 @@
     <script src="{{ asset('js/quixnav-init.js') }}"></script>
 
     <script src="{{ asset('js/custom.min.js') }}"></script>
-
 @endsection
