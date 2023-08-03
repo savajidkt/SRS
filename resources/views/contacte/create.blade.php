@@ -277,7 +277,7 @@
                 <div class="card-header attendee-home-lgt attendee-bg-clr add-contact-font">
                     <strong>360-DEGREE FEEDBACK CONTACTS</strong>
                 </div>
-                @if ($ext_id == "360-frm")
+                @if ($ext_id == "360-frm" || ($attCount != '0'))
                 <div class="card-body myExistdiv">
                     <!-- <h5 class="card-title">Special title treatment</h5> -->
                     <p class="card-text attendee-home-font">You already added {{ $attCount }} contact. if you do not want to add more then you can skip this step.
@@ -289,7 +289,7 @@
                     </div>
                 </div>
                 @endif
-                <div class="row myclsdiv {{  (isset($ext_id) && $ext_id == "360-frm") ? 'hide' :'' }}">
+                <div class="row myclsdiv {{  ( (isset($ext_id) && $ext_id == "360-frm") || $attCount != '0' ) ? 'hide' :'' }}">
                 <div class="col-xl-6 col-xxl-12">
                     <div class="card">
                         <div class="card-body">

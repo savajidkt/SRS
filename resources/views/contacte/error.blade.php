@@ -162,6 +162,14 @@ display: flex !important;
 }
 }
     </style>
+
+<script>
+  window.addEventListener( "pageshow", function ( event ) {
+  if(window.performance.navigation.type == 2){
+  location.reload();
+}
+});
+</script>
   </head>
 
   <body>
