@@ -128,6 +128,8 @@ Route::group(['authGrouping' => 'users.auth', 'middleware' => 'auth:web'], funct
     Route::get('editcourse-attendees/{courseAttendees}/edit', [CourseAttendeeController::class, 'editattendees'])->name('editcourse-attendees');
     Route::post('update-attendees/{courseAttendees}/update', [CourseAttendeeController::class, 'update'])->name('update-attendees');
 
+    Route::post('delete-attendees', [CourseAttendeeController::class, 'deleteAttendees'])->name('delete-attendees');
+
 
     /*Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('checkSurveyStatus');
     Route::get('/change-password', [ResetPasswordController::class, 'firstTimePasswordChange'])->name('change-password');

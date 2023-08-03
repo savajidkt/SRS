@@ -59,7 +59,6 @@ class CourseAttendeeController extends Controller
     {
 
         $this->courseAttendeeRepository = $courseAttendeeRepository;
-
     }
 
     /**
@@ -79,7 +78,7 @@ class CourseAttendeeController extends Controller
         $message = '';
 
         $course = Course::where('key', $id)->first();
-        if(!$course){
+        if (!$course) {
             $messgeTemplate = getEmailTemplatesByID(23);
             if ($messgeTemplate) {
                 $paramArr = [];
@@ -87,18 +86,18 @@ class CourseAttendeeController extends Controller
             }
             return view('courseattendees.error', ['message' => $message]);
         }
-        $isExpire = courseExpired($course->start_date, $course->end_date);  
+        $isExpire = courseExpired($course->start_date, $course->end_date);
         if (!$isExpire) {
             $messgeTemplate = getEmailTemplatesByID(22);
             if ($messgeTemplate) {
                 $paramArr = [];
                 $message  = $messgeTemplate['template'];
             }
-            
+
             return view('courseattendees.errorexpire', ['message' => $message]);
         }
-       
-        
+
+
         if ($course) {
 
             $CompanyOrganizer = CompanyOrganizer::where('course_id', $course->id)->where('confirm_attendee', 0)->first();
@@ -120,11 +119,9 @@ class CourseAttendeeController extends Controller
                 }
                 return view('courseattendees.error', ['message' => $message]);
             }
-
         }
 
         return view('courseattendees.error');
-
     }
 
 
@@ -146,7 +143,7 @@ class CourseAttendeeController extends Controller
     {
 
         // dd($request);
-        if(empty($request->key)){
+        if (empty($request->key)) {
             return redirect()->to(url('/'));
         }
         // $sidebar = '';
@@ -180,8 +177,7 @@ class CourseAttendeeController extends Controller
         $this->courseAttendeeRepository->create($request->all());
 
         // return view('courseattendees.success', ['sidebar' => $sidebar, 'message' => $message]);
-        return redirect()->route('course-attendee-thankyou',$course->id);
-
+        return redirect()->route('course-attendee-thankyou', $course->id);
     }
 
 
@@ -192,7 +188,6 @@ class CourseAttendeeController extends Controller
         $courseAttendeesList = CourseAttendees::where('course_id', $courseAttendees->id)->get();
 
         return view('course.editattendees', ['model' => $courseAttendees, 'id' => $courseAttendees->id, 'courseAttendeesList' => $courseAttendeesList]);
-
     }
 
 
@@ -202,7 +197,6 @@ class CourseAttendeeController extends Controller
         $this->courseAttendeeRepository->update($request->all(), $courseAttendees);
 
         return redirect()->route('course.index')->with('success', "Attendees updated successfully!");
-
     }
 
 
@@ -223,7 +217,7 @@ class CourseAttendeeController extends Controller
 
                     $fileNamePDF = "SRS Influencing Report - " . $courseAttendeesList->courses[0]->clientname->company_name . ' - ' . str_replace("-", ".", $courseAttendeesList->courses[0]->start_date) . ' - ' . ucwords($courseAttendeesList->first_name . " " . $courseAttendeesList->last_name) . '.pdf';
 
-                    $myContent = view('pdf.report', ['courseAttendeesList' => $courseAttendeesList, 'fileNamePDF'=>$fileNamePDF]);
+                    $myContent = view('pdf.report', ['courseAttendeesList' => $courseAttendeesList, 'fileNamePDF' => $fileNamePDF]);
 
 
 
@@ -250,23 +244,16 @@ class CourseAttendeeController extends Controller
                             $dompdf->stream("SRS Influencing Report - " . $courseAttendeesList->courses[0]->clientname->company_name . ' - ' . str_replace("-", ".", $courseAttendeesList->courses[0]->start_date) . ' - ' . ucwords($courseAttendeesList->first_name . " " . $courseAttendeesList->last_name) . '.pdf', array("Attachment" => false));
 
                             exit;
-
                         } catch (Exception $e) {
 
                             print_r($e->getMesssage());
 
                             exit;
-
                         }
-
                     }
-
                 }
-
             }
-
         }
-
     }
 
 
@@ -294,9 +281,7 @@ class CourseAttendeeController extends Controller
                 $trainer_emails[] = $value->email;
 
                 $trainers .= $value->first_name . ' ' . $value->last_name . '<br>';
-
             }
-
         }
 
         $course_organisor = ucwords($Course->clientname->clientdetails->first_name . " " . $Course->clientname->clientdetails->last_name);
@@ -323,9 +308,9 @@ class CourseAttendeeController extends Controller
 
         if ($Course->attendees) {
 
-          
 
-            foreach ($Course->attendees as $key => $value) {               
+
+            foreach ($Course->attendees as $key => $value) {
 
                 $name  = $value->first_name . ' ' . $value->last_name;
 
@@ -338,7 +323,6 @@ class CourseAttendeeController extends Controller
                     $questionnaire_filled = "YES - " . date('d/m/Y h:i:s', strtotime($value->questionnaireself->created_at));
 
                     $reportLink = '<a style="color:#000066" target="_blank"  href="' . route('export-attendees', $value->id) . '"><b>Click Here</b></a>';
-
                 }
 
                 $atteendeeTable .= '<tr> <td width="301" valign="top" style="background-color:#8DB3E2"><p>' . ucwords($name) . '</p></td><td width="247" valign="top" style="background-color:#DBE5F1"><p>' . $value->email . '</p></td></tr>';
@@ -356,9 +340,7 @@ class CourseAttendeeController extends Controller
 								<td valign="top" style="background-color:#DBE5F1"><p align="center">' . $reportLink . '</p></td>
 
 							  </tr>';
-
             }
-
         }
 
         $atteendeeTable .= "</tbody></table>";
@@ -403,18 +385,14 @@ class CourseAttendeeController extends Controller
 
                     $data['emailSubject'] = replaceHTMLBodyWithParam($emailTemplate['subject'], array('company_name' => $emailArr['company_name'], 'course_name' => $emailArr['course_name'], 'course_date' => dateFormat($Course->start_date)));
 
-                    $data['emailHeaderFooter'] = getEmailTemplatesHeaderFooter();                   
+                    $data['emailHeaderFooter'] = getEmailTemplatesHeaderFooter();
 
                     Mail::to($value->email)->send(new CourseTrainerMailReport($data));
-
                 }
-
             }
-
         }
 
         return redirect()->back()->with('success', 'Report Summary has been Sent to Trainers');
-
     }
 
 
@@ -440,9 +418,7 @@ class CourseAttendeeController extends Controller
                     foreach ($TrainerDetail as $key => $value) {
 
                         $trainerDetailName .= ucwords($value->first_name . " " . $value->last_name) . " <br>";
-
                     }
-
                 }
 
                 $trainerDetailName = trim($trainerDetailName, ', ');
@@ -464,19 +440,14 @@ class CourseAttendeeController extends Controller
                 Mail::to($CourseAttendees->email)->send(new ChaseAttendeesMail($paramArr));
 
                 return redirect()->route('course.show', $CourseAttendees->course_id)->with('success', "Chase Email has been sent Successfully");
-
             } else {
 
                 return redirect()->back()->with('error', 'Chase Email has been sent Failed!');
-
             }
-
         }
 
         return redirect()->back()->with('error', 'Chase Email has been sent Failed!');
-
-        
-    }    
+    }
     public function courseattendeethankyou($id)
     {
         $CompanyOrganizer = CompanyOrganizer::where('course_id', $id)->first();
@@ -491,10 +462,24 @@ class CourseAttendeeController extends Controller
             $messgeTemplate = getEmailTemplatesByID(12);
             if ($messgeTemplate) {
                 $message  = replaceHTMLBodyWithParam($messgeTemplate['template'], $paramArr);
-
             }
-
         }
         return view('courseattendees.success', ['sidebar' => $sidebar, 'message' => $message]);
+    }
+
+    public function deleteAttendees(Request $request)
+    {
+
+        if (strlen($request->id) > 0) {
+            $courseAttendees = CourseAttendees::find($request->id);
+            $this->courseAttendeeRepository->deleteAttendees($courseAttendees);
+            return response()->json([
+                'status' => true,
+                'message' => ''
+            ]);
+        }
+        return response()->json([
+            'status' => false
+        ]);
     }
 }
