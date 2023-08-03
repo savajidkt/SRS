@@ -93,11 +93,13 @@
             //             d.delete = $('#.delete_action').val();
             //         }
             // },
-            order: [[1, 'desc']],
-            columns: [{
-                data: 'DT_RowIndex',
-                     orderable: false,
-                     searchable: false
+            
+            columns: [
+                {
+                    data: 'id',
+                    name: 'id'
+                    // orderable: true,
+                    // searchable: true
                 },
                 {
                     data: 'company_name',

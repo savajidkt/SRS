@@ -114,12 +114,13 @@
                     "sLengthMenu": "Show  _MENU_ Entries",
                 },
                 ajax: "{{ route('templatemanager.index') }}",
-                order: [[1, 'desc']],
+                
                 columns: [{
-                    data: 'DT_RowIndex',
-                     orderable: false,
-                     searchable: false
-                    },
+                    data: 'id',
+                    name: 'id'
+                    // orderable: true,
+                    // searchable: true
+                },
                     {
                         data: 'template_name',
                         name: 'template_name',
