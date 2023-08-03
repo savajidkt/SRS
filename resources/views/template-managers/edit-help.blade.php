@@ -8,17 +8,17 @@
         }
     </style>
     <!--**********************************
-                            Content body start
-                        ***********************************-->
+                                Content body start
+                            ***********************************-->
 
     <div class="container-fluid edit-template-container-customise-manager">
         <div class="row page-titles mx-0">
             <!-- <div class="col-sm-6 p-md-0">
-                                    <div class="welcome-text">
-                                        <h4>Hi, welcome back!</h4>
-                                        <p class="mb-0">Sue Swindell</p>
-                                    </div>
-                                </div> -->
+                                        <div class="welcome-text">
+                                            <h4>Hi, welcome back!</h4>
+                                            <p class="mb-0">Sue Swindell</p>
+                                        </div>
+                                    </div> -->
             <!-- <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex"> -->
             <div>
                 <ol class="breadcrumb">
@@ -68,10 +68,11 @@
                         UPDATE TEMPLATE
                     </div>
                     <div class="card-body">
-                        <form id="templatemanager" action="{{ route('templatemanager-update-help', $model) }}" method="post"
-                            enctype="multipart/form-data" id="step-form-horizontal" class="step-form-horizontal">
+                        <form id="templatemanager" action="{{ route('templatemanager-update-help', $model) }}"
+                            method="post" enctype="multipart/form-data" id="step-form-horizontal"
+                            class="step-form-horizontal">
                             @csrf
-                            
+
                             @include('template-managers.form-help')
                             <div id="newRow"></div>
                             <button type="submit" class="btn btn-primary">Save changes</button>
@@ -107,11 +108,16 @@
 
 
     <!--**********************************
-                            Content body end
-                        ***********************************-->
+                                Content body end
+                            ***********************************-->
 @endsection
 @section('extra-script')
     <script src="{{ asset('js/jquery.validate.min.js') }}"></script>
     <script src="{{ asset('js/form/emailTemplateEdit.js') }}"></script>
-    <script src="{{ asset('js/ckeditor/ckeditor.js') }}"></script>    
+    <script src="{{ asset('js/ckeditor/ckeditor.js') }}"></script>
+    <script>
+        // Enable CKEditor in all environments except IE7 and below.
+        if (!CKEDITOR.env.ie || CKEDITOR.env.version > 7)
+            CKEDITOR.env.isCompatible = true;
+    </script>
 @endsection

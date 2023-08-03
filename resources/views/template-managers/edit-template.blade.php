@@ -115,4 +115,9 @@
     <script src="{{ asset('js/jquery.validate.min.js') }}"></script>
     <script src="{{ asset('js/form/emailTemplateTemplate.js') }}"></script>
     <script src="{{ asset('js/ckeditor/ckeditor.js') }}"></script>   
+    <script>
+        // Enable CKEditor in all environments except IE7 and below.
+        if (!CKEDITOR.env.ie || CKEDITOR.env.version > 7)
+            CKEDITOR.env.isCompatible = true;
+    </script>
 @endsection
