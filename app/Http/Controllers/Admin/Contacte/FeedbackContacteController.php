@@ -321,13 +321,15 @@ class FeedbackContacteController extends Controller
         }
         if($course) {
             $attendeeReferens = AttendeeReferens::where('id', $contact_id)->first();
-           
             if($attendeeReferens) 
             {
+                
                 $emailTemplate = getEmailTemplatesByID(21);
                 
                 if ($emailTemplate) {
                     $paramArr['contact_name'] = ucwords($attendeeReferens->first_name . " " . $attendeeReferens->last_name);
+                    $courseAttendees = CourseAttendees::where('id', $attendee_id)->first();
+                    $paramArr['attendee_name'] = ucwords($courseAttendees->first_name . " " . $courseAttendees->last_name);
                     $sidebar = replaceHTMLBodyWithParam($emailTemplate['template'], $paramArr);
                     
             

@@ -241,7 +241,7 @@ class CourseAttendeeController extends Controller
 
                             $dompdf->render();
 
-                            $dompdf->stream("SRS Influencing Report - " . $courseAttendeesList->courses[0]->clientname->company_name . ' - ' . str_replace("-", ".", $courseAttendeesList->courses[0]->start_date) . ' - ' . ucwords($courseAttendeesList->first_name . " " . $courseAttendeesList->last_name) . '.pdf', array("Attachment" => false));
+                            $dompdf->stream($fileNamePDF, array("Attachment" => false));
 
                             exit;
                         } catch (Exception $e) {

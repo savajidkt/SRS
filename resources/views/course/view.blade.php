@@ -22,7 +22,9 @@
 
         }
 
-        
+        .card.card-question-ab {
+    margin-bottom: 0rem;
+}
 
     </style>
 
@@ -125,7 +127,7 @@
 
                 @foreach ($modal->attendees as $key => $attendees)
 
-                    <div class="card">
+                    <div class="card card-question-ab">
 
                         @php
 
@@ -277,7 +279,7 @@
 
                     </div>
                 @else
-                    <div class="row card-text-middle" style="color: #454545;padding-top: 20px;">
+                    <div class="row card-text-middle" style="color: #454545;padding: 20px 0px;">
                         No 360 CONTACT available
                     </div>
                 @endif

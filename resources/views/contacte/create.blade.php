@@ -193,9 +193,9 @@
   display: flex;
   flex-direction: column-reverse;
 }
-            
-        </style>
-        <script>
+
+</style>
+<script>
     window.addEventListener( "pageshow", function ( event ) {
     if(window.performance.navigation.type == 2){
     location.reload();
@@ -359,7 +359,6 @@
                                                                         </option>
                                                                     </select>
                                                                 </div>
-                                                                
                                                             </div>
                                                         </div>
                                                         

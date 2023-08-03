@@ -144,11 +144,7 @@ class CourseAttendeeRepository
                     } else {
                         $courseAttendee = new CourseAttendees;
                         $courseAttendee = $courseAttendee->create($attendeesArr);
-                    }
 
-                    $attendeesArrList[] = $attendeesArr;
-                    if (strlen($attendees['id']) > 0 && $attendees['id'] != "") {
-                    } else {
                         $data['course'] = $course;
                         $data['key'] = $course->key;
                         $data['companyorganizer'] = $CompanyOrganizer;
@@ -159,7 +155,21 @@ class CourseAttendeeRepository
                         $data['attendee_id'] = $courseAttendee->id;
                         Mail::to($attendees['email'])->send(new CourseAttendeesMail($data));
                     }
-                }
+
+                //     $attendeesArrList[] = $attendeesArr;
+                //     if (strlen($attendees['id']) > 0 && $attendees['id'] != "") {
+                //     } else {
+                //         $data['course'] = $course;
+                //         $data['key'] = $course->key;
+                //         $data['companyorganizer'] = $CompanyOrganizer;
+                //         $trainerDetail = TrainerDetail::where('course_id', $course->id)->get();
+                //         $data['attendee_name'] = ucwords($attendees['first_name'] . " " . $attendees['last_name']);
+                //         $data['trainerDetail'] = $trainerDetail;
+                //         $course->companyorganizer->update(array('confirm_attendee' => 1));
+                //         $data['attendee_id'] = $courseAttendee->id;
+                //         Mail::to($attendees['email'])->send(new CourseAttendeesMail($data));
+                //     }
+                // }
 
                 // if ($courseAttendeesData) {
                 //     foreach ($courseAttendeesData as $key1 => $value1) {
@@ -171,29 +181,30 @@ class CourseAttendeeRepository
                 // }
 
                 // $course->companyorganizer()->update($organizerData);
-                if ($course->trainer) {
-                    $client = Client::where('id', $course->client_id)->first();
-                    $attendeesArrList = CourseAttendees::where('course_id', $course->id)->get();
-                    foreach ($course->trainer as $key => $trainer) {
-                        $trainerArr = [];
-                        $trainerArr['company_name'] = $client->company_name;
-                        $trainerArr['trainer_name'] = ucwords($trainer->first_name . " " . $trainer->last_name);
-                        $trainerArr['course_date'] = $course->start_date;
-                        $trainerArr['course_end_date'] = $course->end_date;
-                        $trainerArr['course_name'] = $course->coursecategoryname->course_name;
-                        $trainerArr['company_organiser_attendees_name'] = $course->companyorganizer->first_name . " " . $course->companyorganizer->last_name;
-                        $trainerArr['company_address'] = $client->address_one . "<br>" . $client->address_tow . "<br>" . $client->town . "<br>" . "Post Code : " . $client->post_code;
-                        $trainerArr['company_organiser_attendees_email'] = $course->companyorganizer->email;
-                        $trainerArr['attendees_list'] = $this->getAttendeeList($attendeesArrList);
-                        $trainerArr['questionnaire_360'] = $this->getQuestionnaire360List($attendeesArrList);
-                        $data['trainerArr'] = $trainerArr;
-                        $data['key'] = $course->key;
-                        $data['self_attende'] = '360';
-                        $data['referens_name'] = '';
 
-                        Mail::to($trainer->email)->send(new CourseTrainerMail($data));
-                    }
-                }
+                // if ($course->trainer) {
+                //     $client = Client::where('id', $course->client_id)->first();
+                //     $attendeesArrList = CourseAttendees::where('course_id', $course->id)->get();
+                //     foreach ($course->trainer as $key => $trainer) {
+                //         $trainerArr = [];
+                //         $trainerArr['company_name'] = $client->company_name;
+                //         $trainerArr['trainer_name'] = ucwords($trainer->first_name . " " . $trainer->last_name);
+                //         $trainerArr['course_date'] = $course->start_date;
+                //         $trainerArr['course_end_date'] = $course->end_date;
+                //         $trainerArr['course_name'] = $course->coursecategoryname->course_name;
+                //         $trainerArr['company_organiser_attendees_name'] = $course->companyorganizer->first_name . " " . $course->companyorganizer->last_name;
+                //         $trainerArr['company_address'] = $client->address_one . "<br>" . $client->address_tow . "<br>" . $client->town . "<br>" . "Post Code : " . $client->post_code;
+                //         $trainerArr['company_organiser_attendees_email'] = $course->companyorganizer->email;
+                //         $trainerArr['attendees_list'] = $this->getAttendeeList($attendeesArrList);
+                //         $trainerArr['questionnaire_360'] = $this->getQuestionnaire360List($attendeesArrList);
+                //         $data['trainerArr'] = $trainerArr;
+                //         $data['key'] = $course->key;
+                //         $data['self_attende'] = '360';
+                //         $data['referens_name'] = '';
+
+                //         Mail::to($trainer->email)->send(new CourseTrainerMail($data));
+                //     }
+                // }
             }
         }
 
