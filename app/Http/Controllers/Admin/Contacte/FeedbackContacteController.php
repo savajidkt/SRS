@@ -35,7 +35,8 @@ class FeedbackContacteController extends Controller
     {
         $sidebar = '';
         $course = Course::where('key',$id)->first();
-        if(!$course){
+        $courseAttendees = CourseAttendees::where('id', $at_id)->first();
+        if(!$course ){
             $messgeTemplate = getEmailTemplatesByID(23);
             if ($messgeTemplate) {
                 $paramArr = [];
@@ -43,6 +44,16 @@ class FeedbackContacteController extends Controller
             }
             return view('contacte.error', ['message' => $message]);
         }
+        if(!$courseAttendees){
+            $messgeTemplate = getEmailTemplatesByID(22);
+            if ($messgeTemplate) {
+                $paramArr = [];
+                $message  = $messgeTemplate['template'];
+            }
+            return view('courseattendees.errorexpire', ['message' => $message]);
+            
+        }
+
         $isExpire = courseExpired($course->start_date, $course->end_date);
         if (!$isExpire) {
             $messgeTemplate = getEmailTemplatesByID(22);
@@ -74,8 +85,23 @@ class FeedbackContacteController extends Controller
         if($course) {
             $attCount=0;
             $courseAttendees = CourseAttendees::where('id', $at_id)->first();
-            if($courseAttendees->referraluser){
-                $attCount = $courseAttendees->referraluser()->count();
+            if($courseAttendees)
+            {
+                if($courseAttendees->referraluser){
+                    $attCount = $courseAttendees->referraluser()->count();
+                }
+            } 
+            else
+            {
+
+                $messgeTemplate = getEmailTemplatesByID(22);
+                if ($messgeTemplate)
+                {
+                    $paramArr = [];
+                    $message  = replaceHTMLBodyWithParam($messgeTemplate['template'],$paramArr);
+                }
+                return view('contacte.error',['message' => $message]);
+                
             }
             
             if($courseAttendees) 
@@ -113,6 +139,37 @@ class FeedbackContacteController extends Controller
 
         $sidebar = '';
         $course = Course::where('key',$id)->first();
+        $courseAttendees = CourseAttendees::where('id', $attendee_id)->first();
+        if(!$course ){
+            $messgeTemplate = getEmailTemplatesByID(23);
+            if ($messgeTemplate) {
+                $paramArr = [];
+                $message  = replaceHTMLBodyWithParam($messgeTemplate['template'], $paramArr);
+            }
+            return view('contacte.error', ['message' => $message]);
+        }
+        if(!$courseAttendees){
+            $messgeTemplate = getEmailTemplatesByID(22);
+            if ($messgeTemplate) {
+                $paramArr = [];
+                $message  = $messgeTemplate['template'];
+            }
+            return view('courseattendees.errorexpire', ['message' => $message]);
+            
+        }
+        
+        $isExpire = courseExpired($course->start_date, $course->end_date);
+        if (!$isExpire) {
+            $messgeTemplate = getEmailTemplatesByID(22);
+            if ($messgeTemplate) {
+                $paramArr = [];
+                $message  = $messgeTemplate['template'];
+            }
+            return view('courseattendees.errorexpire', ['message' => $message]);
+        }
+
+
+        
         $questionnaireAnswers = QuestionnaireAnswers::where('attendees_id',$attendee_id)->where('type',0)->count();
         if($questionnaireAnswers> 0)
         {
@@ -280,16 +337,26 @@ class FeedbackContacteController extends Controller
     }
     public function question($id,$attendee_id,$ext_id = null,$contact_id = null)
     {
-       
+      
         $sidebar = '';
         $course = Course::where('key',$id)->first();
-        if(!$course){
+        $courseAttendees = CourseAttendees::where('id', $attendee_id)->first();
+        if(!$course ){
             $messgeTemplate = getEmailTemplatesByID(23);
             if ($messgeTemplate) {
                 $paramArr = [];
                 $message  = replaceHTMLBodyWithParam($messgeTemplate['template'], $paramArr);
             }
             return view('contacte.error', ['message' => $message]);
+        }
+        if(!$courseAttendees){
+            $messgeTemplate = getEmailTemplatesByID(22);
+            if ($messgeTemplate) {
+                $paramArr = [];
+                $message  = $messgeTemplate['template'];
+            }
+            return view('courseattendees.errorexpire', ['message' => $message]);
+            
         }
         $isExpire = courseExpired($course->start_date, $course->end_date);
        
@@ -308,8 +375,6 @@ class FeedbackContacteController extends Controller
         $questionnaireAnswers = QuestionnaireAnswers::where('attendees_id',$attendee_id)->where('contact_id',$contact_id)->where('type',1)->count();
         if(($ext_id != '360-frm' && $ext_id != 'con') || $questionnaireAnswers > 0)
         {
-            
-            
                 $messgeTemplate = getEmailTemplatesByID(16);
                 if ($messgeTemplate)
                 {
@@ -323,7 +388,6 @@ class FeedbackContacteController extends Controller
             $attendeeReferens = AttendeeReferens::where('id', $contact_id)->first();
             if($attendeeReferens) 
             {
-                
                 $emailTemplate = getEmailTemplatesByID(21);
                 
                 if ($emailTemplate) {
