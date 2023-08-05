@@ -699,8 +699,11 @@ foreach ($scores as $name => $score) {
                 <td width="10" style="padding-right:0px" align="center" style="border-right: 1px solid #000;">
                     <?php echo isset($raw_scores['ATTENDEE'][($result->id - 70)]) ? $raw_scores['ATTENDEE'][($result->id - 70)] : '' ?></td>
                 <?php
+               
                 foreach ($scores as $name => $score) {
  if ($name != 'ATTENDEE') {
+
+
                     if ($raw_scores[$name][($result->id - 70)] == '') {                        
                         $raw_scores[$name][($result->id - 70)] = 0;
                     }
