@@ -761,16 +761,40 @@ if (!function_exists('courseExpired')) {
     function courseExpired($start_date, $end_date="")
     {
 
+        
+        $start_date = date('d/m/Y',strtotime($start_date));
+       
+        
         $todayDate = Carbon::now()->format('d/m/Y');
       
         $date1 = Carbon::createFromFormat('d/m/Y', $todayDate);
         $date2 = Carbon::createFromFormat('d/m/Y', $start_date);
 
-        if ($date2->gt($date1)) {
+        if ($date2->gte($date1)) {
             return true;
         } else {
             return false;
         }
         return false;
     }
+
+}
+
+if (!function_exists('dateFormatNewMethod')) {
+
+    /**
+
+     * numberFormat return number with two decimals
+
+     */
+
+    function dateFormatNewMethod($date)
+
+    {
+
+        $_firstDate = date("m-d-Y", strtotime($date));
+        return date("Y-m-d",strtotime($_firstDate));
+
+    }
+
 }

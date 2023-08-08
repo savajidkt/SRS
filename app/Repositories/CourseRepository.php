@@ -9,6 +9,7 @@ use App\Exceptions\GeneralException;
 use App\Libraries\Safeencryption;
 use App\Mail\UpdateCourseTrainerMail;
 use App\Models\Client;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Database\Eloquent\Collection;
 
@@ -29,13 +30,14 @@ class CourseRepository
         
         $courseData = [
             'course_category_id'    => $data['course_category_id'],
-            'start_date'     => $data['start_date'],
-            'end_date'       => $data['end_date'],
+            'start_date'     => dateFormatNewMethod($data['start_date']),
+            'end_date'       => dateFormatNewMethod($data['end_date']),
             'duration'       => $data['duration'],
             'client_id'       => $data['client_id'],
             'path'       => $data['path'],
             'key'       => $newkey,
         ];
+        // dd($courseData);
         $course = Course::create($courseData);
         foreach ($data['invoice'] as $key => $invoice) 
         {         

@@ -39,34 +39,34 @@ $mycountphp = 1;
                         <div class="input-error">
                             <select class="form-select form-select-sm select2" aria-label=".form-select-sm example" id="duration" name="duration">
                                 <option value="">Select Duration</option>
-                                <option value="0.5 Days" {{ isset($model->duration) && $model->duration == '0.5 Days' ? 'selected' : '' }}>0.5 Days</option>
-                                <option value="1 Days" {{ isset($model->duration) && $model->duration == '1 Days' ? 'selected' : '' }}>1 Days</option>
-                                <option value="1.5 Days" {{ isset($model->duration) && $model->duration == '1.5 Days' ? 'selected' : '' }}>1.5 Days</option>
-                                <option value="2 Days" {{ isset($model->duration) && $model->duration == '2 Days' ? 'selected' : '' }}>2 Days</option>
-                                <option value="2.5 Days" {{ isset($model->duration) && $model->duration == '2.5 Days' ? 'selected' : '' }}>2.5 Days</option>
-                                <option value="3 Days" {{ isset($model->duration) && $model->duration == '3 Days' ? 'selected' : '' }}>3 Days</option>
-                                <option value="3.5 Days" {{ isset($model->duration) && $model->duration == '3.5 Days' ? 'selected' : '' }}>3.5 Days</option>
-                                <option value="4 Days" {{ isset($model->duration) && $model->duration == '4 Days' ? 'selected' : '' }}>4 Days</option>
-                                <option value="4.5 Days" {{ isset($model->duration) && $model->duration == '4.5 Days' ? 'selected' : '' }}>4.5 Days</option>
-                                <option value="5 Days" {{ isset($model->duration) && $model->duration == '5 Days' ? 'selected' : '' }}>5 Days</option>
-                                <option value="5.5 Days" {{ isset($model->duration) && $model->duration == '5.5 Days' ? 'selected' : '' }}>5.5 Days</option>
-                                <option value="6 Days" {{ isset($model->duration) && $model->duration == '6 Days' ? 'selected' : '' }}>6 Days</option>
-                                <option value="6.5 Days" {{ isset($model->duration) && $model->duration == '6.5 Days' ? 'selected' : '' }}>6.5 Days</option>
-                                <option value="7 Days" {{ isset($model->duration) && $model->duration == '7 Days' ? 'selected' : '' }}>7 Days</option>
-                                <option value="7.5 Days" {{ isset($model->duration) && $model->duration == '7.5 Days' ? 'selected' : '' }}>7.5 Days</option>
-                                <option value="8 Days" {{ isset($model->duration) && $model->duration == '8 Days' ? 'selected' : '' }}>8 Days</option>
-                                <option value="8.5 Days" {{ isset($model->duration) && $model->duration == '8.5 Days' ? 'selected' : '' }}>8.5 Days</option>
-                                <option value="9 Days" {{ isset($model->duration) && $model->duration == '9 Days' ? 'selected' : '' }}>9 Days</option>
-                                <option value="9.5 Days" {{ isset($model->duration) && $model->duration == '9.5 Days' ? 'selected' : '' }}>9.5 Days</option>
-                                <option value="10 Days" {{ isset($model->duration) && $model->duration == '10 Days' ? 'selected' : '' }}>10 Days</option>
-                                <option value="10.5 Days" {{ isset($model->duration) && $model->duration == '10.5 Days' ? 'selected' : '' }}>10.5 Days</option>
-                                <option value="11 Days" {{ isset($model->duration) && $model->duration == '11 Days' ? 'selected' : '' }}>11 Days</option>
-                                <option value="11.5 Days" {{ isset($model->duration) && $model->duration == '11.5 Days' ? 'selected' : '' }}>11.5 Days</option>
-                                <option value="12 Days" {{ isset($model->duration) && $model->duration == '12 Days' ? 'selected' : '' }}>12 Days</option>
-                                <option value="12.5 Days" {{ isset($model->duration) && $model->duration == '12.5 Days' ? 'selected' : '' }}>12.5 Days</option>
-                                <option value="13 Days" {{ isset($model->duration) && $model->duration == '13 Days' ? 'selected' : '' }}>13 Days</option>
-                                <option value="13.5 Days" {{ isset($model->duration) && $model->duration == '13.5 Days' ? 'selected' : '' }}>13.5 Days</option>
-                                <option value="14 Days" {{ isset($model->duration) && $model->duration == '14 Days' ? 'selected' : '' }}>14 Days</option>
+                                <option value="0.5" {{ isset($model->duration) && $model->duration == '0.5' ? 'selected' : '' }}>0.5 Days</option>
+                                <option value="1" {{ isset($model->duration) && $model->duration == '1' ? 'selected' : '' }}>1 Days</option>
+                                <option value="1.5" {{ isset($model->duration) && $model->duration == '1.5' ? 'selected' : '' }}>1.5 Days</option>
+                                <option value="2" {{ isset($model->duration) && $model->duration == '2' ? 'selected' : '' }}>2 Days</option>
+                                <option value="2.5" {{ isset($model->duration) && $model->duration == '2.5' ? 'selected' : '' }}>2.5 Days</option>
+                                <option value="3" {{ isset($model->duration) && $model->duration == '3' ? 'selected' : '' }}>3 Days</option>
+                                <option value="3.5" {{ isset($model->duration) && $model->duration == '3.5' ? 'selected' : '' }}>3.5 Days</option>
+                                <option value="4" {{ isset($model->duration) && $model->duration == '4' ? 'selected' : '' }}>4 Days</option>
+                                <option value="4.5" {{ isset($model->duration) && $model->duration == '4.5' ? 'selected' : '' }}>4.5 Days</option>
+                                <option value="5" {{ isset($model->duration) && $model->duration == '5' ? 'selected' : '' }}>5 Days</option>
+                                <option value="5.5" {{ isset($model->duration) && $model->duration == '5.5' ? 'selected' : '' }}>5.5 Days</option>
+                                <option value="6" {{ isset($model->duration) && $model->duration == '6' ? 'selected' : '' }}>6 Days</option>
+                                <option value="6.5" {{ isset($model->duration) && $model->duration == '6.5' ? 'selected' : '' }}>6.5 Days</option>
+                                <option value="7" {{ isset($model->duration) && $model->duration == '7' ? 'selected' : '' }}>7 Days</option>
+                                <option value="7.5" {{ isset($model->duration) && $model->duration == '7.5' ? 'selected' : '' }}>7.5 Days</option>
+                                <option value="8" {{ isset($model->duration) && $model->duration == '8' ? 'selected' : '' }}>8 Days</option>
+                                <option value="8.5" {{ isset($model->duration) && $model->duration == '8.5' ? 'selected' : '' }}>8.5 Days</option>
+                                <option value="9" {{ isset($model->duration) && $model->duration == '9' ? 'selected' : '' }}>9 Days</option>
+                                <option value="9.5" {{ isset($model->duration) && $model->duration == '9.5' ? 'selected' : '' }}>9.5 Days</option>
+                                <option value="10" {{ isset($model->duration) && $model->duration == '10' ? 'selected' : '' }}>10 Days</option>
+                                <option value="10.5" {{ isset($model->duration) && $model->duration == '10.5' ? 'selected' : '' }}>10.5 Days</option>
+                                <option value="11" {{ isset($model->duration) && $model->duration == '11' ? 'selected' : '' }}>11 Days</option>
+                                <option value="11.5" {{ isset($model->duration) && $model->duration == '11.5' ? 'selected' : '' }}>11.5 Days</option>
+                                <option value="12" {{ isset($model->duration) && $model->duration == '12' ? 'selected' : '' }}>12 Days</option>
+                                <option value="12.5" {{ isset($model->duration) && $model->duration == '12.5' ? 'selected' : '' }}>12.5 Days</option>
+                                <option value="13" {{ isset($model->duration) && $model->duration == '13' ? 'selected' : '' }}>13 Days</option>
+                                <option value="13.5" {{ isset($model->duration) && $model->duration == '13.5' ? 'selected' : '' }}>13.5 Days</option>
+                                <option value="14" {{ isset($model->duration) && $model->duration == '14' ? 'selected' : '' }}>14 Days</option>
                             </select>
                             <div class="duration-error"></div>
                         </div>
