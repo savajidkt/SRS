@@ -405,9 +405,8 @@ padding-left: 0rem;
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
                                                 <hr/>
-                                            
+                                                </div>
                                             </div>
                                         </div>     
                                         {{-- <hr/>    --}}

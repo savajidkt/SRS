@@ -193,12 +193,18 @@
   display: flex;
   flex-direction: column-reverse;
 }
-
+.input-error .help-block-error {
+    order: -1;
+}
 </style>
 <script>
     window.addEventListener( "pageshow", function ( event ) {
     if(window.performance.navigation.type == 2){
-    location.reload();
+    setTimeout(function () {
+        // alert('Reloading Page');
+        location.reload(true);
+      }, 3000);
+    
 }
 });
  </script>
@@ -523,7 +529,7 @@
     <script>
         $(document).on('click','.myAddedBTN',function(){
         
-            $('.myExistdiv').addClass('hide');
+            // $('.myExistdiv').addClass('hide');
         
             $('.myclsdiv').removeClass('hide');
         

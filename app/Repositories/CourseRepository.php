@@ -80,8 +80,8 @@ class CourseRepository
     {
         $courseData = [
             'course_category_id'    => $data['course_category_id'],
-            'start_date'     => $data['start_date'],
-            'end_date'       => $data['end_date'],
+            'start_date'     => dateFormatNewMethod($data['start_date']),
+            'end_date'       => dateFormatNewMethod($data['end_date']),
             'duration'       => $data['duration'],
             'client_id'       => $data['client_id'],
             'path'       => $data['path'],
